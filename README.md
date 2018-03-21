@@ -7,20 +7,17 @@
     * [Social network analysis of Twitter](http://www.mediative.com/social-network-analysis-twitter/)
 	* [Data Mining for Predictive Social Network Analysis](https://www.toptal.com/data-science/social-network-data-mining-for-predictive-analysis)
 	* [Network analysis on Clinton Wikileaks data, by MIT](https://clinton.media.mit.edu/clinton#)
-	
-	
+    * [A social network analysis of Twitter: Mapping the digital humanities community](https://www.tandfonline.com/doi/full/10.1080/23311983.2016.1171458) 
 	
 * Papers 
     * [Classifying Twitter Topic-Networks Using Social Network Analysis](http://journals.sagepub.com/doi/full/10.1177/2056305117691545)
     * [Towards More Systematic Twitter Analysis: Metrics for Tweeting Activities](https://www.researchgate.net/publication/235632738_Towards_More_Systematic_Twitter_Analysis_Metrics_for_Tweeting_Activities)
 
-* [A social network analysis of Twitter: Mapping the digital humanities community](https://www.tandfonline.com/doi/full/10.1080/23311983.2016.1171458)
-
-
 * Books
     * [Mastering Social Media Mining with Python](https://www.amazon.it/Mastering-Social-Media-Mining-Python/dp/1783552018/ref=sr_1_1?ie=UTF8&qid=1521482811&sr=8-1&keywords=Mastering+Social+Media+Mining+with+Python)
+
 * Tools
-    * [Search Bar di Twitter](https://twitter.com/search-home)
+    * [Twitter's Search Bar](https://twitter.com/search-home)
     * [Network repository](http://networkrepository.com/)
 
 
@@ -28,7 +25,7 @@
 
 * DataScience 
 	* \#datascience \#AI ...
-	* \#facebookgate \#CambridgeAnalytica
+	* \#facebookgate \#CambridgeAnalytica \#Zuckerberg \#deletefacebook
 	* \#privacy \#GDPR
 
 * Politics	
@@ -47,7 +44,3 @@
 
 * People
     * Popular public persons
-
-
-
-
