@@ -44,3 +44,12 @@
 
 * People
     * Popular public persons
+
+
+## Questions
+
+* Technical 
+    * Which library should we use to extract the data/tweets? There is an alternative way to extract tweets about a specific subject without having to setup the full Twitter API?
+
+* Theoretical
+    * Which kind of analysis should we do on the obtained dataset? Should we simply apply the metrics seen during the class? There is a preferred path to follow (like the one seen in the paper for example)? 
