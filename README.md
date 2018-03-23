@@ -12,7 +12,7 @@
 * Papers 
     * [Classifying Twitter Topic-Networks Using Social Network Analysis](http://journals.sagepub.com/doi/full/10.1177/2056305117691545)
     * [Towards More Systematic Twitter Analysis: Metrics for Tweeting Activities](https://www.researchgate.net/publication/235632738_Towards_More_Systematic_Twitter_Analysis_Metrics_for_Tweeting_Activities)
-    * [The Anatomy of a Scientific Rumor (Higgs boson on twitter)](https://www.nature.com/articles/srep02980#methods) [dataset](https://snap.stanford.edu/data/higgs-twitter.html)
+    * [The Anatomy of a Scientific Rumor (Higgs boson on twitter)](https://www.nature.com/articles/srep02980#methods), qua il [dataset](https://snap.stanford.edu/data/higgs-twitter.html)
 
 * Books
     * [Mastering Social Media Mining with Python](https://www.amazon.it/Mastering-Social-Media-Mining-Python/dp/1783552018/ref=sr_1_1?ie=UTF8&qid=1521482811&sr=8-1&keywords=Mastering+Social+Media+Mining+with+Python)
