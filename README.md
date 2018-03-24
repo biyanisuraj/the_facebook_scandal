@@ -20,6 +20,7 @@
 * Tools
     * [Twitter's Search Bar](https://twitter.com/search-home)
     * [Network repository](http://networkrepository.com/)
+    * [Hashtagify](http://hashtagify.me/hashtag/deletefacebook)
 
 
 ## Possible Topics
@@ -47,10 +48,40 @@
     * Popular public persons
 
 
-## Questions
+## Questions for Rossetti
 
 * Technical 
     * Which library should we use to extract the data/tweets? There is an alternative way to extract tweets about a specific subject without having to setup the full Twitter API?
 
 * Theoretical
     * Which kind of analysis should we do on the obtained dataset? Should we simply apply the metrics seen during the class? There is a preferred path to follow (like the one seen in the paper for example)? 
+    
+    
+    
+## Various
+Let's begin thinking about quantities.
+
+Full size of a tweet: ~2KB [link to measure the size of a tweet](https://gist.github.com/brendano/1024217)
+to be checked, storing in json format?
+
+* How many tweets can we store easily?
+	* 100K	tweets 	~200MB
+	* 500K	tweets 	~1GB
+	* 1M 	tweets 	~2GB
+* How much time to build the network? 
+- stream rate?
+
+* How many tweets have already been tweeted about for example \#deletefacebook?
+
+
+
+
+
+
+
+
+
+
+
+
+
