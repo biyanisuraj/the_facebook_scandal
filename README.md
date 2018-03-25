@@ -1,6 +1,6 @@
 # Social-Network-Analysis
 
-[Python Version](https://img.shields.io/badge/python-2.7-brightgreen.svg)
+![Python Version](https://img.shields.io/badge/python-2.7-brightgreen.svg)
 
 ## Books/Articles/Papers/Tools
 * Articles
