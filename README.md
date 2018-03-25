@@ -73,15 +73,4 @@ to be checked, storing in json format?
 
 * How many tweets have already been tweeted about for example \#deletefacebook?
 
-
-
-
-
-
-
-
-
-
-
-
-
+Consideration: 
