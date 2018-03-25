@@ -1,5 +1,7 @@
 # Social-Network-Analysis
 
+[Python Version](https://img.shields.io/badge/python-2.7-brightgreen.svg)
+
 ## Books/Articles/Papers/Tools
 * Articles
     * [Twitter and social network analysis](http://datadrivenjournalism.net/news_and_analysis/twitter_and_social_network_analysis)
