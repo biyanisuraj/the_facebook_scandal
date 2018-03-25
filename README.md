@@ -69,8 +69,9 @@ to be checked, storing in json format?
 	* 500K	tweets 	~1GB
 	* 1M 	tweets 	~2GB
 * How much time to build the network? 
-- stream rate?
+
+* Stream rate?
 
 * How many tweets have already been tweeted about for example \#deletefacebook?
 
-Consideration: since, as seen in [this link](https://gist.github.com/brendano/1024217), tweets are represented in a dictionary-like data structure, we only have to store the key-value couples that are meaningful for our pourposes. Having users for nodes and tweets/retweets for links we only have to store the users IDs and the infos about 
+Consideration: since, as seen in [this link](https://gist.github.com/brendano/1024217), tweets are represented in a dictionary-like data structure, we only have to store the key-value couples that are meaningful for our pourposes. Having a network that has users for nodes and tweets/retweets for links, we only need to store users IDs and infos on the connections between the tweets. However it may be very useful to take a look about all the metadata that comes with a single tweet, in order to see which of the various fields may be used to obtain a richer analysis.
