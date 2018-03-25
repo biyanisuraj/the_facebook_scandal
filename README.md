@@ -73,4 +73,4 @@ to be checked, storing in json format?
 
 * How many tweets have already been tweeted about for example \#deletefacebook?
 
-Consideration: 
+Consideration: since, as seen in [this link](https://gist.github.com/brendano/1024217), tweets are represented in a dictionary-like data structure, we only have to store the key-value couples that are meaningful for our pourposes. Having users for nodes and tweets/retweets for links we only have to store the users IDs and the infos about 
