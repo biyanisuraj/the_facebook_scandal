@@ -1,6 +1,6 @@
 # Social-Network-Analysis
 
-![Python Version](https://img.shields.io/badge/python-2.7-brightgreen.svg)
+![Unipi](https://img.shields.io/badge/Unipi-Social%20Network%20Analysis-orange.svg)![Python Version](https://img.shields.io/badge/python-2.7-brightgreen.svg)
 
 ## Books/Articles/Papers/Tools
 * Articles
