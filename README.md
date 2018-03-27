@@ -10,6 +10,7 @@
 	* [Data Mining for Predictive Social Network Analysis](https://www.toptal.com/data-science/social-network-data-mining-for-predictive-analysis)
 	* [Network analysis on Clinton Wikileaks data, by MIT](https://clinton.media.mit.edu/clinton#)
     * [A social network analysis of Twitter: Mapping the digital humanities community](https://www.tandfonline.com/doi/full/10.1080/23311983.2016.1171458) 
+    * [Articolo analisi su \#deletefacebook in Italia](https://socialrecap.it/2018/03/26/deletefacebook-ci-credono-media-non-gli-italiani/)
 	
 * Papers 
     * [Classifying Twitter Topic-Networks Using Social Network Analysis](http://journals.sagepub.com/doi/full/10.1177/2056305117691545)
