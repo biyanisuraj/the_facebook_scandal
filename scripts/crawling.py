@@ -60,6 +60,7 @@ tweetCount = 0
 
 import time
 
+
 start_time = time.ctime()
 start=time.time()
 print "Started crawling at:"
@@ -69,7 +70,7 @@ os.system("gzip Data/*.json")
 f=open('Data/risultati_17_20_{}.json'.format(tweetCount), 'w')
     #Tell the Cursor method that we want to use the Search API (api.search)
     #Also tell Cursor our query, and the maximum number of tweets to return
-for tweet in tweepy.Cursor(api.search,q=searchQuery, since='2018-03-17',until='2018-03-20').items(maxTweets) :         
+for tweet in tweepy.Cursor(api.search,q=searchQuery, since='2018-03-17',until='2018-03-20', count=100).items(maxTweets) :         
 
     #Write the JSON format to the text file, and add one to the number of tweets we've collected
     f.write(jsonpickle.encode(tweet._json, unpicklable=False) + '\n')
@@ -89,7 +90,7 @@ for tweet in tweepy.Cursor(api.search,q=searchQuery, since='2018-03-17',until='2
         
 
         print("now sleeping zzz")        
-        time.sleep(12)
+        time.sleep(11)
 
         print("running again")
 

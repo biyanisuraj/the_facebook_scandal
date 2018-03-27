@@ -74,6 +74,25 @@ to be checked, storing in json format?
 * How much time to build the network? 
 
 * Stream rate?
+The maximum stream rate for the twitter API is 450 GET REQUEST for 15minutes. Each request can contain 100 tweets. So the maximum rate is:
+MAX_RATE = 45000 tweet/15minuti = 45000/900sec = 50 tweet/s.
+To respect this rate I've put to sleep the script every 500 tweets for 12 sec, obtaining :
+RATE = 500/12 = 41 tweet/s
+Fundamental is to use the COUNT=100 option in the search, to not deplete the admitted requests too quickly, killing down the rate.
+
+Maybe 12 seconds of sleep is too much conservative:
+
+Time for 45000 tweet: 12seconds * 45000tweet / 500 = 12*90 = 1080 s =18minutes
+
+We lose theoretically 3 minutes every 15 minutes: 12 minutes for hour.
+
+In reality I'm going with a much slower rate:
+
+Now, 'Tue Mar 27 23:58:56 2018', 45000/30minutes = 25 tweets/sec
+Half of the maximum rate speed.
+We have also to consider the time for requests/writing to file/zipping.
+
+
 
 * How many tweets have already been tweeted about for example \#deletefacebook?
 
