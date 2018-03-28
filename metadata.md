@@ -4,8 +4,7 @@
 | author | This is the tweepy.models.User instance of the tweet author
 | contributors | This is a list of contributors, if the feature is enabled 
 | coordinates | This is the dictionary of coordinates in the GeoJSON format
-| created_at | This is the datetime.datetime instance of the tweet creation 
-time
+| created_at | This is the datetime.datetime instance of the tweet creation time
 | entities | This is a dictionary of URLs, hashtags, and mentions in the tweets
 | favorite_count | This is the number of times the tweet has been favorited
 | favorited | This flags whether the authenticated user has favorited the tweet
