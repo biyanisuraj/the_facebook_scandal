@@ -80,17 +80,19 @@ for tweet in tweepy.Cursor(api.search,q=searchQuery, since='2018-03-17',until='2
         f.close()
             
         print(".. downloaded tweets: {}".format(tweetCount))
-        print("running_time: {} minutes".format( (time.time()-start)/60))
+        minuti=(time.time()-start)/60
+        print("running_time: {:.1f} minutes".format(minuti))
 
+        print("stream rate: {:.1f} tweet per s MAX_RATE = 50 tweet per s".format(tweetCount/minuti/60) )
 
         os.system("gzip Data/*.json")
 
         
         f=open('Data/risultati_17_20_{}.json'.format(tweetCount), 'w')
         
-
+        
         print("now sleeping zzz")        
-        time.sleep(11)
+        time.sleep(10)
 
         print("running again")
 
