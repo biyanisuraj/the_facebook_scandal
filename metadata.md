@@ -1,4 +1,4 @@
-| Attribute Name | Description |
+| Attribute Name   | Description   |
 | _json | This is a dictionary with the JSON response of the status 
 | author | This is the tweepy.models.User instance of the tweet author
 | contributors | This is a list of contributors, if the feature is enabled 
