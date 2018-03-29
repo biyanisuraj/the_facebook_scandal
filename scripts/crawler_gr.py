@@ -24,7 +24,7 @@ remaining_searches = int(
                            ['remaining'])
 since, until = '2018-03-24', '2018-03-25'
 
-with gzip.open('./results.json.gz', 'w') as f:
+with gzip.open('../testing/results.json.gz', 'w') as f:
     f.write('{ "tweets": [')
     for tweet in Cursor(api.search, q=q, since=since, until=until,
                         count=100).items(items):
