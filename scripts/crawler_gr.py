@@ -1,6 +1,7 @@
 import datetime
 import json
 import gzip
+import sys
 import time
 from tweepy import API
 from tweepy import AppAuthHandler
@@ -22,9 +23,10 @@ remaining_searches = int(
                            ['search']
                            ['/search/tweets']
                            ['remaining'])
-since, until = '2018-03-24', '2018-03-25'
+since, until = sys.argv[1], sys.argv[2]
+fname = 'tweets-' + since.split('-')[2] + '-' + until.split('-')[2]
 
-with gzip.open('../testing/results.json.gz', 'w') as f:
+with gzip.open('../testing/' + fname + '.json.gz', 'w') as f:
     f.write('{ "tweets": [')
     for tweet in Cursor(api.search, q=q, since=since, until=until,
                         count=100).items(items):
