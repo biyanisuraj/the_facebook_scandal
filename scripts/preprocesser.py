@@ -1,4 +1,4 @@
-#encoding: utf-8
+# encoding: utf-8
 import gzip
 import os
 import sys
@@ -11,10 +11,18 @@ import sys
 """
 
 dir_name = sys.argv[1]
-item_counter, line_counter = 0, 0
-dir_name = './' + dir_name.split('/')[len(dir_name.split('/')) - 1]
 
-with gzip.open(dir_name + '.json.gz', 'w') as f:
+##dir_name=os.getcwd()+'/'
+
+print(dir_name)
+
+item_counter, line_counter = 0, 0
+
+destination = './' +  dir_name.split('/')[-1] + '.json.gz'
+
+print(destination)
+
+with gzip.open(destination, 'w') as f:
     f.write('{ "tweets": [')
 
     for fname in os.listdir(sys.argv[1]):
