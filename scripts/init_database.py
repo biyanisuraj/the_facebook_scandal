@@ -7,7 +7,6 @@ from pymongo.errors import CollectionInvalid
 
 CLIENT = MongoClient()
 DB = CLIENT['social_database_test']
-path = './tweets_04_06_07.json'
 KGENERAL = ["is_quote_status", "in_reply_to_status_id",
             "in_reply_to_user_id", "id", "favorite_count", "retweeted",
             "retweet_count", "lang", "created_at"]
