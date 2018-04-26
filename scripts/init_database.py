@@ -1,7 +1,6 @@
 import argparse
 import gzip
 import json
-import pprint
 import subprocess
 from pymongo import MongoClient
 from pymongo.errors import CollectionInvalid
@@ -9,7 +8,8 @@ from pymongo.errors import CollectionInvalid
 """
     Campi di interesse:
         favorite_count: indica quante volte il tweet e' stato likato
-        is_quote_status: false se non e' un quote altrimenti true DA CONTROLLARE
+        is_quote_status: false se non e' un quote altrimenti true DA
+        CONTROLLARE
         lang: il linguaggio del tweet
         retweeted: indica se il tweet e' stato retwettato oppure no
         retweet_count : indica quante volte il tweet e' stato retwettato
