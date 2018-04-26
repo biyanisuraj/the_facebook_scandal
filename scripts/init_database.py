@@ -1,17 +1,35 @@
 import argparse
 import gzip
 import json
+import pprint
 import subprocess
 from pymongo import MongoClient
 from pymongo.errors import CollectionInvalid
 
+"""
+    Campi di interesse:
+        favorite_count: indica quante volte il tweet e' stato likato
+        is_quote_status: false se non e' un quote altrimenti true DA CONTROLLARE
+        lang: il linguaggio del tweet
+        retweeted: indica se il tweet e' stato retwettato oppure no
+        retweet_count : indica quante volte il tweet e' stato retwettato
+        entities.hashtags: la lista dei tag utilizzati dal tweet
+        user.created_at
+        user.favourites_count: numero di tweet che l'utente ha likato
+        user.followers_count: numero di utenti che seguono l'utente
+        user.friends_count: numero di utenti che l'utente segue
+        user.id: id dell'utente
+        user.name: nome utente
+        user.screen_name
+        user.statuses_count: numero di stati pubblicati dall'utente
+
+"""
+
 CLIENT = MongoClient()
 DB = CLIENT['social_database_test']
-KGENERAL = ["id", "favorite_count", "retweet_count", "lang", "created_at"]
 KENTITIES = ["hashtags"]
-KUSER = ["id", "followers_count", "statuses_count",
-         "friends_count", "screen_name", "favourites_count", "name",
-         "created_at"]
+KUSER = ['created_at', 'favourites_count', 'followers_count', 'friends_count',
+         'id', 'name', 'screen_name', 'statuses_count']
 
 
 def fill_database(path):
@@ -29,54 +47,53 @@ def fill_database(path):
         tweets = json.load(f)
 
         for tweet in tweets['tweets']:
-            u = tweet['user']
-            tw_cursor = table.find({'user.id': u['id']})
+            if tweet['is_quote_status'] is False:
+                if 'retweeted_status' not in tweet:
 
-            if tw_cursor.count() == 0:
-                t = dict()
-                t['general'] = {}
-                t['user'] = {}
+                    # TROVATO TWEET ORIGINALE
 
-                for k in KGENERAL:
-                    t['general'][k] = tweet[k]
-
-                e = tweet['entities']
-                tags = [tag['text'] for tag in e['hashtags']]
-                t['hashtags'] = tags
-
-                for k in KUSER:
-                    t['user'][k] = u[k]
-
-                t['user']['number_of_tweets'] = 1
-                t['user']['rumber_of_retweets'] = 0
-
-                table.insert_one(t)
-
-                counter += 1
-            else:
-                if tweet['retweeted'] is True:
-                    print 'FOUNDED A RETWEET'
-
-                    table.find_one_and_update(
-                        {'user.id': u['id']},
-                        {'$inc': {'user.rumber_of_retweets': 1}}
-                        )
-                else:
+                    u = tweet['user']
                     e = tweet['entities']
-                    tags = [tag['text'] for tag in e['hashtags']]
-                    du_tags = table.find_one({'user.id': u['id']})['hashtags']
-                    [du_tags.append(t) for t in tags if t not in du_tags]
 
-                    table.find_one_and_update(
-                        {'user.id': u['id']},
-                        {'$inc': {'user.number_of_tweets': 1},
-                         '$inc': {'general.retweet_count':
-                                  tweet['retweet_count']},
-                         '$set': {'hashtags': du_tags}
-                         })
+                    tw_cursor = table.find({'user.id': u['id']})
 
-            if counter % 1000 == 0:
-                print 'Inserted ' + str(counter) + ' records'
+                    if tw_cursor.count() == 0:
+
+                        # UTENTE NON PRESENTE NEL DATABASE
+
+                        t = dict()
+                        t['general'] = dict()
+                        t['user'] = dict()
+
+                        t['general']['tweets'] = 1
+                        t['general']['retweets'] = tweet[
+                            'retweet_count']
+                        t['general']['favorite_count'] = tweet[
+                            'favorite_count']
+                        t['general']['lang'] = tweet['lang']
+
+                        tags = [tag['text'] for tag in e['hashtags']]
+                        t['hashtags'] = tags
+
+                        for k in KUSER:
+                            t['user'][k] = u[k]
+
+                        table.insert_one(t)
+                        counter += 1
+                    else:
+
+                        # UTENTE GIa' PRESENTE NEL DATABASE
+
+                        tags = table.find_one({'user.id': u['id']})['hashtags']
+                        tweet_tags = [tag['text'] for tag in e['hashtags']]
+                        [tags.append(t) for t in tweet_tags if t not in tags]
+
+                        table.find_one_and_update(
+                            {'user.id': u['id']},
+                            {'$inc': {'general.tweets': 1, 'general.retweets':
+                             tweet['retweet_count'], 'general.favorite_count':
+                             tweet['favorite_count']},
+                             '$set': {'hashtags': tags}})
 
         print 'Total records inserted: ' + str(counter)
 
