@@ -52,8 +52,8 @@ searchQuery = "#facebookgate OR \
 #searchQuery = "#zuckerberg"
 
 
-day_since=29
-day_to=30
+day_since=19
+day_to=20
 
 
 start_time = time.ctime()
@@ -61,11 +61,20 @@ start=time.time()
 print "Started crawling at:"
 print start_time
 
+##since='2018-04-{}'.format(day_since),
+##until='2018-04-{}'.format(day_to),
+##max_id = 984216689234628609
+##since_id = 983801866726334465,
+##since='2018-04-{}'.format(day_since)
 
 f=open('data/risultati_{}_{}_{}.json'.format(day_since, day_to, tweetCount), 'w')
     #Tell the Cursor method that we want to use the Search API (api.search)
     #Also tell Cursor our query, and the maximum number of tweets to return
-for tweet in tweepy.Cursor(api.search,q=searchQuery, since='2018-03-{}'.format(day_since),until='2018-03-{}'.format(day_to), count=100).items(maxTweets) :         
+for tweet in tweepy.Cursor(api.search,q=searchQuery,
+                           since='2018-04-{}'.format(day_since),
+                           until='2018-04-{}'.format(day_to),
+                           ##max_id   = 984010360616378373,
+                           count=100).items(maxTweets) :         
 
     #Write the JSON format to the text file, and add one to the number of tweets we've collected
     f.write(jsonpickle.encode(tweet._json, unpicklable=False) + '\n')
@@ -86,6 +95,7 @@ for tweet in tweepy.Cursor(api.search,q=searchQuery, since='2018-03-{}'.format(d
             f_id.close()
             print(tweet.text)
             print(str(tweet.created_at))
+            print(str(tweet.id))
                         
         
         os.system("gzip data/*.json")
@@ -94,9 +104,10 @@ for tweet in tweepy.Cursor(api.search,q=searchQuery, since='2018-03-{}'.format(d
         f=open('data/risultati_{}_{}_{}.json'.format(day_since, day_to, tweetCount), 'w')
         
         
-        print("now sleeping zzz")        
+        print("now sleeping zzz")
+        ##pisa time.sleep(4)
+        ##home
         time.sleep(3)
-
         print("running again")
 
 
