@@ -22,7 +22,6 @@ import json as json
 auth = tweepy.AppAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
 
 
-
 #Setting up new api wrapper, using authentication only
 api = tweepy.API(auth, wait_on_rate_limit=True,wait_on_rate_limit_notify=True)
  
@@ -52,8 +51,8 @@ searchQuery = "#facebookgate OR \
 #searchQuery = "#zuckerberg"
 
 
-day_since=19
-day_to=20
+day_since=22
+day_to=23
 
 
 start_time = time.ctime()
