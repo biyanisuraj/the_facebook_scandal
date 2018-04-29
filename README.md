@@ -97,3 +97,10 @@ We have also to consider the time for requests/writing to file/zipping.
 * How many tweets have already been tweeted about for example \#deletefacebook?
 
 Consideration: since, as seen [here](https://gist.github.com/brendano/1024217), tweets are represented in a dictionary-like data structure, we only have to store the key-value couples that are meaningful for our pourposes. Having a network that has users for nodes and tweets/retweets for links, we only need to store users IDs and infos on the connections between the tweets. However it may be very useful to take a look about all the metadata that comes with a single tweet, in order to see which of the various fields may be used to obtain a richer analysis. Having choosen the kind of infos we want to store, using a compression algorithm like gzip or similar should make the task of storing the data a bit simpler.
+
+
+* Friendship requests:
+In order to build the network of the authors of tweets we need the friendship status of each possible couple. The number of possible link is quadratic: n(n-1)/2. 
+We have 180 requests for each 15 minutes time window. 
+In friendship_request.py there are some computation about it.
+
