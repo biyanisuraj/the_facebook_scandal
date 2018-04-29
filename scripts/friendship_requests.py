@@ -3,7 +3,6 @@ import pymongo
 
 CLIENT = MongoClient()
 DB = CLIENT['social_database_test']
-
 db = CLIENT.social_database_test
 
 db.collection_names()[0]
@@ -34,7 +33,9 @@ with open("scripts/prova.txt", 'w') as f:
 
 from tweepy import API
 from tweepy import AppAuthHandler
+from tweepy import OAuthHandler
 from tweepy import Cursor
+import datetime
 
 CONSUMER_KEY = 'NHsKGfxrXTXlf2mfH2n0jbW1l'
 CONSUMER_SECRET = 'W0HE0cTlfIcJtkIX5hClcH4ILgyv018Q8fWdo0sgRo5bdFzAMA'
@@ -45,6 +46,7 @@ auth = AppAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
 api = API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
 import tweepy
 
+# richiesta su frienships
 out = []
 for i, user_id in enumerate(user_ids[:10]):
     print(i,user_ids[i])
@@ -53,9 +55,8 @@ for i, user_id in enumerate(user_ids[:10]):
     ))
 
     
-
 pprint(api.rate_limit_status())
-import datetime
+
 
 api.rate_limit_status()['resources']['friendships']['/friendships/show']
 # sembrerebbe che abbiamo 15 richieste ogni 15 minuti!
@@ -68,9 +69,17 @@ api.rate_limit_status()['resources']['friendships']['/friendships/show']
 # CONTEGGI SUL NUMERO DI RICHIESTE NECESSARIE
 
 # usando l' autenticazione di tipo utente le richieste salgono a 180
-# in 24h abbiamo
+## user authentication 180 friendships show requests
+
+auth = OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
+auth.set_access_token(ACCESS_TOKEN, ACCESS_SECRET)
+
+api = tweepy.API(auth)
+api.rate_limit_status()['resources']['friendships']['/friendships/show']['limit']
+
+# in 24h abbiamo:
 n_account= 1 # al momento abbiamo un solo account, possiamo provare ad usarne di piú
-finestre = 24*60/4 # finestre temporali di 15 minuti di richieste
+finestre = 24*4 # finestre temporali di 15 minuti di richieste
 richieste_24h = 180*finestre*n_account
 richieste_24h
 
@@ -79,17 +88,7 @@ coppie = n_id*(n_id-1)/2
 giorni_necessari = coppie/richieste_24h
 giorni_necessari
 
-
 ###########################################################
-
-from tweepy import OAuthHandler
-import tweepy
-
-## user authentication 180 friendships show requests
-auth = OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
-auth.set_access_token(ACCESS_TOKEN, ACCESS_SECRET)
-
-api = tweepy.API(auth)
 
 
 reset = api.rate_limit_status()['resources']['friendships']['/friendships/show']['reset']
@@ -99,6 +98,7 @@ reset = datetime.datetime.fromtimestamp(int(reset))
 
 ############################################################
 
+# test su tweets
 for tweet in tweets \
     
     .find(projection = ["user.name","user.followers_count"])\
