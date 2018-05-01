@@ -3,4 +3,4 @@ testing/*
 scripts/Data/*
 database/*
 data/*
-visualization/.ipynb_checkpoints
+scripts/visualization/.ipynb_checkpoints
