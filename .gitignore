@@ -3,5 +3,4 @@ testing/*
 scripts/Data/*
 database/*
 data/*
-snaproject.sublime-project
-snaproject.sublime-workspace
+visualization/.ipynb_checkpoints
