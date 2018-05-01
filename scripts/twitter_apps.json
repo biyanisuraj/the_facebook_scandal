@@ -1,0 +1,26 @@
+{
+    "app_1": {
+        "ACCESS_SECRET": "wMUjClr78yjlsyWIjxVunFKQ8zYOjlzgMfItuRiec5Y3c", 
+        "ACCESS_TOKEN": "339641100-VOI2SsKVbSsQIfnHNSDohSJ4aB9rJpSXkDeYaeo3", 
+        "CONSUMER_KEY": "NHsKGfxrXTXlf2mfH2n0jbW1l", 
+        "CONSUMER_SECRET": "W0HE0cTlfIcJtkIX5hClcH4ILgyv018Q8fWdo0sgRo5bdFzAMA"
+    }, 
+    "app_2": {
+        "ACCESS_SECRET": "p13lHpBMkSqi7qoh9ilwh2gewQlFhEeY1tDYP4Ju34a8V", 
+        "ACCESS_TOKEN": "339641100-cmprkH4kBGxrnU5E5e2prUEEaH8e5D1ebUy0r8h8", 
+        "CONSUMER_KEY": "kqxqp14kVJE955UQ9DSTzKFRL", 
+        "CONSUMER_SECRET": "89VHinn2I1R2HkibqhBWOlzb5mcPdi3nKA4dOGDOVi4bfesRTl"
+    }, 
+    "app_3": {
+        "ACCESS_SECRET": "7FYFQpLsb5c9eiMyU3jhJGkH50zRnodUl6qxIo7rP506Z", 
+        "ACCESS_TOKEN": "339641100-IpPn3yYLfjxFPqmB6El6njKMg3rwP2vwRQfUCJVI", 
+        "CONSUMER_KEY": "Sa5t3dnFXUNQ0yCFFso84Un55", 
+        "CONSUMER_SECRET": "Iye8I3cwWYeifor2XoMrcnB1BzvPOknjaWfc6qzaQXce1UFKDC"
+    }, 
+    "app_4": {
+        "ACCESS_SECRET": "G7eUp5EhG2REVRGCGrkiPe1vbD51Es15BY2TaV1lWkbcx", 
+        "ACCESS_TOKEN": "339641100-3ghIS36HLWWgHYihdFEY3GLdEpOb4x7qfpqIUVGI", 
+        "CONSUMER_KEY": "OCYrj2ETgccfOL2gpPoXyK7Bn", 
+        "CONSUMER_SECRET": "vu55fH18A92QvO7yOR7hNRtLQlyUeXhOLy1ZoXFxuCXHuZd3RG"
+    }
+}
