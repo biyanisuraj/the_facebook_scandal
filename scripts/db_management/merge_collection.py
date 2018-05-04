@@ -18,16 +18,21 @@ def merge_collections(col_list):
     new_users, found_users = 0, 0
     cursor = base_table.find()
 
-    try:
-        db.create_collection('merged')
-    except CollectionInvalid as e:
-        db.drop_collection('merged')
-        db.create_collection('merged')
+    new_collection_name = raw_input('FINAL COLLECTION NAME: ')
 
-    new_collection = db['merged']
+    try:
+        db.create_collection(new_collection_name)
+    except CollectionInvalid as e:
+        db.drop_collection(new_collection_name)
+        db.create_collection(new_collection_name)
+
+    new_collection = db[new_collection_name]
 
     print 'USING ' + col_list[0] + ' AS BASE COLLECTION (' + \
         str(base_table.find().count()) + ' records)'
+
+    # HERE WE FILL THE NEW COLLECTION WITH ALL THE RECORDS FROM THE BASE
+    # COLLECTION
 
     for tweet in cursor:
         new_collection.insert_one(tweet)
@@ -36,25 +41,35 @@ def merge_collections(col_list):
         to_merge = col_list.pop()
         cursor = db[to_merge].find()
 
-        print 'MERGIND COLLECTION ' + to_merge + ', ' + \
+        print 'MERGING COLLECTION ' + to_merge + ', ' + \
             str(cursor.count()) + ' RECORDS'
 
         for tweet in cursor:
-            u = base_table.find({'id': tweet['user']['id']})
+            u = new_collection.find({'user.id': tweet['user']['id']})
             if u.count() == 0:
-                new_collection.insert_one(tweet)
+
+                # THIS STEP IS NECESSARY IN ORDER TO AVOID CONFILITS RELATED
+                # TO DUPLICATE ObjectIds BETWEEN RECORDS
+
+                new_u = dict()
+                new_u['general'] = tweet['general']
+                new_u['hashtags'] = tweet['hashtags']
+                new_u['user'] = tweet['user']
+
+                new_collection.insert_one(new_u)
                 new_users += 1
             else:
-                u['general']['tweets'] += tweet['general']['tweets']
-                u['general']['retweets'] += tweet['general']['retweet']
-                u['general']['favorite_count'] += tweet['general']['favorite_count']
-                u['hashtags'] = merge_tags(u['hashtags'], tweet['hashtags'])
+                new_collection.find_one_and_update(
+                    {'user.id': u[0]['user']['id']},
+                    {'$inc': {'general.tweets': u[0]['general']['tweets'],
+                              'general.retweets': u[0]['general']['retweets'],
+                              'general.favorite_count': u[0]['general']['favorite_count']
+                              },
+                     '$set': {'hashtags': merge_tags(u[0]['hashtags'], tweet['hashtags'])}}
+                    )
 
-                new_collection.insert_one(u)
                 found_users += 1
-        print 'Merged collection ' + to_merge + ' with collection ' + \
-            col_list[0]
-        print 'New Users: ' + str(new_users) + ', Found Users ' + \
+        print 'NEW USERS: ' + str(new_users) + ', FOUND USERS ' + \
             str(found_users)
 
     print 'FINAL COLLECTION HAS ' + str(new_collection.find().count()) + \
