@@ -2,6 +2,14 @@ import argparse
 from pymongo import MongoClient
 from pymongo.errors import CollectionInvalid
 
+# USAGE:
+#   python merge_collection.py -c col1 col2 col3 ... colN
+#   MERGES ALL COLi WITH 2 <= i <= N IN COL1 AND SAVES THE FINAL COLLECTION
+#   WITH A NAME GIVE BY THE USER.
+#
+# TODO:
+#   ADD THE FLAG TO EVENTUALLY DELETE THE COLLECTIONS THAT HAVE BEEN MERGED
+
 
 def merge_tags(l1, l2):
     for t1 in l1:
@@ -22,7 +30,7 @@ def merge_collections(col_list):
 
     try:
         db.create_collection(new_collection_name)
-    except CollectionInvalid as e:
+    except CollectionInvalid:
         db.drop_collection(new_collection_name)
         db.create_collection(new_collection_name)
 
@@ -65,13 +73,13 @@ def merge_collections(col_list):
                         'general.tweets': u[0]['general']['tweets'],
                         'general.retweets': u[0]['general']['retweets'],
                         'general.favorite_count': u[0]['general']['favorite_count']
-                        },
-                     '$set': {
+                    },
+                        '$set': {
                         'hashtags': merge_tags(u[0]['hashtags'],
-                                                     tweet['hashtags'])
-                        }
-                     }
-                    )
+                                               tweet['hashtags'])
+                    }
+                    }
+                )
 
                 found_users += 1
 
