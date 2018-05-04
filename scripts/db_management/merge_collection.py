@@ -6,9 +6,6 @@ from pymongo.errors import CollectionInvalid
 #   python merge_collection.py -c col1 col2 col3 ... colN
 #   MERGES ALL COLi WITH 2 <= i <= N IN COL1 AND SAVES THE FINAL COLLECTION
 #   WITH A NAME GIVE BY THE USER.
-#
-# TODO:
-#   ADD THE FLAG TO EVENTUALLY DELETE THE COLLECTIONS THAT HAVE BEEN MERGED
 
 
 def merge_tags(l1, l2):
@@ -19,11 +16,10 @@ def merge_tags(l1, l2):
     return l2
 
 
-def merge_collections(col_list):
+def merge_collections(col_list, drop):
     client = MongoClient()
     db = client['social_database_test']
     base_table = db[col_list[0]]
-    new_users, found_users = 0, 0
     cursor = base_table.find()
 
     new_collection_name = raw_input('FINAL COLLECTION NAME: ')
@@ -46,6 +42,7 @@ def merge_collections(col_list):
         new_collection.insert_one(tweet)
 
     while len(col_list) != 1:
+        new_users, found_users = 0, 0
         to_merge = col_list.pop()
         cursor = db[to_merge].find()
 
@@ -86,6 +83,9 @@ def merge_collections(col_list):
         print 'NEW USERS: ' + str(new_users) + ', FOUND USERS ' + \
             str(found_users)
 
+        if drop:
+            db.drop_collection(to_merge)
+
     print 'FINAL COLLECTION HAS ' + str(new_collection.find().count()) + \
         ' RECORDS'
 
@@ -94,6 +94,10 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('-c', '--collections', action='store', nargs='+',
                         help='The collections that have to be merged.')
+    parser.add_argument('-d', '--drop', action='store_true',
+                        help='If flagged states that all the collection given \
+                        in input have to be dropped at the end of the merging \
+                        procedure.')
     args = parser.parse_args()
 
-    merge_collections(col_list=args.collections)
+    merge_collections(col_list=args.collections, drop=args.drop)
