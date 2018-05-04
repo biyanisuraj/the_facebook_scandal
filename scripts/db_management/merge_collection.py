@@ -41,8 +41,8 @@ def merge_collections(col_list):
         to_merge = col_list.pop()
         cursor = db[to_merge].find()
 
-        print 'MERGING COLLECTION ' + to_merge + ', ' + \
-            str(cursor.count()) + ' RECORDS'
+        print 'MERGING COLLECTION ' + to_merge + ', ' + str(cursor.count()) + \
+            ' RECORDS'
 
         for tweet in cursor:
             u = new_collection.find({'user.id': tweet['user']['id']})
@@ -61,14 +61,20 @@ def merge_collections(col_list):
             else:
                 new_collection.find_one_and_update(
                     {'user.id': u[0]['user']['id']},
-                    {'$inc': {'general.tweets': u[0]['general']['tweets'],
-                              'general.retweets': u[0]['general']['retweets'],
-                              'general.favorite_count': u[0]['general']['favorite_count']
-                              },
-                     '$set': {'hashtags': merge_tags(u[0]['hashtags'], tweet['hashtags'])}}
+                    {'$inc': {
+                        'general.tweets': u[0]['general']['tweets'],
+                        'general.retweets': u[0]['general']['retweets'],
+                        'general.favorite_count': u[0]['general']['favorite_count']
+                        },
+                     '$set': {
+                        'hashtags': merge_tags(u[0]['hashtags'],
+                                                     tweet['hashtags'])
+                        }
+                     }
                     )
 
                 found_users += 1
+
         print 'NEW USERS: ' + str(new_users) + ', FOUND USERS ' + \
             str(found_users)
 
