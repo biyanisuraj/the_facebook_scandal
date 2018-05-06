@@ -9,7 +9,7 @@ collection = db[raw_input('USE COLLECTION: ')]
 cursor = collection.find()
 
 g = nx.Graph()
-edges = 0
+served_nodes = 0
 
 for i in xrange(0, cursor.count()):
     g.add_node(i, user=cursor[i]['user']['name'])
@@ -17,20 +17,15 @@ for i in xrange(0, cursor.count()):
 for i in xrange(0, cursor.count()):
     t1 = np.array(cursor[i]['hashtags'])
 
-    if len(t1) == 0:
-        continue
-
     for j in xrange(i + 1, cursor.count()):
         t2 = np.array(cursor[j]['hashtags'])
 
-        if len(t2) == 0:
-            continue
-        elif len(np.intersect1d(t1, t2)) != 0:
+        if len(np.intersect1d(t1, t2)) != 0:
             g.add_edge(i, j)
-            edges += 1
 
-            if edges % 1000 == 0:
-                print 'ADDED ' + str(edges) + ' EDGES - PROCESSING NODE ' \
-                    + str(i)
+    served_nodes += 1
+
+    if served_nodes % 100 == 0:
+        print 'SERVED ' + str(served_nodes) + ' NODES
 
 nx.write_gexf(g, './network.gexf')
