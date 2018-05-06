@@ -26,6 +26,6 @@ for i in xrange(0, cursor.count()):
     served_nodes += 1
 
     if served_nodes % 10 == 0:
-        print 'SERVED ' + str(served_nodes) + ' NODES
+        print 'SERVED ' + str(served_nodes) + ' NODES'
 
 nx.write_gexf(g, './network.gexf')
