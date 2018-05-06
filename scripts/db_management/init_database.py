@@ -70,24 +70,30 @@ def fill_database(path):
                             # UTENTE NON PRESENTE NEL DATABASE
 
                             t = dict()
-                            t['general'] = dict()
-                            t['user'] = dict()
-
-                            t['general']['tweets'] = 1
-                            t['general']['retweets'] = tweet[
-                                'retweet_count']
-                            t['general']['favorite_count'] = tweet[
-                                'favorite_count']
-                            t['general']['lang'] = tweet['lang']
-
                             tags = [tg.lower() for tg in tags]
                             t['hashtags'] = np.intersect1d(tags, TAGS).tolist()
 
-                            for k in KUSER:
-                                t['user'][k] = u[k]
+                            if len(t['hashtags']) == 0:
+                                # TAG NON UTILIZZABILI
 
-                            table.insert_one(t)
-                            counter += 1
+                                continue
+                            else:
+                                t['general'] = dict()
+                                t['user'] = dict()
+
+                                t['general']['tweets'] = 1
+                                t['general']['retweets'] = tweet[
+                                    'retweet_count']
+                                t['general']['favorite_count'] = tweet[
+                                    'favorite_count']
+                                t['general']['lang'] = tweet['lang']
+
+                                for k in KUSER:
+                                    t['user'][k] = u[k]
+
+                                table.insert_one(t)
+                                counter += 1
+
                         else:
 
                             # UTENTE GIa' PRESENTE NEL DATABASE
