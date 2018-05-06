@@ -57,51 +57,62 @@ def fill_database(path):
 
                     u = tweet['user']
                     e = tweet['entities']
+                    tags = [tag['text'] for tag in e['hashtags']]
 
-                    tw_cursor = table.find({'user.id': u['id']})
-
-                    if tw_cursor.count() == 0:
-
-                        # UTENTE NON PRESENTE NEL DATABASE
-
-                        t = dict()
-                        t['general'] = dict()
-                        t['user'] = dict()
-
-                        t['general']['tweets'] = 1
-                        t['general']['retweets'] = tweet[
-                            'retweet_count']
-                        t['general']['favorite_count'] = tweet[
-                            'favorite_count']
-                        t['general']['lang'] = tweet['lang']
-
-                        tags = [tag['text'] for tag in e['hashtags']]
-                        tags = [tg.lower() for tg in tags]
-                        t['hashtags'] = np.intersect1d(tags, TAGS).tolist()
-
-                        for k in KUSER:
-                            t['user'][k] = u[k]
-
-                        table.insert_one(t)
-                        counter += 1
+                    if len(tags) == 0:
+                        # TAGS NON PRESENTI
+                        continue
                     else:
+                        tw_cursor = table.find({'user.id': u['id']})
 
-                        # UTENTE GIa' PRESENTE NEL DATABASE
+                        if tw_cursor.count() == 0:
 
-                        tags = table.find_one({'user.id': u['id']})['hashtags']
-                        tweet_tags = [tag['text'] for tag in e['hashtags']]
-                        tweet_tags = [tg.lower() for tg in tweet_tags]
-                        tweet_tags = np.intersect1d(tweet_tags, TAGS).tolist()
-                        [tags.append(t) for t in tweet_tags if t not in tags]
+                            # UTENTE NON PRESENTE NEL DATABASE
 
-                        table.find_one_and_update(
-                            {'user.id': u['id']},
-                            {'$inc': {'general.tweets': 1, 'general.retweets':
-                             tweet['retweet_count'], 'general.favorite_count':
-                             tweet['favorite_count']},
-                             '$set': {'hashtags': tags}})
+                            t = dict()
+                            t['general'] = dict()
+                            t['user'] = dict()
 
-        print 'Total records inserted: ' + str(counter)
+                            t['general']['tweets'] = 1
+                            t['general']['retweets'] = tweet[
+                                'retweet_count']
+                            t['general']['favorite_count'] = tweet[
+                                'favorite_count']
+                            t['general']['lang'] = tweet['lang']
+
+                            tags = [tg.lower() for tg in tags]
+                            t['hashtags'] = np.intersect1d(tags, TAGS).tolist()
+
+                            for k in KUSER:
+                                t['user'][k] = u[k]
+
+                            table.insert_one(t)
+                            counter += 1
+                        else:
+
+                            # UTENTE GIa' PRESENTE NEL DATABASE
+
+                            tags = table.find_one({'user.id': u['id']})[
+                                'hashtags']
+                            tweet_tags = [tag['text'] for tag in e['hashtags']]
+                            tweet_tags = [tg.lower() for tg in tweet_tags]
+                            tweet_tags = np.intersect1d(tweet_tags,
+                                                        TAGS).tolist()
+                            [tags.append(t)
+                             for t in tweet_tags if t not in tags]
+
+                            table.find_one_and_update(
+                                {'user.id': u['id']},
+                                {'$inc': {'general.tweets': 1,
+                                          'general.retweets':
+                                              tweet['retweet_count'],
+                                          'general.favorite_count':
+                                              tweet['favorite_count']},
+                                 '$set': {'hashtags': tags}})
+
+        print 'Total tweets analyzed: ' + str(len(tweets['tweets']))
+        print 'Added ' + str(counter) + ' users'
+        print 'Trimmed ' + str(len(tweets['tweets']) - counter) + ' users'
 
 
 if __name__ == '__main__':
