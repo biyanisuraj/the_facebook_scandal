@@ -1,6 +1,7 @@
 import argparse
 import gzip
 import json
+import numpy as np
 import subprocess
 from pymongo import MongoClient
 from pymongo.errors import CollectionInvalid
@@ -30,6 +31,8 @@ DB = CLIENT['social_database_test']
 KENTITIES = ["hashtags"]
 KUSER = ['created_at', 'favourites_count', 'followers_count', 'friends_count',
          'id', 'name', 'screen_name', 'statuses_count']
+TAGS = ['cambridgeanalytica', 'deletefacebook', 'facebook', 'facebookgate',
+        'privacy', 'zuckerberg']
 
 
 def fill_database(path):
@@ -73,7 +76,8 @@ def fill_database(path):
                         t['general']['lang'] = tweet['lang']
 
                         tags = [tag['text'] for tag in e['hashtags']]
-                        t['hashtags'] = tags
+                        tags = [tg.lower() for tg in tags]
+                        t['hashtags'] = np.intersect1d(tags, TAGS).tolist()
 
                         for k in KUSER:
                             t['user'][k] = u[k]
@@ -86,6 +90,8 @@ def fill_database(path):
 
                         tags = table.find_one({'user.id': u['id']})['hashtags']
                         tweet_tags = [tag['text'] for tag in e['hashtags']]
+                        tweet_tags = [tg.lower() for tg in tweet_tags]
+                        tweet_tags = np.intersect1d(tweet_tags, TAGS).tolist()
                         [tags.append(t) for t in tweet_tags if t not in tags]
 
                         table.find_one_and_update(
