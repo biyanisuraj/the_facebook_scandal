@@ -5,3 +5,5 @@ database/*
 data/*
 scripts/visualization/.ipynb_checkpoints
 user_data/*
+*~
+#*

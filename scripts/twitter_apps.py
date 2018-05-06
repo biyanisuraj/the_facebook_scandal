@@ -23,6 +23,10 @@ app_4 = {"CONSUMER_KEY" : 'OCYrj2ETgccfOL2gpPoXyK7Bn',
         "ACCESS_TOKEN" : '339641100-3ghIS36HLWWgHYihdFEY3GLdEpOb4x7qfpqIUVGI',
         "ACCESS_SECRET" : 'G7eUp5EhG2REVRGCGrkiPe1vbD51Es15BY2TaV1lWkbcx'}
 
+app_5 = {"CONSUMER_KEY" : 'KJRUducKTC69sd06Yyll6ho3F',
+        "CONSUMER_SECRET" : 'uyz3IgwQITdXHCwkOicMmFeNYJupRoqBnfcCzPeMY8RoL58IYa',
+        "ACCESS_TOKEN" : '339641100-Y2TjBQPyxLGq0y6hNawvcYakxmSxjrZa4jgoBnMo',
+        "ACCESS_SECRET" : 'lOvL23Bj2AlwocffH8vK12psL5KK0GZzQxagXVJorBZxv'}
 
 
 app_new = {"CONSUMER_KEY" : '',
@@ -34,7 +38,8 @@ app_new = {"CONSUMER_KEY" : '',
 apps_dict = {"app_1":app_1,
              "app_2":app_2,
              "app_3":app_3,
-             "app_4":app_4
+             "app_4":app_4,
+             "app_5":app_5
 }
 
 #os.getcwd()
