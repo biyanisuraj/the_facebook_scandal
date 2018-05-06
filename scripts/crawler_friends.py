@@ -41,13 +41,13 @@ def check_api(i_api):
         print("api:{}".format(i_api))
         print(rate_status(apis[i_api]))
         print("changing api")
-
         if( i_api == (len(apis)-1) ):
             # TODO: put to sleep
             now = datetime.datetime.now()
             reset = datetime.datetime.fromtimestamp(int(rate_status(apis[i_api])["reset"]))
             delta = (reset-now).seconds
             print("sleeping...")
+            print(str(delta)+'seconds')
             time.sleep(delta)
             # ricomincio ciclo apis
             i_api = 0
@@ -65,47 +65,87 @@ import datetime
 for api in apis:
     print(rate_status(api))
 
-now = datetime.datetime.now()
-reset = datetime.datetime.fromtimestamp(int(rate_status(apis[2])["reset"]))
+###########################################################
 
+###########################################################
+
+    
+
+i=3
+now = datetime.datetime.now()
+reset = datetime.datetime.fromtimestamp(int(rate_status(apis[i])["reset"]))
 delta = (reset-now).seconds
 delta/60
 
     
 ###########################################################
+
+# error timeout handling
+import signal, os, sys
+
+def handler(signum, frame):
+    print('Timeout Error', signum)
+    raise tweepy.TweepError("My time-out error")
+
+signal.signal(signal.SIGALRM, handler) # defining signal error
+
+###########################################################
+
 path = "user_data/"
+
+timeout = 10
 
 print("-- started crawling --")
 i_api=0 # prima api
 user_count=0
 L=len(user_ids)
 
+
 for user_id in user_ids:
     next_cursor= -1
     page=0
     while(next_cursor!=0):
-        i_api= check_api(i_api)
-        i_api= check_api(i_api)
-        out = apis[i_api].friends_ids(user_id,cursor= next_cursor)
-        next_cursor = out[1][1]
-        
-        with gzip.open("{}user_{}_{}.json.gz".format(path,user_id,page), "w") as f:
-            f.write('{')
-            f.write('"user_id": {} ,'.format(user_id)) 
-            f.write(' "friends_ids": ')
-            f.write(json.dumps(out[0]))
-            f.write(',')
-            f.write(' "cursor": ')
-            f.write(json.dumps(out[1]))
-            f.write('}')
-        page+=1
-    user_count+=1
-    if(user_count%100==0):
+        try:
+            signal.alarm(16*60)
+            i_api= check_api(i_api)
+            signal.alarm(0)  # reset alarm 1
+            signal.alarm(30)
+            out = apis[i_api].friends_ids(user_id,cursor= next_cursor)
+            signal.alarm(0)  # reset alarm 2
+            next_cursor = out[1][1]
+            # writing to file
+            with gzip.open("{}user_{}_{}.json.gz".format(path,user_id,page), "w") as f:
+                f.write('{')
+                f.write('"user_id": {} ,'.format(user_id)) 
+                f.write(' "friends_ids": ')
+                f.write(json.dumps(out[0]))
+                f.write(',')
+                f.write(' "cursor": ')
+                f.write(json.dumps(out[1]))
+                f.write('}')
+                page+=1
+                user_count+=1
+
+        except:
+            e = sys.exc_info()
+            print("Error, I'm handling it")
+            with open("{}log.txt".format(path), "a") as f:
+                f.write(time.ctime())
+                f.write('\n')
+                f.write("user_id:"+str(user_id))
+                f.write('\n')
+                f.write(str(e))
+                f.write('\n')
+            time.sleep(10)
+    if(user_count%10==0):
         print("Downloaded friendships for {}/{} user".format(user_count,L))
+
+
         
 ###########################################################
 print("-- Finished! --")
 print("Downloaded friendships for {} user".format(user_count))
+
 
 
 ###########################################################
