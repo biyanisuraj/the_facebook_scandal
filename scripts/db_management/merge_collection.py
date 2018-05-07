@@ -50,26 +50,29 @@ def merge_collections(col_list, drop):
             ' RECORDS'
 
         for tweet in cursor:
-            u = new_collection.find({'user.id': tweet['user']['id']})
+            u = new_collection.find({'id': tweet['id']})
             if u.count() == 0:
 
                 # THIS STEP IS NECESSARY IN ORDER TO AVOID CONFILITS RELATED
                 # TO DUPLICATE ObjectIds BETWEEN RECORDS
 
                 new_u = dict()
-                new_u['general'] = tweet['general']
-                new_u['hashtags'] = tweet['hashtags']
-                new_u['user'] = tweet['user']
+
+                for k in tweet.keys():
+                    if k == '_id':
+                        continue
+                    else:
+                        new_u[k] = tweet[k]
 
                 new_collection.insert_one(new_u)
                 new_users += 1
             else:
                 new_collection.find_one_and_update(
-                    {'user.id': u[0]['user']['id']},
+                    {'id': u[0]['id']},
                     {'$inc': {
-                        'general.tweets': u[0]['general']['tweets'],
-                        'general.retweets': u[0]['general']['retweets'],
-                        'general.favorite_count': u[0]['general']['favorite_count']
+                        'tweets': u[0]['tweets'],
+                        'retweets': u[0]['retweets'],
+                        'favorite_count': u[0]['favorite_count']
                     },
                         '$set': {
                         'hashtags': merge_tags(u[0]['hashtags'],

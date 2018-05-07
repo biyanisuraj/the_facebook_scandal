@@ -11,21 +11,26 @@ cursor = collection.find()
 g = nx.Graph()
 served_nodes = 0
 
-for i in xrange(0, cursor.count()):
-    g.add_node(i, user=cursor[i]['user']['name'])
+print 'MAKING NODES'
 
-for i in xrange(0, cursor.count()):
-    t1 = np.array(cursor[i]['hashtags'])
+for i in range(cursor.count()):
+    g.add_node(i, user=cursor[i]['name'])
 
-    for j in xrange(i + 1, cursor.count()):
-        t2 = np.array(cursor[j]['hashtags'])
+print 'CONNECTING NODES'
+cursor = list([tweet['hashtags'] for tweet in collection.find()])
+
+for i in range(len(cursor)):
+    t1 = np.array(cursor[i])
+
+    for j in range(i + 1, len(cursor)):
+        t2 = np.array(cursor[j])
 
         if len(np.intersect1d(t1, t2)) != 0:
             g.add_edge(i, j)
 
     served_nodes += 1
 
-    if served_nodes % 10 == 0:
+    if served_nodes % 100 == 0:
         print 'SERVED ' + str(served_nodes) + ' NODES'
 
-nx.write_gexf(g, './network.gexf')
+nx.write_edgelist(g, './edge_list.txt')

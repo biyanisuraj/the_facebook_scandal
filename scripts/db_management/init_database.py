@@ -63,7 +63,7 @@ def fill_database(path):
                         # TAGS NON PRESENTI
                         continue
                     else:
-                        tw_cursor = table.find({'user.id': u['id']})
+                        tw_cursor = table.find({'id': u['id']})
 
                         if tw_cursor.count() == 0:
 
@@ -78,18 +78,13 @@ def fill_database(path):
 
                                 continue
                             else:
-                                t['general'] = dict()
-                                t['user'] = dict()
-
-                                t['general']['tweets'] = 1
-                                t['general']['retweets'] = tweet[
-                                    'retweet_count']
-                                t['general']['favorite_count'] = tweet[
-                                    'favorite_count']
-                                t['general']['lang'] = tweet['lang']
+                                t['tweets'] = 1
+                                t['retweets'] = tweet['retweet_count']
+                                t['favorite_count'] = tweet['favorite_count']
+                                t['lang'] = tweet['lang']
 
                                 for k in KUSER:
-                                    t['user'][k] = u[k]
+                                    t[k] = u[k]
 
                                 table.insert_one(t)
                                 counter += 1
@@ -98,8 +93,7 @@ def fill_database(path):
 
                             # UTENTE GIa' PRESENTE NEL DATABASE
 
-                            tags = table.find_one({'user.id': u['id']})[
-                                'hashtags']
+                            tags = table.find_one({'id': u['id']})['hashtags']
                             tweet_tags = [tag['text'] for tag in e['hashtags']]
                             tweet_tags = [tg.lower() for tg in tweet_tags]
                             tweet_tags = np.intersect1d(tweet_tags,
@@ -108,11 +102,10 @@ def fill_database(path):
                              for t in tweet_tags if t not in tags]
 
                             table.find_one_and_update(
-                                {'user.id': u['id']},
-                                {'$inc': {'general.tweets': 1,
-                                          'general.retweets':
-                                              tweet['retweet_count'],
-                                          'general.favorite_count':
+                                {'id': u['id']},
+                                {'$inc': {'tweets': 1,
+                                          'retweets': tweet['retweet_count'],
+                                          'favorite_count':
                                               tweet['favorite_count']},
                                  '$set': {'hashtags': tags}})
 
