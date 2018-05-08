@@ -4,14 +4,6 @@ import os
 import subprocess
 import sys
 
-
-def file_len(fname):
-    with open(fname) as f:
-        for i, l in enumerate(f):
-            pass
-    return i + 1
-
-
 dir_name = sys.argv[1]
 corrupted_files = list()
 
