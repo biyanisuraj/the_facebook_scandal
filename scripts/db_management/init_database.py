@@ -52,30 +52,21 @@ def fill_database(path):
         for tweet in tweets['tweets']:
             if tweet['is_quote_status'] is False:
                 if 'retweeted_status' not in tweet:
-
-                    # TROVATO TWEET ORIGINALE
-
                     u = tweet['user']
                     e = tweet['entities']
                     tags = [tag['text'] for tag in e['hashtags']]
 
                     if len(tags) == 0:
-                        # TAGS NON PRESENTI
                         continue
                     else:
                         tw_cursor = table.find({'id': u['id']})
 
                         if tw_cursor.count() == 0:
-
-                            # UTENTE NON PRESENTE NEL DATABASE
-
                             t = dict()
                             tags = [tg.lower() for tg in tags]
                             t['hashtags'] = np.intersect1d(tags, TAGS).tolist()
 
                             if len(t['hashtags']) == 0:
-                                # TAG NON UTILIZZABILI
-
                                 continue
                             else:
                                 t['tweets'] = 1
@@ -90,9 +81,6 @@ def fill_database(path):
                                 counter += 1
 
                         else:
-
-                            # UTENTE GIa' PRESENTE NEL DATABASE
-
                             tags = table.find_one({'id': u['id']})['hashtags']
                             tweet_tags = [tag['text'] for tag in e['hashtags']]
                             tweet_tags = [tg.lower() for tg in tweet_tags]
@@ -125,7 +113,10 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     if args.format:
+        subprocess.call(['python', 'validate_json.py', args.path])
+        print '\n'
         subprocess.call(['python', 'preprocesser.py', args.path])
+        print '\n'
         fill_database(path='./' + args.path.split('/')[-1] + '.json.gz')
     else:
         fill_database(path=args.path)
