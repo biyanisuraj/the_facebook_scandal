@@ -135,7 +135,7 @@ while(i_user < L):
                 f.write(str(e))
                 f.write('\n')
             now = datetime.datetime.now()
-            if((error.message=="Not authorized.") || (error.message=="Sorry, that page does not exist.")) :
+            if((error.message=="Not authorized.") or (error.message=="Sorry, that page does not exist.")) :
                 print("handling not available user")
                 with open("{}Not_available_users.txt".format(path), "a") as f:
                     f.write(user_id)
