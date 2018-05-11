@@ -94,7 +94,7 @@ i_api=0 # prima api
 user_count=0
 L=len(user_ids)
 
-i_user = 0
+i_user = 810
 
 # #i_user = 89
 # i_api=0
@@ -147,7 +147,7 @@ while(i_user < L):
                 f.write('\n')
             now = datetime.datetime.now()
             check_auth=False
-            if(type(error.message) is str):
+            if( isinstance(error.message, basestring) ):
                 if(error.message=="Not authorized."):
                    check_auth=True
             else:
