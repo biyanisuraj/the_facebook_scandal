@@ -98,12 +98,13 @@ i_user = 0
 
 # #i_user = 89
 # i_api=0
-# try:
-#      out = apis[i_api].friends_ids(user_ids[i_user],cursor= next_cursor)
-# except tweepy.TweepError as error:
-#     if((error.message=="Not authorized.") or (error.message[0]['message']=="Sorry, that page does not exist.")) :
-#         print("ok")
 
+# try:
+#     out = apis[i_api].friends_ids(18601648,cursor= next_cursor)
+# except tweepy.TweepError as error:
+#      if((error.message=="Not authorized.") or (error.message[0]['message']=="Sorry, that page does not exist.")) :
+#          print("ok")
+# error
 
 while(i_user < L):
     next_cursor= -1
@@ -145,7 +146,14 @@ while(i_user < L):
                 f.write(str(e))
                 f.write('\n')
             now = datetime.datetime.now()
-            if((error.message=="Not authorized.") or (error.message[0]['message']=="Sorry, that page does not exist.")) :
+            check_auth=False
+            if(type(error.message) is str):
+                if(error.message=="Not authorized."):
+                   check_auth=True
+            else:
+                if(error.message[0]['message']=="Sorry, that page does not exist."):
+                   check_auth=True
+            if(check_auth==True):
                 print("handling not available user")
                 with open("{}Not_available_users.txt".format(path), "a") as f:
                     f.write(user_id)
