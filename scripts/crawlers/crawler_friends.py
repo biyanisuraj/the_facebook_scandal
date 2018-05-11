@@ -101,10 +101,10 @@ while(i_user < L):
     while(next_cursor!=0):
         try:
             user_id= user_ids[i_user]
-            signal.alarm(16*60)
+            signal.alarm(30*60)
             i_api= check_api(i_api)
             signal.alarm(0)  # reset alarm 1
-            signal.alarm(30)
+            signal.alarm(60)
             out = apis[i_api].friends_ids(user_id,cursor= next_cursor)
             signal.alarm(0)  # reset alarm 2
             next_cursor = out[1][1]
@@ -130,12 +130,14 @@ while(i_user < L):
                 f.write('\n')
                 f.write("user_id:"+str(user_id))
                 f.write('\n')
+                f.write("i_user:"+str(i_user))
+                f.write('\n')
                 f.write(str(e))
                 f.write('\n')
             now = datetime.datetime.now()
-            if((error.message)=="Not authorized."):
-                print("handling not authorized user")
-                with open("{}Not_authorized_users.txt".format(path), "a") as f:
+            if((error.message=="Not authorized.") || (error.message=="Sorry, that page does not exist.")) :
+                print("handling not available user")
+                with open("{}Not_available_users.txt".format(path), "a") as f:
                     f.write(user_id)
                     f.write('\n')
                 # skip user
@@ -144,7 +146,6 @@ while(i_user < L):
                 time.sleep(2)
             else:
                 print(time.ctime())
-
                 print("Started from {} minutes".format((now-start).seconds/60))
                 print("now sleeping")
                 time.sleep(15*60)
