@@ -93,7 +93,17 @@ start = datetime.datetime.now()
 i_api=0 # prima api
 user_count=0
 L=len(user_ids)
+
 i_user = 0
+
+# #i_user = 89
+# i_api=0
+# try:
+#      out = apis[i_api].friends_ids(user_ids[i_user],cursor= next_cursor)
+# except tweepy.TweepError as error:
+#     if((error.message=="Not authorized.") or (error.message[0]['message']=="Sorry, that page does not exist.")) :
+#         print("ok")
+
 
 while(i_user < L):
     next_cursor= -1
@@ -135,7 +145,7 @@ while(i_user < L):
                 f.write(str(e))
                 f.write('\n')
             now = datetime.datetime.now()
-            if((error.message=="Not authorized.") or (error.message=="Sorry, that page does not exist.")) :
+            if((error.message=="Not authorized.") or (error.message[0]['message']=="Sorry, that page does not exist.")) :
                 print("handling not available user")
                 with open("{}Not_available_users.txt".format(path), "a") as f:
                     f.write(user_id)
