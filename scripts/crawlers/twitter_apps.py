@@ -1,7 +1,7 @@
 import json
 import os
 
-app_names=["app_testing_1","app_testing_2"]
+##app_names=["app_testing_1","app_testing_2"]
 
 app_1 = {"CONSUMER_KEY":'NHsKGfxrXTXlf2mfH2n0jbW1l',
         "CONSUMER_SECRET":'W0HE0cTlfIcJtkIX5hClcH4ILgyv018Q8fWdo0sgRo5bdFzAMA',
@@ -29,6 +29,23 @@ app_5 = {"CONSUMER_KEY" : 'KJRUducKTC69sd06Yyll6ho3F',
         "ACCESS_SECRET" : 'lOvL23Bj2AlwocffH8vK12psL5KK0GZzQxagXVJorBZxv'}
 
 
+app_6 = {"CONSUMER_KEY" : 'hJCIybUWZFXxJobv1CsXXQUkT',
+        "CONSUMER_SECRET" : 'YseM8C30ktOCyHixpkjxHjLkpXuM3go8tV4Ecql9uUTPuhAUdR',
+        "ACCESS_TOKEN" : '339641100-s2YKMfYIYjLr7XyUom0fB0t2WoVpeiLFhRLHrhH5',
+        "ACCESS_SECRET" : 'sFlnBDiM4I2oeG1XOI5tD9yce1iBWDrzsvdfkSdT8ZAcL'}
+
+
+app_7 = {"CONSUMER_KEY" : 'LnkJq4mBAGGPH4XuDmC0lhn1F',
+        "CONSUMER_SECRET" : 'vr5Z7jzOq3Rielf5RzT3FUzxf6awP0ipVSRmjTSzpjWBZCNSLS',
+        "ACCESS_TOKEN" : '339641100-dRRsFCRkuIlLMdDnTrD0N9Fb2HoApEaGsAhEp4It',
+        "ACCESS_SECRET" : 'uIQcLAAogiOmLi3YfKaAIAn3rDrmbTos9eyd6LhERit2R'}
+
+app_8 = {"CONSUMER_KEY" : 'PoqZiobxFxtlEa8uLuOC6Wrds',
+        "CONSUMER_SECRET" : 'J2sW5ecoNjV9bfjd2l3QuNyDTCBVs1wRgDbkRKVl54LGqirvvF',
+        "ACCESS_TOKEN" : '339641100-U4Omsk2zOyzKMvrOqSDsuxJZ0cfiQsaqP9b5NjwL',
+        "ACCESS_SECRET" : 'NXgqp9bT6BBItyyVbbk1tbbscPzEDETSonbFxu7PUICgh'}
+
+
 app_new = {"CONSUMER_KEY" : '',
         "CONSUMER_SECRET" : '',
         "ACCESS_TOKEN" : '',
@@ -39,14 +56,18 @@ apps_dict = {"app_1":app_1,
              "app_2":app_2,
              "app_3":app_3,
              "app_4":app_4,
-             "app_5":app_5
+             "app_5":app_5,
+             "app_6":app_6,
+             "app_7":app_7,
+             "app_8":app_8
 }
 
 #os.getcwd()
 
-with open("scripts/twitter_apps.json","w") as f:
+with open("scripts/crawlers/twitter_apps.json","w") as f:
     f.write(json.dumps(apps_dict,indent=4,sort_keys=True))
 
-with open("scripts/twitter_apps.json","r") as f2:
+with open("scripts/crawlers/twitter_apps.json","r") as f2:
     apps = json.load(f2)
     
+#len(apps)

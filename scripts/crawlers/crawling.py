@@ -51,8 +51,8 @@ searchQuery = "#facebookgate OR \
 #searchQuery = "#zuckerberg"
 
 
-day_since=22
-day_to=23
+day_since=30
+day_to=31
 
 
 start_time = time.ctime()

@@ -2,18 +2,24 @@
 from tweepy import API
 from tweepy import AppAuthHandler
 from tweepy import Cursor
+import tweepy
 import datetime
 import time
+import os
 
 import json
 from pprint import pprint
 
-with open("scripts/twitter_apps.json", "r") as f:
+with open("scripts/crawlers/twitter_apps.json", "r") as f:
     apps = json.load(f)
+##pprint(apps)
     
-with open("scripts/user_ids.json") as f:
+with open("scripts/crawlers/user_ids_tweets_03_17_20.json") as f:
     user_ids = json.load(f)
 
+# selezionare il PATH dove salvare i dati scaricati    
+path = "user_data/friends_ids_03_17_20/"
+    
 ###########################################################
 def twitter_auth(app):
     """ restituisce un oggetto api, 
@@ -46,6 +52,7 @@ def check_api(i_api):
             now = datetime.datetime.now()
             reset = datetime.datetime.fromtimestamp(int(rate_status(apis[i_api])["reset"]))
             delta = (reset-now).seconds
+            print(time.ctime())
             print("sleeping...")
             print(str(delta)+'seconds')
             time.sleep(delta)
@@ -61,23 +68,12 @@ def check_api(i_api):
 import gzip
 import datetime
 
-# for user_id in user_ids
 for api in apis:
     print(rate_status(api))
 
-###########################################################
+reset = datetime.datetime.fromtimestamp(int(rate_status(apis[7])["reset"]))
+reset    
 
-###########################################################
-
-    
-
-i=3
-now = datetime.datetime.now()
-reset = datetime.datetime.fromtimestamp(int(rate_status(apis[i])["reset"]))
-delta = (reset-now).seconds
-delta/60
-
-    
 ###########################################################
 
 # error timeout handling
@@ -91,21 +87,20 @@ signal.signal(signal.SIGALRM, handler) # defining signal error
 
 ###########################################################
 
-path = "user_data/"
-
-timeout = 10
-
 print("-- started crawling --")
+
+start = datetime.datetime.now()
 i_api=0 # prima api
 user_count=0
 L=len(user_ids)
+i_user = 0
 
-
-for user_id in user_ids:
+while(i_user < L):
     next_cursor= -1
     page=0
     while(next_cursor!=0):
         try:
+            user_id= user_ids[i_user]
             signal.alarm(16*60)
             i_api= check_api(i_api)
             signal.alarm(0)  # reset alarm 1
@@ -125,10 +120,11 @@ for user_id in user_ids:
                 f.write('}')
                 page+=1
                 user_count+=1
-
-        except:
+         
+        except tweepy.TweepError as error:
             e = sys.exc_info()
-            print("Error, I'm handling it")
+            signal.alarm(0)  # reset alarm 
+            print("--Error, I'm handling it--")
             with open("{}log.txt".format(path), "a") as f:
                 f.write(time.ctime())
                 f.write('\n')
@@ -136,28 +132,33 @@ for user_id in user_ids:
                 f.write('\n')
                 f.write(str(e))
                 f.write('\n')
-            time.sleep(10)
-    if(user_count%10==0):
-        print("Downloaded friendships for {}/{} user".format(user_count,L))
+            now = datetime.datetime.now()
+            if((error.message)=="Not authorized."):
+                print("handling not authorized user")
+                with open("{}Not_authorized_users.txt".format(path), "a") as f:
+                    f.write(user_id)
+                    f.write('\n')
+                # skip user
+                i_user+=1
+                print("--Error handled, starting again--")
+                time.sleep(2)
+            else:
+                print(time.ctime())
+
+                print("Started from {} minutes".format((now-start).seconds/60))
+                print("now sleeping")
+                time.sleep(15*60)
+                # lista di api, mi autentico nuovamente con tutte:
+                apis = [twitter_auth( apps[app]) for app in apps.keys()]
+                print("--Error handled, starting again--")
+    i_user+=1
+    if(i_user%10==0):
+        now = datetime.datetime.now()
+        print("Started from {} minutes".format((now-start).seconds/60))
+        print("Downloaded friendships for {}/{} user".format(i_user,L))
 
 
-        
 ###########################################################
 print("-- Finished! --")
 print("Downloaded friendships for {} user".format(user_count))
 
-
-
-###########################################################
-# NUMERO DI RICHIESTE
-# Abbiamo 15 richieste ogni 15 minuti per ogni app, ovvero una al minuto
-# in 24 h il numero massimo di richieste è:
-requests_24h = 24*60  # per singolo account
-
-utenti = 100000
-n_accounts = 10
-
-giorni_necessari = utenti/requests_24h/n_accounts
-#giorni_necessari
-
-###########################################################
