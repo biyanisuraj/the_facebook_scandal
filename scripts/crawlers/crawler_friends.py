@@ -14,11 +14,11 @@ with open("scripts/crawlers/twitter_apps.json", "r") as f:
     apps = json.load(f)
 ##pprint(apps)
     
-with open("scripts/crawlers/user_ids_tweets_03_17_20.json") as f:
+with open("scripts/crawlers/user_ids_tweets_03_20_21.json") as f:
     user_ids = json.load(f)
 
 # selezionare il PATH dove salvare i dati scaricati    
-path = "user_data/friends_ids_03_17_20/"
+path = "user_data/friends_ids_03_20_21/"
     
 ###########################################################
 def twitter_auth(app):
@@ -94,7 +94,7 @@ i_api=0 # prima api
 user_count=0
 L=len(user_ids)
 
-i_user = 810
+i_user = 0
 
 # #i_user = 89
 # i_api=0

@@ -5,23 +5,25 @@ CLIENT = MongoClient()
 DB = CLIENT['social_database_test']
 db = CLIENT.social_database_test
 
-cname=db.collection_names()[0]
+db.collection_names()
+
+cname=db.collection_names()[1]
 
 db.tweets_prova.find_one()
 
-tweets = db.tweets_03_17_20
+tweets = db.tweets_03_20_21
 tweets.count()
 
 from pprint import pprint
 
 pprint(tweets.find_one())
 
-for userid in tweets.find( projection = {"id" : 1}).sort('user.followers_count', pymongo.DESCENDING ):
+for userid in tweets.find( projection = {"id" : 1,'friends_count':1}).sort('friends_count', pymongo.DESCENDING ).limit(10):
     pprint(userid)
 
 user_ids = [ str(userid["id"])
-             for userid in tweets.find( projection = {"id" : 1})
-             .sort('user.followers_count', pymongo.DESCENDING )
+             for userid in tweets.find({'friends_count': {'$gt':0}}, projection = {"id" : 1})
+             .sort('friends_count', pymongo.DESCENDING )
 ]
 
 
@@ -29,8 +31,6 @@ for id in user_ids:
     print(id)
 
 import json
-
-json.dumps(user_ids)
     
 # scrivo su file gli id degli utenti
 with open("scripts/crawlers/user_ids_{}.json".format(cname), 'w') as f:
