@@ -1,36 +1,46 @@
+import json
+import gzip
 import networkx as nx
 import numpy as np
+import os
 import pymongo
+import sys
 
 
 client = pymongo.MongoClient()
-db = client['social_database_test']
-collection = db[raw_input('USE COLLECTION: ')]
-cursor = collection.find()
+table = client['social_database_test'][raw_input('USE COLLECTION: ')]
 
-g = nx.Graph()
-served_nodes = 0
+users = list(table.find({}, {'id': 1, '_id': 0}))
+ids = np.array(list(), dtype=int)
 
-print 'MAKING NODES'
+for u in users:
+    ids = np.append(ids, u['id'])
 
-for i in range(cursor.count()):
-    g.add_node(i, user=cursor[i]['name'])
+g = nx.DiGraph()
+scanned_files = 0
 
-print 'CONNECTING NODES'
-cursor = list([tweet['hashtags'] for tweet in collection.find()])
+for fname in os.listdir(sys.argv[1]):
+    if fname in ['Not_available_users.txt', 'log.txt', '.DS_Store']:
+        continue
+    else:
+        cfile = gzip.open(sys.argv[1] + '/' + fname, 'r')
+        jfile = json.load(cfile)
+        friends = np.array(jfile['friends_ids'], dtype=int)
 
-for i in range(len(cursor)):
-    t1 = np.array(cursor[i])
+        intersection = np.intersect1d(ids, friends)
 
-    for j in range(i + 1, len(cursor)):
-        t2 = np.array(cursor[j])
+        if len(intersection) == 0:
+            continue
+        else:
+            for u in intersection:
+                g.add_edge(jfile['user_id'], u)
 
-        if len(np.intersect1d(t1, t2)) != 0:
-            g.add_edge(i, j)
+        cfile.close()
 
-    served_nodes += 1
+    scanned_files += 1
 
-    if served_nodes % 100 == 0:
-        print 'SERVED ' + str(served_nodes) + ' NODES'
+    if scanned_files % 1000 == 0:
+        print 'SCANNED ' + str(scanned_files) + ' FILES'
 
-nx.write_edgelist(g, './edge_list.txt')
+print 'CREATED GRAPH WITH ' + str(len(g.nodes)) + ' NODES AND ' \
+    + str(len(g.edges)) + ' EDGES'
