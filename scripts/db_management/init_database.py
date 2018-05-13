@@ -73,6 +73,8 @@ def fill_database(path):
                                 t['retweets'] = tweet['retweet_count']
                                 t['favorite_count'] = tweet['favorite_count']
                                 t['lang'] = tweet['lang']
+                                ## add date of the tweet
+                                t['tweet_created_at']=tweet['created_at']
 
                                 for k in KUSER:
                                     t[k] = u[k]
