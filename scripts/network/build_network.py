@@ -44,3 +44,7 @@ for fname in os.listdir(sys.argv[1]):
 
 print 'CREATED GRAPH WITH ' + str(len(g.nodes)) + ' NODES AND ' \
     + str(len(g.edges)) + ' EDGES'
+
+print "WRITING EDGES' LIST"
+
+nx.write_edgelist(g, './edge_list.txt', data=False)
