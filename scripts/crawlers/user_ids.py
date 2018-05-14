@@ -7,11 +7,10 @@ db = CLIENT.social_database_test
 
 db.collection_names()
 
-cname=db.collection_names()[1]
+cname=db.collection_names()[2]
+cname
 
-db.tweets_prova.find_one()
-
-tweets = db.tweets_03_20_21
+tweets = db.tweets_03_21_22
 tweets.count()
 
 from pprint import pprint
@@ -27,8 +26,6 @@ user_ids = [ str(userid["id"])
 ]
 
 
-for id in user_ids:
-    print(id)
 
 import json
     

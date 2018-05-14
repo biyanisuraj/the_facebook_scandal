@@ -14,11 +14,11 @@ with open("scripts/crawlers/twitter_apps.json", "r") as f:
     apps = json.load(f)
 ##pprint(apps)
     
-with open("scripts/crawlers/user_ids_tweets_03_20_21.json") as f:
+with open("scripts/crawlers/user_ids_tweets_03_21_22.json") as f:
     user_ids = json.load(f)
 
 # selezionare il PATH dove salvare i dati scaricati    
-path = "user_data/friends_ids_03_20_21/"
+path = "user_data/friends_ids_03_21_22/"
     
 ###########################################################
 def twitter_auth(app):
@@ -87,6 +87,12 @@ signal.signal(signal.SIGALRM, handler) # defining signal error
 
 ###########################################################
 
+with open("{}log.txt".format(path), "a") as f:
+    f.write('----------\n')
+    f.write('Starting time:')
+    f.write(time.ctime())
+    f.write('\n')
+
 print("-- started crawling --")
 
 start = datetime.datetime.now()
@@ -95,6 +101,8 @@ user_count=0
 L=len(user_ids)
 
 i_user = 0
+
+
 
 # #i_user = 89
 # i_api=0
@@ -178,6 +186,14 @@ while(i_user < L):
 
 
 ###########################################################
+with open("{}log.txt".format(path), "a") as f:
+    f.write('----------\n')
+    f.write('Ending time:')
+    f.write(time.ctime())
+    f.write('\n')
+
+
+
 print("-- Finished! --")
 print("Downloaded friendships for {} user".format(user_count))
 
