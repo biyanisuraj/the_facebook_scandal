@@ -1,3 +1,4 @@
+import argparse
 import json
 import gzip
 import networkx as nx
@@ -7,44 +8,59 @@ import pymongo
 import sys
 
 
-client = pymongo.MongoClient()
-table = client['social_database_test'][raw_input('USE COLLECTION: ')]
+def build_network(dirs):
+    client = pymongo.MongoClient()
+    table = client['social_database_test'][raw_input('USE COLLECTION: ')]
 
-users = list(table.find({}, {'id': 1, '_id': 0}))
-ids = np.array(list(), dtype=int)
+    users = list(table.find({}, {'id': 1, '_id': 0}))
+    ids = np.array(list(), dtype=int)
 
-for u in users:
-    ids = np.append(ids, u['id'])
+    for u in users:
+        ids = np.append(ids, u['id'])
 
-g = nx.DiGraph()
-scanned_files = 0
+    g = nx.DiGraph()
 
-for fname in os.listdir(sys.argv[1]):
-    if fname in ['Not_available_users.txt', 'log.txt', '.DS_Store']:
-        continue
-    else:
-        cfile = gzip.open(sys.argv[1] + '/' + fname, 'r')
-        jfile = json.load(cfile)
-        friends = np.array(jfile['friends_ids'], dtype=int)
+    for directory in dirs:
+        print 'CHECKING DIRECTORY ' + directory
+        scanned_files = 0
 
-        intersection = np.intersect1d(ids, friends)
+        for fname in os.listdir(directory):
 
-        if len(intersection) == 0:
-            continue
-        else:
-            for u in intersection:
-                g.add_edge(jfile['user_id'], u)
+            if fname in ['Not_available_users.txt', 'log.txt', '.DS_Store']:
+                continue
+            else:
+                cfile = gzip.open(directory + '/' + fname, 'r')
+                jfile = json.load(cfile)
+                friends = np.array(jfile['friends_ids'], dtype=int)
 
-        cfile.close()
+                intersection = np.intersect1d(ids, friends)
 
-    scanned_files += 1
+                if len(intersection) == 0:
+                    continue
+                else:
+                    for u in intersection:
+                        g.add_edge(jfile['user_id'], u)
 
-    if scanned_files % 1000 == 0:
-        print 'SCANNED ' + str(scanned_files) + ' FILES'
+                cfile.close()
 
-print 'CREATED GRAPH WITH ' + str(len(g.nodes)) + ' NODES AND ' \
-    + str(len(g.edges)) + ' EDGES'
+            scanned_files += 1
 
-print "WRITING EDGES' LIST"
+            if scanned_files % 1000 == 0:
+                print 'SCANNED ' + str(scanned_files) + ' FILES'
 
-nx.write_edgelist(g, './edge_list.txt', data=False)
+    print 'CREATED GRAPH WITH ' + str(len(g.nodes)) + ' NODES AND ' \
+        + str(len(g.edges)) + ' EDGES'
+
+    print "WRITING EDGES' LIST"
+
+    nx.write_edgelist(g, './edge_list.txt', data=False)
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-d', '--directories', action='store', nargs='+',
+                        help='The paths to the directories which contains the \
+                        files to be checked.')
+    args = parser.parse_args()
+
+    build_network(args.directories)
