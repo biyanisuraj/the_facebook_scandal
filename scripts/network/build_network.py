@@ -5,7 +5,6 @@ import networkx as nx
 import numpy as np
 import os
 import pymongo
-import sys
 
 
 def build_network(dirs):
