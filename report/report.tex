@@ -1,0 +1,92 @@
+\documentclass[10pt, twoside]{report}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+%%\usepackage[us]{babel}
+\usepackage{helvet}
+\usepackage[a4paper,width=180mm,top=25mm,bottom=25mm,bindingoffset=6mm]{geometry}
+\usepackage[framemethod=default]{mdframed}
+\usepackage{lipsum,titlesec,xcolor,fancyhdr,array,multicol,float,graphicx,wrapfig,subcaption}
+\usepackage{fontspec,todonotes,enumitem,comment,capt-of,amsmath,booktabs}
+\usepackage[colorlinks]{hyperref}
+\usepackage[font=scriptsize]{caption}
+\usepackage[sorting=none]{biblatex}
+\addbibresource{references.bib}
+
+\DeclareCaptionLabelFormat{andtable}{#1˜#2 \& \tablename˜\thetable}
+
+\renewcommand{\familydefault}{\sfdefault}
+
+\graphicspath{{images/}}
+
+%% define size for chapter initial page:
+\usepackage{titlesec, blindtext, color}
+\definecolor{gray75}{gray}{0.75}
+\newcommand{\hsp}{\hspace{20pt}}
+\titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter\hsp\textcolor{gray75}{|}\hsp}{0pt}{\Huge\bfseries}
+
+\titlespacing*{\chapter}{0pt}{-60pt}{20pt} %% change spacing
+%%%%%%%%%%
+
+\floatstyle{plain}
+\restylefloat{figure}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\chaptermark}[1]{ \markboth{#1}{} }
+\renewcommand{\sectionmark}[1]{ \markright{#1}{} }
+\fancyhead[LE]{\itshape{ \fontsize{10}{12} \selectfont \leftmark}}
+\fancyhead[RE, LO]{\thepage}
+\fancyhead[RO]{\itshape{\fontsize{10}{12} \selectfont \rightmark}}
+\renewcommand\headrulewidth{0pt}
+
+ \hypersetup{
+     colorlinks,
+     citecolor= green,
+     filecolor=black,
+     linkcolor= black,
+     urlcolor=blue
+ }
+
+
+\begin{document}
+    \input{titlepage}
+    \pagenumbering{Roman}
+    \tableofcontents
+    \chapter{The case story}
+    \pagenumbering{arabic}
+
+On Saturday 17 of March 2018, the newspapers The Observer and The New York Times broke reports on how the consulting firm Cambridge Analytica harvested private information from the Facebook profiles of more than 50 million users without their permission, making it one of the largest data leaks in the social network’s history. \cite{nyt_17march}. REF OBSERVER
+
+The whistleblower Christopher Wylie, datascientist and former director of research at Cambridge Analytica revealed...
+Cambridge Analytica described itself as a company providing consumer research, targeted advertising and other data-related services to both political and corporate clients.
+
+What, Where, Who, Why, Where ?
+
+
+Timeline da sistemare: \cite{nyt_timeline}
+\begin{itemize}
+
+\item March 17, 2018: The Observer and The New York Times publish joint reports on data harvesting by Cambridge Analytica. UK Information Commissioner Elizabeth Denham issues statement that they are “investigating circumstances in which Facebook data may have been illegally acquired and used.” Politicians in US and UK call for investigation.
+
+\item March 19, 2018: Channel 4 News publishes part 1 of their undercover investigation into Cambridge Analytica. Facebook sends investigators to Cambridge Analytica’s offices. UK Information Commissioner orders them to stand down.
+
+\item March 20, 2018: Channel 4 News publishes part 2 of their undercover investigation into Cambridge Analytica, where they boast about getting Donald Trump elected. British MP Damian Collins calls on Facebook to present oral evidence on Cambridge Analytica. Facebook agrees to send former operations manager Sandy Parakilas. Facebook holds internal Q\&A with attorney Paul Grewal to discuss the crisis, but CEO Mark Zuckerberg and COO Sheryl Sandberg do not attend. Cambridge Analytica suspends CEO Alexander Nix. Facebook demands to inspect Christopher Wylie’s phone. FTC opens investigation into Facebook.
+\item to be continued...  
+\end{itemize}
+    
+    \chapter{Building the network}
+
+    \chapter{Network properties}
+
+    \chapter{Network dynamics}
+
+    \chapter{Communities discovery}
+
+    \chapter{Summary}
+
+    
+\printbibliography[title={References}]
+
+    
+\end{document}
