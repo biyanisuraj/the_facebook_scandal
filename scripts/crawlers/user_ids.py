@@ -7,10 +7,10 @@ db = CLIENT.social_database_test
 
 db.collection_names()
 
-cname=db.collection_names()[1]
+cname=db.collection_names()[0]
 cname
 
-tweets = db.tweets_03_23_24
+tweets = db.tweets_03_24_25
 
 for userid in tweets.find( {"id":int(user_ids[1])} , projection = {"id" : 1,'friends_count':1}).sort('friends_count', pymongo.DESCENDING ).limit(10):
     pprint(userid)
