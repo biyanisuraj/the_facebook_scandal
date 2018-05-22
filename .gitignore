@@ -7,3 +7,15 @@ scripts/visualization/.ipynb_checkpoints
 user_data/*
 *~
 #*
+report..bbl
+report..blg
+report.aux
+report.bbl
+report.bcf
+report.blg
+report.log
+report.out
+report.pdf
+report.run.xml
+report.toc
+titlepage.log
