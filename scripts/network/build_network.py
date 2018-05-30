@@ -52,7 +52,7 @@ def build_network(dirs):
 
     print "WRITING EDGES' LIST"
 
-    nx.write_edgelist(g, './edge_list.txt', data=False)
+    nx.write_edgelist(g, './networks/edge_list.txt', data=False)
 
 
 if __name__ == '__main__':
