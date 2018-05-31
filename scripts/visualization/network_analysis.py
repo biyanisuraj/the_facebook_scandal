@@ -233,6 +233,28 @@ plt.tight_layout()
 plt.savefig('./imgs/connectivity.pdf', format='pdf')
 plt.clf()
 
+# CLUSTERING ANALYSIS
+
+un_g = g.to_undirected()
+triangles = nx.triangles(un_g)
+clustering = nx.clustering(un_g)
+
+plt.hist(sorted(triangles.values()), log=True)
+plt.title('Nodes per number of triangles')
+plt.xlabel('Triangles')
+plt.ylabel('Nodes')
+plt.tight_layout()
+plt.savefig('./imgs/triangles.pdf', format='pdf')
+plt.clf()
+
+plt.hist(sorted(clustering.values()), log=True)
+plt.title('Clustering coefficient per number of triangles')
+plt.xlabel('Clustering coefficient')
+plt.ylabel('Nodes')
+plt.tight_layout()
+plt.savefig('./imgs/clustering_coefficient.pdf', format='pdf')
+plt.clf()
+
 print "\nThe Original network's density is " + str(nx.density(g))
 print "The Erdős–Rényi network's density is " + str(nx.density(er_g))
 print "The Barabási–Albert network's density is " + str(nx.density(ba_g))
