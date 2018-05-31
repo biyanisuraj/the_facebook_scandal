@@ -1,3 +1,4 @@
+import demon as dm
 import community as louvain
 import networkx as nx
 import pquality
@@ -23,7 +24,7 @@ def apply_kclique(g):
 
 
 def apply_louvain(g):
-    coms = louvain.best_partition(g)
+    coms = louvain.best_partition(g.to_undirected())
     coms_to_node = defaultdict(list)
 
     for n, c in coms.items():
