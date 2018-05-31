@@ -50,6 +50,8 @@ print 'Barabási–Albert Network, Number of edges: ' + \
 print 'Barabási–Albert Network, Number of selfloops: ' + \
     str(ba_g.number_of_selfloops())
 
+# DEGREE DISTRIBUTION ANALYSIS
+
 in_degrees = collections.Counter(d for n, d in g.in_degree())
 in_degrees = [in_degrees.get(i, 0) for i in range(max(in_degrees) + 1)]
 max_d = max(list(d for n, d in g.in_degree()))
@@ -161,6 +163,8 @@ plt.loglog()
 plt.savefig('./imgs/degree.pdf', format='pdf')
 plt.clf()
 
+# CONNECTED COMPONENTS ANALYSIS
+
 if nx.is_strongly_connected(g):
     print '\nThe original network is strongly connected with ' + \
         str(nx.number_strongly_connected_components(g)) + ' strongly ' \
@@ -247,17 +251,29 @@ plt.tight_layout()
 plt.savefig('./imgs/triangles.pdf', format='pdf')
 plt.clf()
 
-plt.hist(sorted(clustering.values()), log=True)
+plt.hist(sorted(clustering.values()), log=True, label='Unordered original',
+         alpha=.6)
+clustering = nx.clustering(er_g.to_undirected())
+plt.hist(sorted(clustering.values()), log=True, label=u'Erdős–Rényi',
+         alpha=.6)
+clustering = nx.clustering(ba_g)
+plt.hist(sorted(clustering.values()), log=True, label=u'Barabási–Albert',
+         alpha=.6)
 plt.title('Clustering coefficient per number of triangles')
 plt.xlabel('Clustering coefficient')
 plt.ylabel('Nodes')
+plt.legend()
 plt.tight_layout()
 plt.savefig('./imgs/clustering_coefficient.pdf', format='pdf')
 plt.clf()
 
+# DENSITY ANALYSIS
+
 print "\nThe Original network's density is " + str(nx.density(g))
 print "The Erdős–Rényi network's density is " + str(nx.density(er_g))
 print "The Barabási–Albert network's density is " + str(nx.density(ba_g))
+
+# CENTRALITY ANALYSIS
 
 colors = {u'Original': 'tomato', u'Erdős–Rényi': 'steelblue',
           u'Barabási–Albert': 'deeppink'}
