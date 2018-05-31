@@ -11,6 +11,8 @@ g = None
 er_g = None
 ba_g = None
 
+# NETWORK'S IMPORT
+
 print 'Importing original netowrk'
 g = nx.read_edgelist('../network/networks/edge_list.txt',
                      create_using=nx.DiGraph(), nodetype=int, data=False)
@@ -36,19 +38,15 @@ else:
                                                 d for n, d in g.degree())))
     nx.write_edgelist(ba_g, '../network/networks/ba_edge_list.txt')
 
-print '\nOriginal Network, Number of nodes: ' + str(g.number_of_nodes())
-print 'Original Network, Number of edges: ' + str(g.number_of_edges())
-print 'Original Network, Number of selfloops: ' + str(g.number_of_selfloops())
-print '\nErdős–Rényi Network, Number of nodes: ' + str(er_g.number_of_nodes())
-print 'Erdős–Rényi Network, Number of edges: ' + str(er_g.number_of_edges())
-print 'Erdős–Rényi Network, Number of selfloops: ' + \
-    str(er_g.number_of_selfloops())
-print '\nBarabási–Albert Network, Number of nodes: ' + \
-    str(ba_g.number_of_nodes())
-print 'Barabási–Albert Network, Number of edges: ' + \
-    str(ba_g.number_of_edges())
-print 'Barabási–Albert Network, Number of selfloops: ' + \
-    str(ba_g.number_of_selfloops())
+print '\nOriginal network, nodes: ' + str(g.number_of_nodes()) + ', edges: ' \
+    + str(g.number_of_edges()) + ', selfloops: ' + \
+    str(g.number_of_selfloops())
+print '\nErdős–Rényi network, nodes: ' + str(er_g.number_of_nodes()) + \
+    ', edges: ' + str(er_g.number_of_edges()) + ', selfloops: ' \
+    + er_g.number_of_selfloops()
+print '\nBarabási–Albert network, nodes: ' + str(ba_g.number_of_nodes()) + \
+    ', edges: ' + str(ba_g.number_of_edges()) + ', selfloops: ' + \
+    ba_g.number_of_selfloops()
 
 # DEGREE DISTRIBUTION ANALYSIS
 
