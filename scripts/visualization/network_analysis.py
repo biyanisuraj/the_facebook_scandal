@@ -234,7 +234,7 @@ def clustering_analysis(g, er_g, ba_g, subsize=1000):
     clustering = nx.clustering(ba_g.subgraph([ba_nodes[r] for r in randoms]))
     plt.hist(sorted(clustering.values()), log=True, label=u'Barabási–Albert',
              alpha=.6, color='deeppink')
-    plt.title('Clustering coefficient per number of triangles on a sample of' +
+    plt.title('Clustering coefficient per number of nodes on a sample of' +
               ' ' + str(subsize) + ' nodes')
     plt.xlabel('Clustering coefficient')
     plt.ylabel('Nodes')
@@ -308,6 +308,30 @@ def centrality_analysis(g, er_g, ba_g, subsize=500):
     plt.savefig('./imgs/closeness_centrality.pdf', format='pdf')
     plt.clf()
 
+    for network in [u'Original', u'Erdős–Rényi', u'Barabási–Albert']:
+        bet_cent = None
+
+        if network == u'Original':
+            bet_cent = (nx.betweenness_centrality(g))
+        elif network == u'Erdős–Rényi':
+            bet_cent = (nx.betweenness_centrality(er_g))
+        else:
+            bet_cent = (nx.betweenness_centrality(ba_g))
+
+        bet_cent = sorted(bet_cent.values())
+
+        plt.hist(bet_cent, color=colors[network], alpha=.8, label=network)
+
+    plt.title('Number of nodes per betweenness centrality on a sample of '
+              + str(subsize) + ' nodes')
+    plt.xticks([0., 0.25, 0.5, 0.75, 1.], ['0.', '0.25', '0.5', '0.75', '1.'])
+    plt.xlabel('Betweenness Centrality')
+    plt.ylabel('Nodes')
+    plt.legend()
+    plt.tight_layout()
+    plt.savefig('./imgs/betweenness_centrality.pdf', format='pdf')
+    plt.clf()
+
 
 if __name__ == '__main__':
     g = None
@@ -350,7 +374,7 @@ if __name__ == '__main__':
             degree_distribution_analysis(g, er_g, ba_g)
         elif to_do == 'cc':
             connected_components_analysis(g, er_g, ba_g)
-        elif to_do == 'ca':
+        elif to_do == 'clst':
             clustering_analysis(g.to_undirected(), er_g.to_undirected(), ba_g)
         elif to_do == 'da':
             density_analysis(g, er_g, ba_g)
