@@ -49,6 +49,16 @@ def apply_louvain(g):
     return pquality.pquality_summary(g, coms_louvain)
 
 
+def apply_labelprop(g):
+    print 'COMPUTING LABEL PROPAGATION SCORE'
+
+    g = g.to_undirected()
+    lp = list(community.label_propagation_communities(g))
+    lp = [tuple(x) for x in lp]
+
+    return pquality.pquality_summary(g, lp)
+
+
 if __name__ == '__main__':
     print 'IMPORTING NETWORK'
 
@@ -66,3 +76,5 @@ if __name__ == '__main__':
         results = apply_kclique(g.subgraph([nodes[r] for r in randoms]))
     elif alg == 'louvain':
         results = apply_louvain(g.subgraph([nodes[r] for r in randoms]))
+    elif alg == 'labelprop':
+        results = apply_labelprop(g.subgraph([nodes[r] for r in randoms]))
