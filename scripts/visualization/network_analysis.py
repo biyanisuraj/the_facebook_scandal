@@ -14,10 +14,10 @@ def general_info(g, er_g, ba_g):
         str(g.number_of_selfloops())
     print '\nErdős–Rényi network, nodes: ' + str(er_g.number_of_nodes()) + \
         ', edges: ' + str(er_g.number_of_edges()) + ', selfloops: ' \
-        + er_g.number_of_selfloops()
+        + str(er_g.number_of_selfloops())
     print '\nBarabási–Albert network, nodes: ' + str(ba_g.number_of_nodes()) \
         + ', edges: ' + str(ba_g.number_of_edges()) + ', selfloops: ' + \
-        ba_g.number_of_selfloops()
+        str(ba_g.number_of_selfloops())
 
 
 def degree_distribution_analysis(g, er_g, ba_g):
@@ -250,27 +250,28 @@ def density_analysis(g, er_g, ba_g):
     print "The Barabási–Albert network's density is " + str(nx.density(ba_g))
 
 
-def centrality_analysis(g, er_g, ba_g):
+def centrality_analysis(g, er_g, ba_g, subsize=500):
     colors = {u'Original': 'tomato', u'Erdős–Rényi': 'steelblue',
               u'Barabási–Albert': 'deeppink'}
-    counter = 50
+    nodes, er_nodes, ba_nodes = list(g.nodes()), list(er_g.nodes()), list(ba_g.nodes())
+    randoms = [random.randint(0, len(nodes) - 1) for i in range(subsize)]
+    degree_cent = None
+    g, er_g, ba_g = g.subgraph([nodes[r] for r in randoms]), er_g.subgraph([er_nodes[r] for r in randoms]), ba_g.subgraph([ba_nodes[r] for r in randoms])
 
     for network in [u'Original', u'Erdős–Rényi', u'Barabási–Albert']:
-        net = None
-
         if network == u'Original':
-            net = g
+            degree_cent = nx.degree_centrality(g)
         elif network == u'Erdős–Rényi':
-            net = er_g
+            degree_cent = nx.degree_centrality(er_g)
         else:
-            net = ba_g
+            degree_cent = nx.degree_centrality(ba_g)
 
-        degree_cent = nx.degree_centrality(net)
         degree_cent = sorted(degree_cent.values())
 
         plt.hist(degree_cent, color=colors[network], alpha=.3, label=network)
 
-    plt.title('Number of nodes per degree centrality')
+    plt.title('Number of nodes per degree centrality (' + str(subsize) +
+              ' nodes sample)')
     plt.xticks([0., 0.25, 0.5, 0.75, 1.], ['0.', '0.25', '0.5', '0.75', '1.'])
     plt.xlabel('Degree Centrality')
     plt.ylabel('Nodes')
@@ -281,27 +282,23 @@ def centrality_analysis(g, er_g, ba_g):
 
     for network in [u'Original', u'Erdős–Rényi', u'Barabási–Albert']:
         clos_cent = list()
-        nodes = None
-        net = None
 
         if network == u'Original':
-            net = g
+            for node in nodes:
+                clos_cent.append(nx.closeness_centrality(g, node))
         elif network == u'Erdős–Rényi':
-            net = er_g
+            for node in er_nodes:
+                clos_cent.append(nx.closeness_centrality(er_g, node))
         else:
-            net = ba_g
-
-        nodes = net.node.items()
-
-        for node in nodes[0:counter]:
-            clos_cent.append(nx.closeness_centrality(net, node[0]))
+            for node in ba_nodes:
+                clos_cent.append(nx.closeness_centrality(ba_g, node))
 
         clos_cent = sorted(clos_cent)
 
         plt.hist(clos_cent, color=colors[network], alpha=.8, label=network)
 
     plt.title('Number of nodes per closeness centrality on a sample of '
-              + str(counter) + ' nodes')
+              + str(subsize) + ' nodes')
     plt.xticks([0., 0.25, 0.5, 0.75, 1.], ['0.', '0.25', '0.5', '0.75', '1.'])
     plt.xlabel('Closeness Centrality')
     plt.ylabel('Nodes')
@@ -343,9 +340,20 @@ if __name__ == '__main__':
                                                     d for n, d in g.degree())))
         nx.write_edgelist(ba_g, '../network/networks/ba_edge_list.txt')
 
-    general_info(g, er_g, ba_g)
-    degree_distribution_analysis(g, er_g, ba_g)
-    connected_components_analysis(g, er_g, ba_g)
-    clustering_analysis(g.to_undirected(), er_g.to_undirected(), ba_g)
-    density_analysis(g, er_g, ba_g)
-    centrality_analysis(g, er_g, ba_g)
+    to_do = raw_input('TO DO(gen/dgr/cc/clst/da/cen/exit): ')
+
+    while to_do != 'exit':
+        if to_do == 'gen':
+            general_info(g, er_g, ba_g)
+        elif to_do == 'dgr':
+            degree_distribution_analysis(g, er_g, ba_g)
+        elif to_do == 'cc':
+            connected_components_analysis(g, er_g, ba_g)
+        elif to_do == 'ca':
+            clustering_analysis(g.to_undirected(), er_g.to_undirected(), ba_g)
+        elif to_do == 'da':
+            density_analysis(g, er_g, ba_g)
+        else:
+            centrality_analysis(g, er_g, ba_g)
+
+        to_do = raw_input('TO DO(gen/dgr/cc/clst/da/cen/exit): ')
