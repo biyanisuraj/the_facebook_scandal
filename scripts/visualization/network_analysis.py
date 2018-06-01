@@ -253,10 +253,14 @@ def density_analysis(g, er_g, ba_g):
 def centrality_analysis(g, er_g, ba_g, subsize=500):
     colors = {u'Original': 'tomato', u'Erdős–Rényi': 'steelblue',
               u'Barabási–Albert': 'deeppink'}
-    nodes, er_nodes, ba_nodes = list(g.nodes()), list(er_g.nodes()), list(ba_g.nodes())
+    nodes = list(g.nodes())
+    er_nodes = list(er_g.nodes())
+    ba_nodes = list(ba_g.nodes())
     randoms = [random.randint(0, len(nodes) - 1) for i in range(subsize)]
     degree_cent = None
-    g, er_g, ba_g = g.subgraph([nodes[r] for r in randoms]), er_g.subgraph([er_nodes[r] for r in randoms]), ba_g.subgraph([ba_nodes[r] for r in randoms])
+    g = g.subgraph([nodes[r] for r in randoms])
+    er_g = er_g.subgraph([er_nodes[r] for r in randoms])
+    ba_g = ba_g.subgraph([ba_nodes[r] for r in randoms])
 
     for network in [u'Original', u'Erdős–Rényi', u'Barabási–Albert']:
         if network == u'Original':
@@ -281,19 +285,16 @@ def centrality_analysis(g, er_g, ba_g, subsize=500):
     plt.clf()
 
     for network in [u'Original', u'Erdős–Rényi', u'Barabási–Albert']:
-        clos_cent = list()
+        clos_cent = None
 
         if network == u'Original':
-            for node in nodes:
-                clos_cent.append(nx.closeness_centrality(g, node))
+            clos_cent = (nx.closeness_centrality(g))
         elif network == u'Erdős–Rényi':
-            for node in er_nodes:
-                clos_cent.append(nx.closeness_centrality(er_g, node))
+            clos_cent = (nx.closeness_centrality(er_g))
         else:
-            for node in ba_nodes:
-                clos_cent.append(nx.closeness_centrality(ba_g, node))
+            clos_cent = (nx.closeness_centrality(ba_g))
 
-        clos_cent = sorted(clos_cent)
+        clos_cent = sorted(clos_cent.values())
 
         plt.hist(clos_cent, color=colors[network], alpha=.8, label=network)
 
