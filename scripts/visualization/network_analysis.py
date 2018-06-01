@@ -210,10 +210,13 @@ def connected_components_analysis(g, er_g, ba_g):
 
 
 def clustering_analysis(g, er_g, ba_g, subsize=1000):
-    un_g = g.to_undirected()
+    nodes = list(g.nodes())
+    er_nodes = list(er_g.nodes())
+    ba_nodes = list(ba_g.nodes())
+    randoms = [random.randint(0, len(nodes) - 1) for i in range(1000)]
 
-    triangles = nx.triangles(un_g)
-    clustering = nx.clustering(un_g)
+    triangles = nx.triangles(g.subgraph([nodes[r] for r in randoms]))
+    clustering = nx.clustering(g.subgraph([nodes[r] for r in randoms]))
 
     plt.hist(sorted(triangles.values()), log=True)
     plt.title('Nodes per number of triangles')
@@ -224,14 +227,15 @@ def clustering_analysis(g, er_g, ba_g, subsize=1000):
     plt.clf()
 
     plt.hist(sorted(clustering.values()), log=True, label='Unordered original',
-             alpha=.6)
-    clustering = nx.clustering(er_g.to_undirected())
+             alpha=.6, color='tomato')
+    clustering = nx.clustering(er_g.subgraph([er_nodes[r] for r in randoms]))
     plt.hist(sorted(clustering.values()), log=True, label=u'Erdős–Rényi',
-             alpha=.6)
-    clustering = nx.clustering(ba_g)
+             alpha=.6, color='steelblue')
+    clustering = nx.clustering(ba_g.subgraph([ba_nodes[r] for r in randoms]))
     plt.hist(sorted(clustering.values()), log=True, label=u'Barabási–Albert',
-             alpha=.6)
-    plt.title('Clustering coefficient per number of triangles')
+             alpha=.6, color='deeppink')
+    plt.title('Clustering coefficient per number of triangles on a sample of' +
+              ' ' + str(subsize) + ' nodes')
     plt.xlabel('Clustering coefficient')
     plt.ylabel('Nodes')
     plt.legend()
@@ -312,11 +316,11 @@ if __name__ == '__main__':
     er_g = None
     ba_g = None
 
-    print 'Importing original netowrk'.to_upper()
+    print 'Importing original netowrk'.upper()
     g = nx.read_edgelist('../network/networks/edge_list.txt',
                          create_using=nx.DiGraph(), nodetype=int, data=False)
 
-    print 'Importing Erdős–Rényi network'
+    print 'Importing Erdős–Rényi network'.upper()
     if os.path.isfile('../network/networks/er_edge_list.txt'):
         er_g = nx.read_edgelist('../network/networks/er_edge_list.txt',
                                 create_using=nx.DiGraph(), nodetype=int,
@@ -326,7 +330,7 @@ if __name__ == '__main__':
         nx.write_edgelist(er_g, '../network/networks/er_edge_list.txt',
                           data=False)
 
-    print 'Importing Barabási–Albert network'.to_upper()
+    print 'Importing Barabási–Albert network'.upper()
     if os.path.isfile('../network/networks/ba_edge_list.txt'):
         ba_g = nx.read_edgelist('../network/networks/ba_edge_list.txt',
                                 create_using=nx.Graph(), nodetype=int,
@@ -342,6 +346,6 @@ if __name__ == '__main__':
     general_info(g, er_g, ba_g)
     degree_distribution_analysis(g, er_g, ba_g)
     connected_components_analysis(g, er_g, ba_g)
-    clustering_analysis(g, er_g, ba_g)
+    clustering_analysis(g.to_undirected(), er_g.to_undirected(), ba_g)
     density_analysis(g, er_g, ba_g)
     centrality_analysis(g, er_g, ba_g)
