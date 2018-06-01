@@ -78,3 +78,5 @@ if __name__ == '__main__':
         results = apply_louvain(g.subgraph([nodes[r] for r in randoms]))
     elif alg == 'labelprop':
         results = apply_labelprop(g.subgraph([nodes[r] for r in randoms]))
+    else:
+        pass
