@@ -5,6 +5,7 @@ import pquality
 import random
 from collections import defaultdict
 from networkx.algorithms import community
+from nf1 import NF1
 
 
 def apply_gn(g, ntimes=5):
@@ -64,19 +65,29 @@ if __name__ == '__main__':
 
     g = nx.read_edgelist('../network/networks/edge_list.txt',
                          create_using=nx.DiGraph(), nodetype=int, data=False)
-    alg = raw_input('ALGORITHM TO APPLY(gn/kclique/louvain/demon/labelprop))'
-                    ': ')
-    results = None
+    alg = raw_input('ALGORITHM TO APPLY(gn/kclique/louvain/demon/labelprop/'
+                    'end): ')
     nodes = list(g.nodes())
     randoms = [random.randint(0, len(nodes) - 1) for i in range(1000)]
+    res_gn, res_kclique, res_louvain, res_lab = None, None, None, None
 
-    if alg == 'gn':
-        results = apply_gn(g.subgraph([nodes[r] for r in randoms]))
-    elif alg == 'kclique':
-        results = apply_kclique(g.subgraph([nodes[r] for r in randoms]))
-    elif alg == 'louvain':
-        results = apply_louvain(g.subgraph([nodes[r] for r in randoms]))
-    elif alg == 'labelprop':
-        results = apply_labelprop(g.subgraph([nodes[r] for r in randoms]))
-    else:
-        pass
+    while alg != 'end':
+        if alg == 'gn':
+            res_gn = apply_gn(g.subgraph([nodes[r] for r in randoms]))
+        elif alg == 'kclique':
+            res_kclique = apply_kclique(
+                                    g.subgraph([nodes[r] for r in randoms]))
+        elif alg == 'louvain':
+            res_louvain = apply_louvain(
+                                    g.subgraph([nodes[r] for r in randoms]))
+        elif alg == 'labelprop':
+            res_lab = apply_labelprop(g.subgraph([nodes[r] for r in randoms]))
+        else:
+            pass
+
+        alg = raw_input('ALGORITHM TO APPLY(gn/kclique/louvain/demon/'
+                        'labelprop/end): ')
+
+    nf = NF1(res_lab, res_louvain)
+
+    print nf.summary()
