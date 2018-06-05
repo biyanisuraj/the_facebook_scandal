@@ -1,0 +1,20 @@
+Subsize: 1000
+
+k: 4
+
+{'Modularity':                             value
+Index                            
+Modularity (no overlap)  0.005295, 'Indexes':                         min        max        avg  std
+Index                                                 
+Internal Density   0.200000   0.200000   0.200000  0.0
+Edges inside      12.000000  12.000000  12.000000  0.0
+Average Degree     4.000000   4.000000   4.000000  0.0
+FOMD               1.000000   1.000000   1.000000  0.0
+TPR                1.000000   1.000000   1.000000  0.0
+Expansion          3.333333   3.333333   3.333333  0.0
+Cut Ratio          0.003472   0.003472   0.003472  0.0
+Conductance        0.454545   0.454545   0.454545  0.0
+Normalized Cut     0.476190   0.476190   0.476190  0.0
+Maximum-ODF       15.000000  15.000000  15.000000  0.0
+Average-ODF        3.333333   3.333333   3.333333  0.0
+Flake-ODF          0.166667   0.166667   0.166667  0.0}
