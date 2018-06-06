@@ -67,7 +67,18 @@ def apply_labelprop(g, subsize=1000):
     return pquality.pquality_summary(g, lp)
 
 
-def write_results(algorithm, subsize, results, k=0):
+def apply_demon(g, subsize=1000):
+    g = g.to_undirected()
+    epsilon = float(raw_input('Epsilon: '))
+    d = dm.Demon(graph=g, min_community_size=3, epsilon=epsilon)
+    coms_demon = d.execute()
+
+    write_results('demon', subsize,
+                  pquality.pquality_summary(g, coms_demon), epsilon=epsilon)
+    return pquality.pquality_summary(g, coms_demon)
+
+
+def write_results(algorithm, subsize, results, k=0, epsilon=0):
     f = open('./results/' + algorithm + '_results.txt', 'w')
     f.write('Subsize: ' + str(subsize) + '\n\n')
 
@@ -78,6 +89,9 @@ def write_results(algorithm, subsize, results, k=0):
             f.write('\n\n')
     elif algorithm == 'k_clique':
         f.write('k: ' + str(k) + '\n\n')
+        f.write(str(results))
+    elif algorithm == 'demon':
+        f.write('epsilon: ' + str(epsilon) + '\n\n')
         f.write(str(results))
     else:
         f.write(str(results))
@@ -94,25 +108,26 @@ if __name__ == '__main__':
     nodes = list(g.nodes())
     subsize = 1000
     randoms = [random.randint(0, len(nodes) - 1) for i in range(subsize)]
-    res_gn, res_kclique, res_louvain, res_lab = None, None, None, None
+    r_gn, r_kclique, r_louvain, r_lab, r_demon = None, None, None, None, None
 
     while alg != 'end':
         if alg == 'gn':
-            res_gn = apply_gn(g.subgraph([nodes[r] for r in randoms]),
-                              ntimes=5, subsize=subsize)
+            r_gn = apply_gn(g.subgraph([nodes[r] for r in randoms]),
+                            ntimes=5, subsize=subsize)
         elif alg == 'kclique':
-            res_kclique = apply_kclique(
+            r_kclique = apply_kclique(
                                     g.subgraph([nodes[r] for r in randoms]),
                                     subsize=subsize)
         elif alg == 'louvain':
-            res_louvain = apply_louvain(
+            r_louvain = apply_louvain(
                                     g.subgraph([nodes[r] for r in randoms]),
                                     subsize=subsize)
         elif alg == 'labelprop':
-            res_lab = apply_labelprop(g.subgraph([nodes[r] for r in randoms]),
-                                      subsize=subsize)
+            r_lab = apply_labelprop(g.subgraph([nodes[r] for r in randoms]),
+                                    subsize=subsize)
         else:
-            pass
+            r_demon = apply_demon(g.subgraph([nodes[r] for r in randoms]),
+                                  subsize=subsize)
 
         alg = raw_input('ALGORITHM TO APPLY(gn/kclique/louvain/demon/'
                         'labelprop/end): ')
