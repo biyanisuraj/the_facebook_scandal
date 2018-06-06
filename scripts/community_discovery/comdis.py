@@ -8,9 +8,11 @@ from networkx.algorithms import community
 from nf1 import NF1
 
 
-def apply_gn(g, ntimes=5, subsize=1000):
-    print 'COMPUTING GIRVAN-NEWMAN SCORE FOR ' + str(ntimes) + ' ITERATIONS'
+def apply_gn(g, subsize=1000):
+    print 'COMPUTING GIRVAN-NEWMAN SCORE'
+    ntimes = int(raw_input('ITERATIONS: '))
 
+    coms = dict()
     results = dict()
 
     g = g.to_undirected()
@@ -19,21 +21,24 @@ def apply_gn(g, ntimes=5, subsize=1000):
     for i in range(ntimes):
         coms_gn = [tuple(x) for x in next(gn_hierarchy)]
         results[i] = pquality.pquality_summary(g, coms_gn)
+        coms[results[i]['Modularity']['value'].values[0]] = {
+            'Iteration': i, 'Communities': coms_gn}
 
     write_results('girvan_newman', subsize, results)
-    return results
+    return coms
 
 
 def apply_kclique(g, subsize=1000):
+    print 'COMPUTING K-CLIQUE SCORE'
     g = g.to_undirected()
-    k = int(raw_input('COMPUTING K-CLIQUE SCORE FOR K: '))
+    k = int(raw_input('K: '))
     kclique = list(community.k_clique_communities(g, k))
     kclique = [tuple(x) for x in kclique]
 
     try:
         write_results('k_clique', subsize,
                       pquality.pquality_summary(g, kclique), k=k)
-        return pquality.pquality_summary(g, kclique)
+        return kclique
     except ValueError:
         return 'THERE ARE NO ' + str(k) + '-CLIQUES'
 
@@ -52,7 +57,7 @@ def apply_louvain(g, subsize=1000):
 
     write_results('louvain', subsize,
                   str(pquality.pquality_summary(g, coms_louvain)))
-    return pquality.pquality_summary(g, coms_louvain)
+    return coms_louvain
 
 
 def apply_labelprop(g, subsize=1000):
@@ -64,18 +69,20 @@ def apply_labelprop(g, subsize=1000):
 
     write_results('label_propagation', subsize,
                   pquality.pquality_summary(g, lp))
-    return pquality.pquality_summary(g, lp)
+    return lp
 
 
 def apply_demon(g, subsize=1000):
+    print 'COMPUTING DEMON SCORE'
     g = g.to_undirected()
-    epsilon = float(raw_input('Epsilon: '))
+    epsilon = float(raw_input('EPSILON: '))
+
     d = dm.Demon(graph=g, min_community_size=3, epsilon=epsilon)
     coms_demon = d.execute()
 
     write_results('demon', subsize,
                   pquality.pquality_summary(g, coms_demon), epsilon=epsilon)
-    return pquality.pquality_summary(g, coms_demon)
+    return coms_demon
 
 
 def write_results(algorithm, subsize, results, k=0, epsilon=0):
@@ -103,35 +110,20 @@ if __name__ == '__main__':
 
     g = nx.read_edgelist('../network/networks/edge_list.txt',
                          create_using=nx.DiGraph(), nodetype=int, data=False)
-    alg = raw_input('ALGORITHM TO APPLY(gn/kclique/louvain/demon/labelprop/'
-                    'end): ')
     nodes = list(g.nodes())
     subsize = 1000
     randoms = [random.randint(0, len(nodes) - 1) for i in range(subsize)]
-    r_gn, r_kclique, r_louvain, r_lab, r_demon = None, None, None, None, None
 
-    while alg != 'end':
-        if alg == 'gn':
-            r_gn = apply_gn(g.subgraph([nodes[r] for r in randoms]),
-                            ntimes=5, subsize=subsize)
-        elif alg == 'kclique':
-            r_kclique = apply_kclique(
-                                    g.subgraph([nodes[r] for r in randoms]),
-                                    subsize=subsize)
-        elif alg == 'louvain':
-            r_louvain = apply_louvain(
-                                    g.subgraph([nodes[r] for r in randoms]),
-                                    subsize=subsize)
-        elif alg == 'labelprop':
-            r_lab = apply_labelprop(g.subgraph([nodes[r] for r in randoms]),
-                                    subsize=subsize)
-        else:
-            r_demon = apply_demon(g.subgraph([nodes[r] for r in randoms]),
-                                  subsize=subsize)
+    r_gn = apply_gn(g.subgraph([nodes[r] for r in randoms]), subsize=subsize)
+    r_kclique = apply_kclique(g.subgraph([nodes[r] for r in randoms]),
+                              subsize=subsize)
+    r_louvain = apply_louvain(g.subgraph([nodes[r] for r in randoms]),
+                              subsize=subsize)
+    r_lab = apply_labelprop(g.subgraph([nodes[r] for r in randoms]),
+                            subsize=subsize)
+    r_demon = apply_demon(g.subgraph([nodes[r] for r in randoms]),
+                          subsize=subsize)
 
-        alg = raw_input('ALGORITHM TO APPLY(gn/kclique/louvain/demon/'
-                        'labelprop/end): ')
-
-    # nf = NF1(res_lab, res_louvain)
-
-    # print nf.summary()
+    # f = open('./comparisons/comp.txt', 'w')
+    # f.write(str(NF1(r_louvain, r_demon).summary()))
+    # f.close()
