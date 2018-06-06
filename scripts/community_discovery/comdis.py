@@ -124,6 +124,55 @@ if __name__ == '__main__':
     r_demon = apply_demon(g.subgraph([nodes[r] for r in randoms]),
                           subsize=subsize)
 
+    r_gn = r_gn[max(r_gn.keys())]['Communities']
+    res = [r_gn, r_kclique, r_louvain, r_lab, r_demon]
+
+    for i in range(len(res)):
+        for j in range(i + 1, len(res)):
+            if res[i] == r_gn:
+                if res[j] == r_kclique:
+                    f = open('./comparisons/gn_kclique.txt', 'w')
+                    f.write(str(NF1(res[i], res[j]).summary()))
+                    f.close()
+                elif res[j] == r_louvain:
+                    f = open('./comparisons/gn_louvain.txt', 'w')
+                    f.write(str(NF1(res[i], res[j]).summary()))
+                    f.close()
+                elif res[j] == r_lab:
+                    f = open('./comparisons/gn_labelprop.txt', 'w')
+                    f.write(str(NF1(res[i], res[j]).summary()))
+                    f.close()
+                else:
+                    f = open('./comparisons/gn_demon.txt', 'w')
+                    f.write(str(NF1(res[i], res[j]).summary()))
+                    f.close()
+            elif res[i] == r_kclique:
+                if res[j] == r_louvain:
+                    f = open('./comparisons/kclique_louvain.txt', 'w')
+                    f.write(str(NF1(res[i], res[j]).summary()))
+                    f.close()
+                elif res[j] == r_lab:
+                    f = open('./comparisons/kclique_labelprop.txt', 'w')
+                    f.write(str(NF1(res[i], res[j]).summary()))
+                    f.close()
+                else:
+                    f = open('./comparisons/kclique_demon.txt', 'w')
+                    f.write(str(NF1(res[i], res[j]).summary()))
+                    f.close()
+            elif res[i] == r_louvain:
+                if res[j] == r_lab:
+                    f = open('./comparisons/louvain_labelprop.txt', 'w')
+                    f.write(str(NF1(res[i], res[j]).summary()))
+                    f.close()
+                else:
+                    f = open('./comparisons/louvain_demon.txt', 'w')
+                    f.write(str(NF1(res[i], res[j]).summary()))
+                    f.close()
+            elif res[i] == r_lab:
+                f = open('./comparisons/labelprop_demon.txt', 'w')
+                f.write(str(NF1(res[i], res[j]).summary()))
+                f.close()
+
     # f = open('./comparisons/comp.txt', 'w')
     # f.write(str(NF1(r_louvain, r_demon).summary()))
     # f.close()
