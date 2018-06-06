@@ -172,7 +172,3 @@ if __name__ == '__main__':
                 f = open('./comparisons/labelprop_demon.txt', 'w')
                 f.write(str(NF1(res[i], res[j]).summary()))
                 f.close()
-
-    # f = open('./comparisons/comp.txt', 'w')
-    # f.write(str(NF1(r_louvain, r_demon).summary()))
-    # f.close()
