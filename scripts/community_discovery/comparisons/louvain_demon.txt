@@ -1,0 +1,9 @@
+{'details':    F1 min  F1 max  F1 mean  F1 mode    F1 std
+0    0.08    0.54     0.26     0.11  0.181108, 'scores':                                Value
+Index                               
+Ground Truth Communities    4.000000
+Identified Communities    662.000000
+Community Ratio           165.500000
+Ground Truth Matched        1.000000
+Node Coverage              20.229167
+NF1                         0.001571}
