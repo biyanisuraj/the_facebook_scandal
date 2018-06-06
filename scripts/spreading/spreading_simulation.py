@@ -16,7 +16,7 @@ g = nx.read_edgelist('../network/networks/edge_list.txt',
 # ba_g = nx.read_edgelist('../network/networks/ba_edge_list.txt',
 #                         create_using=nx.Graph(), nodetype=int, data=False)
 
-print '\nSI MODEL SIMULATION\n'
+print '\nSI MODEL SIMULATION'
 
 model_si = si.SIModel(g)
 
@@ -35,7 +35,7 @@ viz.plot('si_diffusion.pdf')
 viz = DiffusionPrevalence(model_si, trends_si)
 viz.plot('si_prevalence.pdf')
 
-print '\nSIR MODEL SIMULATION\n'
+print '\nSIR MODEL SIMULATION'
 
 model_sir = sir.SIRModel(g)
 
@@ -56,7 +56,7 @@ viz.plot("sir_diffusion.pdf")
 viz = DiffusionPrevalence(model_sir, trends_sir)
 viz.plot('sir_prevalence.pdf')
 
-print '\nSIS MODEL SIMULATION\n'
+print '\nSIS MODEL SIMULATION'
 
 model_sis = sis.SISModel(g)
 
@@ -76,3 +76,27 @@ viz = DiffusionTrend(model_sis, trends_sis)
 viz.plot("sis_diffusion.pdf")
 viz = DiffusionPrevalence(model_sis, trends_sis)
 viz.plot('sis_prevalence.pdf')
+
+print '\nTHRESHOLD MODEL SIMULATION'
+
+model_thr = threshold.ThresholdModel(g)
+
+print 'MODEL CONFIGURATION'
+
+cfg = mc.Configuration()
+cfg.add_model_parameter('percentage_infected',
+                        float(raw_input('PERCENTAGE INFECTED: ')))
+
+threshold = float(raw_input('THRESHOLD: '))
+for i in g.nodes():
+    cfg.add_node_configuration("threshold", i, threshold)
+
+model_thr.set_initial_status(cfg)
+
+iterations = model_thr.iteration_bunch(200)
+trends_thr = model_thr.build_trends(iterations)
+
+viz = DiffusionTrend(model_thr, trends_thr)
+viz.plot("thr_diffusion.pdf")
+viz = DiffusionPrevalence(model_thr, trends_thr)
+viz.plot('thr_prevalence.pdf')
