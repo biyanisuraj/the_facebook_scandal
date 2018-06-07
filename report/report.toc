@@ -10,4 +10,14 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {5}Communities discovery}{5}{chapter.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {6}Summary}{6}{chapter.6}
+\contentsline {chapter}{\numberline {6}Spreading}{6}{chapter.6}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {6.1}SI model}{7}{section.6.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {6.2}SIS model}{7}{section.6.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {6.3}SIR model}{7}{section.6.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {6.4}Threshold model}{7}{section.6.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {7}Summary}{8}{chapter.7}
