@@ -6,9 +6,6 @@ data/*
 scripts/visualization/.ipynb_checkpoints
 user_data/*
 *~
-# report/*
-# !report/report.tex
-# !report/chaps/spreading/spreading.tex
 /report/report..bbl
 /report/report..blg
 /report/report.bbl
