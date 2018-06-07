@@ -156,25 +156,50 @@ viz = DiffusionTrendComparison([
 viz.plot("./visuals/sis/trend_comparison.pdf")
 
 print '\nTHRESHOLD MODEL SIMULATION'
-
-model_thr = threshold.ThresholdModel(g)
-
 print 'MODEL CONFIGURATION'
 
 cfg = mc.Configuration()
 cfg.add_model_parameter('percentage_infected',
                         float(raw_input('PERCENTAGE INFECTED: ')))
+thr = float(raw_input('THRESHOLD: '))
 
-threshold = float(raw_input('THRESHOLD: '))
-for i in g.nodes():
-    cfg.add_node_configuration("threshold", i, threshold)
+for network in [g, er_g, ba_g]:
+    model_thr = threshold.ThresholdModel(network)
 
-model_thr.set_initial_status(cfg)
+    for i in network.nodes():
+        cfg.add_node_configuration("threshold", i, thr)
 
-iterations = model_thr.iteration_bunch(200)
-trends_thr = model_thr.build_trends(iterations)
+    model_thr.set_initial_status(cfg)
+    iterations = model_thr.iteration_bunch(200)
+    trends_thr = model_thr.build_trends(iterations)
 
-viz = DiffusionTrend(model_thr, trends_thr)
-viz.plot("./visuals/threshold/diffusion.pdf")
-viz = DiffusionPrevalence(model_thr, trends_thr)
-viz.plot('./visuals/threshold/prevalence.pdf')
+    if network is g:
+        viz = DiffusionTrend(model_thr, trends_thr)
+        viz.plot("./visuals/threshold/diffusion.pdf")
+        viz = DiffusionPrevalence(model_thr, trends_thr)
+        viz.plot('./visuals/threshold/prevalence.pdf')
+        for_comparison['original_thr'] = [model_thr, trends_thr]
+    elif network is er_g:
+        viz = DiffusionTrend(model_thr, trends_thr)
+        viz.plot("./visuals/threshold/diffusion_er.pdf")
+        viz = DiffusionPrevalence(model_thr, trends_thr)
+        viz.plot('./visuals/threshold/prevalence_er.pdf')
+        for_comparison['er_thr'] = [model_thr, trends_thr]
+    else:
+        viz = DiffusionTrend(model_thr, trends_thr)
+        viz.plot("./visuals/threshold/diffusion_ba.pdf")
+        viz = DiffusionPrevalence(model_thr, trends_thr)
+        viz.plot('./visuals/threshold/prevalence_ba.pdf')
+        for_comparison['ba_thr'] = [model_thr, trends_thr]
+
+viz = DiffusionTrendComparison([
+                        for_comparison['original_thr'][0],
+                        for_comparison['er_thr'][0],
+                        for_comparison['ba_thr'][0]
+                     ],
+                     [
+                        for_comparison['original_thr'][1],
+                        for_comparison['er_thr'][1],
+                        for_comparison['ba_thr'][1]
+                     ])
+viz.plot("./visuals/threshold/trend_comparison.pdf")
