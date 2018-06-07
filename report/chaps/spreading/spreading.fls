@@ -1,6 +1,0 @@
-PWD /Users/gianmarco/Documents/Università/Magistrale/Social Network Analysis/code/Social-Network-Analysis/report/chaps
-INPUT /usr/local/texlive/2017/texmf.cnf
-INPUT /usr/local/texlive/2017/texmf-dist/web2c/texmf.cnf
-INPUT /usr/local/texlive/2017/texmf-var/web2c/xetex/xelatex.fmt
-INPUT spreading.tex
-OUTPUT spreading.log
