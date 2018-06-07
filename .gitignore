@@ -14,6 +14,8 @@ user_data/*
 /report/report.fls
 /report/report.synctex.gz
 /report/report.xdv
+/report/report.log
+/report/report.pdf
 /report/chaps/spreading/spreading.aux
 /report/chaps/spreading/spreading.fdb_latexmk
 /report/chaps/spreading/spreading.fls
