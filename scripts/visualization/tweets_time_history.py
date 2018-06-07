@@ -4,12 +4,7 @@ import datetime
 
 import numpy as np
 import pandas as pd
-
-import matplotlib
-
-matplotlib.use('Qt5Agg')
-import matplotlib.pyplot as plt
-%matplotlib qt
+##%matplotlib qt
 
 
 CLIENT = MongoClient()
@@ -18,16 +13,14 @@ db = CLIENT.social_database_test
 
 db.collection_names()
 
-cname=db.collection_names()[0]
-
-cname
+##cname=db.collection_names()[0]
+##cname
 
 tweets = db.merged_03_17_29
 
 tweets.count()
 
 from pprint import pprint
-
 pprint(tweets.find_one())
 
 tweet_dates=[date for date in tweets.find( projection = {'tweet_created_at':1})##.sort('tweet_created_at', pymongo.ASCENDING )
@@ -59,24 +52,29 @@ df=df.sort_values('dates')
 
 df_count = df.groupby(['day','hour']).size()
 
-df_sum = df.groupby(['day','hour']).()
+#df_sum = df.groupby(['day','hour']).()
 
 index=df_count.index
-labels = ["{}-{}".format(a[0],a[1]) for a in index]
+labels = ["{}-{}:00".format(a[0],a[1]) for a in index]
 xlabel = range(len(labels))
 
-xlabel_cut = [range(0,len(labels),10)]
+
 
 df_time=pd.DataFrame({'labels':labels,'xlabel':xlabel})
+df_time.tail(200)
 
+print(df_time.to_string())
 
 eventi= {90:"zuckerberg message on facebook"}
 
+end = 174
 
 ###########################################################
+import matplotlib
+matplotlib.use('Qt5Agg')
 import matplotlib.pyplot as plt
 
-SMALL_SIZE = 8
+SMALL_SIZE = 7
 MEDIUM_SIZE = 10
 BIGGER_SIZE = 12
 
@@ -88,69 +86,38 @@ plt.rc('ytick', labelsize=SMALL_SIZE)    # fontsize of the tick labels
 plt.rc('legend', fontsize=SMALL_SIZE)    # legend fontsize
 plt.rc('figure', titlesize=BIGGER_SIZE)  # fontsize of the figure title
 
-
 ###########################################################
 
-index = np.array(df_count.index)
 
-fig, ax = plt.subplots(figsize=(20, 5))
+fig, ax = plt.subplots(figsize=(10, 5))
+plt.plot( xlabel, np.array(df_count) )
 
-plt.plot( (xlabel), np.array(df_count) )
-##plt.plot( (xlabel), np.array(df_sum) )
+freq = 4
+xlabel_cut = [ xlabel[i+2] for i in range(0,len(labels)-2,freq)]
+labels_cut = [ labels[i+2] for i in range(0,len(labels)-2,freq)]
 
-plt.xticks(xlabel, labels,rotation=45)
+plt.xticks(xlabel_cut, labels_cut,rotation=70)
 
 ax.axvline(eventi.keys(),0,1000, color = "orange")
+
+plt.text(eventi.keys()[0], 200, eventi.values()[0], rotation=90,
+         verticalalignment='bottom', color= "orange")
+
+
+ax.axvline( end ,0,1000, color = "black")
 
 ##ax.axvline(100,0,1000)
 plt.xlabel("Day and hour")
 plt.ylabel("Number of new authors per hour")
-
 plt.axis('tight')
+fig.tight_layout()
+
+plt.savefig("scripts/visualization/imgs/time_history.pdf")
+
 plt.show()
 
-
 plt.close()
-
 
 ###########################################################
 
 
-df_dates=df.groupby( ['day','hour'] ).agg( { 'hour': np.size } )
-df_dates=df.groupby( ['day','hour'] ).agg( { 'hour': np.size } )
-
-
-
-
-###########################################################
-
-labels = ["{}-{}".format(a[0],a[1]) for a in index]
-
-fig,ax =plt.plot(np.array(range(0,df_dates.shape[0])) , np.array( df_dates.hour) )
-
-handles, labels = ax.get_legend_handles_labels()
-ax.legend(handles, labels)
-
-plt.scatter( labels , np.array( df_dates.hour) )
- lt.xticks(rotation=90
-plt.axis('tight')
-           
-plt.show()
-plt.close()
-
-
-
-# Initialize the plot
-fig = plt.figure()
-ax = fig.add_subplot(1)
-
-
-# Plot the data
-ax1.bar([1,2,3],[3,4,5])
-ax2.barh([0.5,1,2.5],[0,1,2])
-ax2.axhline(0.45)
-ax1.axvline(0.65)
-ax3.scatter(x,y)
-
-# Show the plot
-plt.show()           
