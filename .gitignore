@@ -6,16 +6,19 @@ data/*
 scripts/visualization/.ipynb_checkpoints
 user_data/*
 *~
-#*
-report..bbl
-report..blg
-report.aux
-report.bbl
-report.bcf
-report.blg
-report.log
-report.out
-report.pdf
-report.run.xml
-report.toc
-titlepage.log
+# report/*
+# !report/report.tex
+# !report/chaps/spreading/spreading.tex
+/report/report.aux
+/report/report.fdb_latexmk
+/report/report.fls
+/report/report.synctex.gz
+/report/report.xdv
+/report/report.log
+/report/report.pdf
+/report/chaps/spreading/spreading.aux
+/report/chaps/spreading/spreading.fdb_latexmk
+/report/chaps/spreading/spreading.fls
+/report/chaps/spreading/spreading.log
+/sna.sublime-project
+/sna.sublime-workspace
