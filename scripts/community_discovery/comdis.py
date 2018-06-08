@@ -106,7 +106,7 @@ def write_results(algorithm, subsize, results, k=0, epsilon=0):
 
 
 if __name__ == '__main__':
-    print 'IMPORTING NETWORK'
+    print 'IMPORTING NETWORK\n'
 
     g = nx.read_edgelist('../network/networks/edge_list.txt',
                          create_using=nx.DiGraph(), nodetype=int, data=False)
@@ -115,12 +115,16 @@ if __name__ == '__main__':
     randoms = [random.randint(0, len(nodes) - 1) for i in range(subsize)]
 
     r_gn = apply_gn(g.subgraph([nodes[r] for r in randoms]), subsize=subsize)
+    print '\n'
     r_kclique = apply_kclique(g.subgraph([nodes[r] for r in randoms]),
                               subsize=subsize)
+    print '\n'
     r_louvain = apply_louvain(g.subgraph([nodes[r] for r in randoms]),
                               subsize=subsize)
+    print '\n'
     r_lab = apply_labelprop(g.subgraph([nodes[r] for r in randoms]),
                             subsize=subsize)
+    print '\n'
     r_demon = apply_demon(g.subgraph([nodes[r] for r in randoms]),
                           subsize=subsize)
 
