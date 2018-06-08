@@ -1,4 +1,4 @@
-\documentclass[10pt, twoside]{report}
+\documentclass[12pt, twoside]{report}
 
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -87,14 +87,50 @@ Timeline da sistemare: \cite{nyt_timeline}
     
     \chapter{Network properties}
 
-    
+ \section{Degree distribution}    
     \begin{figure}[htbp]
       \centering
-      \includegraphics[width=\textwidth]{../../scripts/visualization/imgs/in_degree_distribution.pdf}            
+      \includegraphics[width=\textwidth]{../../scripts/visualization/imgs/degree_distributions.pdf}            
       \caption{New authors time history}
-      \label{fig:time_history}
+      \label{fig:degree}
     \end{figure}
 
+\begin{minipage}[b]{0.5\textwidth}
+   \centering
+    \begin{figure}[H]
+      \includegraphics[width=\textwidth]{../../scripts/visualization/imgs/in_degree_distribution.pdf}            
+          \caption{}
+        \label{fig:in_degree}
+\end{figure}
+\end{minipage}
+\begin{minipage}[b]{0.5\textwidth}
+  \begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{../../scripts/visualization/imgs/out_degree_distribution.pdf}            
+        \caption{}
+\label{fig:out_degree}
+\end{figure}
+\end{minipage}
+    
+
+
+    \subsection{Random graphs} 
+    In order to generate an Erdos-Renyi random network we have choosen a ``linking probability'' p using the average degree of the original undirected network, by using eq. \ref{eq:ER_probability}.
+    \begin{equation}
+      p_{ER} \approx \frac{\langle k  \rangle}{N} = \frac{57}{65729} \approx  0.001
+      \label{eq:ER_probability}
+    \end{equation}
+
+    Each new node of the random network generated with the Barabasi-Albert model has been attached to the other nodes with a number of links $m$ equal to the average degree of the original network, considered undirected:
+    \begin{equation}
+      m = 2 \, \langle k \rangle = 76
+      \label{eq:BA_model}
+    \end{equation}
+
+    
+
+
+    
     
     \chapter{Network dynamics}
 
