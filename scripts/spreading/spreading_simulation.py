@@ -34,21 +34,21 @@ for network in [g, er_g, ba_g]:
 
     if network is g:
         viz = DiffusionTrend(model_si, trends_si)
-        viz.plot('./visuals/si/diffusion.pdf')
+        viz.plot('../../report/images/spreading/si/diffusion.pdf')
         viz = DiffusionPrevalence(model_si, trends_si)
-        viz.plot('./visuals/si/prevalence.pdf')
+        viz.plot('../../report/images/spreading/si/prevalence.pdf')
         for_comparison['original_si'] = [model_si, trends_si]
     elif network is er_g:
         viz = DiffusionTrend(model_si, trends_si)
-        viz.plot('./visuals/si/diffusion_er.pdf')
+        viz.plot('../../report/images/spreading/si/diffusion_er.pdf')
         viz = DiffusionPrevalence(model_si, trends_si)
-        viz.plot('./visuals/si/prevalence_er.pdf')
+        viz.plot('../../report/images/spreading/si/prevalence_er.pdf')
         for_comparison['er_si'] = [model_si, trends_si]
     else:
         viz = DiffusionTrend(model_si, trends_si)
-        viz.plot('./visuals/si/diffusion_ba.pdf')
+        viz.plot('../../report/images/spreading/si/diffusion_ba.pdf')
         viz = DiffusionPrevalence(model_si, trends_si)
-        viz.plot('./visuals/si/prevalence_ba.pdf')
+        viz.plot('../../report/images/spreading/si/prevalence_ba.pdf')
         for_comparison['ba_si'] = [model_si, trends_si]
 
 viz = DiffusionTrendComparison([
@@ -61,7 +61,7 @@ viz = DiffusionTrendComparison([
                         for_comparison['er_si'][1],
                         for_comparison['ba_si'][1]
                      ])
-viz.plot("./visuals/si/trend_comparison.pdf")
+viz.plot("../../report/images/spreading/si/trend_comparison.pdf")
 
 print '\nSIR MODEL SIMULATION'
 print 'MODEL CONFIGURATION'
@@ -80,21 +80,21 @@ for network in [g, er_g, ba_g]:
 
     if network is g:
         viz = DiffusionTrend(model_sir, trends_sir)
-        viz.plot("./visuals/sir/diffusion.pdf")
+        viz.plot("../../report/images/spreading/sir/diffusion.pdf")
         viz = DiffusionPrevalence(model_sir, trends_sir)
-        viz.plot('./visuals/sir/prevalence.pdf')
+        viz.plot('../../report/images/spreading/sir/prevalence.pdf')
         for_comparison['original_sir'] = [model_sir, trends_sir]
     elif network is er_g:
         viz = DiffusionTrend(model_sir, trends_sir)
-        viz.plot("./visuals/sir/diffusion_er.pdf")
+        viz.plot("../../report/images/spreading/sir/diffusion_er.pdf")
         viz = DiffusionPrevalence(model_sir, trends_sir)
-        viz.plot('./visuals/sir/prevalence_er.pdf')
+        viz.plot('../../report/images/spreading/sir/prevalence_er.pdf')
         for_comparison['er_sir'] = [model_sir, trends_sir]
     else:
         viz = DiffusionTrend(model_sir, trends_sir)
-        viz.plot("./visuals/sir/diffusion_ba.pdf")
+        viz.plot("../../report/images/spreading/sir/diffusion_ba.pdf")
         viz = DiffusionPrevalence(model_sir, trends_sir)
-        viz.plot('./visuals/sir/prevalence_ba.pdf')
+        viz.plot('../../report/images/spreading/sir/prevalence_ba.pdf')
         for_comparison['ba_sir'] = [model_sir, trends_sir]
 
 viz = DiffusionTrendComparison([
@@ -107,7 +107,7 @@ viz = DiffusionTrendComparison([
                         for_comparison['er_sir'][1],
                         for_comparison['ba_sir'][1]
                      ])
-viz.plot("./visuals/sir/trend_comparison.pdf")
+viz.plot("../../report/images/spreading/sir/trend_comparison.pdf")
 
 print '\nSIS MODEL SIMULATION'
 print 'MODEL CONFIGURATION'
@@ -126,21 +126,21 @@ for network in [g, er_g, ba_g]:
 
     if network is g:
         viz = DiffusionTrend(model_sis, trends_sis)
-        viz.plot("./visuals/sis/diffusion.pdf")
+        viz.plot("../../report/images/spreading/sis/diffusion.pdf")
         viz = DiffusionPrevalence(model_sis, trends_sis)
-        viz.plot('./visuals/sis/prevalence.pdf')
+        viz.plot('../../report/images/spreading/sis/prevalence.pdf')
         for_comparison['original_sis'] = [model_sis, trends_sis]
     elif network is er_g:
         viz = DiffusionTrend(model_sis, trends_sis)
-        viz.plot("./visuals/sis/diffusion_er.pdf")
+        viz.plot("../../report/images/spreading/sis/diffusion_er.pdf")
         viz = DiffusionPrevalence(model_sis, trends_sis)
-        viz.plot('./visuals/sis/prevalence_er.pdf')
+        viz.plot('../../report/images/spreading/sis/prevalence_er.pdf')
         for_comparison['er_sis'] = [model_sis, trends_sis]
     else:
         viz = DiffusionTrend(model_sis, trends_sis)
-        viz.plot("./visuals/sis/diffusion_ba.pdf")
+        viz.plot("../../report/images/spreading/sis/diffusion_ba.pdf")
         viz = DiffusionPrevalence(model_sis, trends_sis)
-        viz.plot('./visuals/sis/prevalence_ba.pdf')
+        viz.plot('../../report/images/spreading/sis/prevalence_ba.pdf')
         for_comparison['ba_sis'] = [model_sis, trends_sis]
 
 viz = DiffusionTrendComparison([
@@ -153,7 +153,7 @@ viz = DiffusionTrendComparison([
                         for_comparison['er_sis'][1],
                         for_comparison['ba_sis'][1]
                      ])
-viz.plot("./visuals/sis/trend_comparison.pdf")
+viz.plot("../../report/images/spreading/sis/trend_comparison.pdf")
 
 print '\nTHRESHOLD MODEL SIMULATION'
 print 'MODEL CONFIGURATION'
@@ -175,21 +175,21 @@ for network in [g, er_g, ba_g]:
 
     if network is g:
         viz = DiffusionTrend(model_thr, trends_thr)
-        viz.plot("./visuals/threshold/diffusion.pdf")
+        viz.plot("../../report/images/spreading/threshold/diffusion.pdf")
         viz = DiffusionPrevalence(model_thr, trends_thr)
-        viz.plot('./visuals/threshold/prevalence.pdf')
+        viz.plot('../../report/images/spreading/threshold/prevalence.pdf')
         for_comparison['original_thr'] = [model_thr, trends_thr]
     elif network is er_g:
         viz = DiffusionTrend(model_thr, trends_thr)
-        viz.plot("./visuals/threshold/diffusion_er.pdf")
+        viz.plot("../../report/images/spreading/threshold/diffusion_er.pdf")
         viz = DiffusionPrevalence(model_thr, trends_thr)
-        viz.plot('./visuals/threshold/prevalence_er.pdf')
+        viz.plot('../../report/images/spreading/threshold/prevalence_er.pdf')
         for_comparison['er_thr'] = [model_thr, trends_thr]
     else:
         viz = DiffusionTrend(model_thr, trends_thr)
-        viz.plot("./visuals/threshold/diffusion_ba.pdf")
+        viz.plot("../../report/images/spreading/threshold/diffusion_ba.pdf")
         viz = DiffusionPrevalence(model_thr, trends_thr)
-        viz.plot('./visuals/threshold/prevalence_ba.pdf')
+        viz.plot('../../report/images/spreading/threshold/prevalence_ba.pdf')
         for_comparison['ba_thr'] = [model_thr, trends_thr]
 
 viz = DiffusionTrendComparison([
@@ -202,4 +202,4 @@ viz = DiffusionTrendComparison([
                         for_comparison['er_thr'][1],
                         for_comparison['ba_thr'][1]
                      ])
-viz.plot("./visuals/threshold/trend_comparison.pdf")
+viz.plot("../../report/images/spreading/threshold/trend_comparison.pdf")
