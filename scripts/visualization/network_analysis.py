@@ -348,7 +348,7 @@ if __name__ == '__main__':
                                 create_using=nx.DiGraph(), nodetype=int,
                                 data=False)
     else:
-        er_g = nx.erdos_renyi_graph(g.number_of_nodes(), 0.01, directed=True)
+        er_g = nx.erdos_renyi_graph(g.number_of_nodes(), 0.001, directed=True)
         nx.write_edgelist(er_g, '../network/networks/er_edge_list.txt',
                           data=False)
 
