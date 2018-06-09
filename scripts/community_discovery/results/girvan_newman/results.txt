@@ -1,0 +1,88 @@
+Subsize: 1000
+
+
+Iteration: 1
+{'Modularity':                             value
+Index                            
+Modularity (no overlap)  0.371297, 'Indexes':                        min         max        avg        std
+Index                                                       
+Internal Density  0.003886    0.250000   0.200551   0.082145
+Edges inside      1.000000  291.000000  15.458333  57.938890
+Average Degree    1.000000    3.000000   1.290278   0.541985
+FOMD              1.000000    1.000000   1.000000   0.000000
+TPR               0.000000    0.428571   0.060555   0.136425
+Expansion         0.000000    0.033333   0.001604   0.006696
+Cut Ratio         0.000000    0.000035   0.000002   0.000007
+Conductance       0.000000    0.012987   0.000613   0.002603
+Normalized Cut    0.000000    0.014482   0.000931   0.003231
+Maximum-ODF       0.000000    1.000000   0.083333   0.276385
+Average-ODF       0.000000    0.033333   0.001604   0.006696
+Flake-ODF         0.000000    0.000000   0.000000   0.000000}
+Iteration: 2
+{'Modularity':                             value
+Index                            
+Modularity (no overlap)  0.496752, 'Indexes':                        min         max        avg        std
+Index                                                       
+Internal Density  0.004352    0.250000   0.194020   0.086606
+Edges inside      1.000000  256.000000  14.800000  50.134220
+Average Degree    1.000000    3.090909   1.361373   0.635197
+FOMD              1.000000    1.000000   1.000000   0.000000
+TPR               0.000000    0.428571   0.072479   0.145929
+Expansion         0.000000    0.045455   0.003617   0.010928
+Cut Ratio         0.000000    0.000047   0.000004   0.000011
+Conductance       0.000000    0.014493   0.001255   0.003766
+Normalized Cut    0.000000    0.015970   0.001716   0.004673
+Maximum-ODF       0.000000    1.000000   0.120000   0.324962
+Average-ODF       0.000000    0.045455   0.003617   0.010928
+Flake-ODF         0.000000    0.000000   0.000000   0.000000}
+Iteration: 3
+{'Modularity':                             value
+Index                            
+Modularity (no overlap)  0.650314, 'Indexes':                        min         max        avg        std
+Index                                                       
+Internal Density  0.005933    0.250000   0.187221   0.091467
+Edges inside      1.000000  199.000000  14.115385  39.278421
+Average Degree    1.000000    3.090909   1.411175   0.672760
+FOMD              1.000000    1.000000   1.000000   0.000000
+TPR               0.000000    0.428571   0.081723   0.150384
+Expansion         0.000000    0.071429   0.007257   0.017963
+Cut Ratio         0.000000    0.000075   0.000008   0.000019
+Conductance       0.000000    0.027027   0.002574   0.006477
+Normalized Cut    0.000000    0.031722   0.003416   0.008499
+Maximum-ODF       0.000000    1.000000   0.153846   0.360801
+Average-ODF       0.000000    0.071429   0.007257   0.017963
+Flake-ODF         0.000000    0.000000   0.000000   0.000000}
+Iteration: 4
+{'Modularity':                             value
+Index                            
+Modularity (no overlap)  0.750491, 'Indexes':                        min         max        avg        std
+Index                                                       
+Internal Density  0.010127    0.250000   0.180896   0.095366
+Edges inside      1.000000  128.000000  13.185185  27.876762
+Average Degree    1.000000    3.200000   1.452926   0.698535
+FOMD              1.000000    1.000000   1.000000   0.000000
+TPR               0.000000    0.428571   0.089046   0.153017
+Expansion         0.000000    0.260000   0.021675   0.058948
+Cut Ratio         0.000000    0.000276   0.000023   0.000063
+Conductance       0.000000    0.097744   0.007559   0.020913
+Normalized Cut    0.000000    0.118153   0.009632   0.026725
+Maximum-ODF       0.000000    4.000000   0.370370   0.948611
+Average-ODF       0.000000    0.260000   0.021675   0.058948
+Flake-ODF         0.000000    0.000000   0.000000   0.000000}
+Iteration: 5
+{'Modularity':                             value
+Index                            
+Modularity (no overlap)  0.758859, 'Indexes':                        min         max        avg        std
+Index                                                       
+Internal Density  0.010127    0.250000   0.176152   0.096744
+Edges inside      1.000000  128.000000  12.678571  26.508831
+Average Degree    1.000000    3.200000   1.489487   0.711656
+FOMD              1.000000    1.000000   1.000000   0.000000
+TPR               0.000000    0.428571   0.096632   0.155752
+Expansion         0.000000    0.260000   0.027094   0.063623
+Cut Ratio         0.000000    0.000276   0.000029   0.000067
+Conductance       0.000000    0.097744   0.009615   0.022838
+Normalized Cut    0.000000    0.118153   0.011704   0.028186
+Maximum-ODF       0.000000    4.000000   0.464286   1.017074
+Average-ODF       0.000000    0.260000   0.027094   0.063623
+Flake-ODF         0.000000    0.000000   0.000000   0.000000}

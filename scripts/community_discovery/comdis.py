@@ -8,39 +8,88 @@ from networkx.algorithms import community
 from nf1 import NF1
 
 
-def apply_gn(g, subsize=1000):
-    print 'COMPUTING GIRVAN-NEWMAN SCORE'
-    ntimes = int(raw_input('ITERATIONS: '))
+def extract_info(community):
+    pass
 
-    coms = dict()
-    results = dict()
 
-    g = g.to_undirected()
-    gn_hierarchy = community.girvan_newman(g)
+def evaluate_partition(infos):
+    if infos['alg'] == 'k-clique':
+        f = open('./results/k_clique/' + str(infos['k']) + '.txt', 'w')
+        f.write('Subsize: ' + str(subsize) + '\n\n')
+        f.write(str(pquality.pquality_summary(infos['network'],
+                                              infos['partition'])))
+        f.close()
+    elif infos['alg'] == 'label propagation':
+        f = open('./results/label_propagation/results.txt', 'w')
+        f.write('Subsize: ' + str(subsize) + '\n\n')
+        f.write(str(pquality.pquality_summary(infos['network'],
+                                              infos['partition'])))
+        f.close()
+    elif infos['alg'] == 'louvain':
+        f = open('./results/louvain/results.txt', 'w')
+        f.write('Subsize: ' + str(subsize) + '\n\n')
+        f.write(str(pquality.pquality_summary(infos['network'],
+                                              infos['partition'])))
+        f.close()
+    elif infos['alg'] == 'girvan-newman':
+        f = open('./results/girvan_newman/results.txt', 'w')
+        f.write('Subsize: ' + str(subsize) + '\n\n')
 
-    for i in range(ntimes):
-        coms_gn = [tuple(x) for x in next(gn_hierarchy)]
-        results[i] = pquality.pquality_summary(g, coms_gn)
-        coms[results[i]['Modularity']['value'].values[0]] = {
-            'Iteration': i, 'Communities': coms_gn}
+        for iteration in infos['partition']:
+            f.write('\nIteration: ' + str(iteration) + '\n')
+            f.write(str(
+                    pquality.pquality_summary(infos['network'],
+                                              infos['partition'][iteration])))
 
-    write_results('girvan_newman', subsize, results)
-    return coms
+        f.close()
+    else:
+        f = open('./results/demon/results.txt', 'w')
+        f.write('Subsize: ' + str(subsize) + '\n\n')
+        f.write(str(pquality.pquality_summary(infos['network'],
+                                              infos['partition'])))
+        f.close()
 
 
 def apply_kclique(g, subsize=1000):
     print 'COMPUTING K-CLIQUE SCORE'
     g = g.to_undirected()
-    k = int(raw_input('K: '))
-    kclique = list(community.k_clique_communities(g, k))
-    kclique = [tuple(x) for x in kclique]
 
-    try:
-        write_results('k_clique', subsize,
-                      pquality.pquality_summary(g, kclique), k=k)
-        return kclique
-    except ValueError:
-        return 'THERE ARE NO ' + str(k) + '-CLIQUES'
+    for k in [3, 4, 5]:
+        kclique = list(community.k_clique_communities(g, k))
+        kclique = [tuple(x) for x in kclique]
+
+        if len(kclique) == 0:
+            print 'NO COMMUNTIES FOR K = ' + str(k)
+        else:
+            max_len = max([len(c) for c in kclique])
+            max_community = [c for c in kclique if len(c) == max_len][0]
+
+            print 'GREATEST COMMUNITY COMPOSED BY ' + str(max_len) + \
+                ' NODES FOR K = ' + str(k)
+
+            extract_info(max_community)
+            evaluate_partition({'alg': 'k-clique', 'network': g, 'k': k,
+                               'partition': kclique})
+
+
+def apply_labelprop(g, subsize=1000):
+    print 'COMPUTING LABEL PROPAGATION SCORE'
+
+    g = g.to_undirected()
+    lp = list(community.label_propagation_communities(g))
+    lp = [tuple(x) for x in lp]
+
+    if len(lp) == 0:
+        print 'NO COMMUNITIES FOR THE LABEL PROPAGATION ALGORITHM'
+    else:
+        max_len = max([len(c) for c in lp])
+        max_community = [c for c in lp if len(c) == max_len][0]
+
+        print 'GREATEST COMMUNITY COMPOSED BY ' + str(max_len) + ' NODES'
+
+        extract_info(max_community)
+        evaluate_partition({'alg': 'label propagation', 'network': g,
+                           'partition': lp})
 
 
 def apply_louvain(g, subsize=1000):
@@ -55,21 +104,39 @@ def apply_louvain(g, subsize=1000):
 
     coms_louvain = [tuple(c) for c in coms_to_node.values()]
 
-    write_results('louvain', subsize,
-                  str(pquality.pquality_summary(g, coms_louvain)))
-    return coms_louvain
+    if len(coms_louvain) == 0:
+        print 'NO COMMUNITIES FOR THE LOUVAIN ALGORITHM'
+    else:
+        max_len = max([len(c) for c in coms_louvain])
+        max_community = [c for c in coms_louvain if len(c) == max_len][0]
+
+        print 'GREATEST COMMUNITY COMPOSED BY ' + str(max_len) + ' NODES'
+
+        extract_info(max_community)
+        evaluate_partition({'alg': 'louvain', 'network': g,
+                           'partition': coms_louvain})
 
 
-def apply_labelprop(g, subsize=1000):
-    print 'COMPUTING LABEL PROPAGATION SCORE'
-
+def apply_gn(g, subsize=1000):
+    print 'COMPUTING GIRVAN-NEWMAN SCORE'
+    ntimes = int(raw_input('ITERATIONS: '))
+    iterations = dict()
     g = g.to_undirected()
-    lp = list(community.label_propagation_communities(g))
-    lp = [tuple(x) for x in lp]
+    gn_hierarchy = community.girvan_newman(g)
 
-    write_results('label_propagation', subsize,
-                  pquality.pquality_summary(g, lp))
-    return lp
+    for i in range(ntimes):
+        coms_gn = [tuple(x) for x in next(gn_hierarchy)]
+        max_len = max([len(c) for c in coms_gn])
+        max_community = [c for c in coms_gn if len(c) == max_len][0]
+
+        print 'ON ITERATION ' + str(i + 1) + ' GREATEST COMMUNITY COMPOSED' \
+            ' BY ' + str(max_len) + ' NODES'
+
+        iterations[i + 1] = coms_gn
+
+    extract_info(max_community)
+    evaluate_partition({'alg': 'girvan-newman', 'network': g,
+                       'partition': iterations})
 
 
 def apply_demon(g, subsize=1000):
@@ -79,30 +146,14 @@ def apply_demon(g, subsize=1000):
 
     d = dm.Demon(graph=g, min_community_size=3, epsilon=epsilon)
     coms_demon = d.execute()
+    max_len = max([len(c) for c in coms_demon])
+    max_community = [c for c in coms_demon if len(c) == max_len][0]
 
-    write_results('demon', subsize,
-                  pquality.pquality_summary(g, coms_demon), epsilon=epsilon)
-    return coms_demon
+    print 'GREATEST COMMUNITY COMPOSED BY ' + str(max_len) + ' NODES'
 
-
-def write_results(algorithm, subsize, results, k=0, epsilon=0):
-    f = open('./results/' + algorithm + '_results.txt', 'w')
-    f.write('Subsize: ' + str(subsize) + '\n\n')
-
-    if algorithm == 'girvan_newman':
-        for res in results:
-            f.write('Iteration: ' + str(res) + '\n')
-            f.write(str(results[res]))
-            f.write('\n\n')
-    elif algorithm == 'k_clique':
-        f.write('k: ' + str(k) + '\n\n')
-        f.write(str(results))
-    elif algorithm == 'demon':
-        f.write('epsilon: ' + str(epsilon) + '\n\n')
-        f.write(str(results))
-    else:
-        f.write(str(results))
-    f.close()
+    extract_info(max_community)
+    evaluate_partition({'alg': 'demon', 'network': g,
+                       'partition': coms_demon})
 
 
 if __name__ == '__main__':
@@ -114,65 +165,61 @@ if __name__ == '__main__':
     subsize = 1000
     randoms = [random.randint(0, len(nodes) - 1) for i in range(subsize)]
 
-    r_gn = apply_gn(g.subgraph([nodes[r] for r in randoms]), subsize=subsize)
+    apply_kclique(g.subgraph([nodes[r] for r in randoms]), subsize=subsize)
     print '\n'
-    r_kclique = apply_kclique(g.subgraph([nodes[r] for r in randoms]),
-                              subsize=subsize)
+    apply_labelprop(g.subgraph([nodes[r] for r in randoms]), subsize=subsize)
     print '\n'
-    r_louvain = apply_louvain(g.subgraph([nodes[r] for r in randoms]),
-                              subsize=subsize)
+    apply_louvain(g.subgraph([nodes[r] for r in randoms]), subsize=subsize)
     print '\n'
-    r_lab = apply_labelprop(g.subgraph([nodes[r] for r in randoms]),
-                            subsize=subsize)
+    apply_gn(g.subgraph([nodes[r] for r in randoms]), subsize=subsize)
     print '\n'
-    r_demon = apply_demon(g.subgraph([nodes[r] for r in randoms]),
-                          subsize=subsize)
+    apply_demon(g.subgraph([nodes[r] for r in randoms]), subsize=subsize)
 
-    r_gn = r_gn[max(r_gn.keys())]['Communities']
-    res = [r_gn, r_kclique, r_louvain, r_lab, r_demon]
+    # r_gn = r_gn[max(r_gn.keys())]['Communities']
+    # res = [r_gn, r_kclique, r_louvain, r_lab, r_demon]
 
-    for i in range(len(res)):
-        for j in range(i + 1, len(res)):
-            if res[i] == r_gn:
-                if res[j] == r_kclique:
-                    f = open('./comparisons/gn_kclique.txt', 'w')
-                    f.write(str(NF1(res[i], res[j]).summary()))
-                    f.close()
-                elif res[j] == r_louvain:
-                    f = open('./comparisons/gn_louvain.txt', 'w')
-                    f.write(str(NF1(res[i], res[j]).summary()))
-                    f.close()
-                elif res[j] == r_lab:
-                    f = open('./comparisons/gn_labelprop.txt', 'w')
-                    f.write(str(NF1(res[i], res[j]).summary()))
-                    f.close()
-                else:
-                    f = open('./comparisons/gn_demon.txt', 'w')
-                    f.write(str(NF1(res[i], res[j]).summary()))
-                    f.close()
-            elif res[i] == r_kclique:
-                if res[j] == r_louvain:
-                    f = open('./comparisons/kclique_louvain.txt', 'w')
-                    f.write(str(NF1(res[i], res[j]).summary()))
-                    f.close()
-                elif res[j] == r_lab:
-                    f = open('./comparisons/kclique_labelprop.txt', 'w')
-                    f.write(str(NF1(res[i], res[j]).summary()))
-                    f.close()
-                else:
-                    f = open('./comparisons/kclique_demon.txt', 'w')
-                    f.write(str(NF1(res[i], res[j]).summary()))
-                    f.close()
-            elif res[i] == r_louvain:
-                if res[j] == r_lab:
-                    f = open('./comparisons/louvain_labelprop.txt', 'w')
-                    f.write(str(NF1(res[i], res[j]).summary()))
-                    f.close()
-                else:
-                    f = open('./comparisons/louvain_demon.txt', 'w')
-                    f.write(str(NF1(res[i], res[j]).summary()))
-                    f.close()
-            elif res[i] == r_lab:
-                f = open('./comparisons/labelprop_demon.txt', 'w')
-                f.write(str(NF1(res[i], res[j]).summary()))
-                f.close()
+    # for i in range(len(res)):
+    #     for j in range(i + 1, len(res)):
+    #         if res[i] == r_gn:
+    #             if res[j] == r_kclique:
+    #                 f = open('./comparisons/gn_kclique.txt', 'w')
+    #                 f.write(str(NF1(res[i], res[j]).summary()))
+    #                 f.close()
+    #             elif res[j] == r_louvain:
+    #                 f = open('./comparisons/gn_louvain.txt', 'w')
+    #                 f.write(str(NF1(res[i], res[j]).summary()))
+    #                 f.close()
+    #             elif res[j] == r_lab:
+    #                 f = open('./comparisons/gn_labelprop.txt', 'w')
+    #                 f.write(str(NF1(res[i], res[j]).summary()))
+    #                 f.close()
+    #             else:
+    #                 f = open('./comparisons/gn_demon.txt', 'w')
+    #                 f.write(str(NF1(res[i], res[j]).summary()))
+    #                 f.close()
+    #         elif res[i] == r_kclique:
+    #             if res[j] == r_louvain:
+    #                 f = open('./comparisons/kclique_louvain.txt', 'w')
+    #                 f.write(str(NF1(res[i], res[j]).summary()))
+    #                 f.close()
+    #             elif res[j] == r_lab:
+    #                 f = open('./comparisons/kclique_labelprop.txt', 'w')
+    #                 f.write(str(NF1(res[i], res[j]).summary()))
+    #                 f.close()
+    #             else:
+    #                 f = open('./comparisons/kclique_demon.txt', 'w')
+    #                 f.write(str(NF1(res[i], res[j]).summary()))
+    #                 f.close()
+    #         elif res[i] == r_louvain:
+    #             if res[j] == r_lab:
+    #                 f = open('./comparisons/louvain_labelprop.txt', 'w')
+    #                 f.write(str(NF1(res[i], res[j]).summary()))
+    #                 f.close()
+    #             else:
+    #                 f = open('./comparisons/louvain_demon.txt', 'w')
+    #                 f.write(str(NF1(res[i], res[j]).summary()))
+    #                 f.close()
+    #         elif res[i] == r_lab:
+    #             f = open('./comparisons/labelprop_demon.txt', 'w')
+    #             f.write(str(NF1(res[i], res[j]).summary()))
+    #             f.close()
