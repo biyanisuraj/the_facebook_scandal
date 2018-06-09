@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017) (preloaded format=xelatex 2018.4.1)  8 JUN 2018 15:50
+This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017) (preloaded format=xelatex 2018.4.1)  9 JUN 2018 11:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1763,22 +1763,34 @@ File: images/spreading/si/diffusion_ba.pdf Graphic file (type pdf)
 <use images/spreading/si/diffusion_ba.pdf>
 File: images/spreading/si/trend_comparison.pdf Graphic file (type pdf)
 <use images/spreading/si/trend_comparison.pdf>
-File: images/spreading/sis/diffusion.pdf Graphic file (type pdf)
-<use images/spreading/sis/diffusion.pdf>
-File: images/spreading/sis/diffusion_er.pdf Graphic file (type pdf)
-<use images/spreading/sis/diffusion_er.pdf>
-File: images/spreading/sis/diffusion_ba.pdf Graphic file (type pdf)
-<use images/spreading/sis/diffusion_ba.pdf>
-File: images/spreading/sis/trend_comparison.pdf Graphic file (type pdf)
-<use images/spreading/sis/trend_comparison.pdf>
+File: images/spreading/sis/diffusion_original_comparison.pdf Graphic file (type
+ pdf)
+<use images/spreading/sis/diffusion_original_comparison.pdf>
+File: images/spreading/sis/diffusion_er_comparison.pdf Graphic file (type pdf)
+<use images/spreading/sis/diffusion_er_comparison.pdf>
+File: images/spreading/sis/diffusion_ba_comparison.pdf Graphic file (type pdf)
+<use images/spreading/sis/diffusion_ba_comparison.pdf>
  [7
 
-]) [8]
+]
+File: images/spreading/sir/diffusion_smaller.pdf Graphic file (type pdf)
+<use images/spreading/sir/diffusion_smaller.pdf>
+File: images/spreading/sir/diffusion_greater.pdf Graphic file (type pdf)
+<use images/spreading/sir/diffusion_greater.pdf>
+File: images/spreading/sir/diffusion_er_smaller.pdf Graphic file (type pdf)
+<use images/spreading/sir/diffusion_er_smaller.pdf>
+File: images/spreading/sir/diffusion_er_greater.pdf Graphic file (type pdf)
+<use images/spreading/sir/diffusion_er_greater.pdf>
+File: images/spreading/sir/diffusion_ba_smaller.pdf Graphic file (type pdf)
+<use images/spreading/sir/diffusion_ba_smaller.pdf>
+File: images/spreading/sir/diffusion_ba_greater.pdf Graphic file (type pdf)
+<use images/spreading/sir/diffusion_ba_greater.pdf>
+) [8] [9]
 Chapter 7.
-[9
+[10
 
 
-] [10
+] [11
 
 ]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 112.
@@ -1795,12 +1807,12 @@ Package logreq Info: Writing requests to 'report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 39291 strings out of 493007
- 766472 string characters out of 6134606
+ 39329 strings out of 493007
+ 767920 string characters out of 6134606
  1322839 words of memory out of 5000000
- 42743 multiletter control sequences out of 15000+600000
+ 42770 multiletter control sequences out of 15000+600000
  534228 words of font info for 45 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 62i,11n,79p,10488b,4564s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,12n,79p,10488b,4566s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on report.xdv (12 pages, 70484 bytes).
+Output written on report.xdv (13 pages, 90680 bytes).
