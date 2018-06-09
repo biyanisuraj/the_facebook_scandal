@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017) (preloaded format=xelatex 2018.4.1)  9 JUN 2018 14:20
+This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017) (preloaded format=xelatex 2018.4.1)  9 JUN 2018 14:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1770,6 +1770,9 @@ File: images/spreading/sis/diffusion_er_comparison.pdf Graphic file (type pdf)
 <use images/spreading/sis/diffusion_er_comparison.pdf>
 File: images/spreading/sis/diffusion_ba_comparison.pdf Graphic file (type pdf)
 <use images/spreading/sis/diffusion_ba_comparison.pdf>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
  [7
 
 ]
@@ -1793,7 +1796,8 @@ File: images/spreading/threshold/diffusion_ba.pdf Graphic file (type pdf)
 <use images/spreading/threshold/diffusion_ba.pdf>
 File: images/spreading/threshold/trend_comparison.pdf Graphic file (type pdf)
 <use images/spreading/threshold/trend_comparison.pdf>
- [8]) [9]
+
+[8]) [9]
 Chapter 7.
 [10
 
@@ -1823,4 +1827,4 @@ Here is how much of TeX's memory you used:
  1348 hyphenation exceptions out of 8191
  62i,12n,79p,10488b,4564s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on report.xdv (13 pages, 103932 bytes).
+Output written on report.xdv (13 pages, 101392 bytes).

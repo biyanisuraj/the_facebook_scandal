@@ -47,16 +47,7 @@ provided along with some details on the implementation of the tests of every mod
     see from Figure \ref{diff_si_total}, the original network is the only one that doesn't reach the saturation
     regime, while the other networks reach it within the first $25$ iterations of the model. This is due to the fact
     that both the Erdős–Rényi and the Barabási–Albert network are extremely connected, hence it is more easy for the
-    infection to spread among the nodes. For this model we obtain that, for the original network, the
-    \textbf{fraction of infected individuals} increases in time as
-    \begin{equation*}
-        i = \frac{i_0 e^{\beta\langle k \rangle t}}{1 - i_0 + i_0 e^{\beta\langle k \rangle t}} =
-        \frac{3 e^{0.38t}}{65726 + 3 e^{0.38t}},
-    \end{equation*}
-    and the \textbf{characteristic time} required to reach $\frac{1}{e}$ fraction of all susceptible individuals is
-    \begin{equation*}
-        \tau = \frac{1}{\beta\langle k \rangle} = \frac{1}{0.38} = 2.63.
-    \end{equation*}
+    infection to spread among the nodes.
 
 % section si_model (end)
 
