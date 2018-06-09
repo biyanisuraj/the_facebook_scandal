@@ -185,30 +185,22 @@ def thr_model(g, er_g, ba_g):
             cfg.add_node_configuration("threshold", i, thr)
 
         model_thr.set_initial_status(cfg)
-        iterations = model_thr.iteration_bunch(200)
+        iterations = model_thr.iteration_bunch(100)
         trends_thr = model_thr.build_trends(iterations)
 
         if network is g:
             viz = DiffusionTrend(model_thr, trends_thr)
             viz.plot("../../report/images/spreading/threshold/diffusion.pdf")
-            viz = DiffusionPrevalence(model_thr, trends_thr)
-            viz.plot('../../report/images/spreading/threshold/prevalence.pdf')
             for_comparison['original_thr'] = [model_thr, trends_thr]
         elif network is er_g:
             viz = DiffusionTrend(model_thr, trends_thr)
             viz.plot(
                     "../../report/images/spreading/threshold/diffusion_er.pdf")
-            viz = DiffusionPrevalence(model_thr, trends_thr)
-            viz.plot(
-                '../../report/images/spreading/threshold/prevalence_er.pdf')
             for_comparison['er_thr'] = [model_thr, trends_thr]
         else:
             viz = DiffusionTrend(model_thr, trends_thr)
             viz.plot(
                 "../../report/images/spreading/threshold/diffusion_ba.pdf")
-            viz = DiffusionPrevalence(model_thr, trends_thr)
-            viz.plot(
-                '../../report/images/spreading/threshold/prevalence_ba.pdf')
             for_comparison['ba_thr'] = [model_thr, trends_thr]
 
     viz = DiffusionTrendComparison([for_comparison['original_thr'][0],
