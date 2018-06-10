@@ -14,40 +14,42 @@ def extract_info(community):
 
 def evaluate_partition(infos):
     if infos['alg'] == 'k-clique':
-        f = open('./results/k_clique/' + str(infos['k']) + '.txt', 'w')
-        f.write('Subsize: ' + str(subsize) + '\n\n')
-        f.write(str(pquality.pquality_summary(infos['network'],
-                                              infos['partition'])))
-        f.close()
+        results = pquality.pquality_summary(infos['network'],
+                                            infos['partition'])
+        results['Indexes'].to_csv(path_or_buf='./results/k_clique/indexes_' +
+                                  str(infos['k']) + '.csv')
+        results['Modularity'].to_csv(path_or_buf='./results/k_clique/' +
+                                     'modularity_' + str(infos['k']) + '.csv')
     elif infos['alg'] == 'label propagation':
-        f = open('./results/label_propagation/results.txt', 'w')
-        f.write('Subsize: ' + str(subsize) + '\n\n')
-        f.write(str(pquality.pquality_summary(infos['network'],
-                                              infos['partition'])))
-        f.close()
+        results = pquality.pquality_summary(infos['network'],
+                                            infos['partition'])
+        results['Indexes'].to_csv(path_or_buf='./results/label_propagation/' +
+                                  'indexes.csv')
+        results['Modularity'].to_csv(path_or_buf='./results/' +
+                                     'label_propagation/modularity.csv')
     elif infos['alg'] == 'louvain':
-        f = open('./results/louvain/results.txt', 'w')
-        f.write('Subsize: ' + str(subsize) + '\n\n')
-        f.write(str(pquality.pquality_summary(infos['network'],
-                                              infos['partition'])))
-        f.close()
+        results = pquality.pquality_summary(infos['network'],
+                                            infos['partition'])
+        results['Indexes'].to_csv(path_or_buf='./results/louvain/' +
+                                  'indexes.csv')
+        results['Modularity'].to_csv(path_or_buf='./results/' +
+                                     'louvain/modularity.csv')
     elif infos['alg'] == 'girvan-newman':
-        f = open('./results/girvan_newman/results.txt', 'w')
-        f.write('Subsize: ' + str(subsize) + '\n\n')
-
         for iteration in infos['partition']:
-            f.write('\nIteration: ' + str(iteration) + '\n')
-            f.write(str(
-                    pquality.pquality_summary(infos['network'],
-                                              infos['partition'][iteration])))
-
-        f.close()
+            results = pquality.pquality_summary(infos['network'],
+                                                infos['partition'][iteration])
+            results['Indexes'].to_csv(path_or_buf='./results/girvan_newman/' +
+                                      'iteration_' + str(iteration) +
+                                      '_indexes.csv')
+            results['Modularity'].to_csv(path_or_buf='./results/girvan_newman/'
+                                         + 'iteration_' + str(iteration) +
+                                         '_modularity.csv')
     else:
-        f = open('./results/demon/results.txt', 'w')
-        f.write('Subsize: ' + str(subsize) + '\n\n')
-        f.write(str(pquality.pquality_summary(infos['network'],
-                                              infos['partition'])))
-        f.close()
+        results = pquality.pquality_summary(infos['network'],
+                                            infos['partition'])
+        results['Indexes'].to_csv(path_or_buf='./results/demon/indexes.csv')
+        results['Modularity'].to_csv(path_or_buf='./results/demon/' +
+                                     'modularity.csv')
 
 
 def apply_kclique(g, subsize=1000):
