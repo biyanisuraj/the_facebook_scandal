@@ -1,15 +1,36 @@
-import demon as dm
 import community as louvain
+import csv
+import demon as dm
 import networkx as nx
 import pquality
 import random
-from collections import defaultdict
+from collections import Counter, defaultdict
 from networkx.algorithms import community
 from nf1 import NF1
+from pymongo import MongoClient
 
 
-def extract_info(community):
-    pass
+CLIENT = MongoClient()
+DB = CLIENT['social_database_test']
+TABLE = DB['tweets_03_17_25']
+
+
+def extract_info(com_info):
+    cursor = TABLE.find({'id': {'$in': [id for id in com_info['community']]}})
+    tags = Counter()
+    langs = Counter()
+
+    for record in cursor:
+        for tag in record['hashtags']:
+            tags.update([tag])
+        langs.update([record['lang']])
+
+    with open(com_info['fname'] + 'infos.csv', 'w') as csvfile:
+        fieldnames = tags.keys() + langs.keys()
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        tags.update(langs)
+        writer.writeheader()
+        writer.writerow(tags)
 
 
 def evaluate_partition(infos):
@@ -70,7 +91,8 @@ def apply_kclique(g, subsize=1000):
             print 'GREATEST COMMUNITY COMPOSED BY ' + str(max_len) + \
                 ' NODES FOR K = ' + str(k)
 
-            extract_info(max_community)
+            extract_info({'community': max_community,
+                          'fname': './results/k_clique/' + str(k)})
             evaluate_partition({'alg': 'k-clique', 'network': g, 'k': k,
                                'partition': kclique})
             partitions[k] = kclique
@@ -93,7 +115,8 @@ def apply_labelprop(g, subsize=1000):
 
         print 'GREATEST COMMUNITY COMPOSED BY ' + str(max_len) + ' NODES'
 
-        extract_info(max_community)
+        extract_info({'community': max_community,
+                      'fname': './results/label_propagation/'})
         evaluate_partition({'alg': 'label propagation', 'network': g,
                            'partition': lp})
 
@@ -120,7 +143,8 @@ def apply_louvain(g, subsize=1000):
 
         print 'GREATEST COMMUNITY COMPOSED BY ' + str(max_len) + ' NODES'
 
-        extract_info(max_community)
+        extract_info({'community': max_community,
+                      'fname': './results/louvain/'})
         evaluate_partition({'alg': 'louvain', 'network': g,
                            'partition': coms_louvain})
 
@@ -144,7 +168,9 @@ def apply_gn(g, subsize=1000):
 
         iterations[i + 1] = coms_gn
 
-    extract_info(max_community)
+        extract_info({'community': max_community,
+                      'fname': './results/girvan_newman/it_' + str(i + 1)})
+
     evaluate_partition({'alg': 'girvan-newman', 'network': g,
                        'partition': iterations})
 
@@ -163,7 +189,8 @@ def apply_demon(g, subsize=1000):
 
     print 'GREATEST COMMUNITY COMPOSED BY ' + str(max_len) + ' NODES'
 
-    extract_info(max_community)
+    extract_info({'community': max_community,
+                  'fname': './results/demon/'})
     evaluate_partition({'alg': 'demon', 'network': g,
                        'partition': coms_demon})
 
