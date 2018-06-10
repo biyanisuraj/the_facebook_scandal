@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99996 (TeX Live 2016/Debian) (preloaded format=xelatex 2017.11.11)  8 JUN 2018 18:00
+This is XeTeX, Version 3.14159265-2.6-0.99996 (TeX Live 2016/Debian) (preloaded format=xelatex 2017.11.11)  10 JUN 2018 14:24
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1465,7 +1465,17 @@ File: english.lbx 2016/12/05 v3.7 biblatex localization (PK/JW/AB)
 \@quotelevel=\count405
 \@quotereset=\count406
 
-(./report.aux (./chaps/spreading/spreading.aux))
+(./report.aux
+
+LaTeX Warning: Label `fig:degree' multiply defined.
+
+
+LaTeX Warning: Label `fig:in_degree' multiply defined.
+
+
+LaTeX Warning: Label `fig:out_degree' multiply defined.
+
+(./chaps/spreading/spreading.aux))
 \openout1 = `report.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 52.
@@ -1651,18 +1661,31 @@ pe QTm)
 
 ]
 Chapter 3.
+File: images/../../scripts/visualization/imgs/degree_distributions_nobinlog.pdf
+ Graphic file (type QTm)
+
+<use  "images/../../scripts/visualization/imgs/degree_distributions_nobinlog.pd
+f" > Excluding 'comment' comment.
 File: images/../../scripts/visualization/imgs/degree_distributions.pdf Graphic 
 file (type QTm)
+
 <use  "images/../../scripts/visualization/imgs/degree_distributions.pdf" >
+File: images/../../scripts/visualization/imgs/tot_degree_distribution.pdf Graph
+ic file (type QTm)
+
+<use  "images/../../scripts/visualization/imgs/tot_degree_distribution.pdf" >
+Overfull \hbox (20.608pt too wide) in paragraph at lines 107--123
+[][] [] 
+ []
+
 File: images/../../scripts/visualization/imgs/in_degree_distribution.pdf Graphi
 c file (type QTm)
-
 <use  "images/../../scripts/visualization/imgs/in_degree_distribution.pdf" >
 File: images/../../scripts/visualization/imgs/out_degree_distribution.pdf Graph
 ic file (type QTm)
 
 <use  "images/../../scripts/visualization/imgs/out_degree_distribution.pdf" >
-Overfull \hbox (20.608pt too wide) in paragraph at lines 98--114
+Overfull \hbox (20.608pt too wide) in paragraph at lines 125--141
 [][] [] 
  []
 
@@ -1672,8 +1695,12 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [3
 
 ]
+File: images/../../scripts/visualization/imgs/connectivity.pdf Graphic file (ty
+pe QTm)
+
+<use  "images/../../scripts/visualization/imgs/connectivity.pdf" >
 LaTeX Font Info:    Font shape `TU/lmss/m/it' in size <10> not available
-(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 135.
+(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 168.
 
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1682,16 +1709,23 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [4]
-Chapter 4.
-[5
 
-]
-Chapter 5.
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[5]
+Chapter 4.
 [6
 
 ]
-Chapter 6.
+Chapter 5.
 [7
+
+]
+Chapter 6.
+[8
 
 ]
 \openout2 = `chaps/spreading/spreading.aux'.
@@ -1703,32 +1737,36 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[8
+[9
 
 ]
 Chapter 7.
-[9
+[10
 
 
-] [10
+] [11
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 148.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 148.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 181.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 181.
  (./report.aux (./chaps/spreading/spreading.aux))
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 148.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 148.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 181.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 181.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
 Package logreq Info: Writing requests to 'report.run.xml'.
 \openout1 = `report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 38543 strings out of 495001
- 762825 string characters out of 6177483
- 1257565 words of memory out of 5000000
- 41827 multiletter control sequences out of 15000+600000
+ 38551 strings out of 495001
+ 763125 string characters out of 6177483
+ 1257654 words of memory out of 5000000
+ 41832 multiletter control sequences out of 15000+600000
  10561 words of font info for 47 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  62i,11n,75p,10495b,4556s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on report.pdf (12 pages).
+Output written on report.pdf (13 pages).
