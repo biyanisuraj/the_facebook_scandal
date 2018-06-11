@@ -9,8 +9,7 @@ in the biggest community (Tags) and finally the languages of the users in the bi
 \section{K-Clique} % (fold)
 \label{sec:k_clique}
     We have chosen to apply the \textbf{K-Clique} algorithm to the sample using three different values for
-    $k$: $3$, $4$ and $5$, respectively. The results are represented in Table \ref{kclique}. As we can see, there are
-    no communities resulting from the application of $5$-Clique.
+    $k$: $3$, $4$ and $5$, respectively. The results are represented in Table \ref{kclique}.
 
     \begin{table}[H]
         \centering
@@ -21,10 +20,14 @@ in the biggest community (Tags) and finally the languages of the users in the bi
                     K & Communities & Biggest & Smallest & Modularity & Conductance & IED & AND &  Tags &
                     Langs \\
                     \hline
-                    3 & 8 & 12 & 3 & 0.086 & 0.53 & 0.17 & 2.97 & zuckerberg, cambridgeanalytica,
+                    3 & 21 & 30 & 3 & 0.12 & 0.56 & 0.21 & 2.51 & cambridgeanalytica,
                     deletefacebook, facebook, facebookgate & English \\
                     \hline
-                    4 & 5 & 4 & 4 & 0.0092 & 0.63 & 0.25 & 3.0 & cambridgeanalytica, deletefacebook, facebook
+                    4 & 1 & 16 & 16 & 0.013 & 0.35 & 0.11 & 6.38 & cambridgeanalytica,
+                    deletefacebook, facebook, facebookgate
+                    & English \\
+                    \hline
+                    5 & 2 & 7 & 6 & 0.00015 & 0.67 & 0.23 & 5.05 & cambridgeanalytica, deletefacebook, facebook
                     & English \\
                     \hline
                 \end{tabular}
@@ -39,8 +42,7 @@ in the biggest community (Tags) and finally the languages of the users in the bi
 \section{Label Propagation} % (fold)
 \label{sec:label_propagation}
     In Table \ref{labelprop} are represented the results of the application of the \textbf{Label Propagation}
-    algorithm. Together with the Louvain algorithm, it returns the best partition, as we can see by the modularity
-    and conductance scores.
+    algorithm.
 
     \begin{table}[H]
         \centering
@@ -50,8 +52,8 @@ in the biggest community (Tags) and finally the languages of the users in the bi
                     \hline
                     Communities & Biggest & Smallest & Modularity & Conductance & IED & AND &  Tags & Langs \\
                     \hline
-                    757 & 46 & 1 & 0.66 & 0.24 & 0.18 & 1.42 & zuckerberg, cambridgeanalytica, deletefacebook,
-                    facebook ,facebookgate & English \\
+                    714 & 53 & 1 & 0.65 & 0.26 & 0.18 & 1.48 & zuckerberg,
+                    cambridgeanalytica, deletefacebook, facebook, facebookgate & English \\
                     \hline
                 \end{tabular}
             }
@@ -64,8 +66,9 @@ in the biggest community (Tags) and finally the languages of the users in the bi
 
 \section{Louvain} % (fold)
 \label{sec:louvain}
-    The application of the \textbf{Louvain} algorithm returns the best partition among all the partitions returned
-    by the other algorithms. The results of its application are represented in Table \ref{louvain}.
+    The application of the \textbf{Louvain}, along with the last iteration of the Girvan-Newman algorithm,
+    returns the best partition among all the partitions returned by the other algorithms. The results of its
+    application are represented in Table \ref{louvain}.
 
     \begin{table}[H]
         \centering
@@ -75,8 +78,8 @@ in the biggest community (Tags) and finally the languages of the users in the bi
                     \hline
                     Communities & Biggest & Smallest & Modularity & Conductance & IED & AND &  Tags & Langs \\
                     \hline
-                    731 & 34 & 1 & 0.75 & 0.070 & 0.14 & 1.62 & cambridgeanalytica, deletefacebook, privacy,
-                    zuckerberg, facebook, facebookgate & English, French, Deutsch, Arabic \\
+                    683 & 51 & 1 & 0.75 & 0.087 & 0.14 & 1.76 & cambridgeanalytica,
+                    deletefacebook, facebook, facebookgate & English, Spanish \\
                     \hline
                 \end{tabular}
             }
@@ -104,22 +107,23 @@ in the biggest community (Tags) and finally the languages of the users in the bi
                     Iteration & Communities & Biggest & Smallest & Modularity & Conductance & IED & AND &  Tags &
                     Langs \\
                     \hline
-                    1 & 720 & 234 & 1 & 0.19 & 0.0016 & 0.21 & 1.24 & cambridgeanalytica, deletefacebook, privacy,
-                    zuckerberg, facebook, facebookgate & English, French, Deutsch, Arabic, Spanish, Italian,
-                    Portoguese, Hindi, Finnish, Hungarian \\
+                    1 & 673 & 275 & 1 & 0.21 & 0.0049 & 0.20 & 1.40 & cambridgeanalytica,
+                    deletefacebook, privacy, zuckerberg, facebook, facebookgate & English, French, Deutsch, Arabic,
+                    Spanish, Italian, Portoguese, Hindi, Finnish, Hungarian \\
                     \hline
-                    2 & 721 & 117 & 1 & 0.55 & 0.0077 & 0.20 & 1.32 & zuckerberg, cambridgeanalytica,
-                    deletefacebook, facebook, facebookgate & English, French, Deutsch, Hindi, Finnish, Spanish \\
+                    2 & 674 & 165 & 1 & 0.55 & 0.011 & 0.19 & 1.49 & cambridgeanalytica,
+                    deletefacebook, privacy, zuckerberg, facebook, facebookgate
+                    & English, French, Deutsch, Hindi, Finnish, Spanish \\
                     \hline
-                    3 & 722 & 117 & 1 & 0.59 & 0.016 & 0.19 & 1.36 & cambridgeanalytica, deletefacebook, privacy,
+                    3 & 675 & 110 & 1 & 0.63 & 0.017 & 0.18 & 1.53 & cambridgeanalytica, deletefacebook, privacy,
                     zuckerberg, facebook, facebookgate & English, French, Deutsch, Arabic, Italian, Portoguese,
                     Hungarian \\
                     \hline
-                    4 & 723 & 109 & 1 & 0.61 & 0.018 & 0.18 & 1.42 & cambridgeanalytica, deletefacebook, privacy,
+                    4 & 676 & 110 & 1 & 0.66 & 0.025 & 0.17 & 1.57 & cambridgeanalytica, deletefacebook, privacy,
                     zuckerberg, facebook, facebookgate & English, French, Deutsch, Arabic, Italian, Portoguese,
                     Hungarian \\
                     \hline
-                    5 & 724 & 96 & 1 & 0.65 & 0.023 & 0.18 & 1.49 & zuckerberg, cambridgeanalytica, deletefacebook,
+                    5 & 677 & 87 & 1 & 0.71 & 0.030 & 0.17 & 1.65 & zuckerberg, cambridgeanalytica, deletefacebook,
                     facebook, facebookgate & English, French, Deutsch, Italian, Hindi \\
                     \hline
                 \end{tabular}
@@ -148,14 +152,14 @@ in the biggest community (Tags) and finally the languages of the users in the bi
                 \hline
                 Epsilon & Communities & Biggest & Smallest & Modularity & Conductance & IED & AND &  Tags & Langs \\
                 \hline
-                0.25 & 5 & 28 & 5 & 0.019 & 0.57 & 0.081 & 3.76 & zuckerberg, cambridgeanalytica, deletefacebook,
+                0.25 & 6 & 30 & 4 & 0.098 & 0.43 & 0.11 & 3.65 & cambridgeanalytica, deletefacebook,
                 facebook, facebookgate & English \\
                 \hline
-                0.50 & 11 & 18 & 4 & 0.049 & 0.68 & 0.14 & 3.39 & cambridgeanalytica, deletefacebook, facebook,
+                0.50 & 9 & 30 & 4 & 0.085 & 0.49 & 0.12 & 4.05 & cambridgeanalytica, deletefacebook, facebook,
                 facebookgate & English \\
                 \hline
-                0.75 & 13 & 15 & 4 & 0.025 & 0.71 & 0.15 & 3.31 & cambridgeanalytica, deletefacebook, privacy,
-                zuckerberg, facebook, facebookgate & English \\
+                0.75 & 13 & 27 & 4 & 0.082 & 0.51 & 0.14 & 3.86 & cambridgeanalytica, deletefacebook,
+                facebook, facebookgate & English \\
                 \hline
                 \end{tabular}
             }
