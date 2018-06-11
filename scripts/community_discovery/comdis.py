@@ -19,6 +19,9 @@ def extract_info(com_info):
     cursor = TABLE.find({'id': {'$in': [id for id in com_info['community']]}})
     tags = Counter()
     langs = Counter()
+    info_coms = {'ncommunities': com_info['ncommunities'],
+                 'maxcomlen': com_info['maxcomlen'],
+                 'mincomlen': com_info['mincomlen']}
 
     for record in cursor:
         for tag in record['hashtags']:
@@ -26,9 +29,11 @@ def extract_info(com_info):
         langs.update([record['lang']])
 
     with open(com_info['fname'] + 'infos.csv', 'w') as csvfile:
-        fieldnames = tags.keys() + langs.keys()
+        fieldnames = tags.keys() + langs.keys() + ['ncommunities',
+                                                   'maxcomlen', 'mincomlen']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         tags.update(langs)
+        tags.update(info_coms)
         writer.writeheader()
         writer.writerow(tags)
 
@@ -86,13 +91,17 @@ def apply_kclique(g, subsize=1000):
             print 'NO COMMUNTIES FOR K = ' + str(k)
         else:
             max_len = max([len(c) for c in kclique])
+            min_len = min([len(c) for c in kclique])
             max_community = [c for c in kclique if len(c) == max_len][0]
 
             print 'GREATEST COMMUNITY COMPOSED BY ' + str(max_len) + \
                 ' NODES FOR K = ' + str(k)
 
             extract_info({'community': max_community,
-                          'fname': './results/k_clique/' + str(k)})
+                          'fname': './results/k_clique/' + str(k),
+                          'ncommunities': len(kclique),
+                          'maxcomlen': max_len,
+                          'mincomlen': min_len})
             evaluate_partition({'alg': 'k-clique', 'network': g, 'k': k,
                                'partition': kclique})
             partitions[k] = kclique
@@ -111,12 +120,16 @@ def apply_labelprop(g, subsize=1000):
         print 'NO COMMUNITIES FOR THE LABEL PROPAGATION ALGORITHM'
     else:
         max_len = max([len(c) for c in lp])
+        min_len = min([len(c) for c in lp])
         max_community = [c for c in lp if len(c) == max_len][0]
 
         print 'GREATEST COMMUNITY COMPOSED BY ' + str(max_len) + ' NODES'
 
         extract_info({'community': max_community,
-                      'fname': './results/label_propagation/'})
+                      'fname': './results/label_propagation/',
+                      'ncommunities': len(lp),
+                      'maxcomlen': max_len,
+                      'mincomlen': min_len})
         evaluate_partition({'alg': 'label propagation', 'network': g,
                            'partition': lp})
 
@@ -139,12 +152,16 @@ def apply_louvain(g, subsize=1000):
         print 'NO COMMUNITIES FOR THE LOUVAIN ALGORITHM'
     else:
         max_len = max([len(c) for c in coms_louvain])
+        min_len = min([len(c) for c in coms_louvain])
         max_community = [c for c in coms_louvain if len(c) == max_len][0]
 
         print 'GREATEST COMMUNITY COMPOSED BY ' + str(max_len) + ' NODES'
 
         extract_info({'community': max_community,
-                      'fname': './results/louvain/'})
+                      'fname': './results/louvain/',
+                      'ncommunities': len(coms_louvain),
+                      'maxcomlen': max_len,
+                      'mincomlen': min_len})
         evaluate_partition({'alg': 'louvain', 'network': g,
                            'partition': coms_louvain})
 
@@ -161,6 +178,7 @@ def apply_gn(g, subsize=1000):
     for i in range(ntimes):
         coms_gn = [tuple(x) for x in next(gn_hierarchy)]
         max_len = max([len(c) for c in coms_gn])
+        min_len = min([len(c) for c in coms_gn])
         max_community = [c for c in coms_gn if len(c) == max_len][0]
 
         print 'ON ITERATION ' + str(i + 1) + ' GREATEST COMMUNITY COMPOSED' \
@@ -169,7 +187,10 @@ def apply_gn(g, subsize=1000):
         iterations[i + 1] = coms_gn
 
         extract_info({'community': max_community,
-                      'fname': './results/girvan_newman/it_' + str(i + 1)})
+                      'fname': './results/girvan_newman/it_' + str(i + 1),
+                      'ncommunities': len(coms_gn),
+                      'maxcomlen': max_len,
+                      'mincomlen': min_len})
 
     evaluate_partition({'alg': 'girvan-newman', 'network': g,
                        'partition': iterations})
@@ -185,14 +206,18 @@ def apply_demon(g, subsize=1000):
     d = dm.Demon(graph=g, min_community_size=3, epsilon=epsilon)
     coms_demon = d.execute()
     max_len = max([len(c) for c in coms_demon])
+    min_len = min([len(c) for c in coms_demon])
     max_community = [c for c in coms_demon if len(c) == max_len][0]
 
     print 'GREATEST COMMUNITY COMPOSED BY ' + str(max_len) + ' NODES'
 
     extract_info({'community': max_community,
-                  'fname': './results/demon/'})
+                  'fname': './results/demon/',
+                  'ncommunities': len(coms_demon),
+                  'maxcomlen': max_len,
+                  'mincomlen': min_len})
     evaluate_partition({'alg': 'demon', 'network': g,
-                       'partition': coms_demon})
+                        'partition': coms_demon})
 
     return coms_demon
 

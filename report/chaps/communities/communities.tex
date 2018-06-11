@@ -1,8 +1,36 @@
 In this chapter we'll provide the results obtained by applying \textbf{K-Clique}, \textbf{Label Propagation},
 \textbf{Louvain}, \textbf{Girvan-Newman} and \textbf{Demon} to a sample of $1000$ nodes taken from the original
 network. We've chosen to sample the crawled data in order to ease the application of the various algorithms.
+For each application of the algorithms we provide a table containing the measures for evaluating the obtained
+partitions (Modularity, Conductance, IED and AND), the total number of communities discoverd
+(Communities), the number of nodes in the smallest/biggest community (Smallest/Biggest), the hashtags utilized
+in the biggest community (Tags) and finally the languages of the users in the biggest community (Langs).
+
 \section{K-Clique} % (fold)
 \label{sec:k_clique}
+    We have chosen to apply the \textbf{K-Clique} algorithm to the sample using three different values for
+    $k$: $3$, $4$ and $5$, respectively. The results are represented in Table \ref{kclique}. As we can see, there are
+    no communities resulting from the application of $5$-Clique.
+
+    \begin{table}[H]
+        \centering
+        \begin{subtable}{0.60\textwidth}
+            \resizebox{\textwidth}{!}{
+                \begin{tabular}{| c | c | c | c | c | c | c | c | c | c |}
+                    \hline
+                    K & Communities & Biggest & Smallest & Modularity & Conductance & IED & AND &  Tags &
+                    Langs \\
+                    \hline
+                    3 & 8 & 12 & 3 & 0.086 & 0.53 & 0.17 & 2.97 & bla & English \\
+                    \hline
+                    4 & 5 & 4 & 4 & 0.0092 & 0.63 & 0.25 & 3.0 & bla & English \\
+                    \hline
+                \end{tabular}
+            }
+        \end{subtable}
+        \caption{Evaluation of the partitions obtained by the application of the K-Clique algorithm.}
+        \label{kclique}
+    \end{table}
 
 % section k_clique (end)
 
