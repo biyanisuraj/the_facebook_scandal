@@ -14,16 +14,18 @@ in the biggest community (Tags) and finally the languages of the users in the bi
 
     \begin{table}[H]
         \centering
-        \begin{subtable}{0.60\textwidth}
+        \begin{subtable}{\textwidth}
             \resizebox{\textwidth}{!}{
                 \begin{tabular}{| c | c | c | c | c | c | c | c | c | c |}
                     \hline
                     K & Communities & Biggest & Smallest & Modularity & Conductance & IED & AND &  Tags &
                     Langs \\
                     \hline
-                    3 & 8 & 12 & 3 & 0.086 & 0.53 & 0.17 & 2.97 & bla & English \\
+                    3 & 8 & 12 & 3 & 0.086 & 0.53 & 0.17 & 2.97 & zuckerberg, cambridgeanalytica,
+                    deletefacebook, facebook, facebookgate & English \\
                     \hline
-                    4 & 5 & 4 & 4 & 0.0092 & 0.63 & 0.25 & 3.0 & bla & English \\
+                    4 & 5 & 4 & 4 & 0.0092 & 0.63 & 0.25 & 3.0 & cambridgeanalytica, deletefacebook, facebook
+                    & English \\
                     \hline
                 \end{tabular}
             }
@@ -36,11 +38,52 @@ in the biggest community (Tags) and finally the languages of the users in the bi
 
 \section{Label Propagation} % (fold)
 \label{sec:label_propagation}
+    In Table \ref{labelprop} are represented the results of the application of the \textbf{Label Propagation}
+    algorithm. Together with the Louvain algorithm, it returns the best partition, as we can see by the modularity
+    and conductance scores.
+
+    \begin{table}[H]
+        \centering
+        \begin{subtable}{\textwidth}
+            \resizebox{\textwidth}{!}{
+                \begin{tabular}{| c | c | c | c | c | c | c | c | c |}
+                    \hline
+                    Communities & Biggest & Smallest & Modularity & Conductance & IED & AND &  Tags & Langs \\
+                    \hline
+                    757 & 46 & 1 & 0.66 & 0.24 & 0.18 & 1.42 & zuckerberg, cambridgeanalytica, deletefacebook,
+                    facebook ,facebookgate & English \\
+                    \hline
+                \end{tabular}
+            }
+        \end{subtable}
+        \caption{Evaluation of the partition obtained by the application of the Label Propagaion algorithm.}
+        \label{labelprop}
+    \end{table}
 
 % section label_propagation (end)
 
 \section{Louvain} % (fold)
 \label{sec:louvain}
+    The application of the \textbf{Louvain} algorithm returns the best partition among all the partitions returned
+    by the other algorithms. The results of its application are represented in Table \ref{louvain}.
+
+    \begin{table}[H]
+        \centering
+        \begin{subtable}{\textwidth}
+            \resizebox{\textwidth}{!}{
+                \begin{tabular}{| c | c | c | c | c | c | c | c | c |}
+                    \hline
+                    Communities & Biggest & Smallest & Modularity & Conductance & IED & AND &  Tags & Langs \\
+                    \hline
+                    731 & 34 & 1 & 0.75 & 0.070 & 0.14 & 1.62 & cambridgeanalytica, deletefacebook, privacy,
+                    zuckerberg, facebook, facebookgate & English, French, Deutsch, Arabic \\
+                    \hline
+                \end{tabular}
+            }
+        \end{subtable}
+        \caption{Evaluation of the partition obtained by the application of the Louvain algorithm.}
+        \label{louvain}
+    \end{table}
 
 % section louvain (end)
 
