@@ -133,20 +133,35 @@ in the biggest community (Tags) and finally the languages of the users in the bi
 
 \section{Demon} % (fold)
 \label{sec:demon}
+    Finally in Table \ref{demon} we provide the results of the application of the \textbf{Demon} algorithm, that
+    we tested for three different values of $\epsilon$, $0.25$, $0.50$ and $0.75$, respectively. An interesting
+    fact for the application of this algorithm is the one that all the biggest communities discoverd in the three
+    applications are composed only by english users. In general, the three partitions are not so good from the
+    point of view of the modularity score, with the second application of the algorithm beign the best among the
+    three.
 
-\begin{table}[H]
-    \centering
-    \begin{subtable}{\textwidth}
-        \resizebox{\textwidth}{!}{
-            \begin{tabular}{| c | c | c | c | c | c | c | c | c | c |}
-            \hline
-            Epsilon & Communities & Biggest & Smallest & Modularity & Conductance & IED & AND &  Tags & Langs \\
-            \hline
-            \end{tabular}
-        }
-    \end{subtable}
-    \caption{Evaluation of the partition obtained by the application of the Demon algorithm.}
-    \label{demon}
-\end{table}
+    \begin{table}[H]
+        \centering
+        \begin{subtable}{\textwidth}
+            \resizebox{\textwidth}{!}{
+                \begin{tabular}{| c | c | c | c | c | c | c | c | c | c |}
+                \hline
+                Epsilon & Communities & Biggest & Smallest & Modularity & Conductance & IED & AND &  Tags & Langs \\
+                \hline
+                0.25 & 5 & 28 & 5 & 0.019 & 0.57 & 0.081 & 3.76 & zuckerberg, cambridgeanalytica, deletefacebook,
+                facebook, facebookgate & English \\
+                \hline
+                0.50 & 11 & 18 & 4 & 0.049 & 0.68 & 0.14 & 3.39 & cambridgeanalytica, deletefacebook, facebook,
+                facebookgate & English \\
+                \hline
+                0.75 & 13 & 15 & 4 & 0.025 & 0.71 & 0.15 & 3.31 & cambridgeanalytica, deletefacebook, privacy,
+                zuckerberg, facebook, facebookgate & English \\
+                \hline
+                \end{tabular}
+            }
+        \end{subtable}
+        \caption{Evaluation of the partition obtained by the application of the Demon algorithm.}
+        \label{demon}
+    \end{table}
 
 % section demon (end)
