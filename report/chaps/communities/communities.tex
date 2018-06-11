@@ -89,10 +89,64 @@ in the biggest community (Tags) and finally the languages of the users in the bi
 
 \section{Girvan-Newman} % (fold)
 \label{sec:girvan_newman}
+    For the \textbf{Girvan-Newman} algorithm, we've decided to record the results of $5$ iterations over the sample
+    network. The results are represented in Table \ref{girvan_newman}. As you can see, the first iteration
+    returns a very poor partition, with a low modularity score, due to the fact that the edge with the highest
+    betweenness centrality in the starting sample network doesn't provide a good grade of separation among the nodes
+    of the network. With the second iteration, and the ones after that, there is a consistent improvement either in
+    the modularity score and in the other measures.
+    \begin{table}[H]
+        \centering
+        \begin{subtable}{\textwidth}
+            \resizebox{\textwidth}{!}{
+                \begin{tabular}{| c | c | c | c | c | c | c | c | c | c |}
+                    \hline
+                    Iteration & Communities & Biggest & Smallest & Modularity & Conductance & IED & AND &  Tags &
+                    Langs \\
+                    \hline
+                    1 & 720 & 234 & 1 & 0.19 & 0.0016 & 0.21 & 1.24 & cambridgeanalytica, deletefacebook, privacy,
+                    zuckerberg, facebook, facebookgate & English, French, Deutsch, Arabic, Spanish, Italian,
+                    Portoguese, Hindi, Finnish, Hungarian \\
+                    \hline
+                    2 & 721 & 117 & 1 & 0.55 & 0.0077 & 0.20 & 1.32 & zuckerberg, cambridgeanalytica,
+                    deletefacebook, facebook, facebookgate & English, French, Deutsch, Hindi, Finnish, Spanish \\
+                    \hline
+                    3 & 722 & 117 & 1 & 0.59 & 0.016 & 0.19 & 1.36 & cambridgeanalytica, deletefacebook, privacy,
+                    zuckerberg, facebook, facebookgate & English, French, Deutsch, Arabic, Italian, Portoguese,
+                    Hungarian \\
+                    \hline
+                    4 & 723 & 109 & 1 & 0.61 & 0.018 & 0.18 & 1.42 & cambridgeanalytica, deletefacebook, privacy,
+                    zuckerberg, facebook, facebookgate & English, French, Deutsch, Arabic, Italian, Portoguese,
+                    Hungarian \\
+                    \hline
+                    5 & 724 & 96 & 1 & 0.65 & 0.023 & 0.18 & 1.49 & zuckerberg, cambridgeanalytica, deletefacebook,
+                    facebook, facebookgate & English, French, Deutsch, Italian, Hindi \\
+                    \hline
+                \end{tabular}
+            }
+        \end{subtable}
+        \caption{Evaluation of the partition obtained by the application of the Girvan-Newman algorithm.}
+        \label{girvan_newman}
+    \end{table}
 
 % section girvan_newman (end)
 
 \section{Demon} % (fold)
 \label{sec:demon}
+
+\begin{table}[H]
+    \centering
+    \begin{subtable}{\textwidth}
+        \resizebox{\textwidth}{!}{
+            \begin{tabular}{| c | c | c | c | c | c | c | c | c | c |}
+            \hline
+            Epsilon & Communities & Biggest & Smallest & Modularity & Conductance & IED & AND &  Tags & Langs \\
+            \hline
+            \end{tabular}
+        }
+    \end{subtable}
+    \caption{Evaluation of the partition obtained by the application of the Demon algorithm.}
+    \label{demon}
+\end{table}
 
 % section demon (end)

@@ -73,9 +73,11 @@ def evaluate_partition(infos):
     else:
         results = pquality.pquality_summary(infos['network'],
                                             infos['partition'])
-        results['Indexes'].to_csv(path_or_buf='./results/demon/indexes.csv')
-        results['Modularity'].to_csv(path_or_buf='./results/demon/' +
-                                     'modularity.csv')
+        results['Indexes'].to_csv(path_or_buf='./results/demon/'
+                                  + str(infos['epsilon']) + '_indexes.csv')
+        results['Modularity'].to_csv(path_or_buf='./results/demon/'
+                                     + str(infos['epsilon']) +
+                                     '_modularity.csv')
 
 
 def apply_kclique(g, subsize=1000):
@@ -187,7 +189,8 @@ def apply_gn(g, subsize=1000):
         iterations[i + 1] = coms_gn
 
         extract_info({'community': max_community,
-                      'fname': './results/girvan_newman/it_' + str(i + 1),
+                      'fname': './results/girvan_newman/it_' + str(i + 1) +
+                      '_',
                       'ncommunities': len(coms_gn),
                       'maxcomlen': max_len,
                       'mincomlen': min_len})
@@ -201,25 +204,29 @@ def apply_gn(g, subsize=1000):
 def apply_demon(g, subsize=1000):
     print 'COMPUTING DEMON SCORE'
     g = g.to_undirected()
-    epsilon = float(raw_input('EPSILON: '))
+    iterations = dict()
 
-    d = dm.Demon(graph=g, min_community_size=3, epsilon=epsilon)
-    coms_demon = d.execute()
-    max_len = max([len(c) for c in coms_demon])
-    min_len = min([len(c) for c in coms_demon])
-    max_community = [c for c in coms_demon if len(c) == max_len][0]
+    for eps in [0.25, 0.50, 0.75]:
+        d = dm.Demon(graph=g, min_community_size=3, epsilon=eps)
+        coms_demon = d.execute()
+        max_len = max([len(c) for c in coms_demon])
+        min_len = min([len(c) for c in coms_demon])
+        max_community = [c for c in coms_demon if len(c) == max_len][0]
 
-    print 'GREATEST COMMUNITY COMPOSED BY ' + str(max_len) + ' NODES'
+        print 'FOR EPSILON ' + str(eps) + ' GREATEST COMMUNITY COMPOSED BY ' \
+            + str(max_len) + ' NODES'
 
-    extract_info({'community': max_community,
-                  'fname': './results/demon/',
-                  'ncommunities': len(coms_demon),
-                  'maxcomlen': max_len,
-                  'mincomlen': min_len})
-    evaluate_partition({'alg': 'demon', 'network': g,
-                        'partition': coms_demon})
+        extract_info({'community': max_community,
+                      'fname': './results/demon/' + str(eps) + '_',
+                      'ncommunities': len(coms_demon),
+                      'maxcomlen': max_len,
+                      'mincomlen': min_len})
+        evaluate_partition({'alg': 'demon', 'network': g, 'epsilon': eps,
+                            'partition': coms_demon})
 
-    return coms_demon
+        iterations[eps] = coms_demon
+
+    return iterations
 
 
 if __name__ == '__main__':
@@ -281,13 +288,18 @@ if __name__ == '__main__':
                                                    str(iteration) +
                                                    '_details.csv')
                     else:
-                        comp = NF1(ps[i][k], ps[j]).summary()
-                        comp['scores'].to_csv(path_or_buf='./comparisons/' +
-                                              'k_clique/k_clique_' + str(k) +
-                                              '_demon_scores.csv')
-                        comp['details'].to_csv(path_or_buf='./comparisons/' +
-                                               'k_clique/k_clique_' + str(k) +
-                                               '_demon_details.csv')
+                        for iteration in ps[j]:
+                            comp = NF1(ps[i][k], ps[j][iteration]).summary()
+                            comp['scores'].to_csv(path_or_buf='./comparisons/'
+                                                  + 'k_clique/k_clique_' +
+                                                  str(k) + '_demon_' +
+                                                  str(iteration) + '_scores.' +
+                                                  'csv')
+                        comp['details'].to_csv(path_or_buf='./comparisons/'
+                                               + 'k_clique/k_clique_' +
+                                               str(k) + '_demon_' +
+                                               str(iteration) +
+                                               '_details.csv')
             elif ps[i] == p_labelprop:
                 if ps[j] == p_louvain:
                     comp = NF1(ps[i], ps[j]).summary()
@@ -311,13 +323,18 @@ if __name__ == '__main__':
                                                str(iteration) +
                                                '_details.csv')
                 else:
-                    comp = NF1(ps[i], ps[j]).summary()
-                    comp['scores'].to_csv(path_or_buf='./comparisons/' +
-                                          'label_propagation/label_' +
-                                          'propagation_demon_scores.csv')
-                    comp['details'].to_csv(path_or_buf='./comparisons/' +
-                                           'label_propagation/label_' +
-                                           'propagation_demon_details.csv')
+                    for iteration in ps[j]:
+                        comp = NF1(ps[i], ps[j][iteration]).summary()
+                        comp['scores'].to_csv(path_or_buf='./comparisons/'
+                                              + 'label_propagation/label_' +
+                                              'propagation_demon_' +
+                                              str(iteration) +
+                                              '_scores.csv')
+                        comp['details'].to_csv(path_or_buf='./comparisons/'
+                                               + 'label_propagation/label_' +
+                                               'propagation_demon_' +
+                                               str(iteration) +
+                                               '_details.csv')
             elif ps[i] == p_louvain:
                 if ps[j] == p_gn:
                     for iteration in ps[j]:
@@ -331,19 +348,25 @@ if __name__ == '__main__':
                                                str(iteration) +
                                                '_details.csv')
                 else:
-                    comp = NF1(ps[i], ps[j]).summary()
-                    comp['scores'].to_csv(path_or_buf='./comparisons/'
-                                          + 'louvain/louvain_demon_scores.csv')
-                    comp['details'].to_csv(path_or_buf='./comparisons/'
-                                           + 'louvain/louvain_demon_details' +
-                                           '.csv')
+                    for iteration in ps[j]:
+                        comp = NF1(ps[i], ps[j][iteration]).summary()
+                        comp['scores'].to_csv(path_or_buf='./comparisons/'
+                                              + 'louvain/louvain_demon_' +
+                                              str(iteration) + '_scores.csv')
+                        comp['details'].to_csv(path_or_buf='./comparisons/'
+                                               + 'louvain/louvain_demon_' +
+                                               str(iteration) + '_details.csv')
             elif ps[i] == p_gn:
                 for iteration in ps[i]:
-                    comp = NF1(ps[i][iteration], ps[j]).summary()
-                    comp['scores'].to_csv(path_or_buf='./comparisons/' +
-                                          'girvan_newman/gn_it_' +
-                                          str(iteration) + '_demon_scores.csv')
-                    comp['details'].to_csv(path_or_buf='./comparisons/' +
-                                           'girvan_newman/gn_it_' +
-                                           str(iteration) + '_demon_details' +
-                                           '.csv')
+                    for it in ps[j]:
+                        comp = NF1(ps[i][iteration], ps[j][it]).summary()
+                        comp['scores'].to_csv(path_or_buf='./comparisons/' +
+                                              'girvan_newman/gn_it_' +
+                                              str(iteration) +
+                                              '_demon_' + str(it) +
+                                              '_scores.csv')
+                        comp['details'].to_csv(path_or_buf='./comparisons/' +
+                                               'girvan_newman/gn_it_' +
+                                               str(iteration) +
+                                               '_demon_' + str(it) +
+                                               '_details.csv')
