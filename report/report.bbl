@@ -61,6 +61,50 @@
       \field{title}{{Cambridge Analytica and Facebook: The Scandal and the Fallout So Far}}
       \field{year}{2018}
     \endentry
+    \entry{ye_paths}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=2d847b5fc74f78ee05296442a1328654}{%
+           family={Ye},
+           familyi={Y\bibinitperiod},
+           given={Qi},
+           giveni={Q\bibinitperiod}}}%
+        {{hash=9e5a02c6c2cd40b7090c4dd06f6200c4}{%
+           family={Wu},
+           familyi={W\bibinitperiod},
+           given={Bin},
+           giveni={B\bibinitperiod}}}%
+        {{hash=fa0b1feee4e9fdb278fb6a625849cb84}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Bai},
+           giveni={B\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Chongqing, China}%
+      }
+      \list{publisher}{1}{%
+        {Springer-Verlag}%
+      }
+      \strng{namehash}{e3b009a9d853871fbccf72f852e19cd4}
+      \strng{fullhash}{e3b009a9d853871fbccf72f852e19cd4}
+      \strng{authornamehash}{e3b009a9d853871fbccf72f852e19cd4}
+      \strng{authorfullhash}{e3b009a9d853871fbccf72f852e19cd4}
+      \field{sortinit}{3}
+      \field{sortinithash}{197da6d6c34c6b20ce45c4d4baace5a4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 6th International Conference on Advanced Data Mining and Applications: Part I}
+      \field{isbn}{3-642-17315-2, 978-3-642-17315-8}
+      \field{series}{ADMA'10}
+      \field{title}{Distance Distribution and Average Shortest Path Length Estimation in Real-world Networks}
+      \field{year}{2010}
+      \field{pages}{322\bibrangedash 333}
+      \range{pages}{12}
+      \verb{url}
+      \verb http://dl.acm.org/citation.cfm?id=1947599.1947633
+      \endverb
+      \keyw{average shortest path length,sampling,social network analysis,vertex-vertex distance}
+    \endentry
   \endsortlist
 \endrefsection
 \endinput

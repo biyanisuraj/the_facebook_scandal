@@ -162,6 +162,40 @@ Timeline da sistemare: \cite{nyt_timeline}
       \label{fig:connectivity}
     \end{figure}
 
+    \clearpage
+    \section{Path analysis}
+    In order to exactly estimate the average path length $\langle d \rangle$ it would be necessary to compute all the node-node distances of the network. These procedure results infeasible with the computation resources available, as shown in Fig. \ref{fig:path_time}.
+    In real networks the path length distribution is quite close to a normal distribution, as shown in \cite{ye_paths}. The average path length has then been estimated statistically, random sampling a number $n$ of node pairs, sufficient to achieve a narrow confidence interval for the mean. The assumption of normality of the distribution it is strong, but not necessary. The convergence of the computed mean to the expected value is guaranteed by the central limit theorem with the assumptions that the distances are independent, identically distributed, and with finite variance.
+    The average path length has been estimated by the average of the distances $D_i$ for each sampled node pair, and computing its standard deviation:
+    \begin{equation}
+      \langle d \rangle = \frac{\sum D_i}{n} \; , \; \sigma(\langle d \rangle) = \frac{s}{\sqrt{n}}
+    \end{equation}
+
+
+    
+\begin{minipage}[b]{0.5\textwidth}
+   \centering
+    \begin{figure}[H]
+      \includegraphics[width=\textwidth]{../../scripts/visualization/imgs/paths_computation_time.pdf}            
+          \caption{Shortest paths computation time by number of pairs}
+      \label{fig:path_time}
+\end{figure}
+\end{minipage}
+\begin{minipage}[b]{0.5\textwidth}
+  \begin{figure}[H]
+  \centering
+      \includegraphics[width=\textwidth]{../../scripts/visualization/imgs/paths_hist.pdf}            
+        \caption{Shortest paths distribution}
+\end{figure}
+\end{minipage}
+
+    
+    \begin{figure}[htbp]
+      \centering
+      \includegraphics[width=\textwidth]{../../scripts/visualization/imgs/paths_hist_comparison.pdf}            
+      \caption{Shortest paths distributions comparison between the original largest connected component and a random network with degree preservation.}
+      \label{fig:path_comparison}
+    \end{figure}
 
     
     
