@@ -65,6 +65,65 @@
       \field{title}{{Cambridge Analytica and Facebook: The Scandal and the Fallout So Far}}
       \field{year}{2018}
     \endentry
+    \entry{comm_ground_truth}{misc}{}
+      \name{author}{2}{}{%
+        {{hash=26995f77758a4b94095d5cb42313d78d}{%
+           family={Jaewon},
+           familyi={J\bibinitperiod},
+           given={Yang},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=ef08f55311e6dd6e37718f0dd8205185}{%
+           family={Jure},
+           familyi={J\bibinitperiod},
+           given={Leskovec},
+           giveni={L\bibinitperiod}}}%
+      }
+      \strng{namehash}{16ee88c58499748abb5748a755116286}
+      \strng{fullhash}{16ee88c58499748abb5748a755116286}
+      \strng{bibnamehash}{16ee88c58499748abb5748a755116286}
+      \strng{authorbibnamehash}{16ee88c58499748abb5748a755116286}
+      \strng{authornamehash}{16ee88c58499748abb5748a755116286}
+      \strng{authorfullhash}{16ee88c58499748abb5748a755116286}
+      \field{sortinit}{3}
+      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://link.springer.com/article/10.1007/s10115-013-0693-z}}
+      \field{title}{Defining and Evaluating Network Communities based on Ground-truth}
+      \field{year}{2015}
+    \endentry
+    \entry{rossetti2016}{misc}{}
+      \name{author}{3}{}{%
+        {{hash=739b0986c92653739a7bf42740ee4069}{%
+           family={Rossetti},
+           familyi={R\bibinitperiod},
+           given={Giulio},
+           giveni={G\bibinitperiod}}}%
+        {{hash=f1dc088fdc6d46f2361a7f0bb668aefe}{%
+           family={Pappalardo},
+           familyi={P\bibinitperiod},
+           given={Luca},
+           giveni={L\bibinitperiod}}}%
+        {{hash=0930684ce679c195c405ac160c716023}{%
+           family={Rinzivillo},
+           familyi={R\bibinitperiod},
+           given={Salvatore},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{6cf411c2679ba16ebde102d0037b6299}
+      \strng{fullhash}{6cf411c2679ba16ebde102d0037b6299}
+      \strng{bibnamehash}{6cf411c2679ba16ebde102d0037b6299}
+      \strng{authorbibnamehash}{6cf411c2679ba16ebde102d0037b6299}
+      \strng{authornamehash}{6cf411c2679ba16ebde102d0037b6299}
+      \strng{authorfullhash}{6cf411c2679ba16ebde102d0037b6299}
+      \field{sortinit}{4}
+      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://doi.org/10.1007/978-3-319-30569-1_10}}
+      \field{title}{A Novel Approach to Evaluate Community Detection Algorithms on Ground Truth}
+      \field{year}{2016}
+    \endentry
   \enddatalist
 \endrefsection
 \endinput

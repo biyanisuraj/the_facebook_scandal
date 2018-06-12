@@ -1,15 +1,19 @@
 In this chapter we'll provide the results obtained by applying \textbf{K-Clique}, \textbf{Label Propagation},
 \textbf{Louvain}, \textbf{Girvan-Newman} and \textbf{Demon} to a sample of $1000$ nodes taken from the original
 network. We've chosen to sample the crawled data in order to ease the application of the various algorithms.
-For each application of the algorithms we provide a table containing the measures for evaluating the obtained
-partitions (Modularity, Conductance, IED and AND), the total number of communities discoverd
-(Communities), the number of nodes in the smallest/biggest community (Smallest/Biggest), the hashtags utilized
-in the biggest community (Tags) and finally the languages of the users in the biggest community (Langs).
+Each partition is evaluated by applying an implementation of the scoring functions listed in
+\cite{comm_ground_truth}, and, for each algorithm, the results are represented in a table. Together with the
+results of scoring functions are also provided the total number of communities discoverd (Communities), the
+number of nodes in the smallest/biggest community (Smallest/Biggest), the hashtags utilized in the biggest
+community (Tags) and finally the languages of the users in the biggest community (Langs).
 
 \section{K-Clique} % (fold)
 \label{sec:k_clique}
     We have chosen to apply the \textbf{K-Clique} algorithm to the sample using three different values for
-    $k$: $3$, $4$ and $5$, respectively. The results are represented in Table \ref{kclique}.
+    $k$: $3$, $4$ and $5$, respectively. The results are represented in Table \ref{kclique}. As we can see, even
+    if the result is not so good, the best partition is returned by using $k$ eguals to $3$. It is interesting to
+    note that all the biggest partitions returned by the various application of the algorithm are composed only by
+    english speaking users.
 
     \begin{table}[H]
         \centering
@@ -42,7 +46,9 @@ in the biggest community (Tags) and finally the languages of the users in the bi
 \section{Label Propagation} % (fold)
 \label{sec:label_propagation}
     In Table \ref{labelprop} are represented the results of the application of the \textbf{Label Propagation}
-    algorithm.
+    algorithm. According to the modularity score the partition provided by this algorithm represent a good
+    subdivision of the original network. As for the kclique algorithm, it is interesting to note that the biggest
+    community is composed only by english speaking users.
 
     \begin{table}[H]
         \centering
@@ -138,11 +144,9 @@ in the biggest community (Tags) and finally the languages of the users in the bi
 \section{Demon} % (fold)
 \label{sec:demon}
     Finally in Table \ref{demon} we provide the results of the application of the \textbf{Demon} algorithm, that
-    we tested for three different values of $\epsilon$, $0.25$, $0.50$ and $0.75$, respectively. An interesting
-    fact for the application of this algorithm is the one that all the biggest communities discoverd in the three
-    applications are composed only by english users. In general, the three partitions are not so good from the
-    point of view of the modularity score, with the second application of the algorithm beign the best among the
-    three.
+    we tested for three different values of $\epsilon$, $0.25$, $0.50$ and $0.75$, respectively. In general, the
+    three partitions are not so good from the point of view of the modularity score, with the first application
+    of the algorithm beign the best among the three.
 
     \begin{table}[H]
         \centering
@@ -169,3 +173,48 @@ in the biggest community (Tags) and finally the languages of the users in the bi
     \end{table}
 
 % section demon (end)
+
+\section{Comparisons} % (fold)
+\label{sec:comparisons}
+    In this final section of the chapter we compare the algorithms used so far by confronting the best instances
+    among the iterations provided in the past sections. The comparisons are performed by using the NF$1$ score, as
+    described in \cite{rossetti2016}.
+
+    \begin{table}[H]
+        \centering
+        \begin{subtable}{\textwidth}
+            \resizebox{\textwidth}{!}{
+                \begin{tabular}{| c | c | c | c | c | c | c | c | c |}
+                    \hline
+                    A1 & A2 & F1 mean & Ground Truth Communities & Identified Communities & Community Ratio &
+                    Ground Truth Matched & Node Coverage & NF1 \\
+                    \hline
+                    K-Clique 3 & Label Propagation & 0.44 & 714.0 & 21.0 & 0.029 & 0.022 & 0.10 & 0.0076 \\
+                    \hline
+                    K-Clique 3 & Louvain & 0.32 & 683.0 & 21.0 & 0.031 & 0.016 & 0.10 & 0.0027 \\
+                    \hline
+                    K-Clique 3 & Girvan-Newman 5 & 0.25 & 677.0 & 21.0 & 0.031 & 0.012 & 0.10 & 0.0011 \\
+                    \hline
+                    K-Clique 3 & Demon 0.25 & 0.92 & 6.0 & 21.0 & 3.5 & 1.0 & 1.44 & 0.24 \\
+                    \hline
+                    Label Propagation & Louvain & 0.96 & 683.0 & 714.0 & 1.05 & 1.0 & 1.0 & 0.92 \\
+                    \hline
+                    Label Propagation & Girvan-Newman 5 & 0.95 & 677.0 & 714.0 & 1.06 & 1.0 & 1.0
+                    & 0.90 \\
+                    \hline
+                    Label Propagation & Demon 0.25 & 0.38 & 6.0 & 714.0 & 119.0 & 1.0 & 14.17
+                    & 0.0032 \\
+                    \hline
+                    Louvain & Girvan-Newman 5 & 0.99 & 677.0 & 683.0 & 1.01 & 1.0 & 1.0 & 0.98 \\
+                    \hline
+                    Louvain & Demon 0.25 & 0.38 & 6.0 & 683.0 & 113.83 & 1.0 & 14.17 & 0.0033 \\
+                    \hline
+                    Girvan-Newman 5 & Demon 0.25 & 0.36 & 6.0 & 677.0 & 112.83 & 1.0 & 14.17 & 0.0032 \\
+                    \hline
+                \end{tabular}
+            }
+        \end{subtable}
+        \caption{}
+        \label{comparisons}
+    \end{table}
+% section comparisons (end)

@@ -295,11 +295,11 @@ if __name__ == '__main__':
                                                   str(k) + '_demon_' +
                                                   str(iteration) + '_scores.' +
                                                   'csv')
-                        comp['details'].to_csv(path_or_buf='./comparisons/'
-                                               + 'k_clique/k_clique_' +
-                                               str(k) + '_demon_' +
-                                               str(iteration) +
-                                               '_details.csv')
+                            comp['details'].to_csv(path_or_buf='./comparisons/'
+                                                   + 'k_clique/k_clique_' +
+                                                   str(k) + '_demon_' +
+                                                   str(iteration) +
+                                                   '_details.csv')
             elif ps[i] == p_labelprop:
                 if ps[j] == p_louvain:
                     comp = NF1(ps[i], ps[j]).summary()
