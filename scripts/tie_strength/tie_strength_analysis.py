@@ -24,6 +24,10 @@ def test_cc(g, tests, iterations):
                 dc_sorted = sorted(nx.degree_centrality(g_copy).items(),
                                    key=operator.itemgetter(1), reverse=True)
                 g_copy.remove_node(dc_sorted.pop(0)[0])
+            else:
+                bc_sorted = sorted(nx.betweenness_centrality(g_copy).items(),
+                                   key=operator.itemgetter(1), reverse=True)
+                g_copy.remove_node(bc_sorted.pop(0)[0])
 
         plt.plot([i[0] for i in cc_on_remotion],
                  [i[1] for i in cc_on_remotion])
@@ -43,4 +47,4 @@ if __name__ == '__main__':
     g = nx.read_edgelist('../network/networks/edge_list.txt',
                          create_using=nx.DiGraph(), nodetype=int, data=False)
 
-    test_cc(g.to_undirected(), ['RANDOM', 'DEGREE CENTRALITY'], 50)
+    test_cc(g.to_undirected(), ['BETWEENNESS CENTRALITY'], 50)
