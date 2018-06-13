@@ -92,6 +92,171 @@
       \field{title}{Defining and Evaluating Network Communities based on Ground-truth}
       \field{year}{2015}
     \endentry
+    \entry{k_clique}{misc}{}
+      \name{author}{4}{}{%
+        {{hash=baf7c83cdb924d1c2bf7caa892600b90}{%
+           family={Palla},
+           familyi={P\bibinitperiod},
+           given={Gergely},
+           giveni={G\bibinitperiod}}}%
+        {{hash=bcf69536a8864825119f94792bcda356}{%
+           family={Derényi},
+           familyi={D\bibinitperiod},
+           given={Imre},
+           giveni={I\bibinitperiod}}}%
+        {{hash=d5bb80c1f53d39f245df12115a58fa9f}{%
+           family={Farkas},
+           familyi={F\bibinitperiod},
+           given={Illés},
+           giveni={I\bibinitperiod}}}%
+        {{hash=6ff33ab4371a3804415d624c6171ef14}{%
+           family={Vicsek},
+           familyi={V\bibinitperiod},
+           given={Tamás},
+           giveni={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{2696e5f65c99a09bd31d2bd695c75dd2}
+      \strng{fullhash}{f7aefa9dfb32f97d1541961965d44ed7}
+      \strng{bibnamehash}{2696e5f65c99a09bd31d2bd695c75dd2}
+      \strng{authorbibnamehash}{2696e5f65c99a09bd31d2bd695c75dd2}
+      \strng{authornamehash}{2696e5f65c99a09bd31d2bd695c75dd2}
+      \strng{authorfullhash}{f7aefa9dfb32f97d1541961965d44ed7}
+      \field{sortinit}{4}
+      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{http://dx.doi.org/10.1038/nature03607}}
+      \field{title}{Uncovering the overlapping community structure of complex networks in nature and society}
+      \field{year}{2005}
+    \endentry
+    \entry{label_propagation}{misc}{}
+      \name{author}{2}{}{%
+        {{hash=067684fad830e2e356fca8170bb68211}{%
+           family={Cordasco},
+           familyi={C\bibinitperiod},
+           given={G.},
+           giveni={G\bibinitperiod}}}%
+        {{hash=bd6b8051ab2462d2d261746ec7852029}{%
+           family={Gargano},
+           familyi={G\bibinitperiod},
+           given={L.},
+           giveni={L\bibinitperiod}}}%
+      }
+      \strng{namehash}{edfc26efd0d380b3bd919f15a72107e7}
+      \strng{fullhash}{edfc26efd0d380b3bd919f15a72107e7}
+      \strng{bibnamehash}{edfc26efd0d380b3bd919f15a72107e7}
+      \strng{authorbibnamehash}{edfc26efd0d380b3bd919f15a72107e7}
+      \strng{authornamehash}{edfc26efd0d380b3bd919f15a72107e7}
+      \strng{authorfullhash}{edfc26efd0d380b3bd919f15a72107e7}
+      \field{sortinit}{5}
+      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://ieeexplore.ieee.org/abstract/document/5730298/citations}}
+      \field{title}{Community detection via semi-synchronous label propagation algorithms}
+      \field{year}{2010}
+    \endentry
+    \entry{louvain}{misc}{}
+      \name{author}{4}{}{%
+        {{hash=01960fa4414c20b7bd352fa0969eac4b}{%
+           family={Blondel},
+           familyi={B\bibinitperiod},
+           given={Vincent\bibnamedelima D},
+           giveni={V\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=6b6e1859f5b4504b6f852c6112880f18}{%
+           family={Guillaume},
+           familyi={G\bibinitperiod},
+           given={Jean-Loup},
+           giveni={J\bibinithyphendelim L\bibinitperiod}}}%
+        {{hash=a0bc3d83c54bda6a078936b2d87d6c9f}{%
+           family={Lambiotte},
+           familyi={L\bibinitperiod},
+           given={Renaud},
+           giveni={R\bibinitperiod}}}%
+        {{hash=78c7291a964edd655c49fdec8099ab3e}{%
+           family={Lefebvre},
+           familyi={L\bibinitperiod},
+           given={Etienne},
+           giveni={E\bibinitperiod}}}%
+      }
+      \strng{namehash}{dc752b2fcf2e07387e8cdb51c06d60e1}
+      \strng{fullhash}{136f387964fdc88f6e67c2282e9fa621}
+      \strng{bibnamehash}{dc752b2fcf2e07387e8cdb51c06d60e1}
+      \strng{authorbibnamehash}{dc752b2fcf2e07387e8cdb51c06d60e1}
+      \strng{authornamehash}{dc752b2fcf2e07387e8cdb51c06d60e1}
+      \strng{authorfullhash}{136f387964fdc88f6e67c2282e9fa621}
+      \field{sortinit}{6}
+      \field{sortinithash}{57e57fb8451e7fcfa45d1e069f6d3136}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{http://stacks.iop.org/1742-5468/2008/i=10/a=P10008}}
+      \field{title}{Fast unfolding of communities in large networks}
+      \field{year}{2008}
+    \endentry
+    \entry{girvan_newman}{misc}{}
+      \name{author}{2}{}{%
+        {{hash=3d0a234cad5f1174e74175aff18bee28}{%
+           family={Girvan},
+           familyi={G\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+        {{hash=e10496a046558ed6c27e3a9373727f7f}{%
+           family={Newman},
+           familyi={N\bibinitperiod},
+           given={M.\bibnamedelimi E.\bibnamedelimi J.},
+           giveni={M\bibinitperiod\bibinitdelim E\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \strng{namehash}{97a2d30433091dd02b2fe0e171aac48b}
+      \strng{fullhash}{97a2d30433091dd02b2fe0e171aac48b}
+      \strng{bibnamehash}{97a2d30433091dd02b2fe0e171aac48b}
+      \strng{authorbibnamehash}{97a2d30433091dd02b2fe0e171aac48b}
+      \strng{authornamehash}{97a2d30433091dd02b2fe0e171aac48b}
+      \strng{authorfullhash}{97a2d30433091dd02b2fe0e171aac48b}
+      \field{sortinit}{7}
+      \field{sortinithash}{c818dd9105a2852444fc9f5e145c294e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{http://www.pnas.org/content/99/12/7821}}
+      \field{title}{Community structure in social and biological networks}
+      \field{year}{2002}
+    \endentry
+    \entry{demon}{misc}{}
+      \name{author}{4}{}{%
+        {{hash=65e540cd84782a1b78d96b627966fd85}{%
+           family={Coscia},
+           familyi={C\bibinitperiod},
+           given={Michele},
+           giveni={M\bibinitperiod}}}%
+        {{hash=739b0986c92653739a7bf42740ee4069}{%
+           family={Rossetti},
+           familyi={R\bibinitperiod},
+           given={Giulio},
+           giveni={G\bibinitperiod}}}%
+        {{hash=7b5335e9010800b63f5c2959f076d90f}{%
+           family={Giannotti},
+           familyi={G\bibinitperiod},
+           given={Fosca},
+           giveni={F\bibinitperiod}}}%
+        {{hash=a2cc2c3b41c34d28b00e8b61bf830b42}{%
+           family={Pedreschi},
+           familyi={P\bibinitperiod},
+           given={Dino},
+           giveni={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{da847a37c5ebd857a1a239c87289e88d}
+      \strng{fullhash}{0ec22ea903a2d11cbe0789f99c53145a}
+      \strng{bibnamehash}{da847a37c5ebd857a1a239c87289e88d}
+      \strng{authorbibnamehash}{da847a37c5ebd857a1a239c87289e88d}
+      \strng{authornamehash}{da847a37c5ebd857a1a239c87289e88d}
+      \strng{authorfullhash}{0ec22ea903a2d11cbe0789f99c53145a}
+      \field{sortinit}{8}
+      \field{sortinithash}{07edf88d4ea82509b9c4b4d13f41c452}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{http://arxiv.org/abs/1206.0629}}
+      \field{title}{{DEMON:} a Local-First Discovery Method for Overlapping Communities}
+      \field{year}{2012}
+    \endentry
     \entry{rossetti2016}{misc}{}
       \name{author}{3}{}{%
         {{hash=739b0986c92653739a7bf42740ee4069}{%
@@ -116,8 +281,8 @@
       \strng{authorbibnamehash}{6cf411c2679ba16ebde102d0037b6299}
       \strng{authornamehash}{6cf411c2679ba16ebde102d0037b6299}
       \strng{authorfullhash}{6cf411c2679ba16ebde102d0037b6299}
-      \field{sortinit}{4}
-      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
+      \field{sortinit}{9}
+      \field{sortinithash}{1dd72ab054147731c9d824b49aba0534}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{https://doi.org/10.1007/978-3-319-30569-1_10}}
