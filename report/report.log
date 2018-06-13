@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017) (preloaded format=xelatex 2018.4.1)  12 JUN 2018 12:01
+This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017) (preloaded format=xelatex 2018.4.1)  13 JUN 2018 09:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1744,23 +1744,18 @@ Chapter 4.
 [4
 
 ]
+\openout2 = `chaps/communities/communities.aux'.
+
+ (./chaps/communities/communities.tex
 Chapter 5.
 [5
 
-]
-\openout2 = `chaps/communities/communities.aux'.
 
- (./chaps/communities/communities.tex [6
-
-]) [7]
-Chapter 6.
-[8
-
-
-]
+]) [6]
 \openout2 = `chaps/spreading/spreading.aux'.
 
  (./chaps/spreading/spreading.tex
+Chapter 6.
 File: images/spreading/si/diffusion.pdf Graphic file (type pdf)
 <use images/spreading/si/diffusion.pdf>
 File: images/spreading/si/diffusion_er.pdf Graphic file (type pdf)
@@ -1779,7 +1774,9 @@ File: images/spreading/sis/diffusion_ba_comparison.pdf Graphic file (type pdf)
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [9
+ [7
+
+
 
 ]
 File: images/spreading/sir/diffusion_smaller.pdf Graphic file (type pdf)
@@ -1803,20 +1800,20 @@ File: images/spreading/threshold/diffusion_ba.pdf Graphic file (type pdf)
 File: images/spreading/threshold/trend_comparison.pdf Graphic file (type pdf)
 <use images/spreading/threshold/trend_comparison.pdf>
 
-[10]) [11]
+[8]) [9]
 Chapter 7.
-[12
+[10
 
 
-] [13
+] [11
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 113.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 113.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 111.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 111.
  (./report.aux (./chaps/communities/communities.aux)
 (./chaps/spreading/spreading.aux))
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 113.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 113.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 111.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 111.
 
 
 LaTeX Warning: There were multiply-defined labels.
@@ -1826,12 +1823,12 @@ Package logreq Info: Writing requests to 'report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 39381 strings out of 493007
- 769451 string characters out of 6134606
+ 39383 strings out of 493007
+ 769493 string characters out of 6134606
  1332839 words of memory out of 5000000
- 42812 multiletter control sequences out of 15000+600000
+ 42814 multiletter control sequences out of 15000+600000
  534228 words of font info for 45 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  62i,12n,79p,10488b,4564s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on report.xdv (15 pages, 189484 bytes).
+Output written on report.xdv (13 pages, 189900 bytes).
