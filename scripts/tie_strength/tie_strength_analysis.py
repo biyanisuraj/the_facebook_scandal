@@ -4,53 +4,37 @@ import networkx as nx
 import random
 
 
-def test_cc_on_dc(g, iterations):
-    print 'TESTING ON DEGREE CENTRALITY'
+def test_cc(g, tests, iterations):
+    for test in tests:
+        g_copy = g.copy()
 
-    cc_on_remotion = list()
+        print 'TESTING ON ' + test
 
-    for i in range(iterations):
-        num_cc = len(sorted(nx.connected_components(g), key=len, reverse=True))
-        cc_on_remotion.append([i + 1, num_cc])
+        cc_on_remotion = list()
 
-        dc_sorted = sorted(nx.degree_centrality(g).items(),
-                           key=operator.itemgetter(1), reverse=True)
+        for i in range(iterations):
+            num_cc = len(sorted(nx.connected_components(g_copy), key=len,
+                                reverse=True))
+            cc_on_remotion.append([i + 1, num_cc])
 
-        g.remove_node(dc_sorted.pop(0)[0])
+            if test == 'RANDOM':
+                nodes = list(g_copy.nodes())
+                g_copy.remove_node(nodes[random.randint(0, len(nodes) - 1)])
+            elif test == 'DEGREE CENTRALITY':
+                dc_sorted = sorted(nx.degree_centrality(g_copy).items(),
+                                   key=operator.itemgetter(1), reverse=True)
+                g_copy.remove_node(dc_sorted.pop(0)[0])
 
-    plt.plot([i[0] for i in cc_on_remotion],
-             [i[1] for i in cc_on_remotion])
-    plt.xticks([1, 25, 50], ['1', '25', '50'])
-    plt.title('Number of connected components per nodes removed by'
-              ' degree centrality')
-    plt.xlabel('Removed Nodes')
-    plt.ylabel('Connected Components')
-    plt.tight_layout()
-    plt.savefig('../../report/images/tie_strength/test_cc_on_dc.pdf')
-    plt.clf()
-
-
-def test_cc_on_random(g, iterations):
-    print 'TESTING ON RANDOM'
-
-    cc_on_remotion = list()
-
-    for i in range(iterations):
-        num_cc = len(sorted(nx.connected_components(g), key=len, reverse=True))
-        cc_on_remotion.append([i + 1, num_cc])
-
-        nodes = list(g.nodes())
-        g.remove_node(nodes[random.randint(0, len(nodes) - 1)])
-
-    plt.plot([i[0] for i in cc_on_remotion],
-             [i[1] for i in cc_on_remotion])
-    plt.xticks([1, 25, 50], ['1', '25', '50'])
-    plt.title('Number of connected components per nodes removed at random')
-    plt.xlabel('Removed Nodes')
-    plt.ylabel('Connected Components')
-    plt.tight_layout()
-    plt.savefig('../../report/images/tie_strength/test_cc_on_random.pdf')
-    plt.clf()
+        plt.plot([i[0] for i in cc_on_remotion],
+                 [i[1] for i in cc_on_remotion])
+        plt.xticks([1, 25, 50], ['1', '25', '50'])
+        plt.title(test)
+        plt.xlabel('Removed Nodes')
+        plt.ylabel('Connected Components')
+        plt.tight_layout()
+        plt.savefig('../../report/images/tie_strength/test_cc_on_'
+                    + test.lower().replace(' ', '_') + '.pdf')
+        plt.clf()
 
 
 if __name__ == '__main__':
@@ -59,5 +43,4 @@ if __name__ == '__main__':
     g = nx.read_edgelist('../network/networks/edge_list.txt',
                          create_using=nx.DiGraph(), nodetype=int, data=False)
 
-    test_cc_on_dc(g.to_undirected(), 50)
-    test_cc_on_random(g.to_undirected(), 50)
+    test_cc(g.to_undirected(), ['RANDOM', 'DEGREE CENTRALITY'], 50)
