@@ -6,7 +6,7 @@ In this chapter we'll provide the results obtained by applying \textbf{K-Clique}
 network. We've chosen to sample the crawled data in order to ease the application of the various algorithms.
 Each partition is evaluated by applying an implementation of the scoring functions listed in
 \cite{comm_ground_truth}, and, for each algorithm, the results are represented in a table. Together with the
-results of scoring functions are also provided the total number of communities discoverd (Communities), the
+results of the scoring functions are also provided the total number of communities discoverd (Communities), the
 number of nodes in the smallest/biggest community (Smallest/Biggest), the hashtags utilized in the biggest
 community (Tags) and finally the languages of the users in the biggest community (Langs).
 
@@ -14,9 +14,10 @@ community (Tags) and finally the languages of the users in the biggest community
 \label{sec:k_clique}
     We have chosen to apply the \textbf{K-Clique} algorithm, described in \cite{k_clique}, to the sample using
     three different values for $k$: $3$, $4$ and $5$, respectively. The results are represented in Table
-    \ref{kclique}. As we can see, even if the result is not so good, the best partition is returned by using $k$
-    eguals to $3$. It is interesting to note that all the biggest partitions returned by the various application
-    of the algorithm are composed only by english speaking users.
+    \ref{kclique}. As we can see, even if the result is not so good, the best partition is obtained by using $k$
+    eguals to $3$, which returns a low modularity partition composed by low degree nodes. It is interesting to
+    note that all the biggest partitions returned by the various applications of the algorithm are composed only
+    by english speaking users.
 
     \begin{table}[H]
         \centering
@@ -50,8 +51,10 @@ community (Tags) and finally the languages of the users in the biggest community
 \label{sec:label_propagation}
     In Table \ref{labelprop} are represented the results of the application of the \textbf{Label Propagation}
     algorithm, described in \cite{label_propagation}. According to the modularity score the partition provided by
-    this algorithm represent a good subdivision of the original network. As for the kclique algorithm, it is
-    interesting to note that the biggest community is composed only by english speaking users.
+    this algorithm represent a good subdivision of the original network, even if it is composed for the vast
+    majority by small communities, as suggested by the high number of communities and the low value for the
+    Average Node Degree score. As for the kclique algorithm, it is interesting to note that the biggest community
+    is composed only by english speaking users.
 
     \begin{table}[H]
         \centering
@@ -77,7 +80,9 @@ community (Tags) and finally the languages of the users in the biggest community
 \label{sec:louvain}
     The application of the \textbf{Louvain}, described in \cite{louvain}, along with the last iteration of the
     Girvan-Newman algorithm, returns the best partition among all the partitions returned by the other algorithms.
-    The results of its application are represented in Table \ref{louvain}.
+    The results of its application are represented in Table \ref{louvain}. As for the Label Propagation algorithm,
+    this partition also is composed by an high number of small communities, composed by nodes with degree betweem
+    $1$ and $2$.
 
     \begin{table}[H]
         \centering
@@ -142,14 +147,20 @@ community (Tags) and finally the languages of the users in the biggest community
         \label{girvan_newman}
     \end{table}
 
+    In general, the partitions returned by the five iterations of the algorithms are all composed by an high number
+    of small communities.
+
 % section girvan_newman (end)
 
 \section{Demon} % (fold)
 \label{sec:demon}
     Finally in Table \ref{demon} we provide the results of the application of the \textbf{Demon} algorithm,
-    describe in \cite{demon}, that we tested for three different values of $\epsilon$, $0.25$, $0.50$ and $0.75$,
+    described in \cite{demon}, that we tested for three different values of $\epsilon$, $0.25$, $0.50$ and $0.75$,
     respectively. In general, the three partitions are not so good from the point of view of the modularity score,
-    with the first application of the algorithm beign the best among the three.
+    with the first application of the algorithm beign the best among the three
+    Contrary to the results obtained by the application of the other algorithms, the partitions for the Demon
+    algorithm are all composed by a small number of communities, with the last one being the "denser" one, which
+    are composed by nodes with a degree between $3$ and $4$.
 
     \begin{table}[H]
         \centering
@@ -217,12 +228,15 @@ community (Tags) and finally the languages of the users in the biggest community
                 \end{tabular}
             }
         \end{subtable}
-        \caption{Comparisons among the algorithms utilized in this chapter.}
+        \caption{Comparisons among the best iterations of the algorithms utilized in this chapter.}
         \label{comparisons}
     \end{table}
 
     In Table \ref{comparisons} we can see the comparisons among the best iterations of the algorithms utilized
-    during the community discovery phase.
+    during the community discovery phase. As we can see, the best results are returned by the comparisons between
+    the Label Propagation, Louvain and Girvan-Newman (fifth iteration) algorithms, since that, as we've seen in
+    the past sections, they are in fact the best performing algorithms among the ones we've tested for the
+    communities discovery.
 % section comparisons (end)
 
 % chapter communities_discovery (end)
