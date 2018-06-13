@@ -1,0 +1,242 @@
+\chapter{Communities discovery} % (fold)
+\label{cha:communities_discovery}
+
+In this chapter we'll provide the results obtained by applying \textbf{K-Clique}, \textbf{Label Propagation},
+\textbf{Louvain}, \textbf{Girvan-Newman} and \textbf{Demon} to a sample of $1000$ nodes taken from the original
+network. We've chosen to sample the crawled data in order to ease the application of the various algorithms.
+Each partition is evaluated by applying an implementation of the scoring functions listed in
+\cite{comm_ground_truth}, and, for each algorithm, the results are represented in a table. Together with the
+results of the scoring functions are also provided the total number of communities discoverd (Communities), the
+number of nodes in the smallest/biggest community (Smallest/Biggest), the hashtags utilized in the biggest
+community (Tags) and finally the languages of the users in the biggest community (Langs).
+
+\section{K-Clique} % (fold)
+\label{sec:k_clique}
+    We have chosen to apply the \textbf{K-Clique} algorithm, described in \cite{k_clique}, to the sample using
+    three different values for $k$: $3$, $4$ and $5$, respectively. The results are represented in Table
+    \ref{kclique}. As we can see, even if the result is not so good, the best partition is obtained by using $k$
+    eguals to $3$, which returns a low modularity partition composed by low degree nodes. It is interesting to
+    note that all the biggest partitions returned by the various applications of the algorithm are composed only
+    by english speaking users.
+
+    \begin{table}[H]
+        \centering
+        \begin{subtable}{\textwidth}
+            \resizebox{\textwidth}{!}{
+                \begin{tabular}{| c | c | c | c | c | c | c | c | c | c |}
+                    \hline
+                    K & Communities & Biggest & Smallest & Modularity & Conductance & IED & AND &  Tags &
+                    Langs \\
+                    \hline
+                    3 & 21 & 30 & 3 & 0.12 & 0.56 & 0.21 & 2.51 & cambridgeanalytica,
+                    deletefacebook, facebook, facebookgate & English \\
+                    \hline
+                    4 & 1 & 16 & 16 & 0.013 & 0.35 & 0.11 & 6.38 & cambridgeanalytica,
+                    deletefacebook, facebook, facebookgate
+                    & English \\
+                    \hline
+                    5 & 2 & 7 & 6 & 0.00015 & 0.67 & 0.23 & 5.05 & cambridgeanalytica, deletefacebook, facebook
+                    & English \\
+                    \hline
+                \end{tabular}
+            }
+        \end{subtable}
+        \caption{Evaluation of the partitions obtained by the application of the K-Clique algorithm.}
+        \label{kclique}
+    \end{table}
+
+% section k_clique (end)
+
+\section{Label Propagation} % (fold)
+\label{sec:label_propagation}
+    In Table \ref{labelprop} are represented the results of the application of the \textbf{Label Propagation}
+    algorithm, described in \cite{label_propagation}. According to the modularity score the partition provided by
+    this algorithm represent a good subdivision of the original network, even if it is composed for the vast
+    majority by small communities, as suggested by the high number of communities and the low value for the
+    Average Node Degree score. As for the kclique algorithm, it is interesting to note that the biggest community
+    is composed only by english speaking users.
+
+    \begin{table}[H]
+        \centering
+        \begin{subtable}{\textwidth}
+            \resizebox{\textwidth}{!}{
+                \begin{tabular}{| c | c | c | c | c | c | c | c | c |}
+                    \hline
+                    Communities & Biggest & Smallest & Modularity & Conductance & IED & AND &  Tags & Langs \\
+                    \hline
+                    714 & 53 & 1 & 0.65 & 0.26 & 0.18 & 1.48 & zuckerberg,
+                    cambridgeanalytica, deletefacebook, facebook, facebookgate & English \\
+                    \hline
+                \end{tabular}
+            }
+        \end{subtable}
+        \caption{Evaluation of the partition obtained by the application of the Label Propagaion algorithm.}
+        \label{labelprop}
+    \end{table}
+
+% section label_propagation (end)
+
+\section{Louvain} % (fold)
+\label{sec:louvain}
+    The application of the \textbf{Louvain}, described in \cite{louvain}, along with the last iteration of the
+    Girvan-Newman algorithm, returns the best partition among all the partitions returned by the other algorithms.
+    The results of its application are represented in Table \ref{louvain}. As for the Label Propagation algorithm,
+    this partition also is composed by an high number of small communities, composed by nodes with degree betweem
+    $1$ and $2$.
+
+    \begin{table}[H]
+        \centering
+        \begin{subtable}{\textwidth}
+            \resizebox{\textwidth}{!}{
+                \begin{tabular}{| c | c | c | c | c | c | c | c | c |}
+                    \hline
+                    Communities & Biggest & Smallest & Modularity & Conductance & IED & AND &  Tags & Langs \\
+                    \hline
+                    683 & 51 & 1 & 0.75 & 0.087 & 0.14 & 1.76 & cambridgeanalytica,
+                    deletefacebook, facebook, facebookgate & English, Spanish \\
+                    \hline
+                \end{tabular}
+            }
+        \end{subtable}
+        \caption{Evaluation of the partition obtained by the application of the Louvain algorithm.}
+        \label{louvain}
+    \end{table}
+
+% section louvain (end)
+
+\section{Girvan-Newman} % (fold)
+\label{sec:girvan_newman}
+    For the \textbf{Girvan-Newman} algorithm, described in \cite{girvan_newman}, we've decided to record
+    the results of $5$ iterations over the sample network. The results are represented in Table
+    \ref{girvan_newman}. As you can see, the first iteration returns a very poor partition, with a low modularity
+    score, due to the fact that the edge with the highest betweenness centrality in the starting sample network
+    doesn't provide a good grade of separation among the nodes of the network. With the second iteration, and the
+    ones after that, there is a consistent improvement either in the modularity score and in the other measures.
+    \begin{table}[H]
+        \centering
+        \begin{subtable}{\textwidth}
+            \resizebox{\textwidth}{!}{
+                \begin{tabular}{| c | c | c | c | c | c | c | c | c | c |}
+                    \hline
+                    Iteration & Communities & Biggest & Smallest & Modularity & Conductance & IED & AND &  Tags &
+                    Langs \\
+                    \hline
+                    1 & 673 & 275 & 1 & 0.21 & 0.0049 & 0.20 & 1.40 & cambridgeanalytica,
+                    deletefacebook, privacy, zuckerberg, facebook, facebookgate & English, French, Deutsch, Arabic,
+                    Spanish, Italian, Portoguese, Hindi, Finnish, Hungarian \\
+                    \hline
+                    2 & 674 & 165 & 1 & 0.55 & 0.011 & 0.19 & 1.49 & cambridgeanalytica,
+                    deletefacebook, privacy, zuckerberg, facebook, facebookgate
+                    & English, French, Deutsch, Hindi, Finnish, Spanish \\
+                    \hline
+                    3 & 675 & 110 & 1 & 0.63 & 0.017 & 0.18 & 1.53 & cambridgeanalytica, deletefacebook, privacy,
+                    zuckerberg, facebook, facebookgate & English, French, Deutsch, Arabic, Italian, Portoguese,
+                    Hungarian \\
+                    \hline
+                    4 & 676 & 110 & 1 & 0.66 & 0.025 & 0.17 & 1.57 & cambridgeanalytica, deletefacebook, privacy,
+                    zuckerberg, facebook, facebookgate & English, French, Deutsch, Arabic, Italian, Portoguese,
+                    Hungarian \\
+                    \hline
+                    5 & 677 & 87 & 1 & 0.71 & 0.030 & 0.17 & 1.65 & zuckerberg, cambridgeanalytica, deletefacebook,
+                    facebook, facebookgate & English, French, Deutsch, Italian, Hindi \\
+                    \hline
+                \end{tabular}
+            }
+        \end{subtable}
+        \caption{Evaluation of the partition obtained by the application of the Girvan-Newman algorithm.}
+        \label{girvan_newman}
+    \end{table}
+
+    In general, the partitions returned by the five iterations of the algorithms are all composed by an high number
+    of small communities.
+
+% section girvan_newman (end)
+
+\section{Demon} % (fold)
+\label{sec:demon}
+    Finally in Table \ref{demon} we provide the results of the application of the \textbf{Demon} algorithm,
+    described in \cite{demon}, that we tested for three different values of $\epsilon$, $0.25$, $0.50$ and $0.75$,
+    respectively. In general, the three partitions are not so good from the point of view of the modularity score,
+    with the first application of the algorithm beign the best among the three
+    Contrary to the results obtained by the application of the other algorithms, the partitions for the Demon
+    algorithm are all composed by a small number of communities, with the last one being the "denser" one, which
+    are composed by nodes with a degree between $3$ and $4$.
+
+    \begin{table}[H]
+        \centering
+        \begin{subtable}{\textwidth}
+            \resizebox{\textwidth}{!}{
+                \begin{tabular}{| c | c | c | c | c | c | c | c | c | c |}
+                \hline
+                Epsilon & Communities & Biggest & Smallest & Modularity & Conductance & IED & AND &  Tags & Langs \\
+                \hline
+                0.25 & 6 & 30 & 4 & 0.098 & 0.43 & 0.11 & 3.65 & cambridgeanalytica, deletefacebook,
+                facebook, facebookgate & English \\
+                \hline
+                0.50 & 9 & 30 & 4 & 0.085 & 0.49 & 0.12 & 4.05 & cambridgeanalytica, deletefacebook, facebook,
+                facebookgate & English \\
+                \hline
+                0.75 & 13 & 27 & 4 & 0.082 & 0.51 & 0.14 & 3.86 & cambridgeanalytica, deletefacebook,
+                facebook, facebookgate & English \\
+                \hline
+                \end{tabular}
+            }
+        \end{subtable}
+        \caption{Evaluation of the partition obtained by the application of the Demon algorithm.}
+        \label{demon}
+    \end{table}
+
+% section demon (end)
+
+\section{Comparisons} % (fold)
+\label{sec:comparisons}
+    In this final section of the chapter we compare the algorithms used so far by confronting the best instances
+    among the iterations provided in the past sections. The comparisons are performed by using the NF$1$ score, as
+    described in \cite{rossetti2016}.
+
+    \begin{table}[H]
+        \centering
+        \begin{subtable}{\textwidth}
+            \resizebox{\textwidth}{!}{
+                \begin{tabular}{| c | c | c | c | c | c | c | c | c |}
+                    \hline
+                    A1 & A2 & F1 mean & Ground Truth Communities & Identified Communities & Community Ratio &
+                    Ground Truth Matched & Node Coverage & NF1 \\
+                    \hline
+                    K-Clique 3 & Label Propagation & 0.44 & 714.0 & 21.0 & 0.029 & 0.022 & 0.10 & 0.0076 \\
+                    \hline
+                    K-Clique 3 & Louvain & 0.32 & 683.0 & 21.0 & 0.031 & 0.016 & 0.10 & 0.0027 \\
+                    \hline
+                    K-Clique 3 & Girvan-Newman 5 & 0.25 & 677.0 & 21.0 & 0.031 & 0.012 & 0.10 & 0.0011 \\
+                    \hline
+                    K-Clique 3 & Demon 0.25 & 0.92 & 6.0 & 21.0 & 3.5 & 1.0 & 1.44 & 0.24 \\
+                    \hline
+                    Label Propagation & Louvain & 0.96 & 683.0 & 714.0 & 1.05 & 1.0 & 1.0 & 0.92 \\
+                    \hline
+                    Label Propagation & Girvan-Newman 5 & 0.95 & 677.0 & 714.0 & 1.06 & 1.0 & 1.0
+                    & 0.90 \\
+                    \hline
+                    Label Propagation & Demon 0.25 & 0.38 & 6.0 & 714.0 & 119.0 & 1.0 & 14.17
+                    & 0.0032 \\
+                    \hline
+                    Louvain & Girvan-Newman 5 & 0.99 & 677.0 & 683.0 & 1.01 & 1.0 & 1.0 & 0.98 \\
+                    \hline
+                    Louvain & Demon 0.25 & 0.38 & 6.0 & 683.0 & 113.83 & 1.0 & 14.17 & 0.0033 \\
+                    \hline
+                    Girvan-Newman 5 & Demon 0.25 & 0.36 & 6.0 & 677.0 & 112.83 & 1.0 & 14.17 & 0.0032 \\
+                    \hline
+                \end{tabular}
+            }
+        \end{subtable}
+        \caption{Comparisons among the best iterations of the algorithms utilized in this chapter.}
+        \label{comparisons}
+    \end{table}
+
+    In Table \ref{comparisons} we can see the comparisons among the best iterations of the algorithms utilized
+    during the community discovery phase. As we can see, the best results are returned by the comparisons between
+    the Label Propagation, Louvain and Girvan-Newman (fifth iteration) algorithms, since that, as we've seen in
+    the past sections, they are in fact the best performing algorithms among the ones we've tested for the
+    communities discovery.
+% section comparisons (end)
+
+% chapter communities_discovery (end)
