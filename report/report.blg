@@ -1,15 +1,15 @@
 [0] Config.pm:302> INFO - This is Biber 2.10
 [0] Config.pm:305> INFO - Logfile is 'report.blg'
-[48] biber-darwin:313> INFO - === Wed Jun 13, 2018, 11:15:26
-[72] Biber.pm:371> INFO - Reading 'report.bcf'
-[183] Biber.pm:857> INFO - Found 9 citekeys in bib section 0
-[203] Biber.pm:3976> INFO - Processing section 0
-[219] Biber.pm:4136> INFO - Looking for bibtex format file 'references.bib' for section 0
-[220] bibtex.pm:1490> INFO - LaTeX decoding ...
-[233] bibtex.pm:1306> INFO - Found BibTeX data source 'references.bib'
-[314] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[314] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[314] Biber.pm:3804> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
-[314] Biber.pm:3810> INFO - No sort tailoring available for locale 'en-US'
-[323] bbl.pm:617> INFO - Writing 'report.bbl' with encoding 'UTF-8'
-[329] bbl.pm:720> INFO - Output to report.bbl
+[46] biber-darwin:313> INFO - === Thu Jun 14, 2018, 12:25:53
+[70] Biber.pm:371> INFO - Reading 'report.bcf'
+[177] Biber.pm:857> INFO - Found 10 citekeys in bib section 0
+[197] Biber.pm:3976> INFO - Processing section 0
+[212] Biber.pm:4136> INFO - Looking for bibtex format file 'references.bib' for section 0
+[214] bibtex.pm:1490> INFO - LaTeX decoding ...
+[228] bibtex.pm:1306> INFO - Found BibTeX data source 'references.bib'
+[308] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[308] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[308] Biber.pm:3804> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
+[308] Biber.pm:3810> INFO - No sort tailoring available for locale 'en-US'
+[315] bbl.pm:617> INFO - Writing 'report.bbl' with encoding 'UTF-8'
+[319] bbl.pm:720> INFO - Output to report.bbl

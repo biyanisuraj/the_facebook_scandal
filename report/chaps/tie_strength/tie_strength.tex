@@ -1,0 +1,12 @@
+\chapter{Tie Strength} % (fold)
+\label{cha:tie_strength}
+    In this chapter we'll provide some informations about the robustness of our network, using the formulas described
+    in \cite{network_science}.
+
+    Since we have $\gamma = 2.6, k_{\mathit{min}} = 1$ and $k_{\mathit{max}} = 19073$
+    \begin{equation*}
+        f_c = 1 - \frac{1}
+                  {\frac{\gamma - 2}{3 - \gamma}k^{\gamma - 2}_{\mathit{min}}k^{3 - \gamma}_{\mathit{max}} \ - \  1} =
+                  1 - \frac{1}{1.50 * 1^{0.6} * 19073^{0.4} \ - \ 1} = 0.99
+    \end{equation*}
+% chapter tie_strength (end)
