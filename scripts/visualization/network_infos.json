@@ -1,0 +1,37 @@
+{
+    "g_ba": {
+        "d_max_und": 3640, 
+        "d_min_und": 76, 
+        "L": 4989628, 
+        "d_avg_und": 151, 
+        "N": 65729
+    }, 
+    "g": {
+        "d_in_max": 19064, 
+        "d_out_min": 0, 
+        "d_max": 19073, 
+        "d_in_min": 0, 
+        "L": 2501757, 
+        "N": 65729, 
+        "d_avg": 38, 
+        "d_min": 1, 
+        "d_avg_und": 57, 
+        "d_max_und": 19065, 
+        "d_min_und": 1, 
+        "d_out_max": 4130
+    }, 
+    "g_er": {
+        "d_in_max": 109, 
+        "d_out_min": 35, 
+        "d_max": 183, 
+        "d_in_min": 36, 
+        "L": 4318406, 
+        "N": 65729, 
+        "d_avg": 65, 
+        "d_min": 84, 
+        "d_avg_und": 131, 
+        "d_max_und": 183, 
+        "d_min_und": 84, 
+        "d_out_max": 103
+    }
+}

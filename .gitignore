@@ -27,3 +27,11 @@ user_data/*
 /report/chaps/spreading/spreading.log
 /sna.sublime-project
 /sna.sublime-workspace
+*.bbl
+*.blg
+*.bcf
+*.out
+*.xml
+*.aux
+*.log
+*.toc
