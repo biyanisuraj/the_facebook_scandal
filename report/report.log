@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017) (preloaded format=xelatex 2018.4.1)  13 JUN 2018 11:50
+This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017) (preloaded format=xelatex 2018.4.1)  13 JUN 2018 22:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1547,7 +1547,8 @@ File: english.lbx 2017/12/19 v3.10 biblatex localization (PK/JW/AB)
 
 LaTeX Warning: Label `fig:time_history' multiply defined.
 
-(./chaps/communities/communities.aux) (./chaps/spreading/spreading.aux))
+(./chaps/tie_strength/tie_strength.aux) (./chaps/communities/communities.aux)
+(./chaps/spreading/spreading.aux))
 \openout1 = `report.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 52.
@@ -1744,18 +1745,27 @@ Chapter 4.
 [4
 
 ]
+\openout2 = `chaps/tie_strength/tie_strength.aux'.
+
+ (./chaps/tie_strength/tie_strength.tex
+Chapter 5.
+) [5
+
+
+]
 \openout2 = `chaps/communities/communities.aux'.
 
  (./chaps/communities/communities.tex
-Chapter 5.
-[5
+Chapter 6.
+[6
 
 
-]) [6]
+
+]) [7]
 \openout2 = `chaps/spreading/spreading.aux'.
 
  (./chaps/spreading/spreading.tex
-Chapter 6.
+Chapter 7.
 File: images/spreading/si/diffusion.pdf Graphic file (type pdf)
 <use images/spreading/si/diffusion.pdf>
 File: images/spreading/si/diffusion_er.pdf Graphic file (type pdf)
@@ -1774,7 +1784,7 @@ File: images/spreading/sis/diffusion_ba_comparison.pdf Graphic file (type pdf)
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [7
+ [8
 
 
 
@@ -1800,20 +1810,20 @@ File: images/spreading/threshold/diffusion_ba.pdf Graphic file (type pdf)
 File: images/spreading/threshold/trend_comparison.pdf Graphic file (type pdf)
 <use images/spreading/threshold/trend_comparison.pdf>
 
-[8]) [9]
-Chapter 7.
-[10
+[9]) [10]
+Chapter 8.
+[11
 
 
-] [11
+] [12
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 111.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 111.
- (./report.aux (./chaps/communities/communities.aux)
-(./chaps/spreading/spreading.aux))
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 111.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 111.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 113.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 113.
+ (./report.aux (./chaps/tie_strength/tie_strength.aux)
+(./chaps/communities/communities.aux) (./chaps/spreading/spreading.aux))
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 113.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 113.
 
 
 LaTeX Warning: There were multiply-defined labels.
@@ -1823,12 +1833,12 @@ Package logreq Info: Writing requests to 'report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 39393 strings out of 493007
- 769923 string characters out of 6134606
- 1333839 words of memory out of 5000000
- 42824 multiletter control sequences out of 15000+600000
+ 39403 strings out of 493007
+ 770222 string characters out of 6134606
+ 1334188 words of memory out of 5000000
+ 42826 multiletter control sequences out of 15000+600000
  534228 words of font info for 45 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  62i,12n,79p,10488b,4564s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on report.xdv (13 pages, 213560 bytes).
+Output written on report.xdv (14 pages, 214396 bytes).
