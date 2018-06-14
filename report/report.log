@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99996 (TeX Live 2016/Debian) (preloaded format=xelatex 2017.11.11)  14 JUN 2018 12:56
+This is XeTeX, Version 3.14159265-2.6-0.99996 (TeX Live 2016/Debian) (preloaded format=xelatex 2017.11.11)  14 JUN 2018 13:07
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1655,36 +1655,39 @@ Chapter 1.
 
 ]
 Chapter 2.
-File: images/../../scripts/visualization/imgs/time_history.pdf Graphic file (ty
-pe QTm)
-<use  "images/../../scripts/visualization/imgs/time_history.pdf" > [2
+File: images/../../scripts/network_analysis/imgs/time_history.pdf Graphic file 
+(type QTm)
+<use  "images/../../scripts/network_analysis/imgs/time_history.pdf" > [2
 
 ]
 Chapter 3.
-File: images/../../scripts/visualization/imgs/degree_distributions_nobinlog.pdf
- Graphic file (type QTm)
+File: images/../../scripts/network_analysis/imgs/degree_distributions_nobinlog.
+pdf Graphic file (type QTm)
 
-<use  "images/../../scripts/visualization/imgs/degree_distributions_nobinlog.pd
-f" > Excluding 'comment' comment.
-File: images/../../scripts/visualization/imgs/degree_distributions.pdf Graphic 
-file (type QTm)
-
-<use  "images/../../scripts/visualization/imgs/degree_distributions.pdf" >
-File: images/../../scripts/visualization/imgs/tot_degree_distribution.pdf Graph
+<use  "images/../../scripts/network_analysis/imgs/degree_distributions_nobinlog
+.pdf" > Excluding 'comment' comment.
+File: images/../../scripts/network_analysis/imgs/degree_distributions.pdf Graph
 ic file (type QTm)
 
-<use  "images/../../scripts/visualization/imgs/tot_degree_distribution.pdf" >
+<use  "images/../../scripts/network_analysis/imgs/degree_distributions.pdf" >
+File: images/../../scripts/network_analysis/imgs/tot_degree_distribution.pdf Gr
+aphic file (type QTm)
+
+<use  "images/../../scripts/network_analysis/imgs/tot_degree_distribution.pdf" 
+>
 Overfull \hbox (20.608pt too wide) in paragraph at lines 107--123
 [][] [] 
  []
 
-File: images/../../scripts/visualization/imgs/in_degree_distribution.pdf Graphi
-c file (type QTm)
-<use  "images/../../scripts/visualization/imgs/in_degree_distribution.pdf" >
-File: images/../../scripts/visualization/imgs/out_degree_distribution.pdf Graph
-ic file (type QTm)
+File: images/../../scripts/network_analysis/imgs/in_degree_distribution.pdf Gra
+phic file (type QTm)
 
-<use  "images/../../scripts/visualization/imgs/out_degree_distribution.pdf" >
+<use  "images/../../scripts/network_analysis/imgs/in_degree_distribution.pdf" >
+File: images/../../scripts/network_analysis/imgs/out_degree_distribution.pdf Gr
+aphic file (type QTm)
+
+<use  "images/../../scripts/network_analysis/imgs/out_degree_distribution.pdf" 
+>
 Overfull \hbox (20.608pt too wide) in paragraph at lines 125--141
 [][] [] 
  []
@@ -1695,10 +1698,10 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [3
 
 ]
-File: images/../../scripts/visualization/imgs/connectivity.pdf Graphic file (ty
-pe QTm)
+File: images/../../scripts/network_analysis/imgs/connectivity.pdf Graphic file 
+(type QTm)
 
-<use  "images/../../scripts/visualization/imgs/connectivity.pdf" >
+<use  "images/../../scripts/network_analysis/imgs/connectivity.pdf" >
 LaTeX Font Info:    Font shape `TU/lmss/m/it' in size <10> not available
 (Font)              Font shape `TU/lmss/m/sl' tried instead on input line 165.
 
@@ -1716,29 +1719,29 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [5]
-File: images/../../scripts/visualization/imgs/paths_computation_time.pdf Graphi
-c file (type QTm)
+File: images/../../scripts/network_analysis/imgs/paths_computation_time.pdf Gra
+phic file (type QTm)
 
-<use  "images/../../scripts/visualization/imgs/paths_computation_time.pdf" >
-File: images/../../scripts/visualization/imgs/paths_hist.pdf Graphic file (type
- QTm)
-
-<use  "images/../../scripts/visualization/imgs/paths_hist.pdf" >
+<use  "images/../../scripts/network_analysis/imgs/paths_computation_time.pdf" >
+File: images/../../scripts/network_analysis/imgs/paths_hist.pdf Graphic file (t
+ype QTm)
+<use  "images/../../scripts/network_analysis/imgs/paths_hist.pdf" >
 Overfull \hbox (20.608pt too wide) in paragraph at lines 176--191
 [][] [] 
  []
 
-File: images/../../scripts/visualization/imgs/paths_hist_comparison.pdf Graphic
- file (type QTm)
-<use  "images/../../scripts/visualization/imgs/paths_hist_comparison.pdf" >
-File: images/../../scripts/visualization/imgs/cluster_coef_hist.pdf Graphic fil
-e (type QTm)
+File: images/../../scripts/network_analysis/imgs/paths_hist_comparison.pdf Grap
+hic file (type QTm)
 
-<use  "images/../../scripts/visualization/imgs/cluster_coef_hist.pdf" >
-File: images/../../scripts/visualization/imgs/cluster_coef_bydegree.pdf Graphic
- file (type QTm)
+<use  "images/../../scripts/network_analysis/imgs/paths_hist_comparison.pdf" >
+File: images/../../scripts/network_analysis/imgs/cluster_coef_hist.pdf Graphic 
+file (type QTm)
 
-<use  "images/../../scripts/visualization/imgs/cluster_coef_bydegree.pdf" >
+<use  "images/../../scripts/network_analysis/imgs/cluster_coef_hist.pdf" >
+File: images/../../scripts/network_analysis/imgs/cluster_coef_bydegree.pdf Grap
+hic file (type QTm)
+
+<use  "images/../../scripts/network_analysis/imgs/cluster_coef_bydegree.pdf" >
 Overfull \hbox (20.608pt too wide) in paragraph at lines 202--217
 [][] [] 
  []
@@ -1763,13 +1766,13 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [7]
-File: images/../../scripts/visualization/imgs/hubs_followers.pdf Graphic file (
-type QTm)
- <use  "images/../../scripts/visualization/imgs/hubs_followers.pdf" >
-File: images/../../scripts/visualization/imgs/hubs_interest.pdf Graphic file (t
-ype QTm)
+File: images/../../scripts/network_analysis/imgs/hubs_followers.pdf Graphic fil
+e (type QTm)
+ <use  "images/../../scripts/network_analysis/imgs/hubs_followers.pdf" >
+File: images/../../scripts/network_analysis/imgs/hubs_interest.pdf Graphic file
+ (type QTm)
 
-<use  "images/../../scripts/visualization/imgs/hubs_interest.pdf" >
+<use  "images/../../scripts/network_analysis/imgs/hubs_interest.pdf" >
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
@@ -1921,8 +1924,8 @@ Package logreq Info: Writing requests to 'report.run.xml'.
  ) 
 Here is how much of TeX's memory you used:
  38711 strings out of 495001
- 767343 string characters out of 6177483
- 1281200 words of memory out of 5000000
+ 767394 string characters out of 6177483
+ 1281187 words of memory out of 5000000
  41951 multiletter control sequences out of 15000+600000
  10812 words of font info for 51 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
