@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99996 (TeX Live 2016/Debian) (preloaded format=xelatex 2017.11.11)  12 JUN 2018 15:50
+This is XeTeX, Version 3.14159265-2.6-0.99996 (TeX Live 2016/Debian) (preloaded format=xelatex 2017.11.11)  14 JUN 2018 08:32
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1472,6 +1472,9 @@ LaTeX Warning: Label `fig:in_degree' multiply defined.
 
 LaTeX Warning: Label `fig:out_degree' multiply defined.
 
+
+LaTeX Warning: Label `fig:path_time' multiply defined.
+
 (./chaps/spreading/spreading.aux))
 \openout1 = `report.aux'.
 
@@ -1728,6 +1731,22 @@ Overfull \hbox (20.608pt too wide) in paragraph at lines 176--191
 File: images/../../scripts/visualization/imgs/paths_hist_comparison.pdf Graphic
  file (type QTm)
 <use  "images/../../scripts/visualization/imgs/paths_hist_comparison.pdf" >
+File: images/../../scripts/visualization/imgs/cluster_coef_hist.pdf Graphic fil
+e (type QTm)
+
+<use  "images/../../scripts/visualization/imgs/cluster_coef_hist.pdf" >
+File: images/../../scripts/visualization/imgs/cluster_coef_bydegree.pdf Graphic
+ file (type QTm)
+
+<use  "images/../../scripts/visualization/imgs/cluster_coef_bydegree.pdf" >
+Overfull \hbox (20.608pt too wide) in paragraph at lines 202--217
+[][] [] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
@@ -1744,16 +1763,39 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [7]
-Chapter 4.
+File: images/../../scripts/visualization/imgs/hubs_followers.pdf Graphic file (
+type QTm)
+ <use  "images/../../scripts/visualization/imgs/hubs_followers.pdf" >
+File: images/../../scripts/visualization/imgs/hubs_interest.pdf Graphic file (t
+ype QTm)
+
+<use  "images/../../scripts/visualization/imgs/hubs_interest.pdf" >
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
 [8
 
 ]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[9]
+Chapter 4.
+[10
+
+]
 Chapter 5.
-[9
+[11
 
 ]
 Chapter 6.
-[10
+[12
 
 ]
 \openout2 = `chaps/spreading/spreading.aux'.
@@ -1765,21 +1807,21 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[11
+[13
 
 ]
 Chapter 7.
-[12
+[14
 
 
-] [13
+] [15
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 215.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 215.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 272.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 272.
  (./report.aux (./chaps/spreading/spreading.aux))
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 215.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 215.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 272.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 272.
 
 
 LaTeX Warning: There were multiply-defined labels.
@@ -1789,12 +1831,12 @@ Package logreq Info: Writing requests to 'report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 38569 strings out of 495001
- 763678 string characters out of 6177483
- 1257999 words of memory out of 5000000
- 41847 multiletter control sequences out of 15000+600000
- 10561 words of font info for 47 fonts, out of 8000000 for 9000
+ 38581 strings out of 495001
+ 764081 string characters out of 6177483
+ 1259132 words of memory out of 5000000
+ 41854 multiletter control sequences out of 15000+600000
+ 10569 words of font info for 48 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 62i,11n,75p,10495b,4570s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,11n,75p,10495b,4572s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on report.pdf (15 pages).
+Output written on report.pdf (17 pages).

@@ -197,7 +197,64 @@ Timeline da sistemare: \cite{nyt_timeline}
       \label{fig:path_comparison}
     \end{figure}
 
+
+
+\begin{minipage}[b]{0.5\textwidth}
+   \centering
+    \begin{figure}[H]
+      \includegraphics[width=\textwidth]{../../scripts/visualization/imgs/cluster_coef_hist.pdf}            
+          \caption{Clustering coefficient distribution}
+      \label{fig:path_time}
+\end{figure}
+\end{minipage}
+\begin{minipage}[b]{0.5\textwidth}
+  \begin{figure}[H]
+  \centering
+      \includegraphics[width=\textwidth]{../../scripts/visualization/imgs/cluster_coef_bydegree.pdf}            
+      \caption{Clustering coefficients as function of the degree}
+\end{figure}
+\end{minipage}
+
+\clearpage
+\section{Hubs analysis}
+
+The hubs of the crawled social network of tweets authors about the Cambridge Analytica-Facebook scandal are mainly
+news mass media, as expected. In Fig. \ref{fig:hubs_followers} the 30 biggest hubs are represented by indicating
+the in-degree of the crawled network, corresponding to the number of authors following the hub, versus the actual total
+number of followers on Twitter.
+The "The New York Times" is the biggest hub, with the maximum number of both in-degree and number of followers.
+We observe that there is an obvious positive correlation between in-degree and followers, with some variations.
+In particular, let's take a pair of hubs having similar followers count, such as the "Washington Post" and the "Huffington Post".
+The "Washington Post" has a larger in-degree than the second.
+This difference can be interpreted as a larger interest in the scandal from the people following the "Washington Post'' respect 
+to the ones following the "Huffington Post".
+We can define a quantity to measure this interest:
+
+\begin{equation}
+  \text{Interest} \equiv \frac{ \text{in-degree} }{\text{\#followers}}
+  \label{eq:interest}
+\end{equation}
+
+This measure represents the percentage of followers that being interested in the scandal had published a tweet about the subject.
+%%It is also a measure of density, being the analyzed network a sub-network of the overall Twitter network: 
+
+
+
+    \begin{figure}[htbp]
+      \centering
+      \includegraphics[width=\textwidth]{../../scripts/visualization/imgs/hubs_followers.pdf}            
+      \caption{}
+      \label{fig:hubs_followers}
+    \end{figure}
+
+    \begin{figure}[htbp]
+      \centering
+      \includegraphics[width=\textwidth]{../../scripts/visualization/imgs/hubs_interest.pdf}            
+      \caption{}
+%      \label{fig:path_comparison}
+    \end{figure}
     
+
     
     \chapter{Network dynamics}
 
