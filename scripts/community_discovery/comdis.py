@@ -227,8 +227,8 @@ def apply_demon(g, subsize=1000):
     g = g.to_undirected()
     iterations = dict()
 
-    # for eps in [0.1, 0.25, 0.50, 0.75]:
-    for eps in [0.25]:
+    for eps in [0.1, 0.25, 0.50, 0.75, 0.9]:
+    # for eps in [0.25]:
         d = dm.Demon(graph=g, min_community_size=3, epsilon=eps)
         coms_demon = d.execute()
         max_len = max([len(c) for c in coms_demon])
