@@ -61,4 +61,25 @@
         a different situation. This kind of criterion guarantees that the original structure of the network is
         broken apart more easily, because the original network's hubs are removed one by one in decreasing order.
     % section simulation_of_an_attack (end)
+    \section{Simulation of a Failure Propagation Model} % (fold)
+    \label{sec:simulation_of_a_failure_propagation_model}
+        To test more the robustness of our network, we've written the code in order to implement (and test) the
+        \textbf{Failure Propagation Model}, as described in \cite{network_science}. In Figure \ref{fail_prop_model}
+        you can see some iterations of the model in which we used different values for the $\varphi$ parameter.
+
+        \begin{figure}[H]
+            \centering
+            \begin{subfigure}{0.50\textwidth}
+                \resizebox{\textwidth}{!}{
+                    \includegraphics{images/tie_strength/failure_propagation_model.pdf}
+                }
+            \end{subfigure}
+            \caption{The test for the Failure Propagation Model was conducted over $20000$ iterations.}
+            \label{fail_prop_model}
+        \end{figure}
+
+        We can see that, as expected, the network doesn't accuse the failure propagation for $\varphi$ eguals to
+        $0.01$, in which less than $30$ nodes failed. For the smaller values of $\varphi$ we can see that the
+        situation is different, with a greater amount of nodes which fail.
+    % section simulation_of_a_failure_propagation_model (end)
 % chapter network_robustness (end)
