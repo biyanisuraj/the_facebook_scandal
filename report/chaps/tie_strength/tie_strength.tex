@@ -31,7 +31,7 @@
         In order to validate the results obtained in Section \ref{sec:critical_threshold}, here we simulate an
         attack to our network. We've chosen to simulate the remotion of $50$ nodes from the network following two
         distinct criterions: \textbf{random selection} and \textbf{degree centraility} (decreasing order). For every
-        criterion we've monitored the spreading of the connected components
+        criterion we've monitored the fragmentation of the connected components.
 
         \begin{figure}[H]
             \centering
@@ -49,8 +49,16 @@
                 \caption{}
                 \label{test_cc_on_degree_centrality}
             \end{subfigure}
-            \caption{}
+            \caption{In Figure \ref{test_cc_on_random} we can see the fragmentation of the connected components
+            during the remotion based on a randomic choice, while in Figure \ref{test_cc_on_degree_centrality} we
+            can see the same fragmentation, but this time based on decreasing degree centraility.}
             \label{test_cc}
         \end{figure}
+
+        As we can see, for the randomic choice of the nodes to be removed, the structure of the network is barely
+        altered. After the random remotion of $50$ nodes, the original $62$ connected components became slightly
+        more than $80$. For the remotion of the nodes based on decreasing degree centrality there is, as expected,
+        a different situation. This kind of criterion guarantees that the original structure of the network is
+        broken apart more easily, because the original network's hubs are removed one by one.
     % section simulation_of_an_attack (end)
 % chapter tie_strength (end)
