@@ -1,15 +1,15 @@
 [0] Config.pm:302> INFO - This is Biber 2.10
 [0] Config.pm:305> INFO - Logfile is 'report.blg'
-[46] biber-darwin:313> INFO - === Thu Jun 14, 2018, 12:25:53
-[70] Biber.pm:371> INFO - Reading 'report.bcf'
-[177] Biber.pm:857> INFO - Found 10 citekeys in bib section 0
-[197] Biber.pm:3976> INFO - Processing section 0
-[212] Biber.pm:4136> INFO - Looking for bibtex format file 'references.bib' for section 0
+[49] biber-darwin:313> INFO - === Fri Jun 15, 2018, 09:44:07
+[77] Biber.pm:371> INFO - Reading 'report.bcf'
+[180] Biber.pm:857> INFO - Found 10 citekeys in bib section 0
+[198] Biber.pm:3976> INFO - Processing section 0
+[213] Biber.pm:4136> INFO - Looking for bibtex format file 'references.bib' for section 0
 [214] bibtex.pm:1490> INFO - LaTeX decoding ...
-[228] bibtex.pm:1306> INFO - Found BibTeX data source 'references.bib'
-[308] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[308] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[308] Biber.pm:3804> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
-[308] Biber.pm:3810> INFO - No sort tailoring available for locale 'en-US'
-[315] bbl.pm:617> INFO - Writing 'report.bbl' with encoding 'UTF-8'
-[319] bbl.pm:720> INFO - Output to report.bbl
+[229] bibtex.pm:1306> INFO - Found BibTeX data source 'references.bib'
+[307] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[307] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[307] Biber.pm:3804> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
+[307] Biber.pm:3810> INFO - No sort tailoring available for locale 'en-US'
+[314] bbl.pm:617> INFO - Writing 'report.bbl' with encoding 'UTF-8'
+[318] bbl.pm:720> INFO - Output to report.bbl

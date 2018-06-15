@@ -1926,13 +1926,14 @@
     <bcf:citekey order="1">nyt_17march</bcf:citekey>
     <bcf:citekey order="2">nyt_timeline</bcf:citekey>
     <bcf:citekey order="3">network_science</bcf:citekey>
-    <bcf:citekey order="4">comm_ground_truth</bcf:citekey>
-    <bcf:citekey order="5">k_clique</bcf:citekey>
-    <bcf:citekey order="6">label_propagation</bcf:citekey>
-    <bcf:citekey order="7">louvain</bcf:citekey>
-    <bcf:citekey order="8">girvan_newman</bcf:citekey>
-    <bcf:citekey order="9">demon</bcf:citekey>
-    <bcf:citekey order="10">rossetti2016</bcf:citekey>
+    <bcf:citekey order="4">network_science</bcf:citekey>
+    <bcf:citekey order="5">comm_ground_truth</bcf:citekey>
+    <bcf:citekey order="6">k_clique</bcf:citekey>
+    <bcf:citekey order="7">label_propagation</bcf:citekey>
+    <bcf:citekey order="8">louvain</bcf:citekey>
+    <bcf:citekey order="9">girvan_newman</bcf:citekey>
+    <bcf:citekey order="10">demon</bcf:citekey>
+    <bcf:citekey order="11">rossetti2016</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">
