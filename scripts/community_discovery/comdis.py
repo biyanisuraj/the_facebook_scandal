@@ -66,10 +66,10 @@ def evaluate_partition(infos):
                                             infos['partition'])
         results['Indexes'].to_csv(path_or_buf='./results/louvain/' +
                                   'indexes.csv')
-        results['Indexes'].latex(buf='./results/louvain/indexes.tex')
+        results['Indexes'].to_latex(buf='./results/louvain/indexes.tex')
         results['Modularity'].to_csv(path_or_buf='./results/' +
                                      'louvain/modularity.csv')
-        results['Modularity'].to_csv(buf='./results/louvain/modularity.tex')
+        results['Modularity'].to_latex(buf='./results/louvain/modularity.tex')
     elif infos['alg'] == 'girvan-newman':
         for iteration in infos['partition']:
             results = pquality.pquality_summary(infos['network'],
@@ -91,14 +91,14 @@ def evaluate_partition(infos):
                                             infos['partition'])
         results['Indexes'].to_csv(path_or_buf='./results/demon/'
                                   + str(infos['epsilon']) + '_indexes.csv')
-        results['Indexes'].latex(buf='./results/demon/'
-                                 + str(infos['epsilon']) + '_indexes.tex')
+        results['Indexes'].to_latex(buf='./results/demon/'
+                                    + str(infos['epsilon']) + '_indexes.tex')
         results['Modularity'].to_csv(path_or_buf='./results/demon/'
                                      + str(infos['epsilon']) +
                                      '_modularity.csv')
-        results['Modularity'].latex(path_or_buf='./results/demon/'
-                                    + str(infos['epsilon']) +
-                                    '_modularity.tex')
+        results['Modularity'].to_latex(path_or_buf='./results/demon/'
+                                       + str(infos['epsilon']) +
+                                       '_modularity.tex')
 
 
 def apply_kclique(g, subsize=1000):
