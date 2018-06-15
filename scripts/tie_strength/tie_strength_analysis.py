@@ -2,6 +2,7 @@ from __future__ import division
 import operator
 import matplotlib.pyplot as plt
 import networkx as nx
+import numpy as np
 import random
 
 
@@ -9,7 +10,7 @@ def test_cc(g, tests, iterations):
     for test in tests:
         g_copy = g.copy()
 
-        print 'TESTING ON ' + test
+        print '\nTESTING ON ' + test
 
         cc_on_remotion = list()
 
@@ -42,6 +43,51 @@ def test_cc(g, tests, iterations):
         plt.clf()
 
 
+def failure_propagation_model(g, phi, iterations):
+    failed_over_it = list()
+
+    print '\nFAILURE PROPAGATION SIMULATION'
+
+    nx.set_node_attributes(g, 0, 'failed')
+    starter = list(g.nodes())[random.randint(0, len(g.nodes) - 1)]
+
+    print 'STARTING WITH NODE ' + str(starter)
+
+    g.nodes[starter]['failed'] = 1
+    total_failed = 1
+
+    for i in range(iterations):
+        failed = list(g.nodes())[random.randint(0, len(g.nodes) - 1)]
+
+        if g.nodes[failed]['failed'] == 0:
+            threshold = 0
+            neighbors = list(g.neighbors(failed))
+
+            if len(neighbors) != 0:
+                for neighbor in neighbors:
+                    if g.nodes[neighbor]['failed'] == 1:
+                        threshold += 1
+
+                if threshold/len(neighbors) >= phi:
+                    g.nodes[failed]['failed'] = 1
+                    total_failed += 1
+
+        if i % 1000 == 0:
+            print 'TOTAL FAILED: ' + str(total_failed)
+
+        failed_over_it.append([i, total_failed])
+
+    plt.plot([i[0] for i in failed_over_it],
+             [i[1] for i in failed_over_it])
+    plt.title('Failure propagation model')
+    plt.xlabel('Iteration')
+    plt.ylabel('Failed nodes')
+    plt.tight_layout()
+    plt.savefig('../../report/images/tie_strength/failure_propagation_model'
+                '.pdf')
+    plt.clf()
+
+
 if __name__ == '__main__':
     print 'IMPORTING NETWORK'
 
@@ -62,4 +108,5 @@ if __name__ == '__main__':
 
     print 'THE CRITICAL THRESHOLD BASED ON THE NETWORK SIZE IS ' + str(fc)
 
-    test_cc(g.to_undirected(), ['DEGREE CENTRALITY', 'RANDOM'], 50)
+    # test_cc(g.to_undirected(), ['DEGREE CENTRALITY', 'RANDOM'], 50)
+    failure_propagation_model(g, 0.001, 20000)
