@@ -3,7 +3,7 @@ import csv
 import demon as dm
 import networkx as nx
 import pquality
-# import random
+import random
 from collections import Counter, defaultdict
 from networkx.algorithms import community
 from nf1 import NF1
@@ -77,13 +77,13 @@ def evaluate_partition(infos):
             results['Indexes'].to_csv(path_or_buf='./results/girvan_newman/' +
                                       'iteration_' + str(iteration) +
                                       '_indexes.csv')
-            results['Indexes'].latex(buf='./results/girvan_newman/' +
+            results['Indexes'].to_latex(buf='./results/girvan_newman/' +
                                      'iteration_' + str(iteration) +
                                      '_indexes.tex')
             results['Modularity'].to_csv(path_or_buf='./results/girvan_newman/'
                                          + 'iteration_' + str(iteration) +
                                          '_modularity.csv')
-            results['Modularity'].latex(buf='./results/girvan_newman/'
+            results['Modularity'].to_latex(buf='./results/girvan_newman/'
                                         + 'iteration_' + str(iteration) +
                                         '_modularity.tex')
     else:
@@ -96,7 +96,7 @@ def evaluate_partition(infos):
         results['Modularity'].to_csv(path_or_buf='./results/demon/'
                                      + str(infos['epsilon']) +
                                      '_modularity.csv')
-        results['Modularity'].to_latex(path_or_buf='./results/demon/'
+        results['Modularity'].to_latex(buf='./results/demon/'
                                        + str(infos['epsilon']) +
                                        '_modularity.tex')
 
@@ -199,6 +199,7 @@ def apply_gn(g, subsize=1000):
     gn_hierarchy = community.girvan_newman(g)
 
     for i in range(ntimes):
+        print "iteration {}".format(i)
         coms_gn = [tuple(x) for x in next(gn_hierarchy)]
         max_len = max([len(c) for c in coms_gn])
         min_len = min([len(c) for c in coms_gn])
@@ -227,7 +228,8 @@ def apply_demon(g, subsize=1000):
     g = g.to_undirected()
     iterations = dict()
 
-    for eps in [0.25, 0.50, 0.75]:
+    # for eps in [0.1, 0.25, 0.50, 0.75]:
+    for eps in [0.25]:
         d = dm.Demon(graph=g, min_community_size=3, epsilon=eps)
         coms_demon = d.execute()
         max_len = max([len(c) for c in coms_demon])
@@ -256,10 +258,11 @@ if __name__ == '__main__':
     g = nx.read_edgelist('../network/networks/g_ita_edge_list.txt',
                          create_using=nx.DiGraph(), nodetype=int, data=False)
     # nodes = list(g.nodes())
-    # subsize = 2500
+    # subsize = 100
     # randoms = [random.randint(0, len(nodes) - 1) for i in range(subsize)]
-
-    p_kclique = apply_kclique(g)
+    # g = nx.subgraph(g,randoms)
+    
+    # p_kclique = apply_kclique(g)
     print '\n'
     p_labelprop = apply_labelprop(g)
     print '\n'
@@ -269,7 +272,7 @@ if __name__ == '__main__':
     print '\n'
     p_demon = apply_demon(g)
 
-    ps = [p_kclique, p_labelprop, p_louvain, p_gn, p_demon]
+    ps = [p_labelprop, p_louvain, p_gn, p_demon]
 
     for i in range(len(ps)):
         for j in range(i + 1, len(ps)):
