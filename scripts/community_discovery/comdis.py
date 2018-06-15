@@ -3,7 +3,7 @@ import csv
 import demon as dm
 import networkx as nx
 import pquality
-import random
+# import random
 from collections import Counter, defaultdict
 from networkx.algorithms import community
 from nf1 import NF1
@@ -18,7 +18,7 @@ TABLE = DB['tweets_03_17_25']
 def extract_info(com_info):
     cursor = TABLE.find({'id': {'$in': [id for id in com_info['community']]}})
     tags = Counter()
-    langs = Counter()
+    # langs = Counter()
     info_coms = {'ncommunities': com_info['ncommunities'],
                  'maxcomlen': com_info['maxcomlen'],
                  'mincomlen': com_info['mincomlen']}
@@ -26,13 +26,12 @@ def extract_info(com_info):
     for record in cursor:
         for tag in record['hashtags']:
             tags.update([tag])
-        langs.update([record['lang']])
+        # langs.update([record['lang']])
 
     with open(com_info['fname'] + 'infos.csv', 'w') as csvfile:
-        fieldnames = tags.keys() + langs.keys() + ['ncommunities',
-                                                   'maxcomlen', 'mincomlen']
+        fieldnames = tags.keys() + ['ncommunities', 'maxcomlen', 'mincomlen']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-        tags.update(langs)
+        # tags.update(langs)
         tags.update(info_coms)
         writer.writeheader()
         writer.writerow(tags)
@@ -44,22 +43,33 @@ def evaluate_partition(infos):
                                             infos['partition'])
         results['Indexes'].to_csv(path_or_buf='./results/k_clique/indexes_' +
                                   str(infos['k']) + '.csv')
+        results['Indexes'].to_latex(buf='./results/k_clique/indexes_' +
+                                    str(infos['k']) + '.tex')
         results['Modularity'].to_csv(path_or_buf='./results/k_clique/' +
                                      'modularity_' + str(infos['k']) + '.csv')
+        results['Modularity'].to_latex(buf='./results/k_clique/' +
+                                       'modularity_' + str(infos['k']) +
+                                       '.tex')
     elif infos['alg'] == 'label propagation':
         results = pquality.pquality_summary(infos['network'],
                                             infos['partition'])
         results['Indexes'].to_csv(path_or_buf='./results/label_propagation/' +
                                   'indexes.csv')
+        results['Indexes'].to_latex(buf='./results/label_propagation/' +
+                                    'indexes.tex')
         results['Modularity'].to_csv(path_or_buf='./results/' +
                                      'label_propagation/modularity.csv')
+        results['Modularity'].to_latex(buf='./results/' +
+                                       'label_propagation/modularity.tex')
     elif infos['alg'] == 'louvain':
         results = pquality.pquality_summary(infos['network'],
                                             infos['partition'])
         results['Indexes'].to_csv(path_or_buf='./results/louvain/' +
                                   'indexes.csv')
+        results['Indexes'].latex(buf='./results/louvain/indexes.tex')
         results['Modularity'].to_csv(path_or_buf='./results/' +
                                      'louvain/modularity.csv')
+        results['Modularity'].to_csv(buf='./results/louvain/modularity.tex')
     elif infos['alg'] == 'girvan-newman':
         for iteration in infos['partition']:
             results = pquality.pquality_summary(infos['network'],
@@ -67,17 +77,28 @@ def evaluate_partition(infos):
             results['Indexes'].to_csv(path_or_buf='./results/girvan_newman/' +
                                       'iteration_' + str(iteration) +
                                       '_indexes.csv')
+            results['Indexes'].latex(buf='./results/girvan_newman/' +
+                                     'iteration_' + str(iteration) +
+                                     '_indexes.tex')
             results['Modularity'].to_csv(path_or_buf='./results/girvan_newman/'
                                          + 'iteration_' + str(iteration) +
                                          '_modularity.csv')
+            results['Modularity'].latex(buf='./results/girvan_newman/'
+                                        + 'iteration_' + str(iteration) +
+                                        '_modularity.tex')
     else:
         results = pquality.pquality_summary(infos['network'],
                                             infos['partition'])
         results['Indexes'].to_csv(path_or_buf='./results/demon/'
                                   + str(infos['epsilon']) + '_indexes.csv')
+        results['Indexes'].latex(buf='./results/demon/'
+                                 + str(infos['epsilon']) + '_indexes.tex')
         results['Modularity'].to_csv(path_or_buf='./results/demon/'
                                      + str(infos['epsilon']) +
                                      '_modularity.csv')
+        results['Modularity'].latex(path_or_buf='./results/demon/'
+                                    + str(infos['epsilon']) +
+                                    '_modularity.tex')
 
 
 def apply_kclique(g, subsize=1000):
@@ -232,25 +253,21 @@ def apply_demon(g, subsize=1000):
 if __name__ == '__main__':
     print 'IMPORTING NETWORK\n'
 
-    g = nx.read_edgelist('../network/networks/edge_list.txt',
+    g = nx.read_edgelist('../network/networks/g_ita_edge_list.txt',
                          create_using=nx.DiGraph(), nodetype=int, data=False)
-    nodes = list(g.nodes())
-    subsize = 1000
-    randoms = [random.randint(0, len(nodes) - 1) for i in range(subsize)]
+    # nodes = list(g.nodes())
+    # subsize = 2500
+    # randoms = [random.randint(0, len(nodes) - 1) for i in range(subsize)]
 
-    p_kclique = apply_kclique(g.subgraph([nodes[r] for r in randoms]),
-                              subsize=subsize)
+    p_kclique = apply_kclique(g)
     print '\n'
-    p_labelprop = apply_labelprop(g.subgraph([nodes[r] for r in randoms]),
-                                  subsize=subsize)
+    p_labelprop = apply_labelprop(g)
     print '\n'
-    p_louvain = apply_louvain(g.subgraph([nodes[r] for r in randoms]),
-                              subsize=subsize)
+    p_louvain = apply_louvain(g)
     print '\n'
-    p_gn = apply_gn(g.subgraph([nodes[r] for r in randoms]), subsize=subsize)
+    p_gn = apply_gn(g)
     print '\n'
-    p_demon = apply_demon(g.subgraph([nodes[r] for r in randoms]),
-                          subsize=subsize)
+    p_demon = apply_demon(g)
 
     ps = [p_kclique, p_labelprop, p_louvain, p_gn, p_demon]
 
@@ -263,17 +280,31 @@ if __name__ == '__main__':
                         comp['scores'].to_csv(path_or_buf='./comparisons/' +
                                               'k_clique/k_clique_' + str(k) +
                                               '_labelprop_scores.csv')
+                        comp['scores'].to_latex(buf='./comparisons/' +
+                                                'k_clique/k_clique_' + str(k) +
+                                                '_labelprop_scores.tex')
                         comp['details'].to_csv(path_or_buf='./comparisons/' +
                                                'k_clique/k_clique_' + str(k) +
                                                '_labelprop_details.csv')
+                        comp['details'].to_latex(buf='./comparisons/' +
+                                                 'k_clique/k_clique_' +
+                                                 str(k) +
+                                                 '_labelprop_details.tex')
                     elif ps[j] == p_louvain:
                         comp = NF1(ps[i][k], ps[j]).summary()
                         comp['scores'].to_csv(path_or_buf='./comparisons/' +
                                               'k_clique/k_clique_' + str(k) +
                                               '_louvain_scores.csv')
+                        comp['scores'].to_latex(buf='./comparisons/' +
+                                                'k_clique/k_clique_' + str(k) +
+                                                '_louvain_scores.tex')
                         comp['details'].to_csv(path_or_buf='./comparisons/' +
                                                'k_clique/k_clique_' + str(k) +
                                                '_louvain_details.csv')
+                        comp['details'].to_latex(buf='./comparisons/' +
+                                                 'k_clique/k_clique_' +
+                                                 str(k) +
+                                                 '_louvain_details.tex')
                     elif ps[j] == p_gn:
                         for iteration in ps[j]:
                             comp = NF1(ps[i][k], ps[j][iteration]).summary()
@@ -282,11 +313,21 @@ if __name__ == '__main__':
                                                   str(k) + '_gn_it_' +
                                                   str(iteration) +
                                                   '_scores.csv')
+                            comp['scores'].to_latex(buf='./comparisons/'
+                                                    + 'k_clique/k_clique_' +
+                                                    str(k) + '_gn_it_' +
+                                                    str(iteration) +
+                                                    '_scores.tex')
                             comp['details'].to_csv(path_or_buf='./comparisons/'
                                                    + 'k_clique/k_clique_' +
                                                    str(k) + '_gn_it_' +
                                                    str(iteration) +
                                                    '_details.csv')
+                            comp['details'].to_latex(buf='./comparisons/'
+                                                     + 'k_clique/k_clique_' +
+                                                     str(k) + '_gn_it_' +
+                                                     str(iteration) +
+                                                     '_details.tex')
                     else:
                         for iteration in ps[j]:
                             comp = NF1(ps[i][k], ps[j][iteration]).summary()
@@ -295,20 +336,36 @@ if __name__ == '__main__':
                                                   str(k) + '_demon_' +
                                                   str(iteration) + '_scores.' +
                                                   'csv')
+                            comp['scores'].to_latex(buf='./comparisons/'
+                                                    + 'k_clique/k_clique_' +
+                                                    str(k) + '_demon_' +
+                                                    str(iteration) +
+                                                    '_scores.tex')
                             comp['details'].to_csv(path_or_buf='./comparisons/'
                                                    + 'k_clique/k_clique_' +
                                                    str(k) + '_demon_' +
                                                    str(iteration) +
                                                    '_details.csv')
+                            comp['details'].to_latex(buf='./comparisons/'
+                                                     + 'k_clique/k_clique_' +
+                                                     str(k) + '_demon_' +
+                                                     str(iteration) +
+                                                     '_details.tex')
             elif ps[i] == p_labelprop:
                 if ps[j] == p_louvain:
                     comp = NF1(ps[i], ps[j]).summary()
                     comp['scores'].to_csv(path_or_buf='./comparisons/' +
                                           'label_propagation/label_' +
                                           'propagation_louvain_scores.csv')
+                    comp['scores'].to_latex(buf='./comparisons/' +
+                                            'label_propagation/label_' +
+                                            'propagation_louvain_scores.tex')
                     comp['details'].to_csv(path_or_buf='./comparisons/' +
                                            'label_propagation/label_' +
                                            'propagation_louvain_details.csv')
+                    comp['details'].to_latex(buf='./comparisons/' +
+                                             'label_propagation/label_' +
+                                             'propagation_louvain_details.tex')
                 elif ps[j] == p_gn:
                     for iteration in ps[j]:
                         comp = NF1(ps[i], ps[j][iteration]).summary()
@@ -317,11 +374,21 @@ if __name__ == '__main__':
                                               'propagation_gn_it_' +
                                               str(iteration) +
                                               '_scores.csv')
+                        comp['scores'].to_latex(buf='./comparisons/'
+                                                + 'label_propagation/label_' +
+                                                'propagation_gn_it_' +
+                                                str(iteration) +
+                                                '_scores.tex')
                         comp['details'].to_csv(path_or_buf='./comparisons/'
                                                + 'label_propagation/label_' +
                                                'propagation_gn_it_' +
                                                str(iteration) +
                                                '_details.csv')
+                        comp['details'].to_latex(buf='./comparisons/'
+                                                 + 'label_propagation/label_' +
+                                                 'propagation_gn_it_' +
+                                                 str(iteration) +
+                                                 '_details.tex')
                 else:
                     for iteration in ps[j]:
                         comp = NF1(ps[i], ps[j][iteration]).summary()
@@ -330,11 +397,21 @@ if __name__ == '__main__':
                                               'propagation_demon_' +
                                               str(iteration) +
                                               '_scores.csv')
+                        comp['scores'].to_latex(buf='./comparisons/'
+                                                + 'label_propagation/label_' +
+                                                'propagation_demon_' +
+                                                str(iteration) +
+                                                '_scores.tex')
                         comp['details'].to_csv(path_or_buf='./comparisons/'
                                                + 'label_propagation/label_' +
                                                'propagation_demon_' +
                                                str(iteration) +
                                                '_details.csv')
+                        comp['details'].to_latex(buf='./comparisons/'
+                                                 + 'label_propagation/label_' +
+                                                 'propagation_demon_' +
+                                                 str(iteration) +
+                                                 '_details.tex')
             elif ps[i] == p_louvain:
                 if ps[j] == p_gn:
                     for iteration in ps[j]:
@@ -343,19 +420,34 @@ if __name__ == '__main__':
                                               + 'louvain/louvain_gn_it_' +
                                               str(iteration) +
                                               '_scores.csv')
+                        comp['scores'].to_latex(buf='./comparisons/'
+                                                + 'louvain/louvain_gn_it_' +
+                                                str(iteration) +
+                                                '_scores.tex')
                         comp['details'].to_csv(path_or_buf='./comparisons/'
                                                + 'louvain/louvain_gn_it_' +
                                                str(iteration) +
                                                '_details.csv')
+                        comp['details'].to_latex(buf='./comparisons/'
+                                                 + 'louvain/louvain_gn_it_' +
+                                                 str(iteration) +
+                                                 '_details.tex')
                 else:
                     for iteration in ps[j]:
                         comp = NF1(ps[i], ps[j][iteration]).summary()
                         comp['scores'].to_csv(path_or_buf='./comparisons/'
                                               + 'louvain/louvain_demon_' +
                                               str(iteration) + '_scores.csv')
+                        comp['scores'].to_latex(buf='./comparisons/'
+                                                + 'louvain/louvain_demon_' +
+                                                str(iteration) + '_scores.tex')
                         comp['details'].to_csv(path_or_buf='./comparisons/'
                                                + 'louvain/louvain_demon_' +
                                                str(iteration) + '_details.csv')
+                        comp['details'].to_latex(buf='./comparisons/'
+                                                 + 'louvain/louvain_demon_' +
+                                                 str(iteration) +
+                                                 '_details.tex')
             elif ps[i] == p_gn:
                 for iteration in ps[i]:
                     for it in ps[j]:
@@ -365,8 +457,18 @@ if __name__ == '__main__':
                                               str(iteration) +
                                               '_demon_' + str(it) +
                                               '_scores.csv')
+                        comp['scores'].to_latex(buf='./comparisons/' +
+                                                'girvan_newman/gn_it_' +
+                                                str(iteration) +
+                                                '_demon_' + str(it) +
+                                                '_scores.tex')
                         comp['details'].to_csv(path_or_buf='./comparisons/' +
                                                'girvan_newman/gn_it_' +
                                                str(iteration) +
                                                '_demon_' + str(it) +
                                                '_details.csv')
+                        comp['details'].to_latex(buf='./comparisons/' +
+                                                 'girvan_newman/gn_it_' +
+                                                 str(iteration) +
+                                                 '_demon_' + str(it) +
+                                                 '_details.tex')
