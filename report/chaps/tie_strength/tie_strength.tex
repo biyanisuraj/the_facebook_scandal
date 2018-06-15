@@ -30,6 +30,27 @@
     \label{sec:simulation_of_an_attack}
         In order to validate the results obtained in Section \ref{sec:critical_threshold}, here we simulate an
         attack to our network. We've chosen to simulate the remotion of $50$ nodes from the network following two
-        distinct criterions: \textbf{random selection} and \textbf{}
+        distinct criterions: \textbf{random selection} and \textbf{degree centraility} (decreasing order). For every
+        criterion we've monitored the spreading of the connected components
+
+        \begin{figure}[H]
+            \centering
+            \begin{subfigure}{0.45\textwidth}
+                \resizebox{\textwidth}{!}{
+                    \includegraphics{images/tie_strength/test_cc_on_random.pdf}
+                }
+                \caption{}
+                \label{test_cc_on_random}
+            \end{subfigure}
+            \begin{subfigure}{0.45\textwidth}
+                \resizebox{\textwidth}{!}{
+                    \includegraphics{images/tie_strength/test_cc_on_degree_centrality.pdf}
+                }
+                \caption{}
+                \label{test_cc_on_degree_centrality}
+            \end{subfigure}
+            \caption{}
+            \label{test_cc}
+        \end{figure}
     % section simulation_of_an_attack (end)
 % chapter tie_strength (end)

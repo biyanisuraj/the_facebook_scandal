@@ -62,4 +62,4 @@ if __name__ == '__main__':
 
     print 'THE CRITICAL THRESHOLD BASED ON THE NETWORK SIZE IS ' + str(fc)
 
-    # test_cc(g.to_undirected(), ['BETWEENNESS CENTRALITY'], 50)
+    test_cc(g.to_undirected(), ['DEGREE CENTRALITY', 'RANDOM'], 50)
