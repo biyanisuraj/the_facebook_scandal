@@ -2130,6 +2130,7 @@
     <bcf:citekey order="8">girvan_newman</bcf:citekey>
     <bcf:citekey order="9">demon</bcf:citekey>
     <bcf:citekey order="10">rossetti2016</bcf:citekey>
+    <bcf:citekey order="11">Vosoughi_2018</bcf:citekey>
   </bcf:section>
   <bcf:sortlist section="0" name="none/global/" type="entry" sortscheme="none" sortnamekeyscheme="global" labelprefix="">
   <bcf:sorting>

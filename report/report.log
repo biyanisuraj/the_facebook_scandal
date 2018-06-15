@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99996 (TeX Live 2016/Debian) (preloaded format=xelatex 2017.11.11)  14 JUN 2018 13:07
+This is XeTeX, Version 3.14159265-2.6-0.99996 (TeX Live 2016/Debian) (preloaded format=xelatex 2017.11.11)  16 JUN 2018 00:34
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1830,6 +1830,13 @@ File: images/spreading/si/diffusion_ba.pdf Graphic file (type QTm)
 File: images/spreading/si/trend_comparison.pdf Graphic file (type QTm)
 
 <use  "images/spreading/si/trend_comparison.pdf" >
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [14
+
+
+
+]
 File: images/spreading/sis/diffusion_original_comparison.pdf Graphic file (type
  QTm)
 
@@ -1840,16 +1847,18 @@ File: images/spreading/sis/diffusion_er_comparison.pdf Graphic file (type QTm)
 File: images/spreading/sis/diffusion_ba_comparison.pdf Graphic file (type QTm)
 
 <use  "images/spreading/sis/diffusion_ba_comparison.pdf" >
-Underfull \vbox (badness 1558) has occurred while \output is active []
-
- [14
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-]
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[15]
 File: images/spreading/sir/diffusion_smaller.pdf Graphic file (type QTm)
-
-<use  "images/spreading/sir/diffusion_smaller.pdf" >
+ <use  "images/spreading/sir/diffusion_smaller.pdf" >
 File: images/spreading/sir/diffusion_greater.pdf Graphic file (type QTm)
 
 <use  "images/spreading/sir/diffusion_greater.pdf" >
@@ -1883,7 +1892,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[15]
+[16]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -1893,19 +1902,19 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[16])
+[17])
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[17]
+[18]
 Chapter 7.
-[18
+[19
 
 
-] [19
+] [20
 
 ]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 271.
@@ -1923,12 +1932,12 @@ Package logreq Info: Writing requests to 'report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 38711 strings out of 495001
- 767394 string characters out of 6177483
- 1281187 words of memory out of 5000000
- 41951 multiletter control sequences out of 15000+600000
+ 38714 strings out of 495001
+ 767490 string characters out of 6177483
+ 1281456 words of memory out of 5000000
+ 41954 multiletter control sequences out of 15000+600000
  10812 words of font info for 51 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 62i,12n,79p,10495b,4570s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,12n,79p,10495b,4614s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on report.pdf (21 pages).
+Output written on report.pdf (22 pages).

@@ -1,17 +1,17 @@
 [0] Config.pm:354> INFO - This is Biber 2.7 (beta)
 [0] Config.pm:357> INFO - Logfile is 'report.blg'
-[24] biber:303> INFO - === gio giu 14, 2018, 12:55:56
-[35] Biber.pm:360> INFO - Reading 'report.bcf'
-[107] Biber.pm:836> INFO - Found 10 citekeys in bib section 0
-[117] Biber.pm:3671> INFO - Processing section 0
-[128] Biber.pm:3841> INFO - Looking for bibtex format file 'references.bib' for section 0
-[129] bibtex.pm:1424> INFO - Decoding LaTeX character macros into UTF-8
-[133] bibtex.pm:1281> INFO - Found BibTeX data source 'references.bib'
+[26] biber:303> INFO - === ven giu 15, 2018, 22:31:31
+[38] Biber.pm:360> INFO - Reading 'report.bcf'
+[101] Biber.pm:836> INFO - Found 11 citekeys in bib section 0
+[113] Biber.pm:3671> INFO - Processing section 0
+[125] Biber.pm:3841> INFO - Looking for bibtex format file 'references.bib' for section 0
+[127] bibtex.pm:1424> INFO - Decoding LaTeX character macros into UTF-8
+[132] bibtex.pm:1281> INFO - Found BibTeX data source 'references.bib'
 [149] Utils.pm:164> WARN - ISBN '3-642-17315-2, 978-3-642-17315-8' in entry 'ye_paths' is invalid - run biber with '--validate_datamodel' for details.
-[172] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[172] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[172] Biber.pm:3500> INFO - Sorting list 'none/global/' of type 'entry' with scheme 'none' and locale 'en-US'
-[172] Biber.pm:3506> INFO - No sort tailoring available for locale 'en-US'
-[177] bbl.pm:608> INFO - Writing 'report.bbl' with encoding 'UTF-8'
-[179] bbl.pm:712> INFO - Output to report.bbl
-[179] Biber.pm:110> INFO - WARNINGS: 1
+[178] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[178] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[178] Biber.pm:3500> INFO - Sorting list 'none/global/' of type 'entry' with scheme 'none' and locale 'en-US'
+[178] Biber.pm:3506> INFO - No sort tailoring available for locale 'en-US'
+[183] bbl.pm:608> INFO - Writing 'report.bbl' with encoding 'UTF-8'
+[185] bbl.pm:712> INFO - Output to report.bbl
+[186] Biber.pm:110> INFO - WARNINGS: 1
