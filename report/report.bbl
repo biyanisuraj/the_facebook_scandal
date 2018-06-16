@@ -1,5 +1,5 @@
 % $ biblatex auxiliary file $
-% $ biblatex bbl format version 2.8 $
+% $ biblatex bbl format version 2.9 $
 % Do not modify the above lines!
 %
 % This is an auxiliary file used by the 'biblatex' package.
@@ -18,7 +18,7 @@
 
 
 \refsection{0}
-  \sortlist[entry]{none/global/}
+  \datalist[entry]{none/global//global/global}
     \entry{nyt_17march}{misc}{}
       \name{author}{1}{}{%
         {{hash=9da081f0c23a4435dff189be6969906a}{%
@@ -29,10 +29,12 @@
       }
       \strng{namehash}{9da081f0c23a4435dff189be6969906a}
       \strng{fullhash}{9da081f0c23a4435dff189be6969906a}
+      \strng{bibnamehash}{9da081f0c23a4435dff189be6969906a}
+      \strng{authorbibnamehash}{9da081f0c23a4435dff189be6969906a}
       \strng{authornamehash}{9da081f0c23a4435dff189be6969906a}
       \strng{authorfullhash}{9da081f0c23a4435dff189be6969906a}
       \field{sortinit}{1}
-      \field{sortinithash}{27a2bc5dfb9ed0a0422134d636544b5d}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{ https://www.nytimes.com/2018/03/17/us/politics/cambridge-analytica-trump-campaign.html }}
@@ -50,10 +52,12 @@
       }
       \strng{namehash}{9da081f0c23a4435dff189be6969906a}
       \strng{fullhash}{9da081f0c23a4435dff189be6969906a}
+      \strng{bibnamehash}{9da081f0c23a4435dff189be6969906a}
+      \strng{authorbibnamehash}{9da081f0c23a4435dff189be6969906a}
       \strng{authornamehash}{9da081f0c23a4435dff189be6969906a}
       \strng{authorfullhash}{9da081f0c23a4435dff189be6969906a}
       \field{sortinit}{2}
-      \field{sortinithash}{0aa614ace9f3a40ef5a67e7f7a184048}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{https://www.nytimes.com/2018/04/04/us/politics/cambridge-analytica-scandal-fallout.html}}
@@ -87,10 +91,12 @@
       }
       \strng{namehash}{e3b009a9d853871fbccf72f852e19cd4}
       \strng{fullhash}{e3b009a9d853871fbccf72f852e19cd4}
+      \strng{bibnamehash}{e3b009a9d853871fbccf72f852e19cd4}
+      \strng{authorbibnamehash}{e3b009a9d853871fbccf72f852e19cd4}
       \strng{authornamehash}{e3b009a9d853871fbccf72f852e19cd4}
       \strng{authorfullhash}{e3b009a9d853871fbccf72f852e19cd4}
       \field{sortinit}{3}
-      \field{sortinithash}{197da6d6c34c6b20ce45c4d4baace5a4}
+      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{booktitle}{Proceedings of the 6th International Conference on Advanced Data Mining and Applications: Part I}
@@ -100,6 +106,9 @@
       \field{year}{2010}
       \field{pages}{322\bibrangedash 333}
       \range{pages}{12}
+      \verb{urlraw}
+      \verb http://dl.acm.org/citation.cfm?id=1947599.1947633
+      \endverb
       \verb{url}
       \verb http://dl.acm.org/citation.cfm?id=1947599.1947633
       \endverb
@@ -120,10 +129,12 @@
       }
       \strng{namehash}{16ee88c58499748abb5748a755116286}
       \strng{fullhash}{16ee88c58499748abb5748a755116286}
+      \strng{bibnamehash}{16ee88c58499748abb5748a755116286}
+      \strng{authorbibnamehash}{16ee88c58499748abb5748a755116286}
       \strng{authornamehash}{16ee88c58499748abb5748a755116286}
       \strng{authorfullhash}{16ee88c58499748abb5748a755116286}
       \field{sortinit}{4}
-      \field{sortinithash}{d221becdd544034cf9082056cd6e6d2d}
+      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{https://link.springer.com/article/10.1007/s10115-013-0693-z}}
@@ -155,10 +166,12 @@
       }
       \strng{namehash}{2696e5f65c99a09bd31d2bd695c75dd2}
       \strng{fullhash}{f7aefa9dfb32f97d1541961965d44ed7}
+      \strng{bibnamehash}{2696e5f65c99a09bd31d2bd695c75dd2}
+      \strng{authorbibnamehash}{2696e5f65c99a09bd31d2bd695c75dd2}
       \strng{authornamehash}{2696e5f65c99a09bd31d2bd695c75dd2}
       \strng{authorfullhash}{f7aefa9dfb32f97d1541961965d44ed7}
       \field{sortinit}{5}
-      \field{sortinithash}{c9df3c9fb8f555dd9201cedc5e343021}
+      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{http://dx.doi.org/10.1038/nature03607}}
@@ -180,10 +193,12 @@
       }
       \strng{namehash}{edfc26efd0d380b3bd919f15a72107e7}
       \strng{fullhash}{edfc26efd0d380b3bd919f15a72107e7}
+      \strng{bibnamehash}{edfc26efd0d380b3bd919f15a72107e7}
+      \strng{authorbibnamehash}{edfc26efd0d380b3bd919f15a72107e7}
       \strng{authornamehash}{edfc26efd0d380b3bd919f15a72107e7}
       \strng{authorfullhash}{edfc26efd0d380b3bd919f15a72107e7}
       \field{sortinit}{6}
-      \field{sortinithash}{02bbed3ed82f61ae046619460488516d}
+      \field{sortinithash}{57e57fb8451e7fcfa45d1e069f6d3136}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{https://ieeexplore.ieee.org/abstract/document/5730298/citations}}
@@ -215,10 +230,12 @@
       }
       \strng{namehash}{dc752b2fcf2e07387e8cdb51c06d60e1}
       \strng{fullhash}{136f387964fdc88f6e67c2282e9fa621}
+      \strng{bibnamehash}{dc752b2fcf2e07387e8cdb51c06d60e1}
+      \strng{authorbibnamehash}{dc752b2fcf2e07387e8cdb51c06d60e1}
       \strng{authornamehash}{dc752b2fcf2e07387e8cdb51c06d60e1}
       \strng{authorfullhash}{136f387964fdc88f6e67c2282e9fa621}
       \field{sortinit}{7}
-      \field{sortinithash}{6ac7fe70cdec8cba8f65694411ce2532}
+      \field{sortinithash}{c818dd9105a2852444fc9f5e145c294e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{http://stacks.iop.org/1742-5468/2008/i=10/a=P10008}}
@@ -240,10 +257,12 @@
       }
       \strng{namehash}{97a2d30433091dd02b2fe0e171aac48b}
       \strng{fullhash}{97a2d30433091dd02b2fe0e171aac48b}
+      \strng{bibnamehash}{97a2d30433091dd02b2fe0e171aac48b}
+      \strng{authorbibnamehash}{97a2d30433091dd02b2fe0e171aac48b}
       \strng{authornamehash}{97a2d30433091dd02b2fe0e171aac48b}
       \strng{authorfullhash}{97a2d30433091dd02b2fe0e171aac48b}
       \field{sortinit}{8}
-      \field{sortinithash}{2f1b0e69e7617f99664f1cd00bb9603c}
+      \field{sortinithash}{07edf88d4ea82509b9c4b4d13f41c452}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{http://www.pnas.org/content/99/12/7821}}
@@ -275,10 +294,12 @@
       }
       \strng{namehash}{da847a37c5ebd857a1a239c87289e88d}
       \strng{fullhash}{0ec22ea903a2d11cbe0789f99c53145a}
+      \strng{bibnamehash}{da847a37c5ebd857a1a239c87289e88d}
+      \strng{authorbibnamehash}{da847a37c5ebd857a1a239c87289e88d}
       \strng{authornamehash}{da847a37c5ebd857a1a239c87289e88d}
       \strng{authorfullhash}{0ec22ea903a2d11cbe0789f99c53145a}
       \field{sortinit}{9}
-      \field{sortinithash}{2999ebab86052e6d71b434385f8b4ed2}
+      \field{sortinithash}{1dd72ab054147731c9d824b49aba0534}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{http://arxiv.org/abs/1206.0629}}
@@ -305,17 +326,19 @@
       }
       \strng{namehash}{6cf411c2679ba16ebde102d0037b6299}
       \strng{fullhash}{6cf411c2679ba16ebde102d0037b6299}
+      \strng{bibnamehash}{6cf411c2679ba16ebde102d0037b6299}
+      \strng{authorbibnamehash}{6cf411c2679ba16ebde102d0037b6299}
       \strng{authornamehash}{6cf411c2679ba16ebde102d0037b6299}
       \strng{authorfullhash}{6cf411c2679ba16ebde102d0037b6299}
       \field{sortinit}{1}
-      \field{sortinithash}{27a2bc5dfb9ed0a0422134d636544b5d}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{https://doi.org/10.1007/978-3-319-30569-1_10}}
       \field{title}{A Novel Approach to Evaluate Community Detection Algorithms on Ground Truth}
       \field{year}{2016}
     \endentry
-  \endsortlist
+  \enddatalist
 \endrefsection
 \endinput
 
