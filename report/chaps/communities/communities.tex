@@ -2,13 +2,14 @@
 \label{cha:communities_discovery}
 
 In this chapter we'll provide the results obtained by applying \textbf{K-Clique}, \textbf{Label Propagation},
-\textbf{Louvain}, \textbf{Girvan-Newman} and \textbf{Demon} to a sample of $1000$ nodes taken from the original
+\textbf{Louvain}, \textbf{Girvan-Newman} and \textbf{Demon} to a sample of $2000$ nodes taken from the original
 network. We've chosen to sample the crawled data in order to ease the application of the various algorithms.
 Each partition is evaluated by applying an implementation of the scoring functions listed in
 \cite{comm_ground_truth}, and, for each algorithm, the results are represented in a table. Together with the
 results of the scoring functions are also provided the total number of communities discoverd (Communities), the
 number of nodes in the smallest/biggest community (Smallest/Biggest), the hashtags utilized in the biggest
-community (Tags) and finally the languages of the users in the biggest community (Langs).
+community (Tags) and finally the languages of the users in the biggest community (Langs). Finally it is also
+provided an evaluation for the subset of the original network composed only by italian users.
 
 \section{K-Clique} % (fold)
 \label{sec:k_clique}
@@ -16,8 +17,9 @@ community (Tags) and finally the languages of the users in the biggest community
     three different values for $k$: $3$, $4$ and $5$, respectively. The results are represented in Table
     \ref{kclique}. As we can see, even if the result is not so good, the best partition is obtained by using $k$
     eguals to $3$, which returns a low modularity partition composed by low degree nodes. It is interesting to
-    note that all the biggest partitions returned by the various applications of the algorithm are composed only
-    by english speaking users.
+    note that the biggest partitions returned by the first application of the algorithm is composed
+    by english and deutsch speaking users, while the other iterations returns community composed only by english
+    speaking users.
 
     \begin{table}[H]
         \centering
@@ -28,14 +30,13 @@ community (Tags) and finally the languages of the users in the biggest community
                     K & Communities & Biggest & Smallest & Modularity & Conductance & IED & AND &  Tags &
                     Langs \\
                     \hline
-                    3 & 21 & 30 & 3 & 0.12 & 0.56 & 0.21 & 2.51 & cambridgeanalytica,
-                    deletefacebook, facebook, facebookgate & English \\
+                    3 & 29 & 51 & 3 & 0.14 & 0.62 & 0.20 & 2.72 & zuckerberg,
+                    cambridgeanalytica, deletefacebook, facebook, facebookgate & English, Deutsch \\
                     \hline
-                    4 & 1 & 16 & 16 & 0.013 & 0.35 & 0.11 & 6.38 & cambridgeanalytica,
-                    deletefacebook, facebook, facebookgate
+                    4 & 13 & 14 & 4 & 0.020 & 0.68 & 0.21 & 4.23 & cambridgeanalytica, deletefacebook, facebook
                     & English \\
                     \hline
-                    5 & 2 & 7 & 6 & 0.00015 & 0.67 & 0.23 & 5.05 & cambridgeanalytica, deletefacebook, facebook
+                    5 & 5 & 12 & 5 & 0.011 & 0.63 & 0.23 & 4.83 & cambridgeanalytica, deletefacebook, facebook
                     & English \\
                     \hline
                 \end{tabular}
@@ -53,8 +54,8 @@ community (Tags) and finally the languages of the users in the biggest community
     algorithm, described in \cite{label_propagation}. According to the modularity score the partition provided by
     this algorithm represent a good subdivision of the original network, even if it is composed for the vast
     majority by small communities, as suggested by the high number of communities and the low value for the
-    Average Node Degree score. As for the kclique algorithm, it is interesting to note that the biggest community
-    is composed only by english speaking users.
+    Average Node Degree score. Since this partition is composed by an high number of communities, the biggest
+    community aggregates a vast variety of languages.
 
     \begin{table}[H]
         \centering
@@ -64,8 +65,8 @@ community (Tags) and finally the languages of the users in the biggest community
                     \hline
                     Communities & Biggest & Smallest & Modularity & Conductance & IED & AND &  Tags & Langs \\
                     \hline
-                    714 & 53 & 1 & 0.65 & 0.26 & 0.18 & 1.48 & zuckerberg,
-                    cambridgeanalytica, deletefacebook, facebook, facebookgate & English \\
+                    1278 & 136 & 1 & 0.68 & 0.28 & 0.19 & 1.38 & cambridgeanalytica,
+                    deletefacebook, privacy, zuckerberg, facebook, facebookgate & Various  \\
                     \hline
                 \end{tabular}
             }
@@ -78,11 +79,10 @@ community (Tags) and finally the languages of the users in the biggest community
 
 \section{Louvain} % (fold)
 \label{sec:louvain}
-    The application of the \textbf{Louvain}, described in \cite{louvain}, along with the last iteration of the
-    Girvan-Newman algorithm, returns the best partition among all the partitions returned by the other algorithms.
-    The results of its application are represented in Table \ref{louvain}. As for the Label Propagation algorithm,
-    this partition also is composed by an high number of small communities, composed by nodes with degree betweem
-    $1$ and $2$.
+    The application of the \textbf{Louvain} algorithm, described in \cite{louvain}, along with the iteration
+    of the Label Propagation algorithm, returns the best partition among all the partitions returned by the other
+    algorithms. The results of its application are represented in Table \ref{louvain}. As for the Label Propagation
+    algorithm, this partition also is composed by an high number of small communities, and the biggest community is composed by users who speaks various languages.
 
     \begin{table}[H]
         \centering
@@ -92,8 +92,8 @@ community (Tags) and finally the languages of the users in the biggest community
                     \hline
                     Communities & Biggest & Smallest & Modularity & Conductance & IED & AND &  Tags & Langs \\
                     \hline
-                    683 & 51 & 1 & 0.75 & 0.087 & 0.14 & 1.76 & cambridgeanalytica,
-                    deletefacebook, facebook, facebookgate & English, Spanish \\
+                    1193 & 133 & 1 & 0.76 & 0.042 & 0.17 & 1.60 & cambridgeanalytica,
+                    deletefacebook, privacy, zuckerberg, facebook, facebookgate & Various \\
                     \hline
                 \end{tabular}
             }
@@ -108,10 +108,10 @@ community (Tags) and finally the languages of the users in the biggest community
 \label{sec:girvan_newman}
     For the \textbf{Girvan-Newman} algorithm, described in \cite{girvan_newman}, we've decided to record
     the results of $5$ iterations over the sample network. The results are represented in Table
-    \ref{girvan_newman}. As you can see, the first iteration returns a very poor partition, with a low modularity
-    score, due to the fact that the edge with the highest betweenness centrality in the starting sample network
-    doesn't provide a good grade of separation among the nodes of the network. With the second iteration, and the
-    ones after that, there is a consistent improvement either in the modularity score and in the other measures.
+    \ref{girvan_newman}. As you can see, the first three iterations returns very poor partitions, with low
+    modularity scores, due to the fact that the edges with the highest betweenness centrality selected in the various
+    iterations doesn't provide a good grade of separation among the nodes of the network. With the fourth and fifth
+    iterations, there is a consistent improvement either in the modularity score and in the other measures.
     \begin{table}[H]
         \centering
         \begin{subtable}{\textwidth}
@@ -121,24 +121,20 @@ community (Tags) and finally the languages of the users in the biggest community
                     Iteration & Communities & Biggest & Smallest & Modularity & Conductance & IED & AND &  Tags &
                     Langs \\
                     \hline
-                    1 & 673 & 275 & 1 & 0.21 & 0.0049 & 0.20 & 1.40 & cambridgeanalytica,
-                    deletefacebook, privacy, zuckerberg, facebook, facebookgate & English, French, Deutsch, Arabic,
-                    Spanish, Italian, Portoguese, Hindi, Finnish, Hungarian \\
+                    1 & 1181 & 703 & 1 & 0.17 & 0.00098 & 0.22 & 1.23 & cambridgeanalytica,
+                    deletefacebook, privacy, zuckerberg, facebook, facebookgate & Various \\
                     \hline
-                    2 & 674 & 165 & 1 & 0.55 & 0.011 & 0.19 & 1.49 & cambridgeanalytica,
-                    deletefacebook, privacy, zuckerberg, facebook, facebookgate
-                    & English, French, Deutsch, Hindi, Finnish, Spanish \\
+                    2 & 1182 & 659 & 1 & 0.24 & 0.0019 & 0.21 & 1.27 & cambridgeanalytica,
+                    deletefacebook, privacy, zuckerberg, facebook, facebookgate & Various \\
                     \hline
-                    3 & 675 & 110 & 1 & 0.63 & 0.017 & 0.18 & 1.53 & cambridgeanalytica, deletefacebook, privacy,
-                    zuckerberg, facebook, facebookgate & English, French, Deutsch, Arabic, Italian, Portoguese,
-                    Hungarian \\
+                    3 & 1183 & 588 & 1 & 0.38 & 0.0048 & 0.21 & 1.35 & cambridgeanalytica, deletefacebook, privacy,
+                    zuckerberg, facebook, facebookgate & Various \\
                     \hline
-                    4 & 676 & 110 & 1 & 0.66 & 0.025 & 0.17 & 1.57 & cambridgeanalytica, deletefacebook, privacy,
-                    zuckerberg, facebook, facebookgate & English, French, Deutsch, Arabic, Italian, Portoguese,
-                    Hungarian \\
+                    4 & 1184 & 575 & 1 & 0.40 & 0.0081 & 0.20 & 1.34 & cambridgeanalytica, deletefacebook, privacy,
+                    zuckerberg, facebook, facebookgate & Various \\
                     \hline
-                    5 & 677 & 87 & 1 & 0.71 & 0.030 & 0.17 & 1.65 & zuckerberg, cambridgeanalytica, deletefacebook,
-                    facebook, facebookgate & English, French, Deutsch, Italian, Hindi \\
+                    5 & 1185 & 458 & 1 & 0.57 & 0.011 & 0.20 & 1.40 & zuckerberg, cambridgeanalytica, deletefacebook,
+                    facebook, facebookgate & Various \\
                     \hline
                 \end{tabular}
             }
@@ -148,19 +144,19 @@ community (Tags) and finally the languages of the users in the biggest community
     \end{table}
 
     In general, the partitions returned by the five iterations of the algorithms are all composed by an high number
-    of small communities.
+    of small communities, with the biggest community growing smaller iteration after iteration. This kind of
+    fragmentation, as seen before, for every iteration produces a biggest community with diffent types of users.
 
 % section girvan_newman (end)
 
 \section{Demon} % (fold)
 \label{sec:demon}
     Finally in Table \ref{demon} we provide the results of the application of the \textbf{Demon} algorithm,
-    described in \cite{demon}, that we tested for three different values of $\epsilon$, $0.25$, $0.50$ and $0.75$,
-    respectively. In general, the three partitions are not so good from the point of view of the modularity score,
-    with the first application of the algorithm beign the best among the three
+    described in \cite{demon}, that we tested for five different values of $\epsilon$, $0.10$, $0.25$, $0.50$,
+    $0.75$ and $0.90$, respectively. In general, the five partitions are not so good from the point of view of the
+    modularity score, with the third application of the algorithm beign the best.
     Contrary to the results obtained by the application of the other algorithms, the partitions for the Demon
-    algorithm are all composed by a small number of communities, with the last one being the "denser" one, which
-    are composed by nodes with a degree between $3$ and $4$.
+    algorithm are all composed by a small number of communities.
 
     \begin{table}[H]
         \centering
@@ -170,14 +166,20 @@ community (Tags) and finally the languages of the users in the biggest community
                 \hline
                 Epsilon & Communities & Biggest & Smallest & Modularity & Conductance & IED & AND &  Tags & Langs \\
                 \hline
-                0.25 & 6 & 30 & 4 & 0.098 & 0.43 & 0.11 & 3.65 & cambridgeanalytica, deletefacebook,
-                facebook, facebookgate & English \\
+                0.10 & 10 & 147 & 4 & 0.07 & 0.46 & 0.082 & 4.41 &
+                zuckerberg, cambridgeanalytica, deletefacebook, facebook, facebookgate & Various \\
                 \hline
-                0.50 & 9 & 30 & 4 & 0.085 & 0.49 & 0.12 & 4.05 & cambridgeanalytica, deletefacebook, facebook,
-                facebookgate & English \\
+                0.25 & 11 & 63 & 4 & 0.095 & 0.44 & 0.094 & 4.31 &
+                zuckerberg, cambridgeanalytica, deletefacebook, facebook, facebookgate & English, Deutsch \\
                 \hline
-                0.75 & 13 & 27 & 4 & 0.082 & 0.51 & 0.14 & 3.86 & cambridgeanalytica, deletefacebook,
-                facebook, facebookgate & English \\
+                0.50 & 21 & 43 & 4 & 0.11 & 0.57 & 0.10 & 4.15 &
+                zuckerberg, cambridgeanalytica, deletefacebook, facebook, facebookgate & English, Deutsch \\
+                \hline
+                0.75 & 39 & 25 & 4 & 0.068 & 0.62 & 0.12 & 3.96 &
+                zuckerberg, cambridgeanalytica, deletefacebook, facebook, facebookgate & English, Deutsch \\
+                \hline
+                0.90 & 89 & 24 & 4 & 0.071 & 0.68 & 0.15 & 3.65 &
+                zuckerberg, cambridgeanalytica, deletefacebook, facebook, facebookgate & English, Deutsch \\
                 \hline
                 \end{tabular}
             }
@@ -190,7 +192,7 @@ community (Tags) and finally the languages of the users in the biggest community
 
 \section{Comparisons} % (fold)
 \label{sec:comparisons}
-    In this final section of the chapter we compare the algorithms used so far by confronting the best instances
+    In this section of the chapter we compare the algorithms used so far by confronting the best instances
     among the iterations provided in the past sections. The comparisons are performed by using the NF$1$ score, as
     described in \cite{rossetti2016}.
 
@@ -209,21 +211,22 @@ community (Tags) and finally the languages of the users in the biggest community
                     \hline
                     K-Clique 3 & Girvan-Newman 5 & 0.25 & 677.0 & 21.0 & 0.031 & 0.012 & 0.10 & 0.0011 \\
                     \hline
-                    K-Clique 3 & Demon 0.25 & 0.92 & 6.0 & 21.0 & 3.5 & 1.0 & 1.44 & 0.24 \\
+                    K-Clique 3 & Demon 0.50 & 0.94 & 9.0 & 21.0 & 2.33 & 0.78 & 1.44 & 0.24 \\
                     \hline
-                    Label Propagation & Louvain & 0.96 & 683.0 & 714.0 & 1.05 & 1.0 & 1.0 & 0.92 \\
+                    Label Propagation & Louvain & 0.94 & 1193.0 & 1278.0 & 1.07 & 1.0
+                    & 1.0 & 0.87 \\
                     \hline
-                    Label Propagation & Girvan-Newman 5 & 0.95 & 677.0 & 714.0 & 1.06 & 1.0 & 1.0
-                    & 0.90 \\
+                    Label Propagation & Girvan-Newman 5 & 0.93 & 1185.0 & 1278.0 & 1.08 & 1.0 & 1.0 &
+                    0.86 \\
                     \hline
-                    Label Propagation & Demon 0.25 & 0.38 & 6.0 & 714.0 & 119.0 & 1.0 & 14.17
-                    & 0.0032 \\
+                    Label Propagation & Demon 0.50 & 0.26 & 21.0 & 1278.0 & 60.86 & 0.76 & 10.24 &
+                    0.0025 \\
                     \hline
-                    Louvain & Girvan-Newman 5 & 0.99 & 677.0 & 683.0 & 1.01 & 1.0 & 1.0 & 0.98 \\
+                    Louvain & Girvan-Newman 5 & 0.99 & 1185.0 & 1193.0 & 1.0068 & 1.0 & 1.0 & 0.99 \\
                     \hline
-                    Louvain & Demon 0.25 & 0.38 & 6.0 & 683.0 & 113.83 & 1.0 & 14.17 & 0.0033 \\
+                    Louvain & Demon 0.50 & 0.32 & 21.0 & 1193.0 & 56.81 & 0.62 & 10.24 & 0.0021 \\
                     \hline
-                    Girvan-Newman 5 & Demon 0.25 & 0.36 & 6.0 & 677.0 & 112.83 & 1.0 & 14.17 & 0.0032 \\
+                    Girvan-Newman 5 & Demon 0.50 & 0.36 & 21.0 & 1185.0 & 56.43 & 0.24 & 10.24 & 0.00036 \\
                     \hline
                 \end{tabular}
             }
@@ -232,11 +235,23 @@ community (Tags) and finally the languages of the users in the biggest community
         \label{comparisons}
     \end{table}
 
-    In Table \ref{comparisons} we can see the comparisons among the best iterations of the algorithms utilized
-    during the community discovery phase. As we can see, the best results are returned by the comparisons between
-    the Label Propagation, Louvain and Girvan-Newman (fifth iteration) algorithms, since that, as we've seen in
-    the past sections, they are in fact the best performing algorithms among the ones we've tested for the
-    communities discovery.
+    In Table \ref{comparisons} we can see the comparisons among the best iterations of the algorithms
+    utilized during the community discovery phase. As we can see by the results, the best comparisons are
+    the ones between K-Clique and Demon , with, respectively, $k = 3$ and $\epsilon = 0.50$, between Label
+    Propagation and Louvain/Girvan-Newman (fifth iteration) and finally between Louvain and Girvan-Newman
+    (fifth iteration).
 % section comparisons (end)
+
+\section{The italian subgraph} % (fold)
+\label{sec:the_italian_subgraph}
+    In order to better understand the composition of our network, we selected among the nodes only the ones
+    composed by \textbf{italian users}, and on this subgraph we've applied the same algorithms described
+    in the past sections. The obtained partitions make clear to us that the italian users inside our
+    network aren't disposed into a community-like shape. The best obtained result is the one returned by the
+    Louvain algorithm, which return a modularity score of $0.26$ and a partition composed by $6$
+    communities, the biggest and the smallest being composed by $817$ and $2$ users, respectively. Being
+    the partition composed by only $6$ communities, the average node degree is bigger
+    ($\approx 17$) that the ones returned by the other evaluations.
+% section the_italian_subgraph (end)
 
 % chapter communities_discovery (end)
