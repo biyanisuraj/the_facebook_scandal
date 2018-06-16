@@ -235,16 +235,23 @@ provided an evaluation for the subset of the original network composed only by i
         \label{comparisons}
     \end{table}
 
-    In Table \ref{comparisons} we can see the comparisons among the best iterations of the algorithms utilized
-    during the community discovery phase. As we can see, the best results are returned by the comparisons between
-    the Label Propagation, Louvain and Girvan-Newman (fifth iteration) algorithms, since that, as we've seen in
-    the past sections, they are in fact the best performing algorithms among the ones we've tested for the
-    communities discovery.
+    In Table \ref{comparisons} we can see the comparisons among the best iterations of the algorithms
+    utilized during the community discovery phase. As we can see by the results, the best comparisons are
+    the ones between K-Clique and Demon , with, respectively, $k = 3$ and $\epsilon = 0.50$, between Label
+    Propagation and Louvain/Girvan-Newman (fifth iteration) and finally between Louvain and Girvan-Newman
+    (fifth iteration).
 % section comparisons (end)
 
 \section{The italian subgraph} % (fold)
 \label{sec:the_italian_subgraph}
-
+    In order to better understand the composition of our network, we selected among the nodes only the ones
+    composed by \textbf{italian users}, and on this subgraph we've applied the same algorithms described
+    in the past sections. The obtained partitions make clear to us that the italian users inside our
+    network aren't disposed into a community-like shape. The best obtained result is the one returned by the
+    Louvain algorithm, which return a modularity score of $0.26$ and a partition composed by $6$
+    communities, the biggest and the smallest being composed by $817$ and $2$ users, respectively. Being
+    the partition composed by only $6$ communities, the average node degree is bigger
+    ($\approx 17$) that the ones returned by the other evaluations.
 % section the_italian_subgraph (end)
 
 % chapter communities_discovery (end)
