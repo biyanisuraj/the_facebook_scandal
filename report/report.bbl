@@ -65,6 +65,55 @@
       \field{title}{{Cambridge Analytica and Facebook: The Scandal and the Fallout So Far}}
       \field{year}{2018}
     \endentry
+    \entry{ye_paths}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=2d847b5fc74f78ee05296442a1328654}{%
+           family={Ye},
+           familyi={Y\bibinitperiod},
+           given={Qi},
+           giveni={Q\bibinitperiod}}}%
+        {{hash=9e5a02c6c2cd40b7090c4dd06f6200c4}{%
+           family={Wu},
+           familyi={W\bibinitperiod},
+           given={Bin},
+           giveni={B\bibinitperiod}}}%
+        {{hash=fa0b1feee4e9fdb278fb6a625849cb84}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Bai},
+           giveni={B\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Chongqing, China}%
+      }
+      \list{publisher}{1}{%
+        {Springer-Verlag}%
+      }
+      \strng{namehash}{e3b009a9d853871fbccf72f852e19cd4}
+      \strng{fullhash}{e3b009a9d853871fbccf72f852e19cd4}
+      \strng{bibnamehash}{e3b009a9d853871fbccf72f852e19cd4}
+      \strng{authorbibnamehash}{e3b009a9d853871fbccf72f852e19cd4}
+      \strng{authornamehash}{e3b009a9d853871fbccf72f852e19cd4}
+      \strng{authorfullhash}{e3b009a9d853871fbccf72f852e19cd4}
+      \field{sortinit}{3}
+      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 6th International Conference on Advanced Data Mining and Applications: Part I}
+      \field{isbn}{3-642-17315-2, 978-3-642-17315-8}
+      \field{series}{ADMA'10}
+      \field{title}{Distance Distribution and Average Shortest Path Length Estimation in Real-world Networks}
+      \field{year}{2010}
+      \field{pages}{322\bibrangedash 333}
+      \range{pages}{12}
+      \verb{urlraw}
+      \verb http://dl.acm.org/citation.cfm?id=1947599.1947633
+      \endverb
+      \verb{url}
+      \verb http://dl.acm.org/citation.cfm?id=1947599.1947633
+      \endverb
+      \keyw{average shortest path length,sampling,social network analysis,vertex-vertex distance}
+    \endentry
     \entry{network_science}{misc}{}
       \name{author}{2}{}{%
         {{hash=15bacd7ddfc866c5dd96976d4b0244d5}{%
@@ -84,8 +133,8 @@
       \strng{authorbibnamehash}{3c0a20b3e913df9584530b6efb70d6c7}
       \strng{authornamehash}{3c0a20b3e913df9584530b6efb70d6c7}
       \strng{authorfullhash}{3c0a20b3e913df9584530b6efb70d6c7}
-      \field{sortinit}{3}
-      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
+      \field{sortinit}{4}
+      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{http://networksciencebook.com/}}
@@ -111,8 +160,8 @@
       \strng{authorbibnamehash}{16ee88c58499748abb5748a755116286}
       \strng{authornamehash}{16ee88c58499748abb5748a755116286}
       \strng{authorfullhash}{16ee88c58499748abb5748a755116286}
-      \field{sortinit}{7}
-      \field{sortinithash}{c818dd9105a2852444fc9f5e145c294e}
+      \field{sortinit}{8}
+      \field{sortinithash}{07edf88d4ea82509b9c4b4d13f41c452}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{https://link.springer.com/article/10.1007/s10115-013-0693-z}}
@@ -148,8 +197,8 @@
       \strng{authorbibnamehash}{2696e5f65c99a09bd31d2bd695c75dd2}
       \strng{authornamehash}{2696e5f65c99a09bd31d2bd695c75dd2}
       \strng{authorfullhash}{f7aefa9dfb32f97d1541961965d44ed7}
-      \field{sortinit}{8}
-      \field{sortinithash}{07edf88d4ea82509b9c4b4d13f41c452}
+      \field{sortinit}{9}
+      \field{sortinithash}{1dd72ab054147731c9d824b49aba0534}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{http://dx.doi.org/10.1038/nature03607}}
@@ -175,8 +224,8 @@
       \strng{authorbibnamehash}{edfc26efd0d380b3bd919f15a72107e7}
       \strng{authornamehash}{edfc26efd0d380b3bd919f15a72107e7}
       \strng{authorfullhash}{edfc26efd0d380b3bd919f15a72107e7}
-      \field{sortinit}{9}
-      \field{sortinithash}{1dd72ab054147731c9d824b49aba0534}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{https://ieeexplore.ieee.org/abstract/document/5730298/citations}}
