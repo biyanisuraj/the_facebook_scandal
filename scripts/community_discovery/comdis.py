@@ -3,7 +3,7 @@ import csv
 import demon as dm
 import networkx as nx
 import pquality
-# import random
+import random
 from collections import Counter, defaultdict
 from networkx.algorithms import community
 from nf1 import NF1
@@ -18,7 +18,7 @@ TABLE = DB['tweets_03_17_25']
 def extract_info(com_info):
     cursor = TABLE.find({'id': {'$in': [id for id in com_info['community']]}})
     tags = Counter()
-    # langs = Counter()
+    langs = Counter()
     info_coms = {'ncommunities': com_info['ncommunities'],
                  'maxcomlen': com_info['maxcomlen'],
                  'mincomlen': com_info['mincomlen']}
@@ -26,31 +26,32 @@ def extract_info(com_info):
     for record in cursor:
         for tag in record['hashtags']:
             tags.update([tag])
-        # langs.update([record['lang']])
+        langs.update([record['lang']])
 
     with open(com_info['fname'] + 'infos.csv', 'w') as csvfile:
-        fieldnames = tags.keys() + ['ncommunities', 'maxcomlen', 'mincomlen']
+        fieldnames = tags.keys() + langs.keys() + \
+            ['ncommunities', 'maxcomlen', 'mincomlen']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-        # tags.update(langs)
+        tags.update(langs)
         tags.update(info_coms)
         writer.writeheader()
         writer.writerow(tags)
 
 
 def evaluate_partition(infos):
-    # if infos['alg'] == 'k-clique':
-    #     results = pquality.pquality_summary(infos['network'],
-    #                                         infos['partition'])
-    #     results['Indexes'].to_csv(path_or_buf='./results/k_clique/indexes_' +
-    #                               str(infos['k']) + '.csv')
-    #     results['Indexes'].to_latex(buf='./results/k_clique/indexes_' +
-    #                                 str(infos['k']) + '.tex')
-    #     results['Modularity'].to_csv(path_or_buf='./results/k_clique/' +
-    #                                  'modularity_' + str(infos['k']) + '.csv')
-    #     results['Modularity'].to_latex(buf='./results/k_clique/' +
-    #                                    'modularity_' + str(infos['k']) +
-    #                                    '.tex')
-    if infos['alg'] == 'label propagation':
+    if infos['alg'] == 'k-clique':
+        results = pquality.pquality_summary(infos['network'],
+                                            infos['partition'])
+        results['Indexes'].to_csv(path_or_buf='./results/k_clique/indexes_' +
+                                  str(infos['k']) + '.csv')
+        results['Indexes'].to_latex(buf='./results/k_clique/indexes_' +
+                                    str(infos['k']) + '.tex')
+        results['Modularity'].to_csv(path_or_buf='./results/k_clique/' +
+                                     'modularity_' + str(infos['k']) + '.csv')
+        results['Modularity'].to_latex(buf='./results/k_clique/' +
+                                       'modularity_' + str(infos['k']) +
+                                       '.tex')
+    elif infos['alg'] == 'label propagation':
         results = pquality.pquality_summary(infos['network'],
                                             infos['partition'])
         results['Indexes'].to_csv(path_or_buf='./results/label_propagation/' +
@@ -228,7 +229,6 @@ def apply_demon(g, subsize=1000):
     iterations = dict()
 
     for eps in [0.1, 0.25, 0.50, 0.75, 0.9]:
-    # for eps in [0.25]:
         d = dm.Demon(graph=g, min_community_size=3, epsilon=eps)
         coms_demon = d.execute()
         max_len = max([len(c) for c in coms_demon])
@@ -254,106 +254,106 @@ def apply_demon(g, subsize=1000):
 if __name__ == '__main__':
     print 'IMPORTING NETWORK\n'
 
-    g = nx.read_edgelist('../network/networks/g_ita_edge_list.txt',
+    g = nx.read_edgelist('../network/networks/edge_list.txt',
                          create_using=nx.DiGraph(), nodetype=int, data=False)
-    # nodes = list(g.nodes())
-    # subsize = 100
-    # randoms = [random.randint(0, len(nodes) - 1) for i in range(subsize)]
-    # g = nx.subgraph(g,randoms)
+    nodes = list(g.nodes())
+    subsize = 2000
+    randoms = [random.randint(0, len(nodes) - 1) for i in range(subsize)]
+    sub_g = g.copy().subgraph([nodes[r] for r in randoms])
 
-    # p_kclique = apply_kclique(g)
-    # print '\n'
-    p_labelprop = apply_labelprop(g)
+    p_kclique = apply_kclique(sub_g)
     print '\n'
-    p_louvain = apply_louvain(g)
+    p_labelprop = apply_labelprop(sub_g)
     print '\n'
-    p_gn = apply_gn(g)
+    p_louvain = apply_louvain(sub_g)
     print '\n'
-    p_demon = apply_demon(g)
+    p_gn = apply_gn(sub_g)
+    print '\n'
+    p_demon = apply_demon(sub_g)
 
     ps = [p_labelprop, p_louvain, p_gn, p_demon]
 
     for i in range(len(ps)):
         for j in range(i + 1, len(ps)):
-            # if ps[i] == p_kclique:
-            #     for k in p_kclique:
-            #         if ps[j] == p_labelprop:
-            #             comp = NF1(ps[i][k], ps[j]).summary()
-            #             comp['scores'].to_csv(path_or_buf='./comparisons/' +
-            #                                   'k_clique/k_clique_' + str(k) +
-            #                                   '_labelprop_scores.csv')
-            #             comp['scores'].to_latex(buf='./comparisons/' +
-            #                                     'k_clique/k_clique_' + str(k) +
-            #                                     '_labelprop_scores.tex')
-            #             comp['details'].to_csv(path_or_buf='./comparisons/' +
-            #                                    'k_clique/k_clique_' + str(k) +
-            #                                    '_labelprop_details.csv')
-            #             comp['details'].to_latex(buf='./comparisons/' +
-            #                                      'k_clique/k_clique_' +
-            #                                      str(k) +
-            #                                      '_labelprop_details.tex')
-            #         elif ps[j] == p_louvain:
-            #             comp = NF1(ps[i][k], ps[j]).summary()
-            #             comp['scores'].to_csv(path_or_buf='./comparisons/' +
-            #                                   'k_clique/k_clique_' + str(k) +
-            #                                   '_louvain_scores.csv')
-            #             comp['scores'].to_latex(buf='./comparisons/' +
-            #                                     'k_clique/k_clique_' + str(k) +
-            #                                     '_louvain_scores.tex')
-            #             comp['details'].to_csv(path_or_buf='./comparisons/' +
-            #                                    'k_clique/k_clique_' + str(k) +
-            #                                    '_louvain_details.csv')
-            #             comp['details'].to_latex(buf='./comparisons/' +
-            #                                      'k_clique/k_clique_' +
-            #                                      str(k) +
-            #                                      '_louvain_details.tex')
-            #         elif ps[j] == p_gn:
-            #             for iteration in ps[j]:
-            #                 comp = NF1(ps[i][k], ps[j][iteration]).summary()
-            #                 comp['scores'].to_csv(path_or_buf='./comparisons/'
-            #                                       + 'k_clique/k_clique_' +
-            #                                       str(k) + '_gn_it_' +
-            #                                       str(iteration) +
-            #                                       '_scores.csv')
-            #                 comp['scores'].to_latex(buf='./comparisons/'
-            #                                         + 'k_clique/k_clique_' +
-            #                                         str(k) + '_gn_it_' +
-            #                                         str(iteration) +
-            #                                         '_scores.tex')
-            #                 comp['details'].to_csv(path_or_buf='./comparisons/'
-            #                                        + 'k_clique/k_clique_' +
-            #                                        str(k) + '_gn_it_' +
-            #                                        str(iteration) +
-            #                                        '_details.csv')
-            #                 comp['details'].to_latex(buf='./comparisons/'
-            #                                          + 'k_clique/k_clique_' +
-            #                                          str(k) + '_gn_it_' +
-            #                                          str(iteration) +
-            #                                          '_details.tex')
-            #         else:
-            #             for iteration in ps[j]:
-            #                 comp = NF1(ps[i][k], ps[j][iteration]).summary()
-            #                 comp['scores'].to_csv(path_or_buf='./comparisons/'
-            #                                       + 'k_clique/k_clique_' +
-            #                                       str(k) + '_demon_' +
-            #                                       str(iteration) + '_scores.' +
-            #                                       'csv')
-            #                 comp['scores'].to_latex(buf='./comparisons/'
-            #                                         + 'k_clique/k_clique_' +
-            #                                         str(k) + '_demon_' +
-            #                                         str(iteration) +
-            #                                         '_scores.tex')
-            #                 comp['details'].to_csv(path_or_buf='./comparisons/'
-            #                                        + 'k_clique/k_clique_' +
-            #                                        str(k) + '_demon_' +
-            #                                        str(iteration) +
-            #                                        '_details.csv')
-            #                 comp['details'].to_latex(buf='./comparisons/'
-            #                                          + 'k_clique/k_clique_' +
-            #                                          str(k) + '_demon_' +
-            #                                          str(iteration) +
-            #                                          '_details.tex')
-            if ps[i] == p_labelprop:
+            if ps[i] == p_kclique:
+                for k in p_kclique:
+                    if ps[j] == p_labelprop:
+                        comp = NF1(ps[i][k], ps[j]).summary()
+                        comp['scores'].to_csv(path_or_buf='./comparisons/' +
+                                              'k_clique/k_clique_' + str(k) +
+                                              '_labelprop_scores.csv')
+                        comp['scores'].to_latex(buf='./comparisons/' +
+                                                'k_clique/k_clique_' + str(k) +
+                                                '_labelprop_scores.tex')
+                        comp['details'].to_csv(path_or_buf='./comparisons/' +
+                                               'k_clique/k_clique_' + str(k) +
+                                               '_labelprop_details.csv')
+                        comp['details'].to_latex(buf='./comparisons/' +
+                                                 'k_clique/k_clique_' +
+                                                 str(k) +
+                                                 '_labelprop_details.tex')
+                    elif ps[j] == p_louvain:
+                        comp = NF1(ps[i][k], ps[j]).summary()
+                        comp['scores'].to_csv(path_or_buf='./comparisons/' +
+                                              'k_clique/k_clique_' + str(k) +
+                                              '_louvain_scores.csv')
+                        comp['scores'].to_latex(buf='./comparisons/' +
+                                                'k_clique/k_clique_' + str(k) +
+                                                '_louvain_scores.tex')
+                        comp['details'].to_csv(path_or_buf='./comparisons/' +
+                                               'k_clique/k_clique_' + str(k) +
+                                               '_louvain_details.csv')
+                        comp['details'].to_latex(buf='./comparisons/' +
+                                                 'k_clique/k_clique_' +
+                                                 str(k) +
+                                                 '_louvain_details.tex')
+                    elif ps[j] == p_gn:
+                        for iteration in ps[j]:
+                            comp = NF1(ps[i][k], ps[j][iteration]).summary()
+                            comp['scores'].to_csv(path_or_buf='./comparisons/'
+                                                  + 'k_clique/k_clique_' +
+                                                  str(k) + '_gn_it_' +
+                                                  str(iteration) +
+                                                  '_scores.csv')
+                            comp['scores'].to_latex(buf='./comparisons/'
+                                                    + 'k_clique/k_clique_' +
+                                                    str(k) + '_gn_it_' +
+                                                    str(iteration) +
+                                                    '_scores.tex')
+                            comp['details'].to_csv(path_or_buf='./comparisons/'
+                                                   + 'k_clique/k_clique_' +
+                                                   str(k) + '_gn_it_' +
+                                                   str(iteration) +
+                                                   '_details.csv')
+                            comp['details'].to_latex(buf='./comparisons/'
+                                                     + 'k_clique/k_clique_' +
+                                                     str(k) + '_gn_it_' +
+                                                     str(iteration) +
+                                                     '_details.tex')
+                    else:
+                        for iteration in ps[j]:
+                            comp = NF1(ps[i][k], ps[j][iteration]).summary()
+                            comp['scores'].to_csv(path_or_buf='./comparisons/'
+                                                  + 'k_clique/k_clique_' +
+                                                  str(k) + '_demon_' +
+                                                  str(iteration) + '_scores.' +
+                                                  'csv')
+                            comp['scores'].to_latex(buf='./comparisons/'
+                                                    + 'k_clique/k_clique_' +
+                                                    str(k) + '_demon_' +
+                                                    str(iteration) +
+                                                    '_scores.tex')
+                            comp['details'].to_csv(path_or_buf='./comparisons/'
+                                                   + 'k_clique/k_clique_' +
+                                                   str(k) + '_demon_' +
+                                                   str(iteration) +
+                                                   '_details.csv')
+                            comp['details'].to_latex(buf='./comparisons/'
+                                                     + 'k_clique/k_clique_' +
+                                                     str(k) + '_demon_' +
+                                                     str(iteration) +
+                                                     '_details.tex')
+            elif ps[i] == p_labelprop:
                 if ps[j] == p_louvain:
                     comp = NF1(ps[i], ps[j]).summary()
                     comp['scores'].to_csv(path_or_buf='./comparisons/' +

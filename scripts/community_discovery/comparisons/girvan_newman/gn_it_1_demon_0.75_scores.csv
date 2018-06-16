@@ -1,7 +1,7 @@
 Index,Value
-Ground Truth Communities,256.0
-Identified Communities,3.0
-Community Ratio,0.01171875
-Ground Truth Matched,0.0078125
-Node Coverage,1.07264367816
-NF1,0.00403645833333
+Ground Truth Communities,39.0
+Identified Communities,1181.0
+Community Ratio,30.28205128205128
+Ground Truth Matched,0.05128205128205128
+Node Coverage,10.238341968911918
+NF1,1.5197898347771339e-05
