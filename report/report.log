@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017) (preloaded format=xelatex 2018.4.1)  16 JUN 2018 09:55
+This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017) (preloaded format=xelatex 2018.4.1)  16 JUN 2018 10:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1553,7 +1553,8 @@ LaTeX Warning: Label `fig:out_degree' multiply defined.
 
 LaTeX Warning: Label `fig:path_time' multiply defined.
 
-(./chaps/communities/communities.aux) (./chaps/spreading/spreading.aux))
+(./chaps/robustness/robustness.aux) (./chaps/communities/communities.aux)
+(./chaps/spreading/spreading.aux))
 \openout1 = `report.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 52.
@@ -1865,11 +1866,38 @@ Chapter 4.
 [10
 
 ]
+\openout2 = `chaps/robustness/robustness.aux'.
+
+ (./chaps/robustness/robustness.tex
+Chapter 5.
+File: images/robustness/test_cc_on_random.pdf Graphic file (type pdf)
+<use images/robustness/test_cc_on_random.pdf>
+File: images/robustness/test_cc_on_degree_centrality.pdf Graphic file (type pdf
+)
+<use images/robustness/test_cc_on_degree_centrality.pdf>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [11
+
+
+]
+File: images/robustness/failure_propagation_model.pdf Graphic file (type pdf)
+<use images/robustness/failure_propagation_model.pdf>
+)
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[12]
 \openout2 = `chaps/communities/communities.aux'.
 
  (./chaps/communities/communities.tex
-Chapter 5.
-[11
+Chapter 6.
+[13
+
 
 
 ]
@@ -1879,18 +1907,18 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[12])
+[14])
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[13]
+[15]
 \openout2 = `chaps/spreading/spreading.aux'.
 
  (./chaps/spreading/spreading.tex
-Chapter 6.
+Chapter 7.
 File: images/spreading/si/diffusion.pdf Graphic file (type pdf)
 <use images/spreading/si/diffusion.pdf>
 File: images/spreading/si/diffusion_er.pdf Graphic file (type pdf)
@@ -1909,7 +1937,7 @@ File: images/spreading/sis/diffusion_ba_comparison.pdf Graphic file (type pdf)
 
 Underfull \vbox (badness 1558) has occurred while \output is active []
 
- [14
+ [16
 
 
 
@@ -1941,7 +1969,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[15]
+[17]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -1951,27 +1979,27 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[16])
+[18])
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[17]
-Chapter 7.
-[18
+[19]
+Chapter 8.
+[20
 
 
-] [19
+] [21
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 271.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 271.
- (./report.aux (./chaps/communities/communities.aux)
-(./chaps/spreading/spreading.aux))
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 271.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 271.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 273.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 273.
+ (./report.aux (./chaps/robustness/robustness.aux)
+(./chaps/communities/communities.aux) (./chaps/spreading/spreading.aux))
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 273.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 273.
 
 
 LaTeX Warning: There were multiply-defined labels.
@@ -1981,12 +2009,12 @@ Package logreq Info: Writing requests to 'report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 39499 strings out of 493007
- 773934 string characters out of 6134606
- 1334871 words of memory out of 5000000
- 42905 multiletter control sequences out of 15000+600000
- 537444 words of font info for 59 fonts, out of 8000000 for 9000
+ 39543 strings out of 493007
+ 775380 string characters out of 6134606
+ 1337262 words of memory out of 5000000
+ 42931 multiletter control sequences out of 15000+600000
+ 537468 words of font info for 62 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  62i,12n,79p,10488b,4581s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on report.xdv (21 pages, 262432 bytes).
+Output written on report.xdv (23 pages, 304240 bytes).
