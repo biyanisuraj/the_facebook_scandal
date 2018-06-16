@@ -2,7 +2,6 @@ from __future__ import division
 import operator
 import matplotlib.pyplot as plt
 import networkx as nx
-# import numpy as np
 import random
 from collections import defaultdict
 
@@ -81,8 +80,8 @@ def failure_propagation_model(g, phis, iterations):
 
     for phi in failed_over_it:
         plt.plot([i[0] for i in failed_over_it[phi]],
-                 [i[1] for i in failed_over_it[phi]], label=r'$\varphi = ' +
-                 str(phi) + '$')
+                 [i[1] for i in failed_over_it[phi]],
+                 label=r'$\varphi = ' + str(phi) + '$')
 
     plt.title('Failure propagation model')
     plt.xlabel('Iteration')

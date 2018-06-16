@@ -1,15 +1,15 @@
 [0] Config.pm:302> INFO - This is Biber 2.10
 [0] Config.pm:305> INFO - Logfile is 'report.blg'
-[129] biber-darwin:313> INFO - === Fri Jun 15, 2018, 16:56:55
-[201] Biber.pm:371> INFO - Reading 'report.bcf'
-[303] Biber.pm:857> INFO - Found 10 citekeys in bib section 0
-[336] Biber.pm:3976> INFO - Processing section 0
-[364] Biber.pm:4136> INFO - Looking for bibtex format file 'references.bib' for section 0
-[366] bibtex.pm:1490> INFO - LaTeX decoding ...
-[379] bibtex.pm:1306> INFO - Found BibTeX data source 'references.bib'
-[538] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[538] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[538] Biber.pm:3804> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
-[538] Biber.pm:3810> INFO - No sort tailoring available for locale 'en-US'
-[545] bbl.pm:617> INFO - Writing 'report.bbl' with encoding 'UTF-8'
-[549] bbl.pm:720> INFO - Output to report.bbl
+[45] biber-darwin:313> INFO - === Sat Jun 16, 2018, 09:33:32
+[72] Biber.pm:371> INFO - Reading 'report.bcf'
+[181] Biber.pm:857> INFO - Found 10 citekeys in bib section 0
+[198] Biber.pm:3976> INFO - Processing section 0
+[214] Biber.pm:4136> INFO - Looking for bibtex format file 'references.bib' for section 0
+[215] bibtex.pm:1490> INFO - LaTeX decoding ...
+[228] bibtex.pm:1306> INFO - Found BibTeX data source 'references.bib'
+[306] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[306] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[306] Biber.pm:3804> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
+[306] Biber.pm:3810> INFO - No sort tailoring available for locale 'en-US'
+[315] bbl.pm:617> INFO - Writing 'report.bbl' with encoding 'UTF-8'
+[319] bbl.pm:720> INFO - Output to report.bbl

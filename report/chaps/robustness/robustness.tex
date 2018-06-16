@@ -1,9 +1,14 @@
 \chapter{Network robustness} % (fold)
 \label{cha:network_robustness}
+    In this chapter we'll provide some results about the \textbf{robustness} and \textbf{attack tolerance} of our
+    network. Thaking as reference the concepts described in \cite{network_science}, we'll define the
+    \textbf{critical threshold} of our network, and we'll test its robustness against attacks conducted following
+    a random nodes' selection or one based on decreasing degree centrality. Finally we'll test the
+    \textbf{Failure Propagation Model}, following our implementation of the model, on our network.
     \section{Critical threshold} % (fold)
     \label{sec:critical_threshold}
-        As described in chapter 8 of \cite{network_science}, we have obtained the \textbf{critical threshold}
-        representing the fraction of the nodes that have to be removed to break apart out network. This fraction,
+        As described in \cite{network_science}, we have obtained the \textbf{critical threshold}
+        representing the fraction of the nodes that must be removed to break apart our network. This fraction,
         represented by $f_c$, is obtained by the following formula:
 
         \begin{equation*}
@@ -16,7 +21,7 @@
         $k_{\mathit{min}}$ and $k_{\mathit{max}}$ are eguals to $1$ and $19073$ respectively, tells us that, in
         order to break apart our network it is mandatory to remove the $99\%$ of the nodes. Keeping in mind that
         our network is, in fact, a finite network, we can adjust the obtained result by utilizing the following
-        formula, still described in chapter 8 of \cite{network_science}:
+        formula, still in \cite{network_science}:
 
         \begin{equation*}
             f_c \approx 1 - \frac{C}{N^{\frac{3 - \gamma}{\gamma - 1}}} \approx 1.00
@@ -24,7 +29,7 @@
 
         where $C = \frac{1}{\sum_{k=1}^{\infty}k^{-\gamma}}$ is a constant and $N$ represents the number of nodes
         of the network. As we can see, this new approximation tells us that in order to break apart our network the
-        totality of its nodes has to be removed.
+        totality of its nodes must be removed.
     % section critical_threshold (end)
     \section{Simulation of an attack} % (fold)
     \label{sec:simulation_of_an_attack}
@@ -37,14 +42,14 @@
             \centering
             \begin{subfigure}{0.45\textwidth}
                 \resizebox{\textwidth}{!}{
-                    \includegraphics{images/tie_strength/test_cc_on_random.pdf}
+                    \includegraphics{images/robustness/test_cc_on_random.pdf}
                 }
                 \caption{}
                 \label{test_cc_on_random}
             \end{subfigure}
             \begin{subfigure}{0.45\textwidth}
                 \resizebox{\textwidth}{!}{
-                    \includegraphics{images/tie_strength/test_cc_on_degree_centrality.pdf}
+                    \includegraphics{images/robustness/test_cc_on_degree_centrality.pdf}
                 }
                 \caption{}
                 \label{test_cc_on_degree_centrality}
@@ -71,7 +76,7 @@
             \centering
             \begin{subfigure}{0.50\textwidth}
                 \resizebox{\textwidth}{!}{
-                    \includegraphics{images/tie_strength/failure_propagation_model.pdf}
+                    \includegraphics{images/robustness/failure_propagation_model.pdf}
                 }
             \end{subfigure}
             \caption{The test for the Failure Propagation Model was conducted over $20000$ iterations.}
@@ -80,6 +85,6 @@
 
         We can see that, as expected, the network doesn't accuse the failure propagation for $\varphi$ eguals to
         $0.01$, in which less than $30$ nodes failed. For the smaller values of $\varphi$ we can see that the
-        situation is different, with a greater amount of nodes which fail.
+        situation is different, with a greater amount of nodes which fail over the iterations.
     % section simulation_of_a_failure_propagation_model (end)
 % chapter network_robustness (end)

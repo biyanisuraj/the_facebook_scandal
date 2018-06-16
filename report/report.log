@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017) (preloaded format=xelatex 2018.4.1)  15 JUN 2018 22:36
+This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017) (preloaded format=xelatex 2018.4.1)  16 JUN 2018 09:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1547,7 +1547,7 @@ File: english.lbx 2017/12/19 v3.10 biblatex localization (PK/JW/AB)
 
 LaTeX Warning: Label `fig:time_history' multiply defined.
 
-(./chaps/tie_strength/tie_strength.aux) (./chaps/communities/communities.aux)
+(./chaps/robustness/robustness.aux) (./chaps/communities/communities.aux)
 (./chaps/spreading/spreading.aux))
 \openout1 = `report.aux'.
 
@@ -1745,22 +1745,22 @@ Chapter 4.
 [4
 
 ]
-\openout2 = `chaps/tie_strength/tie_strength.aux'.
+\openout2 = `chaps/robustness/robustness.aux'.
 
- (./chaps/tie_strength/tie_strength.tex
+ (./chaps/robustness/robustness.tex
 Chapter 5.
-File: images/tie_strength/test_cc_on_random.pdf Graphic file (type pdf)
-<use images/tie_strength/test_cc_on_random.pdf>
-File: images/tie_strength/test_cc_on_degree_centrality.pdf Graphic file (type p
-df)
-<use images/tie_strength/test_cc_on_degree_centrality.pdf>
-File: images/tie_strength/failure_propagation_model.pdf Graphic file (type pdf)
-
-<use images/tie_strength/failure_propagation_model.pdf>
+File: images/robustness/test_cc_on_random.pdf Graphic file (type pdf)
+<use images/robustness/test_cc_on_random.pdf>
+File: images/robustness/test_cc_on_degree_centrality.pdf Graphic file (type pdf
+)
+<use images/robustness/test_cc_on_degree_centrality.pdf>
 [5
 
 
-]) [6]
+]
+File: images/robustness/failure_propagation_model.pdf Graphic file (type pdf)
+<use images/robustness/failure_propagation_model.pdf>
+) [6]
 \openout2 = `chaps/communities/communities.aux'.
 
  (./chaps/communities/communities.tex
@@ -1828,7 +1828,7 @@ Chapter 8.
 ]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 113.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 113.
- (./report.aux (./chaps/tie_strength/tie_strength.aux)
+ (./report.aux (./chaps/robustness/robustness.aux)
 (./chaps/communities/communities.aux) (./chaps/spreading/spreading.aux))
 Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 113.
 Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 113.
@@ -1842,11 +1842,11 @@ Package logreq Info: Writing requests to 'report.run.xml'.
  ) 
 Here is how much of TeX's memory you used:
  39434 strings out of 493007
- 771340 string characters out of 6134606
- 1335286 words of memory out of 5000000
+ 771286 string characters out of 6134606
+ 1335302 words of memory out of 5000000
  42849 multiletter control sequences out of 15000+600000
  534244 words of font info for 47 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  62i,12n,79p,10488b,4564s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on report.xdv (15 pages, 251708 bytes).
+Output written on report.xdv (15 pages, 256100 bytes).
