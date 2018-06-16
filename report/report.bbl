@@ -114,6 +114,33 @@
       \endverb
       \keyw{average shortest path length,sampling,social network analysis,vertex-vertex distance}
     \endentry
+    \entry{network_science}{misc}{}
+      \name{author}{2}{}{%
+        {{hash=15bacd7ddfc866c5dd96976d4b0244d5}{%
+           family={Barabási},
+           familyi={B\bibinitperiod},
+           given={Albert-László},
+           giveni={A\bibinithyphendelim L\bibinitperiod}}}%
+        {{hash=5996b175b9fa8551c3fa09da65426167}{%
+           family={Pósfai},
+           familyi={P\bibinitperiod},
+           given={Márton},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{3c0a20b3e913df9584530b6efb70d6c7}
+      \strng{fullhash}{3c0a20b3e913df9584530b6efb70d6c7}
+      \strng{bibnamehash}{3c0a20b3e913df9584530b6efb70d6c7}
+      \strng{authorbibnamehash}{3c0a20b3e913df9584530b6efb70d6c7}
+      \strng{authornamehash}{3c0a20b3e913df9584530b6efb70d6c7}
+      \strng{authorfullhash}{3c0a20b3e913df9584530b6efb70d6c7}
+      \field{sortinit}{4}
+      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{http://networksciencebook.com/}}
+      \field{title}{Network Science}
+      \field{year}{2016}
+    \endentry
     \entry{comm_ground_truth}{misc}{}
       \name{author}{2}{}{%
         {{hash=26995f77758a4b94095d5cb42313d78d}{%
@@ -133,8 +160,8 @@
       \strng{authorbibnamehash}{16ee88c58499748abb5748a755116286}
       \strng{authornamehash}{16ee88c58499748abb5748a755116286}
       \strng{authorfullhash}{16ee88c58499748abb5748a755116286}
-      \field{sortinit}{4}
-      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
+      \field{sortinit}{8}
+      \field{sortinithash}{07edf88d4ea82509b9c4b4d13f41c452}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{https://link.springer.com/article/10.1007/s10115-013-0693-z}}
@@ -170,8 +197,8 @@
       \strng{authorbibnamehash}{2696e5f65c99a09bd31d2bd695c75dd2}
       \strng{authornamehash}{2696e5f65c99a09bd31d2bd695c75dd2}
       \strng{authorfullhash}{f7aefa9dfb32f97d1541961965d44ed7}
-      \field{sortinit}{5}
-      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
+      \field{sortinit}{9}
+      \field{sortinithash}{1dd72ab054147731c9d824b49aba0534}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{http://dx.doi.org/10.1038/nature03607}}
@@ -197,8 +224,8 @@
       \strng{authorbibnamehash}{edfc26efd0d380b3bd919f15a72107e7}
       \strng{authornamehash}{edfc26efd0d380b3bd919f15a72107e7}
       \strng{authorfullhash}{edfc26efd0d380b3bd919f15a72107e7}
-      \field{sortinit}{6}
-      \field{sortinithash}{57e57fb8451e7fcfa45d1e069f6d3136}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{https://ieeexplore.ieee.org/abstract/document/5730298/citations}}
@@ -234,8 +261,8 @@
       \strng{authorbibnamehash}{dc752b2fcf2e07387e8cdb51c06d60e1}
       \strng{authornamehash}{dc752b2fcf2e07387e8cdb51c06d60e1}
       \strng{authorfullhash}{136f387964fdc88f6e67c2282e9fa621}
-      \field{sortinit}{7}
-      \field{sortinithash}{c818dd9105a2852444fc9f5e145c294e}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{http://stacks.iop.org/1742-5468/2008/i=10/a=P10008}}
@@ -261,8 +288,8 @@
       \strng{authorbibnamehash}{97a2d30433091dd02b2fe0e171aac48b}
       \strng{authornamehash}{97a2d30433091dd02b2fe0e171aac48b}
       \strng{authorfullhash}{97a2d30433091dd02b2fe0e171aac48b}
-      \field{sortinit}{8}
-      \field{sortinithash}{07edf88d4ea82509b9c4b4d13f41c452}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{http://www.pnas.org/content/99/12/7821}}
@@ -298,8 +325,8 @@
       \strng{authorbibnamehash}{da847a37c5ebd857a1a239c87289e88d}
       \strng{authornamehash}{da847a37c5ebd857a1a239c87289e88d}
       \strng{authorfullhash}{0ec22ea903a2d11cbe0789f99c53145a}
-      \field{sortinit}{9}
-      \field{sortinithash}{1dd72ab054147731c9d824b49aba0534}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{http://arxiv.org/abs/1206.0629}}
