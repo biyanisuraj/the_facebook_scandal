@@ -1,10 +1,59 @@
 \chapter{Spreading} % (fold)
 \label{cha:spreading}
 
+\section{Which model for news spreading?}
+
+In order to choose a model for the spreading of news or ideas it's necessary to point out
+what means in this field an infection, and to interpret the related quantities.
+A person "infected'' by a news it's not a person just only reached by the news, but it's a person
+who partecipates to the spreading by communicating to its neighbours and potentially infect them.
+The decision to spread the information it's an individual choice, expressing the interest
+of the person to the news, and indicates the presence of a personal threshold of reaction related to the news or ideas.
+The threshold can also be influenced by the neighbourhood or the community membership.
+
+
+In the epidemic models, such as the SI model, the coefficient $\beta$ represents the rate of trasmission of the infection and it is constant for the whole population, indicating the dependence on the properties of the pathogen.
+
+In the news field $\beta$ can be interpreted as an intrinsic power of trasmission of the news.
+This power of trasmission may be associated to the journalistic concept of \textit{newsworthiness},
+which includes all the characteristics that make a fact a worthy news.
+But the expanding phenomenon of \textit{fake news} shows that the speed of diffusion it's not only related to
+the worthiness of an information. A recent paper published on Science \cite{Vosoughi_2018} shows how false news on Twitter spread 
+``significantly farther, faster, deeper, and more broadly than the truth in all categories of information''.
+The authors of the paper tried to explain the faster speed of diffusion of the false news by its novelty and the conveying
+of strongest emotive reactions like surprise or disgust.
+
+
+A news coverage is usually characterized also by a certain amount of time after which the news naturally ``dies'' out.
+%%Considering the meaning assigned to the news infection the people who don't care no more about the news and stops communicating
+%%about it 
+
+This fact can be modeled with the SIS formulation where the people recover from the infection with a rate $\mu$.
+The coefficient $\mu$, likewise $\beta$, it's constant and in this case can represents the intrinsic property of a news to vanish,
+which makes the people stopping communicating about the news.
+
+
+
+
+In order to include also the personal threshold reaction to a news would be necessary to use a more sophisticated model, MILLI
+
 In this chapter we'll describe the results we obtained by applying the \textbf{SI}, \textbf{SIS}, \textbf{SIR},
 and \textbf{Threshold} diffusion models both on the crawled data and on the synthetic graphs (Erdős–Rényi and
 Barabási–Albert) generated from the original one. In each section, a comparison between the three networks will be
 provided along with some details on the implementation of the tests of every model.
+
+
+\section{The New York Times vs La Repubblica }
+
+Idea: let's start with the same news, but two different nodes, there is a big difference in diffusion?
+Prevision: no, the difference it's minimal because of the presence of hubs.
+
+
+
+
+
+
+
 
 \section{SI model} % (fold)
 \label{sec:si_model}
