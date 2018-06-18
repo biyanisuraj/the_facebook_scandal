@@ -2121,20 +2121,21 @@
   </bcf:bibdata>
   <bcf:section number="0">
     <bcf:citekey order="1">nyt_17march</bcf:citekey>
-    <bcf:citekey order="2">nyt_timeline</bcf:citekey>
-    <bcf:citekey order="3">ye_paths</bcf:citekey>
-    <bcf:citekey order="4">network_science</bcf:citekey>
-    <bcf:citekey order="5">network_science</bcf:citekey>
-    <bcf:citekey order="6">network_science</bcf:citekey>
-    <bcf:citekey order="7">network_science</bcf:citekey>
-    <bcf:citekey order="8">comm_ground_truth</bcf:citekey>
-    <bcf:citekey order="9">k_clique</bcf:citekey>
-    <bcf:citekey order="10">label_propagation</bcf:citekey>
-    <bcf:citekey order="11">louvain</bcf:citekey>
-    <bcf:citekey order="12">girvan_newman</bcf:citekey>
-    <bcf:citekey order="13">demon</bcf:citekey>
-    <bcf:citekey order="14">rossetti2016</bcf:citekey>
-    <bcf:citekey order="15">Vosoughi_2018</bcf:citekey>
+    <bcf:citekey order="2">guardian</bcf:citekey>
+    <bcf:citekey order="3">nyt_timeline</bcf:citekey>
+    <bcf:citekey order="4">ye_paths</bcf:citekey>
+    <bcf:citekey order="5">Vosoughi_2018</bcf:citekey>
+    <bcf:citekey order="6">comm_ground_truth</bcf:citekey>
+    <bcf:citekey order="7">k_clique</bcf:citekey>
+    <bcf:citekey order="8">label_propagation</bcf:citekey>
+    <bcf:citekey order="9">louvain</bcf:citekey>
+    <bcf:citekey order="10">girvan_newman</bcf:citekey>
+    <bcf:citekey order="11">demon</bcf:citekey>
+    <bcf:citekey order="12">rossetti2016</bcf:citekey>
+    <bcf:citekey order="13">network_science</bcf:citekey>
+    <bcf:citekey order="14">network_science</bcf:citekey>
+    <bcf:citekey order="15">network_science</bcf:citekey>
+    <bcf:citekey order="16">network_science</bcf:citekey>
   </bcf:section>
   <bcf:sortlist section="0" name="none/global/" type="entry" sortscheme="none" sortnamekeyscheme="global" labelprefix="">
   <bcf:sorting>

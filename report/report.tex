@@ -1,10 +1,10 @@
-\documentclass[12pt, twoside]{report}
+\documentclass[11pt, twoside]{report}
 
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 %%\usepackage[us]{babel}
 \usepackage{helvet}
-\usepackage[a4paper,width=180mm,top=25mm,bottom=25mm,bindingoffset=6mm]{geometry}
+\usepackage[a4paper,width=180mm,top=20mm,bottom=20mm,bindingoffset=6mm]{geometry}
 \usepackage[framemethod=default]{mdframed}
 \usepackage{lipsum,titlesec,xcolor,fancyhdr,array,multicol,float,graphicx,wrapfig,subcaption}
 \usepackage{fontspec,todonotes,enumitem,comment,capt-of,amsmath,booktabs}
@@ -12,6 +12,7 @@
 \usepackage[font=scriptsize]{caption}
 \usepackage[sorting=none]{biblatex}
 \addbibresource{references.bib}
+
 
 \DeclareCaptionLabelFormat{andtable}{#1˜#2 \& \tablename˜\thetable}
 
@@ -26,7 +27,11 @@
 \titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter\hsp\textcolor{gray75}{|}\hsp}{0pt}{\Huge\bfseries}
 
 \titlespacing*{\chapter}{0pt}{-60pt}{20pt} %% change spacing
+
+\usepackage{enumitem}
+\setlist{noitemsep}
 %%%%%%%%%%
+
 
 \floatstyle{plain}
 \restylefloat{figure}
@@ -43,12 +48,13 @@
  \hypersetup{
      colorlinks,
      citecolor= green,
-     filecolor=black,
+     filecolor= black,
      linkcolor= black,
-     urlcolor=blue
+     urlcolor= blue
  }
 
-
+\usepackage[nottoc,notlot,notlof]{tocbibind}
+ 
 \begin{document}
     \input{titlepage}
     \pagenumbering{Roman}
@@ -56,7 +62,7 @@
     \chapter{The case story}
     \pagenumbering{arabic}
 
-On Saturday 17 of March 2018, the newspapers The Observer and The New York Times broke reports on how the consulting firm Cambridge Analytica harvested private information from the Facebook profiles of more than 50 million users without their permission, making it one of the largest data leaks in the social network’s history. \cite{nyt_17march}. REF OBSERVER
+On the evening of Saturday 17 of March 2018, The New York Times and The Guardian / The Observer broke reports on how the consulting firm Cambridge Analytica harvested private information from the Facebook profiles of more than 50 million users without their permission, making it one of the largest data leaks in the social network’s history. \cite{nyt_17march} , \cite{guardian}.
 
 The whistleblower Christopher Wylie, datascientist and former director of research at Cambridge Analytica revealed...
 Cambridge Analytica described itself as a company providing consumer research, targeted advertising and other data-related services to both political and corporate clients.
@@ -76,21 +82,73 @@ Timeline da sistemare: \cite{nyt_timeline}
 \end{itemize}
 
     \chapter{Building the network}
+    In this report we present an analysis of the spreading of the Cambridge Analytica-Facebook scandal on Twitter.
+    We have considered a network composed by the authors of tweets about the case, during the first period of the scandal outbreak. The data have been collected via the Twitter API and we built the network using the following consecutive steps:
+    \begin{enumerate}
+    \item Crawling of all the available tweets over a period of more than 15 days, since the $17^{th}$ of March, containing at least one of the most popular hashtags regading the case:\\
+    \textbf{  \{\#cambridgeanalytica, \#facebookgate, \#deletefacebook, \#zuckerberg \} }
+      
+    \item Cleaning of the crawled tweets, by selecting and storing in a MongoDB database only the users informations about the authors of tweets, excluding retweets and mentions.
+    \item Selection of the case outbreak time period by observing the time history in Fig. \ref{fig:time_history}. The selected time period consists of 8 days, from the $17^{th}$ to the $24^{th}$ of March included (considering the Italian timezone). 
+      
+    \item Crawling of the following list for each of the selected authors, extracting the followee/follower relationships.
+    \end{enumerate}
+    In Fig. \ref{fig:time_history} is represented the rate of new authors per hour. %%In the weekend of $17^{th}$ $18^{th}$
+    We can observe a tipical daily periodicity, with peaks during the Italian afternoon, corresponding to the USA waking up.
+    The first relevant rate increase is observed on the Monday $19^{th}$, following the weekend of news publishing. A stationary evolution is observed after the $24^{th}$ of March, a week after the scandal outburst.
+    %%Relevant peaks are in correspondance on major events likewise...
 
+    The collecting of the following lists of all the authors has been necessary in order to overcome the huge time complexity of a direct crawling of the
+    followee/follower relationships, considering also the Twitter API rates limits. A negligible fraction of the following lists was not available, because of the Twitter privacy settings of the users.
+
+    In summary, we built a directed unweighted network, consisting of:
+
+    \begin{itemize}
+    \item \textbf{Nodes}: $65729$ twitter users, authors of tweets containing at least one of the hashtags specified above.
+
+    \item \textbf{Edges}: $2501757$ followee/follower relationships between the selected authors.
+    \end{itemize}
+
+
+    
     \begin{figure}[htbp]
       \centering
 \includegraphics[width=\textwidth]{../../scripts/network_analysis/imgs/time_history.pdf}
-      \caption{New authors time history}
+      \caption{Time history of the rate of new authors per hour, during the first 12 days from the first publishing of the scandal.}
       \label{fig:time_history}
     \end{figure}
 
 
-    \chapter{Network properties}
 
+    
+    \chapter{Network analysis}
+
+\section{Network properties summary} 
+
+\begin{table}[htbp]
+  \centering
+\include{statistics}
+\end{table}
+
+\subsection{Random graphs}
+RIVEDERE VALORI/GIUSTIFICAZIONE PER GENERAZIONE
+
+The network has been compared throughout the report with two synthetic network, an Erdos-Renyi random network and a Barabasi-Albert network.
+The Erdos-Renyi random network has been generated using a ``linking probability'' p equal to the average degree of the original undirected network, by using eq. \ref{eq:ER_probability}.
+    \begin{equation}
+      p_{ER} \approx \frac{2\langle k  \rangle}{N} = \frac{76}{65729} \approx  0.001
+      \label{eq:ER_probability}
+    \end{equation}
+
+    Each new node of the random network generated with the Barabasi-Albert model has been attached to the other nodes with a number of links $m$ equal to the average degree of the original network (to be precise to half of the double):
+    \begin{equation}
+      m = \frac{ 2 \, \langle k \rangle}{2} = 38
+      \label{eq:BA_model}
+    \end{equation}
+
+    
  \section{Degree distribution}    
 
-
-  \include{statistics}
  
 \begin{minipage}[b]{0.5\textwidth}
    \centering
@@ -134,18 +192,6 @@ Timeline da sistemare: \cite{nyt_timeline}
     \end{figure}
 
 
-    \subsection{Random graphs} 
-    In order to generate an Erdos-Renyi random network we have choosen a ``linking probability'' p using the average degree of the original undirected network, by using eq. \ref{eq:ER_probability}.
-    \begin{equation}
-      p_{ER} \approx \frac{\langle k  \rangle}{N} = \frac{57}{65729} \approx  0.001
-      \label{eq:ER_probability}
-    \end{equation}
-
-    Each new node of the random network generated with the Barabasi-Albert model has been attached to the other nodes with a number of links $m$ equal to the average degree of the original network, considered undirected:
-    \begin{equation}
-      m = 2 \, \langle k \rangle = 76
-      \label{eq:BA_model}
-    \end{equation}
 
     
     \begin{figure}[htbp]
@@ -155,7 +201,7 @@ Timeline da sistemare: \cite{nyt_timeline}
       \label{fig:connectivity}
     \end{figure}
 
-    \clearpage
+
     \section{Path analysis}
     In order to exactly estimate the average path length $\langle d \rangle$ it would be necessary to compute all the node-node distances of the network. These procedure results infeasible with the computation resources available, as shown in Fig. \ref{fig:path_time}.
     In real networks the path length distribution is quite close to a normal distribution, as shown in \cite{ye_paths}. The average path length has then been estimated statistically, random sampling a number $n$ of node pairs, sufficient to achieve a narrow confidence interval for the mean. The assumption of normality of the distribution it is strong, but not necessary. The convergence of the computed mean to the expected value is guaranteed by the central limit theorem with the assumptions that the distances are independent, identically distributed, and with finite variance.
@@ -265,16 +311,11 @@ This measure represents the percentage of followers that being interested in the
 \end{minipage}
 
 
-
-    
-
-    \chapter{Network dynamics}
-
-    \include{chaps/robustness/robustness}
+    \include{chaps/spreading/spreading}
 
     \include{chaps/communities/communities}
 
-    \include{chaps/spreading/spreading}
+    \include{chaps/robustness/robustness}
 
     \chapter{Summary}
 

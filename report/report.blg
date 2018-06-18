@@ -1,19 +1,19 @@
 [0] Config.pm:354> INFO - This is Biber 2.7 (beta)
-[0] Config.pm:357> INFO - Logfile is 'report/report.blg'
-[24] biber:303> INFO - === lun giu 18, 2018, 18:11:40
-[34] Biber.pm:360> INFO - Reading 'report/report.bcf'
-[93] Biber.pm:836> INFO - Found 12 citekeys in bib section 0
-[104] Biber.pm:3671> INFO - Processing section 0
-[115] Biber.pm:3841> INFO - Looking for bibtex format file 'references.bib' for section 0
-[116] bibtex.pm:1424> INFO - Decoding LaTeX character macros into UTF-8
-[120] bibtex.pm:1281> INFO - Found BibTeX data source 'report/references.bib'
-[137] Utils.pm:164> WARN - ISBN '3-642-17315-2, 978-3-642-17315-8' in entry 'ye_paths' is invalid - run biber with '--validate_datamodel' for details.
-[151] Utils.pm:164> WARN - BibTeX subsystem: /tmp/JXtPSe2Ew5/references.bib_8384.utf8, line 89, warning: 11 characters of junk seen at toplevel
-[151] Utils.pm:164> WARN - BibTeX subsystem: /tmp/JXtPSe2Ew5/references.bib_8384.utf8, line 97, warning: 7 characters of junk seen at toplevel
-[164] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[164] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[164] Biber.pm:3500> INFO - Sorting list 'none/global/' of type 'entry' with scheme 'none' and locale 'en-US'
-[164] Biber.pm:3506> INFO - No sort tailoring available for locale 'en-US'
-[170] bbl.pm:608> INFO - Writing 'report/report.bbl' with encoding 'UTF-8'
-[172] bbl.pm:712> INFO - Output to report/report.bbl
-[172] Biber.pm:110> INFO - WARNINGS: 3
+[0] Config.pm:357> INFO - Logfile is 'report.blg'
+[25] biber:303> INFO - === lun giu 18, 2018, 22:14:31
+[37] Biber.pm:360> INFO - Reading 'report.bcf'
+[98] Biber.pm:836> INFO - Found 13 citekeys in bib section 0
+[109] Biber.pm:3671> INFO - Processing section 0
+[120] Biber.pm:3841> INFO - Looking for bibtex format file 'references.bib' for section 0
+[121] bibtex.pm:1424> INFO - Decoding LaTeX character macros into UTF-8
+[126] bibtex.pm:1281> INFO - Found BibTeX data source 'references.bib'
+[143] Utils.pm:164> WARN - ISBN '3-642-17315-2, 978-3-642-17315-8' in entry 'ye_paths' is invalid - run biber with '--validate_datamodel' for details.
+[158] Utils.pm:164> WARN - BibTeX subsystem: /tmp/jb31TnOXHV/references.bib_2549.utf8, line 92, warning: 11 characters of junk seen at toplevel
+[158] Utils.pm:164> WARN - BibTeX subsystem: /tmp/jb31TnOXHV/references.bib_2549.utf8, line 100, warning: 7 characters of junk seen at toplevel
+[171] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[172] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[172] Biber.pm:3500> INFO - Sorting list 'none/global/' of type 'entry' with scheme 'none' and locale 'en-US'
+[172] Biber.pm:3506> INFO - No sort tailoring available for locale 'en-US'
+[178] bbl.pm:608> INFO - Writing 'report.bbl' with encoding 'UTF-8'
+[181] bbl.pm:712> INFO - Output to report.bbl
+[181] Biber.pm:110> INFO - WARNINGS: 3
