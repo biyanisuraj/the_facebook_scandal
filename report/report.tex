@@ -62,26 +62,40 @@
     \chapter{The case story}
     \pagenumbering{arabic}
 
-On Saturday $17^{th}$ of March 2018, The New York Times and The Guardian / The Observer broke reports on how the consulting firm Cambridge Analytica harvested private information from the Facebook profiles of more than 50 million users without their permission, making it one of the largest data leaks in the social network’s history. \cite{guardian}, \cite{nyt_17march}.
+On Saturday $17^{th}$ of March 2018, The New York Times and The Guardian / The Observer broke reports on how the consulting firm Cambridge Analytica harvested private information from the Facebook profiles of more than 50 million users without their permission, making it one of the largest data leaks in the social network’s history \cite{guardian}, \cite{nyt_17march}.
 
-Cambridge Analytica described itself as a company providing consumer research, targeted advertising and other data-related services to both political and corporate clients.
-
-The whistleblower Christopher Wylie, datascientist and former director of research at Cambridge Analytica revealed to the Observer how Cambridge Analytica used personal information taken without authorisation in early 2014 to build a system that could profile individual US voters, in order to target them with personalised political advertisements.
+Cambridge Analytica described itself as a company providing consumer research, targeted advertising and other data-related services to both political and corporate clients. The whistleblower Christopher Wylie, datascientist and former director of research at Cambridge Analytica revealed to the Observer how Cambridge Analytica used personal information taken without authorisation in early 2014 to build a system that could profile individual US voters, in order to target them with personalised political advertisements.
 Christopher Wylie, who worked with a Cambridge University academic to obtain the data, told the Observer: “We exploited Facebook to harvest millions of people’s profiles. And built models to exploit what we knew about them and target their inner demons. That was the basis the entire company was built on.”
 
-What, Where, Who, Why, Where ?
 
-
-Timeline da sistemare: \cite{nyt_timeline}
+We report here a timeline of the events of the first days of the scandal, from different sources \cite{nyt_timeline}:
 \begin{itemize}
 
-\item March 17, 2018: The Observer and The New York Times publish joint reports on data harvesting by Cambridge Analytica. UK Information Commissioner Elizabeth Denham issues statement that they are “investigating circumstances in which Facebook data may have been illegally acquired and used.” Politicians in US and UK call for investigation.
+\item March 17: The Observer and The New York Times publish joint reports on data harvesting by Cambridge Analytica. UK Information Commissioner Elizabeth Denham issues statement that they are “investigating circumstances in which Facebook data may have been illegally acquired and used.” Politicians in US and UK call for investigation.
 
-\item March 19, 2018: Channel 4 News publishes part 1 of their undercover investigation into Cambridge Analytica. Facebook sends investigators to Cambridge Analytica’s offices. UK Information Commissioner orders them to stand down.
+\item March 19: Channel 4 News publishes part 1 of their undercover investigation into Cambridge Analytica. Facebook sends investigators to Cambridge Analytica’s offices. UK Information Commissioner orders them to stand down. \cite{channel4}
 
-\item March 20, 2018: Channel 4 News publishes part 2 of their undercover investigation into Cambridge Analytica, where they boast about getting Donald Trump elected. British MP Damian Collins calls on Facebook to present oral evidence on Cambridge Analytica. Facebook agrees to send former operations manager Sandy Parakilas. Facebook holds internal Q\&A with attorney Paul Grewal to discuss the crisis, but CEO Mark Zuckerberg and COO Sheryl Sandberg do not attend. Cambridge Analytica suspends CEO Alexander Nix. Facebook demands to inspect Christopher Wylie’s phone. FTC opens investigation into Facebook.
-\item to be continued...
+\item March 20: Channel 4 News publishes part 2 of their undercover investigation into Cambridge Analytica, where they boast about getting Donald Trump elected. British MP Damian Collins calls on Facebook to present oral evidence on Cambridge Analytica. Facebook agrees to send former operations manager Sandy Parakilas. Facebook holds internal Q\&A with attorney Paul Grewal to discuss the crisis, but CEO Mark Zuckerberg and COO Sheryl Sandberg do not attend. Cambridge Analytica suspends CEO Alexander Nix. Facebook demands to inspect Christopher Wylie’s phone. FTC opens investigation into Facebook.
+\item March 21,
+  Brian Acton, co-founder of the messaging app WhatsApp, called on his Twitter followers to \#deletefacebook. Facebook purchased WhatsApp in 2014.
+  \begin{center}
+  @brianacton: It is time. \#deletefacebook\\    
+  \end{center}
+In a Facebook post published several days after the initial reports, Zuckerberg responded to the continued fallout over the data scandal.
+He said:\\
+\textit{"We have a responsibility to protect your data, and if we can't then we don't deserve to serve you. I've been working to understand exactly what happened and how to make sure this doesn't happen again."}  
+\item March 23,
+  Elon Musk joined the \#DeleteFacebook movement, taking down official pages for two of his companies, Tesla and SpaceX, announcing his decision on Twitter. Both the SpaceX and Tesla accounts vanished within hours of his tweet.
+\item March 24, 
+  The Ars Technica website reported that Facebook ``surreptitiously'' collected call and SMS data for years from Android users, including names, phone numbers, and the length of calls \cite{ars_technica}.
 \end{itemize}
+
+
+
+
+
+
+
 
     \chapter{Building the network}
     In this report we present an analysis of the spreading of the Cambridge Analytica-Facebook scandal on Twitter.
@@ -168,14 +182,14 @@ we have a weakly component including almost the whole network. The generated ran
     by using a log-log scale plot. Observing Fig. \ref{fig:degree_nolog} it is evident the difference between the degree distributions of the original graph respect to the random generated Erdos-Renyi graph.
     The log scale used requires to use a logarithimc binning of the degrees values: in Figs. \ref{fig:degree_comparison}, \ref{fig:tot_degree}, \ref{fig:in_degree}, \ref{fig:out_degree}, we used a bin size increasing as $2^k$.
     The distribution of the total, in and out degrees shows the presence of two different regimes, the free-scale property becomes evident
-    for a degree larger than few hundreds. In order to compute the value of the power law exponent $\gamma$ of Eq. \ref{eq:power_law} we used an ordinary least squares regression, visually identifying the regime zones, and checking for minimal variations of the obtained $\gamma$ by changing the degree interval chosen for the regression.
+    for a degree larger than few hundreds. In order to compute the value of the power law exponent $\gamma$ of Eq. \ref{eq:power_law} we used an ordinary least squares regression, visually identifying the regime zones, and checking for minimal variations of the obtained $\gamma$, by progressively widening the degree interval chosen for the regression.
 
     \begin{equation}
       p(k) = C k^{-\gamma}
       \label{eq:power_law}
     \end{equation}
 
-    The out degree distribution shows a trend very close to the Barabasi-Albert model, with an exponent $\gamma_{out} = 2.9$, the same value obtained for the generated BA graph. The in degree distribution decreases with slower speed, having $\gamma_{in} = 2.4$. The total degree distribution exponent has a value of $\gamma_{tot} = 2.6$, intermediate between the in and out distributions.
+    The out-degree distribution shows a trend very close to the Barabasi-Albert model, with an exponent $\gamma_{out} = 2.9$, the same value obtained for the generated BA graph. The in-degree distribution decreases with slower speed, having $\gamma_{in} = 2.4$. The total degree distribution exponent has a value of $\gamma_{tot} = 2.6$, intermediate between the in and out distributions.
  
 
  \begin{figure}[hb]
@@ -223,9 +237,6 @@ we have a weakly component including almost the whole network. The generated ran
 
 
 
-    
-
-
     \section{Path analysis}
     In order to exactly estimate the average path length $\langle d \rangle$ it would be necessary to compute all the node-node distances of the network. These procedure results infeasible with the computation resources available, as shown in Fig. \ref{fig:path_time}.
     In real networks the path length distribution is quite close to a normal distribution, as shown in \cite{ye_paths}. The average path length has then been estimated statistically, random sampling a number $n$ of node pairs, sufficient to achieve a narrow confidence interval for the mean. The assumption of normality of the distribution it is strong, but not necessary. The convergence of the computed mean to the expected value is guaranteed by the central limit theorem with the assumptions that the distances are independent, identically distributed, and with finite variance.
@@ -233,7 +244,6 @@ we have a weakly component including almost the whole network. The generated ran
     \begin{equation}
       \langle d \rangle = \frac{\sum D_i}{n} \; , \; \sigma(\langle d \rangle) = \frac{s}{\sqrt{n}}
     \end{equation}
-
 
     
 \begin{minipage}[b]{0.5\textwidth}
@@ -251,6 +261,12 @@ we have a weakly component including almost the whole network. The generated ran
         \caption{Shortest paths distribution}
 \end{figure}
 \end{minipage}
+
+The average shortest path length, computed on the undirected graph, it is equal to 2.92, close to the average distance
+obtained for both the random graphs, as shown in Fig. \ref{fig:path_comparison}.
+The shortest path distribution for the original network has a larger dispersion respect to the random ones, there are shortest paths
+reaching a length equal to 8.
+
 
     
     \begin{figure}[htbp]
@@ -281,12 +297,12 @@ we have a weakly component including almost the whole network. The generated ran
 \clearpage
 \section{Hubs analysis}
 
-The hubs of the crawled social network of tweets authors about the Cambridge Analytica-Facebook scandal are mainly
-news mass media, as expected. In Fig. \ref{fig:hubs_followers} the 30 biggest hubs are represented by indicating
+The biggest hubs of the crawled social network of tweets authors about the Cambridge Analytica-Facebook scandal are mainly
+news mass media, as expected. In Fig. \ref{fig:hubs_followers} are represented the 30 biggest hubs (by in-degree) by indicating
 the in-degree of the crawled network, corresponding to the number of authors following the hub, versus the actual total
 number of followers on Twitter.
 The "The New York Times" is the biggest hub, with the maximum number of both in-degree and number of followers.
-We observe that there is an obvious positive correlation between in-degree and followers, with some variations.
+We observe that there is a positive correlation between in-degree and followers, with some variations.
 In particular, let's take a pair of hubs having similar followers count, such as the "Washington Post" and the "Huffington Post".
 The "Washington Post" has a larger in-degree than the second.
 This difference can be interpreted as a larger interest in the scandal from the people following the "Washington Post'' respect 
@@ -298,8 +314,17 @@ We can define a quantity to measure this interest:
   \label{eq:interest}
 \end{equation}
 
-This measure represents the percentage of followers that being interested in the scandal had published a tweet about the subject.
+This measure represents the fraction of followers that being interested in the scandal had published a tweet about the subject.
 %%It is also a measure of density, being the analyzed network a sub-network of the overall Twitter network: 
+We can observe for example a large difference in Interest between the two earliest sources, The Guardian and The New York Times,
+meaning that the followers of the ``The Guardian'' have relatively interacted much more about the case.
+
+Furthermore we analyzed the correlation of the Interest with the measures in Fig. \ref{fig:interest_corr_hist}, for about 300 of the biggest hubs.
+The Interest shows an high positive correlation with the Clustering Coefficient, with a value $r=0.78$, and a mildy negative correlation with the in-degree and the number of followers. The correlation is almost equal to zero respect to the closeness centrality $cc$.
+
+The correlation between Interest and the Clustering Coefficient $C$ can be interpreted
+by considering that nodes with higher $C$ have denser connections, that may strengthen the Interest with an high reinforce from the
+direct neighbours.
 
 
     \begin{figure}[htbp]
@@ -313,15 +338,16 @@ This measure represents the percentage of followers that being interested in the
    \centering
     \begin{figure}[H]
       \includegraphics[width=\textwidth]{../../scripts/network_analysis/imgs/hubs_interest_corr.pdf}            
-          \caption{Clustering coefficient distribution}
-      \label{fig:path_time}
+          \caption{Interest versus clustering coefficient for about 300 of the biggest hubs.}
+      \label{fig:interest_corr}
 \end{figure}
 \end{minipage}
 \begin{minipage}[b]{0.5\textwidth}
   \begin{figure}[H]
   \centering
-      \includegraphics[width=\textwidth]{../../scripts/network_analysis/imgs/hubs_interest_corr_hist.pdf}            
-      \caption{Clustering coefficients as function of the degree}
+  \includegraphics[width=\textwidth]{../../scripts/network_analysis/imgs/hubs_interest_corr_hist.pdf}
+  \caption{Correlations of the Interest with other measures.}
+  \label{fig:interest_corr_hist}
 \end{figure}
 \end{minipage}
 
@@ -335,19 +361,20 @@ This measure represents the percentage of followers that being interested in the
 
 \newpage    
 \section{Italian sub network}
+Some of the analysis on the original graph have been repeated on the Italian sub-network, and are here presented.
 \begin{minipage}[b]{0.5\textwidth}
    \centering
     \begin{figure}[H]
       \includegraphics[width=\textwidth]{../../scripts/network_analysis/imgs/tot_degree_distribution_ita.pdf}            
-          \caption{Shortest paths computation time by number of pairs}
-      \label{fig:path_time}
+          \caption{Total degree distribution.}
+      \label{fig:tot_degree_ita}
 \end{figure}
 \end{minipage}
 \begin{minipage}[b]{0.5\textwidth}
   \begin{figure}[H]
   \centering
       \includegraphics[width=\textwidth]{../../scripts/network_analysis/imgs/paths_hist_ita.pdf}            
-        \caption{Shortest paths distribution}
+        \caption{Shortest paths distribution.}
 \end{figure}
 \end{minipage}
 
