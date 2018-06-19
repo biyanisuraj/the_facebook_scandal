@@ -62,10 +62,12 @@
     \chapter{The case story}
     \pagenumbering{arabic}
 
-On the evening of Saturday 17 of March 2018, The New York Times and The Guardian / The Observer broke reports on how the consulting firm Cambridge Analytica harvested private information from the Facebook profiles of more than 50 million users without their permission, making it one of the largest data leaks in the social network’s history. \cite{nyt_17march} , \cite{guardian}.
+On Saturday $17^{th}$ of March 2018, The New York Times and The Guardian / The Observer broke reports on how the consulting firm Cambridge Analytica harvested private information from the Facebook profiles of more than 50 million users without their permission, making it one of the largest data leaks in the social network’s history. \cite{guardian}, \cite{nyt_17march}.
 
-The whistleblower Christopher Wylie, datascientist and former director of research at Cambridge Analytica revealed...
 Cambridge Analytica described itself as a company providing consumer research, targeted advertising and other data-related services to both political and corporate clients.
+
+The whistleblower Christopher Wylie, datascientist and former director of research at Cambridge Analytica revealed to the Observer how Cambridge Analytica used personal information taken without authorisation in early 2014 to build a system that could profile individual US voters, in order to target them with personalised political advertisements.
+Christopher Wylie, who worked with a Cambridge University academic to obtain the data, told the Observer: “We exploited Facebook to harvest millions of people’s profiles. And built models to exploit what we knew about them and target their inner demons. That was the basis the entire company was built on.”
 
 What, Where, Who, Why, Where ?
 
@@ -131,18 +133,17 @@ Timeline da sistemare: \cite{nyt_timeline}
 \end{table}
 
 \subsection{Random graphs}
-RIVEDERE VALORI/GIUSTIFICAZIONE PER GENERAZIONE
 
 The network has been compared throughout the report with two synthetic network, an Erdos-Renyi random network and a Barabasi-Albert network.
-The Erdos-Renyi random network has been generated using a ``linking probability'' p equal to the average degree of the original undirected network, by using eq. \ref{eq:ER_probability}.
+The Erdos-Renyi random network, with directed connections, has been generated with a value of the ``linking probability'' $p$ computed using the double of the average degree of the original network:
     \begin{equation}
       p_{ER} \approx \frac{2\langle k  \rangle}{N} = \frac{76}{65729} \approx  0.001
       \label{eq:ER_probability}
     \end{equation}
 
-    Each new node of the random network generated with the Barabasi-Albert model has been attached to the other nodes with a number of links $m$ equal to the average degree of the original network (to be precise to half of the double):
+ An undirected network built with the Barabasi-Albert model  has an average degree equal to the double of the links formed by each new node: $ \, \langle k_{BA} \rangle = 2 m$ \cite{network_science}. Because our network is directed we generated a Barabasi-Albert random network with a value of $m$ equal to half of the double of the average degree of the original network, or simply equal to the average degree of our directed graph:
     \begin{equation}
-      m = \frac{ 2 \, \langle k \rangle}{2} = 38
+      m = \frac{ 2 \, \langle k \rangle}{2} =  \langle k \rangle = 38
       \label{eq:BA_model}
     \end{equation}
 
