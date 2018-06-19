@@ -124,18 +124,13 @@ Timeline da sistemare: \cite{nyt_timeline}
 
     
     \chapter{Network analysis}
-
 \section{Network properties summary} 
 
-\begin{table}[htbp]
-  \centering
-\include{statistics}
-\end{table}
 
-\subsection{Random graphs}
+The properties of the networks analyzed are summarized in Tab. \ref{tab:summary}. The $g$ network represents the original directed graph, while
+$g_{und}$ is the graph obtained by not considering the directivity of the links. We observe that the number of links of $g_{und}$ is lower respect to the one of $g$: the difference of $605879$ represents the number of reciprocal links, corresponding to the number of user pairs following each other, a $24\%$ fraction of the overall number of authors.
 
-The network has been compared throughout the report with two synthetic network, an Erdos-Renyi random network and a Barabasi-Albert network.
-The Erdos-Renyi random network, with directed connections, has been generated with a value of the ``linking probability'' $p$ computed using the double of the average degree of the original network:
+The network has been compared throughout the report with two synthetic network, an Erdos-Renyi random network $g_{ER}$ and a Barabasi-Albert network $g_{BA}$. The Erdos-Renyi random network, with directed connections, has been generated with a value of the ``linking probability'' $p$ computed using the double of the average degree of the original network:
     \begin{equation}
       p_{ER} \approx \frac{2\langle k  \rangle}{N} = \frac{76}{65729} \approx  0.001
       \label{eq:ER_probability}
@@ -146,25 +141,65 @@ The Erdos-Renyi random network, with directed connections, has been generated wi
       m = \frac{ 2 \, \langle k \rangle}{2} =  \langle k \rangle = 38
       \label{eq:BA_model}
     \end{equation}
+    The network $g_{Ita}$ it is the subgraph of $g$ including only the Italian users, who have been identified by using the language metadata available with the crawled tweets.
 
-    
- \section{Degree distribution}    
 
+\begin{table}[htbp]
+  \centering
+  \include{statistics}
+  \label{tab:summary}
+  \caption{Label}
+\end{table}
+
+The network is composed by a large strongly connected component including about the $75\%$ of the original graph, as depicted in Fig. \ref{fig:components}. The remaining nodes represents users who follows only few authors of the graph. Without considering the directivity of the links
+we have a weakly component including almost the whole network. The generated random graphs are completely connected.
+
+
+    \begin{figure}[H]
+      \centering
+      \includegraphics[width=\textwidth]{../../scripts/network_analysis/imgs/connectivity.pdf}            
+      \caption{Weakly and strongly connected components.}
+      \label{fig:components}
+    \end{figure}
+
+
+    \section{Degree distributions}
+    The analysis of the degree distribution of a network permits to identify the characteristic power law trend, immediately recognizable
+    by using a log-log scale plot. Observing Fig. \ref{fig:degree_nolog} it is evident the difference between the degree distributions of the original graph respect to the random generated Erdos-Renyi graph.
+    The log scale used requires to use a logarithimc binning of the degrees values: in Figs. \ref{fig:degree_comparison}, \ref{fig:tot_degree}, \ref{fig:in_degree}, \ref{fig:out_degree}, we used a bin size increasing as $2^k$.
+    The distribution of the total, in and out degrees shows the presence of two different regimes, the free-scale property becomes evident
+    for a degree larger than few hundreds. In order to compute the value of the power law exponent $\gamma$ of Eq. \ref{eq:power_law} we used an ordinary least squares regression, visually identifying the regime zones, and checking for minimal variations of the obtained $\gamma$ by changing the degree interval chosen for the regression.
+
+    \begin{equation}
+      p(k) = C k^{-\gamma}
+      \label{eq:power_law}
+    \end{equation}
+
+    The out degree distribution shows a trend very close to the Barabasi-Albert model, with an exponent $\gamma_{out} = 2.9$, the same value obtained for the generated BA graph. The in degree distribution decreases with slower speed, having $\gamma_{in} = 2.4$. The total degree distribution exponent has a value of $\gamma_{tot} = 2.6$, intermediate between the in and out distributions.
  
+
+ \begin{figure}[hb]
+      \centering
+      \includegraphics[width=0.95\textwidth]{../../scripts/network_analysis/imgs/degree_distributions_nobinlog.pdf}            
+      \caption{Comparison of the degree distributions, plotted without using logarithmic binning.}
+      \label{fig:degree_nolog}
+    \end{figure}
+
+
 \begin{minipage}[b]{0.5\textwidth}
    \centering
     \begin{figure}[H]
       \includegraphics[width=\textwidth]{../../scripts/network_analysis/imgs/degree_distributions.pdf}            
-          \caption{}
-        \label{fig:in_degree}
+          \caption{Comparison of degree distributions.}
+        \label{fig:degree_comparison}
 \end{figure}
 \end{minipage}
 \begin{minipage}[b]{0.5\textwidth}
   \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{../../scripts/network_analysis/imgs/tot_degree_distribution.pdf}            
-        \caption{}
-\label{fig:out_degree}
+        \caption{Total degree distribution.}
+\label{fig:tot_degree}
 \end{figure}
 \end{minipage}
     
@@ -172,7 +207,7 @@ The Erdos-Renyi random network, with directed connections, has been generated wi
    \centering
     \begin{figure}[H]
       \includegraphics[width=\textwidth]{../../scripts/network_analysis/imgs/in_degree_distribution.pdf}            
-          \caption{}
+          \caption{In-degree distribution.}
         \label{fig:in_degree}
 \end{figure}
 \end{minipage}
@@ -180,27 +215,15 @@ The Erdos-Renyi random network, with directed connections, has been generated wi
   \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{../../scripts/network_analysis/imgs/out_degree_distribution.pdf}            
-        \caption{}
+        \caption{Out-degree distribution.}
 \label{fig:out_degree}
 \end{figure}
 \end{minipage}
 
- \begin{figure}[htbp]
-      \centering
-      \includegraphics[width=0.8\textwidth]{../../scripts/network_analysis/imgs/degree_distributions_nobinlog.pdf}            
-      \caption{New authors time history}
-      \label{fig:degree}
-    \end{figure}
 
 
 
     
-    \begin{figure}[htbp]
-      \centering
-      \includegraphics[width=\textwidth]{../../scripts/network_analysis/imgs/connectivity.pdf}            
-      \caption{Connect components}
-      \label{fig:connectivity}
-    \end{figure}
 
 
     \section{Path analysis}
