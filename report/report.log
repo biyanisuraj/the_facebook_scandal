@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99996 (TeX Live 2016/Debian) (preloaded format=xelatex 2017.11.11)  19 JUN 2018 14:12
+This is XeTeX, Version 3.14159265-2.6-0.99996 (TeX Live 2016/Debian) (preloaded format=xelatex 2017.11.11)  19 JUN 2018 15:14
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1489,6 +1489,9 @@ LaTeX Warning: Label `fig:path_time' multiply defined.
 
 LaTeX Warning: Label `fig:path_time' multiply defined.
 
+
+LaTeX Warning: Label `fig:hubs_followers_ita' multiply defined.
+
 (./chaps/spreading/spreading.aux) (./chaps/communities/communities.aux)
 (./chaps/robustness/robustness.aux))
 \openout1 = `report.aux'.
@@ -1826,6 +1829,13 @@ Overfull \hbox (2.43091pt too wide) in paragraph at lines 315--330
 [] [] 
  []
 
+File: images/../../scripts/network_analysis/imgs/hubs_followers_ita.pdf Graphic
+ file (type QTm)
+<use  "images/../../scripts/network_analysis/imgs/hubs_followers_ita.pdf" >
+File: images/../../scripts/network_analysis/imgs/hubs_interest_ita.pdf Graphic 
+file (type QTm)
+
+<use  "images/../../scripts/network_analysis/imgs/hubs_interest_ita.pdf" >
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 13.59999pt.
@@ -1981,12 +1991,12 @@ Chapter 7.
 ] [21
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 344.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 344.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 360.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 360.
  (./report.aux (./statistics.aux) (./chaps/spreading/spreading.aux)
 (./chaps/communities/communities.aux) (./chaps/robustness/robustness.aux))
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 344.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 344.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 360.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 360.
 
 
 LaTeX Warning: There were multiply-defined labels.
@@ -1996,10 +2006,10 @@ Package logreq Info: Writing requests to 'report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 38856 strings out of 495001
- 770453 string characters out of 6177483
- 1289580 words of memory out of 5000000
- 42064 multiletter control sequences out of 15000+600000
+ 38861 strings out of 495001
+ 770649 string characters out of 6177483
+ 1289609 words of memory out of 5000000
+ 42067 multiletter control sequences out of 15000+600000
  10846 words of font info for 56 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  62i,12n,79p,10495b,4618s stack positions out of 5000i,500n,10000p,200000b,80000s
