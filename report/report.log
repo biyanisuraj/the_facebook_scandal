@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99996 (TeX Live 2016/Debian) (preloaded format=xelatex 2017.11.11)  19 JUN 2018 11:09
+This is XeTeX, Version 3.14159265-2.6-0.99996 (TeX Live 2016/Debian) (preloaded format=xelatex 2017.11.11)  19 JUN 2018 14:12
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1486,6 +1486,9 @@ LaTeX Warning: Label `fig:path_time' multiply defined.
 
 LaTeX Warning: Label `fig:path_time' multiply defined.
 
+
+LaTeX Warning: Label `fig:path_time' multiply defined.
+
 (./chaps/spreading/spreading.aux) (./chaps/communities/communities.aux)
 (./chaps/robustness/robustness.aux))
 \openout1 = `report.aux'.
@@ -1776,23 +1779,22 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 File: images/../../scripts/network_analysis/imgs/hubs_followers.pdf Graphic fil
 e (type QTm)
  <use  "images/../../scripts/network_analysis/imgs/hubs_followers.pdf" >
-File: images/../../scripts/network_analysis/imgs/hubs_interest.pdf Graphic file
- (type QTm)
+File: images/../../scripts/network_analysis/imgs/hubs_interest_corr.pdf Graphic
+ file (type QTm)
 
-<use  "images/../../scripts/network_analysis/imgs/hubs_interest.pdf" >
-File: images/../../scripts/network_analysis/imgs/tot_degree_distribution_ita.pd
-f Graphic file (type QTm)
+<use  "images/../../scripts/network_analysis/imgs/hubs_interest_corr.pdf" >
+File: images/../../scripts/network_analysis/imgs/hubs_interest_corr_hist.pdf Gr
+aphic file (type QTm)
 
-<use  "images/../../scripts/network_analysis/imgs/tot_degree_distribution_ita.p
-df" >
-File: images/../../scripts/network_analysis/imgs/paths_hist_ita.pdf Graphic fil
-e (type QTm)
- <use  "images/../../scripts/network_analysis/imgs/paths_hist_ita.pdf" >
-Overfull \hbox (2.43091pt too wide) in paragraph at lines 298--313
-[] [] 
+<use  "images/../../scripts/network_analysis/imgs/hubs_interest_corr_hist.pdf" 
+>
+Overfull \hbox (19.43091pt too wide) in paragraph at lines 289--304
+[][] [] 
  []
 
-
+File: images/../../scripts/network_analysis/imgs/hubs_interest.pdf Graphic file
+ (type QTm)
+<use  "images/../../scripts/network_analysis/imgs/hubs_interest.pdf" >
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -1812,6 +1814,18 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [8]
+File: images/../../scripts/network_analysis/imgs/tot_degree_distribution_ita.pd
+f Graphic file (type QTm)
+
+<use  "images/../../scripts/network_analysis/imgs/tot_degree_distribution_ita.p
+df" >
+File: images/../../scripts/network_analysis/imgs/paths_hist_ita.pdf Graphic fil
+e (type QTm)
+ <use  "images/../../scripts/network_analysis/imgs/paths_hist_ita.pdf" >
+Overfull \hbox (2.43091pt too wide) in paragraph at lines 315--330
+[] [] 
+ []
+
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 13.59999pt.
@@ -1967,12 +1981,12 @@ Chapter 7.
 ] [21
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 327.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 327.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 344.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 344.
  (./report.aux (./statistics.aux) (./chaps/spreading/spreading.aux)
 (./chaps/communities/communities.aux) (./chaps/robustness/robustness.aux))
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 327.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 327.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 344.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 344.
 
 
 LaTeX Warning: There were multiply-defined labels.
@@ -1982,10 +1996,10 @@ Package logreq Info: Writing requests to 'report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 38852 strings out of 495001
- 770269 string characters out of 6177483
- 1289518 words of memory out of 5000000
- 42062 multiletter control sequences out of 15000+600000
+ 38856 strings out of 495001
+ 770453 string characters out of 6177483
+ 1289580 words of memory out of 5000000
+ 42064 multiletter control sequences out of 15000+600000
  10846 words of font info for 56 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  62i,12n,79p,10495b,4618s stack positions out of 5000i,500n,10000p,200000b,80000s
