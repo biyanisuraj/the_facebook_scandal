@@ -358,8 +358,8 @@ if __name__ == '__main__':
                                 create_using=nx.Graph(), nodetype=int,
                                 data=False)
     else:
-        m = random.randint(1, g.number_of_nodes() - 1)
-        ba_g = nx.barabasi_albert_graph(g.number_of_nodes(),
+        # m = random.randint(1, g.number_of_nodes() - 1)
+        ba_g = nx.barabasi_albert_graph( g.number_of_nodes(),
                                         sum(list(d for n, d in g.
                                                  degree()))/len(list(
                                                     d for n, d in g.degree())))

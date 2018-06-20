@@ -43,63 +43,36 @@ Barabási–Albert) generated from the original one. In each section, a comparis
 provided along with some details on the implementation of the tests of every model.
 
 
-\section{The New York Times vs La Repubblica }
-
-Idea: let's start with the same news, but two different nodes, there is a big difference in diffusion?
-Prevision: no, the difference it's minimal because of the presence of hubs.
-
-
-
-
-
-
-
-
 \section{SI model} % (fold)
 \label{sec:si_model}
-    \begin{figure}[H]
-        \centering
-        \begin{subfigure}{0.45\textwidth}
-            \resizebox{\textwidth}{!}{
-                \includegraphics{images/spreading/si/diffusion.pdf}
 
-            }
-            \caption{}
-            \label{diff_si}
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}{0.45\textwidth}
+    \resizebox{\textwidth}{!}{
+      \includegraphics{images/spreading/si/trend_comparison_01.pdf}
+    }
+            \caption{Infection rate $\beta_0= 0.01$.}
+            \label{fig:diff_si_1}
         \end{subfigure}
         \begin{subfigure}{0.45\textwidth}
             \resizebox{\textwidth}{!}{
-                \includegraphics{images/spreading/si/diffusion_er.pdf}
+              \includegraphics{images/spreading/si/trend_comparison_001.pdf}
             }
-            \caption{}
-            \label{diff_si_er}
-        \end{subfigure}
-        \begin{subfigure}{0.45\textwidth}
-            \resizebox{\textwidth}{!}{
-                \includegraphics{images/spreading/si/diffusion_ba.pdf}
-            }
-            \caption{}
-            \label{diff_si_ba}
-        \end{subfigure}
-        \begin{subfigure}{0.45\textwidth}
-            \resizebox{\textwidth}{!}{
-                \includegraphics{images/spreading/si/trend_comparison.pdf}
-            }
-            \caption{}
-            \label{diff_si_comparison}
-        \end{subfigure}
-        \caption{In Figure \ref{diff_si} we can see the diffusion graph for the original network, while in Figure
-        \ref{diff_si_er} and in Figure \ref{diff_si_ba} we can see the diffusion graph for the Erdős–Rényi and
-        Barabási–Albert networks, respectively. In Figure \ref{diff_si_comparison} we can see a comparison between
-        the infection rate of the three networks.}
-        \label{diff_si_total}
-    \end{figure}
-    For the \textbf{Susceptible-Infected} model we've started with a $0.005\%$ of the total population ($3$ nodes)
-    of each network being infected, and we've choosed a value of $0.01$ for the infection rate $\beta$. As you can
-    see from Figure \ref{diff_si_total}, the original network is the only one that doesn't reach the saturation
-    regime, while the other networks reach it within the first $25$ iterations of the model. This is due to the fact
-    that both the Erdős–Rényi and the Barabási–Albert network are extremely connected, hence it is more easy for the
-    infection to spread among the nodes.
+            \caption{Infection rate $\beta_1= \frac{\beta_0}{10} =  0.001$. }
+            \label{fig:diff_si_2}
+          \end{subfigure}
+          \caption{Comparison of two trasmission rates in the SI model, for the original network $G$, the Erdos-Renyi $ER$ and the Barabasi-Albert $BA$.}
+          \label{fig:diff_si}
+     \end{figure}
+
+    For the \textbf{Susceptible-Infected} model we've started with a random $0.005\%$ of the total population ($3$ nodes)
+    of each network being infected, representing the earliest sources of information.
+    In Fig. \ref{fig:diff_si} we compare two different trasmission rates, with an order of magnitude of difference:
+    $ \beta_0 =0.01$ for   $\beta_1 = 0.001$. The original network asymptotically reach the saturation regime only for the fraction of nodes
+    in the strong connected component.
+
 
 % section si_model (end)
 
@@ -107,98 +80,95 @@ Prevision: no, the difference it's minimal because of the presence of hubs.
 \label{sec:sis_model}
     \begin{figure}[H]
         \centering
-        \begin{subfigure}{0.45\textwidth}
+        \begin{subfigure}{0.3\textwidth}
             \resizebox{\textwidth}{!}{
-                \includegraphics{images/spreading/sis/diffusion_original_comparison.pdf}
+                \includegraphics{images/spreading/sis/diffusion_G_comparison.pdf}
             }
-            \caption{}
+            \caption{Original network}
             \label{diff_sis}
         \end{subfigure}
-        \begin{subfigure}{0.45\textwidth}
+        \begin{subfigure}{0.3\textwidth}
             \resizebox{\textwidth}{!}{
-                \includegraphics{images/spreading/sis/diffusion_er_comparison.pdf}
+                \includegraphics{images/spreading/sis/diffusion_BA_comparison.pdf}
             }
-            \caption{}
+            \caption{Barabasi-Albert network}
             \label{diff_sis_er}
         \end{subfigure}
-        \begin{subfigure}{0.45\textwidth}
+        \begin{subfigure}{0.3\textwidth}
             \resizebox{\textwidth}{!}{
-                \includegraphics{images/spreading/sis/diffusion_ba_comparison.pdf}
+                \includegraphics{images/spreading/sis/diffusion_ER_comparison.pdf}
             }
-            \caption{}
+            \caption{Erdos-Renyi network}
             \label{diff_sis_ba}
         \end{subfigure}
-        \caption{In Figure \ref{diff_sis} we can see the comparison between the endemic state, in orange, and the
-        disease free state, in blue, for the original network. The same comparison can be observed for the
-        Erdős–Rényi and the Barabási–Albert network, respectively, in Figure \ref{diff_sis_er} and
-        \ref{diff_sis_ba}}
-        \label{diff_sis_total}
-    \end{figure}
-    For the \textbf{Susceptible-Infected-Susceptible} model, thanks to the introduction of the recovery rate $\mu$,
-    we can model two possible outcomes for the epidemic: the \textbf{endemic state}, characterized by a low recovery
-    rate and by the fraction of infected individuals that follows a logistic curve similar to the one observed for
-    the SI model, for which $\mu < \beta\langle k \rangle$, and the \textbf{disease free} state, characterized by a
-    sufficiently high recovery rate, for which $\mu > \beta\langle k \rangle$. A comparison between this two states
-    is represented for every network in Figure \ref{diff_sis_total}.
+        \caption{Comparison of the SIS model for the original network $G$, the Erdos-Renyi $ER$ and the Barabasi-Albert $BA$.}
+        \label{fig:diff_sis_comparison}
+      \end{figure}
 
+      The introduction of the recovery rate $\mu$ in the \textbf{Susceptible-Infected-Susceptible} model for networks epidemics
+      provides an epidemic threshold $\lambda_C$ for the spreading rate $\lambda$, dependent on the second order moment of the degree
+      distribution $\langle k^2 \rangle$.
+      For a random network the epidemic threshold given by Eq. \ref{eq:epidemic_threshold} is finite, and defines two possible asymptotically outcomes, an \textbf{endemic state} characterized by a finite fraction of infected individuals, and a completely \textbf{disease free} state.
+      \begin{equation}
+        \lambda_C(ER) = \frac{1}{\langle k \rangle +1 } \Rightarrow \lambda>\lambda_C:\: \text{epidemic state}
+        \label{eq:epidemic_threshold}
+      \end{equation}
+      The free-scale networks are characterized by a diverging variance, which means the epidemic threshold tends to vanish, causing a finite fraction of infected individuals also for small $\lambda$. 
+      We used the random network threshold to choose the recovery rate to simulate both the possible states. We observe in Fig. \ref{fig:diff_sis_comparison} how for the free-scale networks the infected fraction is always finite, below and above the epidemic threshold, while for the random network we observe also the disease free state.
+      
 % section sis_model (end)
 
 \section{SIR model} % (fold){}
 \label{sec:sir_model}
-    The key characteristic of the \textbf{Susceptible-Infected-Recovered} model consist in introducing the
-    probability $\gamma$ for the individuals to recover from the disease and hence to be "removed" from the
-    population instead of returning to the susceptible state. We have choosen to test this model either for the case
-    in which $\gamma$ is smaller than $\beta$ and the other way around. The graphs representing this different
-    situations for all the three networks are visible in Figure \ref{diff_sir_total}.
+    The key characteristic of the \textbf{Susceptible-Infected-Recovered} model consists in the possibility
+    of the individuals to recover from the disease and hence to be ``removed'' from the population instead of returning to the susceptible state.
+    We have tested this model either for the case in which $\mu$ is smaller than $\beta$ and the other way around. The graphs representing this different situations for all the three networks are visible in Fig. \ref{fig:diff_sir_total}.
+
     \begin{figure}
-        \begin{subfigure}{0.33\textwidth}
+        \begin{subfigure}{0.45\textwidth}
             \resizebox{\textwidth}{!}{
                 \includegraphics{images/spreading/sir/diffusion_smaller.pdf}
             }
-            \caption{}
+            \caption{Original network}
             \label{diff_sir_smaller}
         \end{subfigure}
-        \begin{subfigure}{0.33\textwidth}
+        \begin{subfigure}{0.45\textwidth}
             \resizebox{\textwidth}{!}{
                 \includegraphics{images/spreading/sir/diffusion_greater.pdf}
             }
-            \caption{}
+            \caption{Original network}
             \label{diff_sir_greater}
         \end{subfigure}
-        \begin{subfigure}{0.33\textwidth}
+        \begin{subfigure}{0.45\textwidth}
             \resizebox{\textwidth}{!}{
                 \includegraphics{images/spreading/sir/diffusion_er_smaller.pdf}
             }
-            \caption{}
+            \caption{Erdos-Renyi network.}
             \label{diff_sir_er_smaller}
         \end{subfigure}
-        \begin{subfigure}{0.33\textwidth}
+        \begin{subfigure}{0.45\textwidth}
             \resizebox{\textwidth}{!}{
                 \includegraphics{images/spreading/sir/diffusion_er_greater.pdf}
             }
-            \caption{}
+            \caption{Erdos-Renyi network.}
             \label{diff_sir_er_greater}
         \end{subfigure}
-        \begin{subfigure}{0.33\textwidth}
+        \begin{subfigure}{0.45\textwidth}
             \resizebox{\textwidth}{!}{
                 \includegraphics{images/spreading/sir/diffusion_ba_smaller.pdf}
             }
-            \caption{}
+            \caption{Barabasi-Albert network.}
             \label{diff_sir_ba_smaller}
         \end{subfigure}
-        \begin{subfigure}{0.33\textwidth}
+        \begin{subfigure}{0.45\textwidth}
             \resizebox{\textwidth}{!}{
                 \includegraphics{images/spreading/sir/diffusion_ba_greater.pdf}
-            }
-            \caption{}
+              }
+            \caption{Barabasi-Albert network.}
             \label{diff_sir_ba_greater}
         \end{subfigure}
-        \caption{In Figure \ref{diff_sir_smaller} and \ref{diff_sir_greater} we can see the representation of the
-        diffusion on the original network both for the case in which $\gamma$ is smaller than $\beta$ and the other
-        way around. The same kind of representation is plotted for the Erdős–Rényi network in Figure
-        \ref{diff_sir_er_smaller} and \ref{diff_sir_er_greater} and for the Barabási–Albert network in Figure
-        \ref{diff_sir_ba_smaller} and \ref{diff_sir_ba_greater}.}
-        \label{diff_sir_total}
+        \caption{}
+        \label{fig:diff_sir_total}
     \end{figure}
 
 % section sir_model (end)
@@ -252,4 +222,14 @@ Prevision: no, the difference it's minimal because of the presence of hubs.
 
 % section threshold_model (end)
 
+\section{The New York Times vs La Repubblica }
+
+Idea: let's start with the same news, but two different nodes, there is a big difference in diffusion?
+Prevision: no, the difference it's minimal because of the presence of hubs.
+
+
+
+
+
+    
 % chapter spreading (end)
