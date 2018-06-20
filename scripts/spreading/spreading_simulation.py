@@ -14,7 +14,8 @@ def si_model(g, er_g, ba_g):
     print 'MODEL CONFIGURATION'
 
     cfg = mc.Configuration()
-    cfg.add_model_parameter('beta', float(raw_input('INFECTION RATE: ')))
+    beta = float(raw_input('INFECTION RATE: '))
+    cfg.add_model_parameter('beta', beta )
     cfg.add_model_parameter('percentage_infected',
                             float(raw_input('PERCENTAGE INFECTED: ')))
     for_comparison = dict()
@@ -26,18 +27,24 @@ def si_model(g, er_g, ba_g):
         trends_si = model_si.build_trends(iterations)
 
         if network is g:
+            print 'Original graph'
+            model_si.name = 'G'
             viz = DiffusionTrend(model_si, trends_si)
             viz.plot('../../report/images/spreading/si/diffusion.pdf')
             viz = DiffusionPrevalence(model_si, trends_si)
             viz.plot('../../report/images/spreading/si/prevalence.pdf')
             for_comparison['original_si'] = [model_si, trends_si]
         elif network is er_g:
+            print 'ER graph'
+            model_si.name = 'ER'
             viz = DiffusionTrend(model_si, trends_si)
             viz.plot('../../report/images/spreading/si/diffusion_er.pdf')
             viz = DiffusionPrevalence(model_si, trends_si)
             viz.plot('../../report/images/spreading/si/prevalence_er.pdf')
             for_comparison['er_si'] = [model_si, trends_si]
         else:
+            print 'BA graph'
+            model_si.name = 'BA'
             viz = DiffusionTrend(model_si, trends_si)
             viz.plot('../../report/images/spreading/si/diffusion_ba.pdf')
             viz = DiffusionPrevalence(model_si, trends_si)
@@ -54,7 +61,7 @@ def si_model(g, er_g, ba_g):
                             for_comparison['er_si'][1],
                             for_comparison['ba_si'][1]
                          ])
-    viz.plot("../../report/images/spreading/si/trend_comparison.pdf")
+    viz.plot("../../report/images/spreading/si/trend_comparison_beta{}.pdf".format(beta))
 
 
 def sir_model(g, er_g, ba_g, g_stat):
@@ -124,24 +131,24 @@ def sis_model(net, graph_name):
     degrees = [d for n, d in net.degree]
     mean_k = sum(degrees)/len(degrees)
 
-    for state in ['ENDEMIC', 'DISEASE_FREE']:
+    for state in ['ENDEMIC', 'FREE']:
         print 'MODEL CONFIGURATION - ' + state + ' STATE'
 
         if state == 'ENDEMIC':
             beta = float(raw_input('INFECTION PROBABILITY: '))
-
-            print 'MU HAS TO BE LESS THAN ' + str(beta*mean_k)
+            
+            print 'MU HAS TO BE LESS THAN ' + str(beta*(mean_k+1))
             mu = float(raw_input('RECOVERY PROBABILITY: '))
 
-            while mu >= beta*mean_k:
-                print 'ERROR! MU HAS TO BE LESS THAN ' + str(beta*mean_k)
+            while mu >= (beta*(mean_k+1)):
+                print 'ERROR! MU HAS TO BE LESS THAN ' + str(beta*(mean_k+1))
                 mu = float(raw_input('RECOVERY PROBABILITY: '))
         else:
-            print 'MU HAS TO BE GREATER THAN ' + str(beta*mean_k)
+            print 'MU HAS TO BE GREATER THAN ' + str(beta*(mean_k+1))
             mu = float(raw_input('RECOVERY PROBABILITY: '))
 
-            while mu <= beta*mean_k:
-                print 'ERROR! MU IS NOT GREATER THAN ' + str(beta*mean_k)
+            while mu <= beta*(mean_k+1):
+                print 'ERROR! MU IS NOT GREATER THAN ' + str(beta*(mean_k+1))
                 mu = float(raw_input('RECOVERY PROBABILITY: '))
 
         cfg = mc.Configuration()
@@ -151,6 +158,9 @@ def sis_model(net, graph_name):
                                 float(raw_input('PERCENTAGE INFECTED: ')))
         model_sis = sis.SISModel(net)
         model_sis.set_initial_status(cfg)
+        model_sis.name = str(graph_name)+"-"+state.lower()
+        print model_sis.name
+
         iterations = model_sis.iteration_bunch(200)
         trends_sis = model_sis.build_trends(iterations)
 
@@ -160,9 +170,9 @@ def sis_model(net, graph_name):
         for_comparison[state.lower() + '_state'] = [model_sis, trends_sis]
 
     viz = DiffusionTrendComparison([for_comparison['endemic_state'][0],
-                                   for_comparison['disease_free_state'][0]],
+                                   for_comparison['free_state'][0]],
                                    [for_comparison['endemic_state'][1],
-                                   for_comparison['disease_free_state'][1]])
+                                   for_comparison['free_state'][1]])
     viz.plot('../../report/images/spreading/sis/diffusion_' + graph_name +
              '_comparison.pdf')
 
@@ -178,9 +188,14 @@ def thr_model(g, er_g, ba_g):
 
     for_comparison = dict()
 
+    count = 0
+    labels = ['G', 'ER', 'BA']
     for network in [g, er_g, ba_g]:
         model_thr = threshold.ThresholdModel(network)
-
+        model_thr.name = labels[count]
+        print model_thr.name
+        count+=1
+        
         for i in network.nodes():
             cfg.add_node_configuration("threshold", i, thr)
 
@@ -215,7 +230,7 @@ def thr_model(g, er_g, ba_g):
 if __name__ == '__main__':
     print '\nIMPORTING NETWORKS'
 
-    g = nx.read_edgelist('../network/networks/edge_list.txt',
+    g = nx.read_edgelist('../network/networks/edge_list_reversed.txt',
                          create_using=nx.DiGraph(), nodetype=int, data=False)
     er_g = nx.read_edgelist('../network/networks/er_edge_list.txt',
                             create_using=nx.DiGraph(), nodetype=int,
@@ -229,9 +244,9 @@ if __name__ == '__main__':
         if model == 'si':
             si_model(g, er_g, ba_g)
         elif model == 'sis':
-            sis_model(g, 'original')
-            sis_model(er_g, 'er')
-            sis_model(ba_g, 'ba')
+            sis_model(g, 'G')
+            sis_model(er_g, 'ER')
+            sis_model(ba_g, 'BA')
         elif model == 'sir':
             sir_model(g, er_g, ba_g, 'smaller')
             sir_model(g, er_g, ba_g, 'greater')
