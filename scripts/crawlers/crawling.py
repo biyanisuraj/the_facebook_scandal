@@ -4,10 +4,10 @@ import jsonpickle
 import tweepy
 import time
 
-CONSUMER_KEY='NHsKGfxrXTXlf2mfH2n0jbW1l'
-CONSUMER_SECRET = 'W0HE0cTlfIcJtkIX5hClcH4ILgyv018Q8fWdo0sgRo5bdFzAMA'
-OAUTH_TOKEN = '339641100-VOI2SsKVbSsQIfnHNSDohSJ4aB9rJpSXkDeYaeo3'
-OAUTH_TOKEN_SECRET = 'wMUjClr78yjlsyWIjxVunFKQ8zYOjlzgMfItuRiec5Y3c'
+CONSUMER_KEY=''
+CONSUMER_SECRET = ''
+OAUTH_TOKEN = ''
+OAUTH_TOKEN_SECRET = ''
 
 from tweepy import OAuthHandler
 

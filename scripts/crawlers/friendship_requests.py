@@ -41,10 +41,10 @@ from tweepy import OAuthHandler
 from tweepy import Cursor
 import datetime
 
-CONSUMER_KEY = 'NHsKGfxrXTXlf2mfH2n0jbW1l'
-CONSUMER_SECRET = 'W0HE0cTlfIcJtkIX5hClcH4ILgyv018Q8fWdo0sgRo5bdFzAMA'
-ACCESS_TOKEN = '339641100-VOI2SsKVbSsQIfnHNSDohSJ4aB9rJpSXkDeYaeo3'
-ACCESS_SECRET = 'wMUjClr78yjlsyWIjxVunFKQ8zYOjlzgMfItuRiec5Y3c'
+CONSUMER_KEY = ''
+CONSUMER_SECRET = ''
+ACCESS_TOKEN = ''
+ACCESS_SECRET = ''
 
 auth = AppAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
 api = API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
