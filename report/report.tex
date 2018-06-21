@@ -157,13 +157,42 @@ The network has been compared throughout the report with two synthetic network, 
     \end{equation}
     The network $g_{Ita}$ it is the subgraph of $g$ including only the Italian users, who have been identified by using the language metadata available with the crawled tweets.
 
-
 \begin{table}[htbp]
   \centering
-  \include{statistics}
+\begin{tabular}{ccccccc}
+\toprule
+{} &        $g$ &     $g_{und}$ &        $g_{ER}$ &        $g_{BA}$ &    $g_{Ita}$ & $g_{Ita,und}$ \\
+\midrule
+N         &    65729 &     65729 &       65729 &       65729 &     2333 &      2333 \\
+L         &  2501757 &   1895878 &     4318406 &     2496258 &    71466 &     55594 \\
+  $\langle d \rangle$     &     - &   2.92 &     2.95 &     2.83 &  2.78 &   2.33 \\
+  $T$         &     - &  22765186 &      376972 &      996837 &     - &    416232 \\
+$\langle C \rangle$   &     - &  0.254 &  0.002 &  0.007 &     - &  0.310 \\
+density   &  0.00058 &   0.00088 &       0.001 &     0.00116 &  0.01314 &   0.02044 \\
+  \midrule
+  $\langle k \rangle$     &       38 &        57 &          65 &          75 &       30 &        47 \\
+$k_{min}$     &        1 &         1 &          84 &          38 &        1 &         1 \\
+$k_{max}$     &    19073 &     19065 &         183 &        2890 &     1058 &       963 \\
+
+$k_{in,min}$  &        0 &      - &          36 &        - &        0 &      - \\
+$k_{in,max}$  &    19064 &      - &         109 &        - &      961 &      - \\
+
+$k_{out,min}$ &        0 &      - &          35 &        - &        0 &      - \\
+$k_{out,max}$ &     4130 &      - &         103 &        - &      596 &      - \\
+
+\midrule
+$\gamma$     &      2.6 &      - &        - &         2.9 &      2.3 &      - \\
+  $\gamma_{out}$ &      2.9 &      - &        - &        - &     - &      - \\
+$\gamma_{in}$  &      2.4 &      - &        - &        - &     - &      - \\
+\bottomrule
+\end{tabular}
+\caption{Summary of the networks properties.}
   \label{tab:summary}
-  \caption{Label}
 \end{table}
+
+%  \include{statistics}
+
+
 
 The network is composed by a large strongly connected component including about the $75\%$ of the original graph, as depicted in Fig. \ref{fig:components}. The remaining nodes represents users who follows only few authors of the graph. Without considering the directivity of the links
 we have a weakly component including almost the whole network. The generated random graphs are completely connected.
@@ -425,14 +454,15 @@ Some of the analysis on the original graph have been repeated on the Italian sub
     \chapter{Conclusions}
 
 
-    In this work we built a network consisting of authors of tweets regarding the Cambridge Analytica - Facebook scandal, exploded on the $17^{th}$ of March and with a first initial outburst during about a week as shown in the tweet rate time history in Fig. \ref{fig:time_history}.
+    In this work we built a network consisting of authors of tweets regarding the Cambridge Analytica - Facebook scandal, exploded on the $17^{th}$ of March and with a first initial outburst of about a week as shown in the tweet rate time history in Fig. \ref{fig:time_history}.
     The crawled network has been built by considering authors of tweets contaning the top trend hashtags about the case:\\
+\begin{center}
     \textbf{  \{\#cambridgeanalytica, \#facebookgate, \#deletefacebook, \#zuckerberg \} }.
-
-    The links of the network consists in the followee/follower relationship between the identified authors.
-    The network is a Free-Scale network, in the ultra small world regime, with exponents gamma within the interval $2-3$.
+\end{center}
+    The links of the network consists in the following/follower relationship between the identified authors.
+    The network is a scale-free network, in the ultra small world regime, with exponents gamma within the interval $2-3$.
     The out degree distribution has an exponent $\gamma_{out}=2.9 $ very close to 3 of a Barabasi-Albert preferential attachment model,
-    while the in-degree value is $\gamma_{in} = 2.4$. The main properties of the network are summarized in Tab. \ref{tab:statistics} and compared with random graphs generated with the Erdos-Renyi model and the Barabasi-Albert one.
+    while the in-degree value is $\gamma_{in} = 2.4$. The main properties of the network are summarized in Tab. \ref{tab:summary} and compared with random graphs generated with the Erdos-Renyi model and the Barabasi-Albert one.
 
     The biggest hubs in the network are mass media channels on Twitter that have contributed to the spreading of the news.
     The crawled network is a subnetwork of the Twitter network, containing users that showed interest in the scandal by writing a tweet about it.
@@ -442,12 +472,12 @@ Some of the analysis on the original graph have been repeated on the Italian sub
     meaning that the last one raised more percentual response in its followers or maybe that its followers are more interested in the subject
     than the New York Times followers.
 
-    We then tested epidemics models on our network, and discussed its interpretation from a point of view of news spreading.
+    Then we tested epidemics models on our network, and discussed its interpretation from a point of view of news spreading.
     The epidemics model fitting better to the news spreading phenomenon it's the SIR model, having an asymptotyc behaviour similar to
     the one of news spreading. To extend this model should be possible to add also a threshold for each node, describing the
     personal decision of each user to partecipate to the communication spreading or not.
     Furthermore, we compared the spreading of the same news assuming different initial sources, showing that the intrinsic properties of trasmission of a news are more important for diffusion respect to the characteristics of the sources.
-    This fact is strictly correlated to the Free-Scale properties of the network and can explain how easy it is for a sufficiently interesting or intriguing news (independently from being true or false), to spread from small sources to the whole network, or a relevant percentage of it.
+    This fact is strictly correlated to the scale-free properties of the network and can explain how easy it is for a sufficiently interesting or intriguing news (independently from being true or false), to spread from small sources to the whole network, or a relevant percentage of it.
     The implicitly assumption of this model is that the hubs contribute to the spreading of information, having a fundamental role in the diffusion.
 
     The limitation of the spreading of fake news can then be enacted principally by the hubs, by impeding the relaunching of false informations.
