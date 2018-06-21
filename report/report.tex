@@ -111,7 +111,7 @@ But, beside laws and rules, the most important protection against abuses or misu
     \item Crawling of the following list for each of the selected authors, extracting the followee/follower relationships.
     \end{enumerate}
     In Fig. \ref{fig:time_history} is represented the rate of new authors per hour. %%In the weekend of $17^{th}$ $18^{th}$
-    We can observe a tipical daily periodicity, with peaks during the Italian afternoon, corresponding to the USA waking up.
+    We can observe a typical daily periodicity, with peaks during the Italian afternoon, corresponding to the USA waking up.
     The first relevant rate increase is observed on the Monday $19^{th}$, following the weekend of news publishing. A stationary evolution is observed after the $24^{th}$ of March, a week after the scandal outburst.
     %%Relevant peaks are in correspondance on major events likewise...
 
@@ -283,7 +283,7 @@ reaching a length equal to 8.
     \begin{figure}[H]
       \includegraphics[width=\textwidth]{../../scripts/network_analysis/imgs/cluster_coef_hist.pdf}            
           \caption{Clustering coefficient distribution}
-      \label{fig:path_time}
+      \label{fig:clust_distrib}
 \end{figure}
 \end{minipage}
 \begin{minipage}[b]{0.5\textwidth}
@@ -293,6 +293,26 @@ reaching a length equal to 8.
       \caption{Clustering coefficients as function of the degree}
 \end{figure}
 \end{minipage}
+
+\begin{minipage}[b]{0.5\textwidth}
+   \centering
+    \begin{figure}[H]
+      \includegraphics[width=\textwidth]{../../scripts/network_analysis/imgs/triangles_tot.pdf}            
+          \caption{Distribution of nodes per number of triangles.}
+      \label{fig:triangles}
+\end{figure}
+\end{minipage}
+\begin{minipage}[b]{0.5\textwidth}
+  \begin{figure}[H]
+  \centering
+      \includegraphics[width=\textwidth]{../../scripts/network_analysis/imgs/triangles_tot_ita.pdf}            
+          \caption{ Triangles distribution for the Italian subgraph.}
+\end{figure}
+\end{minipage}
+
+
+
+
 
 \clearpage
 \section{Hubs analysis}
@@ -401,9 +421,39 @@ Some of the analysis on the original graph have been repeated on the Italian sub
 
     \include{chaps/robustness/robustness}
 
-    \chapter{Summary}
+
+    \chapter{Conclusions}
 
 
+    In this work we built a network consisting of authors of tweets regarding the Cambridge Analytica - Facebook scandal, exploded on the $17^{th}$ of March and with a first initial outburst during about a week as shown in the tweet rate time history in Fig. \ref{fig:time_history}.
+    The crawled network has been built by considering authors of tweets contaning the top trend hashtags about the case:\\
+    \textbf{  \{\#cambridgeanalytica, \#facebookgate, \#deletefacebook, \#zuckerberg \} }.
+
+    The links of the network consists in the followee/follower relationship between the identified authors.
+    The network is a Free-Scale network, in the ultra small world regime, with exponents gamma within the interval $2-3$.
+    The out degree distribution has an exponent $\gamma_{out}=2.9 $ very close to 3 of a Barabasi-Albert preferential attachment model,
+    while the in-degree value is $\gamma_{in} = 2.4$. The main properties of the network are summarized in Tab. \ref{tab:statistics} and compared with random graphs generated with the Erdos-Renyi model and the Barabasi-Albert one.
+
+    The biggest hubs in the network are mass media channels on Twitter that have contributed to the spreading of the news.
+    The crawled network is a subnetwork of the Twitter network, containing users that showed interest in the scandal by writing a tweet about it.
+    For this reason we defined the measure Interest, ratio of the in degree of the crawled network over the number of followers on Twitter.
+    This ratio is correlated to the clustering coefficient: the users with larger interest have also an higher clustering coefficient.
+    This measure permits to compare sources of information: for example The New York Times had an Interest lower than The Guardian,
+    meaning that the last one raised more percentual response in its followers or maybe that its followers are more interested in the subject
+    than the New York Times followers.
+
+    We then tested epidemics models on our network, and discussed its interpretation from a point of view of news spreading.
+    The epidemics model fitting better to the news spreading phenomenon it's the SIR model, having an asymptotyc behaviour similar to
+    the one of news spreading. To extend this model should be possible to add also a threshold for each node, describing the
+    personal decision of each user to partecipate to the communication spreading or not.
+    Furthermore, we compared the spreading of the same news assuming different initial sources, showing that the intrinsic properties of trasmission of a news are more important for diffusion respect to the characteristics of the sources.
+    This fact is strictly correlated to the Free-Scale properties of the network and can explain how easy it is for a sufficiently interesting or intriguing news (independently from being true or false), to spread from small sources to the whole network, or a relevant percentage of it.
+    The implicitly assumption of this model is that the hubs contribute to the spreading of information, having a fundamental role in the diffusion.
+
+    The limitation of the spreading of fake news can then be enacted principally by the hubs, by impeding the relaunching of false informations.
+    This fact is confirmed by the robustness properties of a Scale-Free network, described in Chap. 6: by removing the hubs in decreasing degree order the network tend to collapse.
+    On the other hand we should consider that the number of hubs is not small and includes not only the mainstream mass media, because of the characteristic power law trend of the degree, so in conclusion the sense of responsibility for information spreading should be collective.
+        
 
 
 \printbibliography[title={References}]
