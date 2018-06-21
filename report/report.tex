@@ -50,11 +50,11 @@
      citecolor= green,
      filecolor= black,
      linkcolor= black,
-     urlcolor= blue
+     urlcolor= black
  }
 
 \usepackage[nottoc,notlot,notlof]{tocbibind}
- 
+
 \begin{document}
     \input{titlepage}
     \pagenumbering{Roman}
@@ -79,14 +79,14 @@ We report here a timeline of the events of the first days of the scandal, from d
 \item March 21,
   Brian Acton, co-founder of the messaging app WhatsApp, called on his Twitter followers to \#deletefacebook. Facebook purchased WhatsApp in 2014.
   \begin{center}
-  @brianacton: It is time. \#deletefacebook\\    
+  @brianacton: It is time. \#deletefacebook\\
   \end{center}
 In a Facebook post published several days after the initial reports, Zuckerberg responded to the continued fallout over the data scandal.
 He said:\\
-\textit{"We have a responsibility to protect your data, and if we can't then we don't deserve to serve you. I've been working to understand exactly what happened and how to make sure this doesn't happen again."}  
+\textit{"We have a responsibility to protect your data, and if we can't then we don't deserve to serve you. I've been working to understand exactly what happened and how to make sure this doesn't happen again."}
 \item March 23,
   Elon Musk joined the \#DeleteFacebook movement, taking down official pages for two of his companies, Tesla and SpaceX, announcing his decision on Twitter. Both the SpaceX and Tesla accounts vanished within hours of his tweet.
-\item March 24, 
+\item March 24,
   The Ars Technica website reported that Facebook ``surreptitiously'' collected call and SMS data for years from Android users, including names, phone numbers, and the length of calls \cite{ars_technica}.
 \end{itemize}
 
@@ -104,10 +104,10 @@ But, beside laws and rules, the most important protection against abuses or misu
     \begin{enumerate}
     \item Crawling of all the available tweets over a period of more than 15 days, since the $17^{th}$ of March, containing at least one of the most popular hashtags regading the case:\\
     \textbf{  \{\#cambridgeanalytica, \#facebookgate, \#deletefacebook, \#zuckerberg \} }
-      
+
     \item Cleaning of the crawled tweets, by selecting and storing in a MongoDB database only the users informations about the authors of tweets, excluding retweets and mentions.
-    \item Selection of the case outbreak time period by observing the time history in Fig. \ref{fig:time_history}. The selected time period consists of 8 days, from the $17^{th}$ to the $24^{th}$ of March included (considering the Italian timezone). 
-      
+    \item Selection of the case outbreak time period by observing the time history in Fig. \ref{fig:time_history}. The selected time period consists of 8 days, from the $17^{th}$ to the $24^{th}$ of March included (considering the Italian timezone).
+
     \item Crawling of the following list for each of the selected authors, extracting the followee/follower relationships.
     \end{enumerate}
     In Fig. \ref{fig:time_history} is represented the rate of new authors per hour. %%In the weekend of $17^{th}$ $18^{th}$
@@ -126,7 +126,7 @@ But, beside laws and rules, the most important protection against abuses or misu
     \item \textbf{Edges}: $2501757$ followee/follower relationships between the selected authors.
     \end{itemize}
 
-    
+
     \begin{figure}[htbp]
       \centering
 \includegraphics[width=\textwidth]{../../scripts/network_analysis/imgs/time_history.pdf}
@@ -136,9 +136,9 @@ But, beside laws and rules, the most important protection against abuses or misu
 
 
 
-    
+
     \chapter{Network analysis}
-\section{Network properties summary} 
+\section{Network properties summary}
 
 
 The properties of the networks analyzed are summarized in Tab. \ref{tab:summary}. The $g$ network represents the original directed graph, while
@@ -200,7 +200,7 @@ we have a weakly component including almost the whole network. The generated ran
 
     \begin{figure}[H]
       \centering
-      \includegraphics[width=\textwidth]{../../scripts/network_analysis/imgs/connectivity.pdf}            
+      \includegraphics[width=\textwidth]{../../scripts/network_analysis/imgs/connectivity.pdf}
       \caption{Weakly and strongly connected components.}
       \label{fig:components}
     \end{figure}
@@ -219,11 +219,11 @@ we have a weakly component including almost the whole network. The generated ran
     \end{equation}
 
     The out-degree distribution shows a trend very close to the Barabasi-Albert model, with an exponent $\gamma_{out} = 2.9$, the same value obtained for the generated BA graph. The in-degree distribution decreases with slower speed, having $\gamma_{in} = 2.4$. The total degree distribution exponent has a value of $\gamma_{tot} = 2.6$, intermediate between the in and out distributions.
- 
+
 
  \begin{figure}[hb]
       \centering
-      \includegraphics[width=0.95\textwidth]{../../scripts/network_analysis/imgs/degree_distributions_nobinlog.pdf}            
+      \includegraphics[width=0.95\textwidth]{../../scripts/network_analysis/imgs/degree_distributions_nobinlog.pdf}
       \caption{Comparison of the degree distributions, plotted without using logarithmic binning.}
       \label{fig:degree_nolog}
     \end{figure}
@@ -232,7 +232,7 @@ we have a weakly component including almost the whole network. The generated ran
 \begin{minipage}[b]{0.5\textwidth}
    \centering
     \begin{figure}[H]
-      \includegraphics[width=\textwidth]{../../scripts/network_analysis/imgs/degree_distributions.pdf}            
+      \includegraphics[width=\textwidth]{../../scripts/network_analysis/imgs/degree_distributions.pdf}
           \caption{Comparison of degree distributions.}
         \label{fig:degree_comparison}
 \end{figure}
@@ -240,16 +240,16 @@ we have a weakly component including almost the whole network. The generated ran
 \begin{minipage}[b]{0.5\textwidth}
   \begin{figure}[H]
   \centering
-  \includegraphics[width=\textwidth]{../../scripts/network_analysis/imgs/tot_degree_distribution.pdf}            
+  \includegraphics[width=\textwidth]{../../scripts/network_analysis/imgs/tot_degree_distribution.pdf}
         \caption{Total degree distribution.}
 \label{fig:tot_degree}
 \end{figure}
 \end{minipage}
-    
+
 \begin{minipage}[b]{0.5\textwidth}
    \centering
     \begin{figure}[H]
-      \includegraphics[width=\textwidth]{../../scripts/network_analysis/imgs/in_degree_distribution.pdf}            
+      \includegraphics[width=\textwidth]{../../scripts/network_analysis/imgs/in_degree_distribution.pdf}
           \caption{In-degree distribution.}
         \label{fig:in_degree}
 \end{figure}
@@ -257,7 +257,7 @@ we have a weakly component including almost the whole network. The generated ran
 \begin{minipage}[b]{0.5\textwidth}
   \begin{figure}[H]
   \centering
-  \includegraphics[width=\textwidth]{../../scripts/network_analysis/imgs/out_degree_distribution.pdf}            
+  \includegraphics[width=\textwidth]{../../scripts/network_analysis/imgs/out_degree_distribution.pdf}
         \caption{Out-degree distribution.}
 \label{fig:out_degree}
 \end{figure}
@@ -274,11 +274,11 @@ we have a weakly component including almost the whole network. The generated ran
       \langle d \rangle = \frac{\sum D_i}{n} \; , \; \sigma(\langle d \rangle) = \frac{s}{\sqrt{n}}
     \end{equation}
 
-    
+
 \begin{minipage}[b]{0.5\textwidth}
    \centering
     \begin{figure}[H]
-      \includegraphics[width=\textwidth]{../../scripts/network_analysis/imgs/paths_computation_time.pdf}            
+      \includegraphics[width=\textwidth]{../../scripts/network_analysis/imgs/paths_computation_time.pdf}
           \caption{Shortest paths computation time by number of pairs}
       \label{fig:path_time}
 \end{figure}
@@ -286,7 +286,7 @@ we have a weakly component including almost the whole network. The generated ran
 \begin{minipage}[b]{0.5\textwidth}
   \begin{figure}[H]
   \centering
-      \includegraphics[width=\textwidth]{../../scripts/network_analysis/imgs/paths_hist.pdf}            
+      \includegraphics[width=\textwidth]{../../scripts/network_analysis/imgs/paths_hist.pdf}
         \caption{Shortest paths distribution}
 \end{figure}
 \end{minipage}
@@ -297,10 +297,10 @@ The shortest path distribution for the original network has a larger dispersion 
 reaching a length equal to 8.
 
 
-    
+
     \begin{figure}[htbp]
       \centering
-      \includegraphics[width=\textwidth]{../../scripts/network_analysis/imgs/paths_hist_comparison.pdf}            
+      \includegraphics[width=\textwidth]{../../scripts/network_analysis/imgs/paths_hist_comparison.pdf}
       \caption{Shortest paths distributions comparison between the original undirected graph and the random networks.}
       \label{fig:path_comparison}
     \end{figure}
@@ -310,7 +310,7 @@ reaching a length equal to 8.
 \begin{minipage}[b]{0.5\textwidth}
    \centering
     \begin{figure}[H]
-      \includegraphics[width=\textwidth]{../../scripts/network_analysis/imgs/cluster_coef_hist.pdf}            
+      \includegraphics[width=\textwidth]{../../scripts/network_analysis/imgs/cluster_coef_hist.pdf}
           \caption{Clustering coefficient distribution}
       \label{fig:clust_distrib}
 \end{figure}
@@ -318,7 +318,7 @@ reaching a length equal to 8.
 \begin{minipage}[b]{0.5\textwidth}
   \begin{figure}[H]
   \centering
-      \includegraphics[width=\textwidth]{../../scripts/network_analysis/imgs/cluster_coef_bydegree.pdf}            
+      \includegraphics[width=\textwidth]{../../scripts/network_analysis/imgs/cluster_coef_bydegree.pdf}
       \caption{Clustering coefficients as function of the degree}
 \end{figure}
 \end{minipage}
@@ -326,7 +326,7 @@ reaching a length equal to 8.
 \begin{minipage}[b]{0.5\textwidth}
    \centering
     \begin{figure}[H]
-      \includegraphics[width=\textwidth]{../../scripts/network_analysis/imgs/triangles_tot.pdf}            
+      \includegraphics[width=\textwidth]{../../scripts/network_analysis/imgs/triangles_tot.pdf}
           \caption{Distribution of nodes per number of triangles.}
       \label{fig:triangles}
 \end{figure}
@@ -334,7 +334,7 @@ reaching a length equal to 8.
 \begin{minipage}[b]{0.5\textwidth}
   \begin{figure}[H]
   \centering
-      \includegraphics[width=\textwidth]{../../scripts/network_analysis/imgs/triangles_tot_ita.pdf}            
+      \includegraphics[width=\textwidth]{../../scripts/network_analysis/imgs/triangles_tot_ita.pdf}
           \caption{ Triangles distribution for the Italian subgraph.}
 \end{figure}
 \end{minipage}
@@ -354,7 +354,7 @@ The "The New York Times" is the biggest hub, with the maximum number of both in-
 We observe that there is a positive correlation between in-degree and followers, with some variations.
 In particular, let's take a pair of hubs having similar followers count, such as the "Washington Post" and the "Huffington Post".
 The "Washington Post" has a larger in-degree than the second.
-This difference can be interpreted as a larger interest in the scandal from the people following the "Washington Post'' respect 
+This difference can be interpreted as a larger interest in the scandal from the people following the "Washington Post'' respect
 to the ones following the "Huffington Post".
 We can define a quantity to measure this interest:
 
@@ -364,7 +364,7 @@ We can define a quantity to measure this interest:
 \end{equation}
 
 This measure represents the fraction of followers that being interested in the scandal had published a tweet about the subject.
-%%It is also a measure of density, being the analyzed network a sub-network of the overall Twitter network: 
+%%It is also a measure of density, being the analyzed network a sub-network of the overall Twitter network:
 We can observe for example a large difference in Interest between the two earliest sources, The Guardian and The New York Times,
 meaning that the followers of the ``The Guardian'' have relatively interacted much more about the case.
 
@@ -378,7 +378,7 @@ direct neighbours.
 
     \begin{figure}[htbp]
       \centering
-      \includegraphics[width=\textwidth]{../../scripts/network_analysis/imgs/hubs_followers.pdf}            
+      \includegraphics[width=\textwidth]{../../scripts/network_analysis/imgs/hubs_followers.pdf}
       \caption{}
       \label{fig:hubs_followers}
     \end{figure}
@@ -386,7 +386,7 @@ direct neighbours.
 \begin{minipage}[b]{0.5\textwidth}
    \centering
     \begin{figure}[H]
-      \includegraphics[width=\textwidth]{../../scripts/network_analysis/imgs/hubs_interest_corr.pdf}            
+      \includegraphics[width=\textwidth]{../../scripts/network_analysis/imgs/hubs_interest_corr.pdf}
           \caption{Interest versus clustering coefficient for about 300 of the biggest hubs.}
       \label{fig:interest_corr}
 \end{figure}
@@ -400,21 +400,21 @@ direct neighbours.
 \end{figure}
 \end{minipage}
 
-    
+
     \begin{figure}[htbp]
       \centering
-      \includegraphics[width=\textwidth]{../../scripts/network_analysis/imgs/hubs_interest.pdf}            
+      \includegraphics[width=\textwidth]{../../scripts/network_analysis/imgs/hubs_interest.pdf}
       \caption{}
 %      \label{fig:path_comparison}
     \end{figure}
 
-\newpage    
+\newpage
 \section{Italian sub network}
 Some of the analysis on the original graph have been repeated on the Italian sub-network, and are here presented.
 \begin{minipage}[b]{0.5\textwidth}
    \centering
     \begin{figure}[H]
-      \includegraphics[width=\textwidth]{../../scripts/network_analysis/imgs/tot_degree_distribution_ita.pdf}            
+      \includegraphics[width=\textwidth]{../../scripts/network_analysis/imgs/tot_degree_distribution_ita.pdf}
           \caption{Total degree distribution.}
       \label{fig:tot_degree_ita}
 \end{figure}
@@ -422,26 +422,26 @@ Some of the analysis on the original graph have been repeated on the Italian sub
 \begin{minipage}[b]{0.5\textwidth}
   \begin{figure}[H]
   \centering
-      \includegraphics[width=\textwidth]{../../scripts/network_analysis/imgs/paths_hist_ita.pdf}            
+      \includegraphics[width=\textwidth]{../../scripts/network_analysis/imgs/paths_hist_ita.pdf}
         \caption{Shortest paths distribution.}
 \end{figure}
 \end{minipage}
 
     \begin{figure}[htbp]
       \centering
-      \includegraphics[width=\textwidth]{../../scripts/network_analysis/imgs/hubs_followers_ita.pdf}            
+      \includegraphics[width=\textwidth]{../../scripts/network_analysis/imgs/hubs_followers_ita.pdf}
       \caption{}
       \label{fig:hubs_followers_ita}
     \end{figure}
 
     \begin{figure}[htbp]
       \centering
-      \includegraphics[width=\textwidth]{../../scripts/network_analysis/imgs/hubs_interest_ita.pdf}            
+      \includegraphics[width=\textwidth]{../../scripts/network_analysis/imgs/hubs_interest_ita.pdf}
       \caption{}
       \label{fig:hubs_followers_ita}
     \end{figure}
 
-    
+
 
 
     \include{chaps/spreading/spreading}
@@ -483,7 +483,7 @@ Some of the analysis on the original graph have been repeated on the Italian sub
     The limitation of the spreading of fake news can then be enacted principally by the hubs, by impeding the relaunching of false informations.
     This fact is confirmed by the robustness properties of a Scale-Free network, described in Chap. 6: by removing the hubs in decreasing degree order the network tend to collapse.
     On the other hand we should consider that the number of hubs is not small and includes not only the mainstream mass media, because of the characteristic power law trend of the degree, so in conclusion the sense of responsibility for information spreading should be collective.
-        
+
 
 
 \printbibliography[title={References}]
